@@ -6,13 +6,27 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 14:49:52 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/06 18:32:35 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/06 19:00:07 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-int		main(int argc, char **argv)
+static void		ft_initialize(t_env *e)
+{
+	new_image(e);
+}
+
+static void		ft_wimg(t_env *e)
+{
+	generate(e);
+	mlx_key_hook(e->win, key_hook, e);
+	mlx_expose_hook(e->win, expose_hook, e);
+	mlx_loop(e->mlx);
+	mlx_destroy_image(e->mlx, e->img);
+}
+
+int				main(int argc, char **argv)
 {
 	t_env e;
 

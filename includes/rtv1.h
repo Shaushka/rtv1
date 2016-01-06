@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/06 18:32:04 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/06 19:02:49 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct		t_env
 	void			*mlx;
 	void			*win;
 	void			*img;
+	char			*data;
+	int				bpp;
+	int				sizeline;
+	int				endian;
 }					s_env;
 
 typedef	struct		t_vecteur
@@ -64,3 +68,7 @@ typedef	struct		t_plan
 	int				origin_z;
 	s_vecteur		v_plan;
 }					s_plan;
+
+void	new_image(t_env *e);
+int		main(int argc, char **argv);
+int		key_hook(int keycode, t_env *e);
