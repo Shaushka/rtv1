@@ -6,11 +6,11 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:40:38 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/11 16:57:52 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/11 18:55:46 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_vect		vect_angle(t_vect u, double o)
+t_vector		vect_angle(t_vector u, double o)
 {
 	t_vect		r;
 	double		inv_o;
@@ -31,3 +31,5 @@ t_vect		vect_angle(t_vect u, double o)
 		+ cos(o) + u.z * u.z * inv_o;
 	return (r);
 }
+
+t_vect		vect_angle(t_vect u, 

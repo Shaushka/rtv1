@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radian.c                                           :+:      :+:    :+:   */
+/*   key_hook.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 17:06:29 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/06 17:10:20 by chuang           ###   ########.fr       */
+/*   Created: 2016/01/06 19:00:12 by mguillon          #+#    #+#             */
+/*   Updated: 2016/01/06 19:01:34 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "rtv1.h"
 
-#define PI 3,14159265
-#define RATIO (PI / 180)
-
-double		d_cos(double angle)
+int		key_hook(int keycode, t_env *e)
 {
-	return (cos(angle * RATIO));
+	if (keycode == 53)
+		exit (0);
 }
