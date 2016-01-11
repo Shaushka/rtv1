@@ -6,15 +6,17 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/11 18:56:49 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/11 19:07:10 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
-# define WIN_WIDTH 800
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 640
+# define WIN_HEIGHT 480
+# define HFOV 2 * atan(0.5 * WIN_H / 20)
+# define WFOV 2 * atan(0.5 * WIN_W / 20)
 #include <mlx.h>
 #include <math.h>
 #include "libft.h"
@@ -30,7 +32,7 @@ typedef struct		t_env
 	int				endian;
 }					s_env;
 
-typedef	struct		t_vectorr
+typedef	struct		t_vector
 {
 	float			x;
 	float			y;
@@ -45,25 +47,20 @@ typedef struct 		t_sphere
 
 typedef struct 		t_cone
 {
-	t_vector		pos;
-	int				rayon;	
-	int				hauteur;
+	s_vector		pos;
+	float			rayon;	
+	float			hauteur;
 }					s_cone;
 
 typedef struct 		t_cylindre
 {
-	int				origin_x;
-	int				origin_y;
-	int				origin_z;
-	int				rayon;	
-	int				hauteur;
+	s_vector		pos;
+	float			rayon;	
+	float			hauteur;
 }					s_cylindre;
 
 typedef	struct		t_plan
 {
-	int				origin_x;
-	int				origin_y;
-	int				origin_z;
 	s_vecteur		v_plan;
 }					s_plan;
 

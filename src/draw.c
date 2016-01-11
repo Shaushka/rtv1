@@ -6,17 +6,11 @@
 /*   By: chuang <chuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 09:12:09 by chuang            #+#    #+#             */
-/*   Updated: 2015/12/09 11:54:42 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/11 19:07:09 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include RTV1_H
-
-#define WIN_W 640
-#define WIN_H 480
-
-#define HFOV 2 * atan(0.5 * WIN_H / 20)
-#define WFOV 2 * atan(0.5 * WIN_W / 20)
+#include '../includes/rtv1.h'
 
 void			put_pxl_image(int x, int y, t_env *e, t_color color)
 {
