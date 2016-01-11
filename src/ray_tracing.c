@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/06 17:10:57 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/06 17:43:21 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 t_vect		pxl_vect(int x, int y, env *e)
 {
-	double a;
+	double		degree;
+	t_vect		ray;
 
-	a = FOV * PI / 180.0;;
-	
-	
-
+	degree = 
+	ray.x = d_cos(degree) * x + d_sin(degree) * y;
+	ray.y = d_sin(degree) * x + d_cos(degree) * y;
+	ray.z = 0; // need to find a formula that work even if your cam wach on Z axis
+	return (ray);
 }

@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radian.c                                           :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 17:06:29 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/06 17:12:47 by chuang           ###   ########.fr       */
+/*   Created: 2016/01/11 17:31:14 by chuang            #+#    #+#             */
+/*   Updated: 2016/01/11 17:37:27 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#define PI 3,14159265
-#define RATIO (PI / 180)
-
-double		d_cos(double angle)
+double		dotproduct(t_vect a, t_vect b)
 {
-	return (cos(angle * RATIO));
-}
+	double		ret;
 
-double		d_sin(double angle)
-{
-	return (sin(angle * RATIO));
-}
-double		d_acos(double value)
-{
-	return (d_acos(value) * (180 / PI));
+	ret = a.x * b.x + a.y * b.y + a.z * b.z;
+	return (ret);
 }
