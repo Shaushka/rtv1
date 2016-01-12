@@ -6,14 +6,14 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 19:10:01 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/12 19:44:01 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
-//#include "../includes/rtv1.h"
-#include "../libft/libft.h"
+#include "../includes/rtv1.h"
+//#include "../libft/libft.h"
 
 static int		isshape(char *str)
 {
@@ -29,7 +29,14 @@ static int		isshape(char *str)
 		return (0);
 }
 
-void	create_scene(t_env *e)
+void		ft_initialize(s_env *e)
+{
+	e->scene->spheres = NULL;	
+	e->scene->cylindres = NULL;	
+	e->scene->plans = NULL;	
+	e->scene->cones = NULL;	
+}
+void	create_scene(s_env *e)
 {//PENSER A INITIALISER LES VALEURS DES T_SPHERE, PLAN, ETC. A 0 pour le cas ou ils ne sont pas utlises
 	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
 	char *tmp;
@@ -54,16 +61,19 @@ void	create_scene(t_env *e)
 		ft_cone(e);
 	else if (isshape(tmp) == 4)
 		ft_plan(e);
+	free(tmp);
 }
 
 int		main(int argc, char **argv)
 {
+	s_env e;
+	ft_initialize(&e);
 	argv = (char **)argv; 
 	if (argc > 1)
 		return (0);
 	else
 	{
-		create_scene();
+		create_scene(&e);
 		return (1);
 	}
 }

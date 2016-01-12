@@ -6,7 +6,7 @@
 /*   By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 15:15:54 by mguillon          #+#    #+#             */
-/*   Updated: 2015/02/16 18:02:02 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/12 14:05:44 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,6 @@ void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list			*ft_lstnew(void const *content, size_t content_size);
 void			ft_lstpushback(t_list **begin_list, t_list *new);
+int				ft_isalphanum(char c);
 
 #endif

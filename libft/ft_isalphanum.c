@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_isalphanum.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 12:56:43 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 14:03:29 by mguillon         ###   ########.fr       */
+/*   Created: 2016/01/12 14:03:43 by mguillon          #+#    #+#             */
+/*   Updated: 2016/01/12 14:05:16 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int c)
+#include "libft.h"
+
+int		ft_isalphanum(char c)
 {
-	if (c >= 0 && c <= 0177)
+	if (ft_isalpha(c) || ft_isdigit(c))
 		return (1);
 	else
 		return (0);
