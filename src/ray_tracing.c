@@ -1,4 +1,4 @@
-/ ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
@@ -6,20 +6,36 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/06 17:43:21 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/12 16:55:48 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #define FOV 90
 
-t_vect		pxl_vect(int x, int y, env *e)
+void		ft_render(env *e)
 {
-	double		degree;
-	t_vect		ray;
+	t_vector		ray;
+	float			degree;
+	float			invW;
+	float			invH;
+	float			ratio;
+	float			angle;
+	int				x;
+	int				y;
 
-	degree = 
-	ray.x = d_cos(degree) * x + d_sin(degree) * y;
-	ray.y = d_sin(degree) * x + d_cos(degree) * y;
-	ray.z = 0; // need to find a formula that work even if your cam wach on Z axis
-	return (ray);
+	invW = 1 / (float) WINDOW_W;
+	invH = 1 / (float) WINDOW_H;
+	ratio = WINDOW_W / (float) WIDOW_H;
+	angle = tanf(PI *0.5f * FOV/180.);
+		y = -1;
+	while(++y < WINDOW_H)
+	{
+		x = -1;
+		while (++x < WINDOW_W)
+			ray.x = (2 *((x) * invW) - 1) * angle * ratio;
+			ray.y = (1 - 2 * ((y) * invH)) * angle;
+			ray.z = -1;
+			ray = unit_vector(ray);
+			r
+	}
 }
