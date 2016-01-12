@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 18:36:54 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/12 19:05:30 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,6 @@
 #include <stdio.h>
 //#include "../includes/rtv1.h"
 #include "../libft/libft.h"
-// valeur de retour ?
-
-/*int		ft_isword(char *str)
-{
-	int i = 0;
-	while (str[i] != '\0')
-	{
-		//printf("%s%c\n", "evaluation du caractere : ", str[i]);
-		if (str[i] != '\n' && !ft_isalpha(str[i]))
-			return (0);
-		else
-			i++;
-	}
-	return (1);
-}*/
 
 static int		isshape(char *str)
 {
@@ -44,8 +29,8 @@ static int		isshape(char *str)
 		return (0);
 }
 
-static void	create_scene()//je passerai l'env en param aussi
-{
+void	create_scene(t_env *e)
+{//PENSER A INITIALISER LES VALEURS DES T_SPHERE, PLAN, ETC. A 0 pour le cas ou ils ne sont pas utlises
 	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
 	char *tmp;
 
@@ -62,14 +47,13 @@ static void	create_scene()//je passerai l'env en param aussi
 	if (isshape(tmp))
 		ft_putstr("Ah, bah voila un utilisateur cooperatif !\n");
 	if (isshape(tmp) == 1)//SPHERE
-		ft_sphere(e)	
-		
-		//add a la liste correspondante
-	}
-	else
-	{
-		ft_putstr("Pas une forme autorisee, ca !");
-	}
+		ft_sphere(e);
+	else if (isshape(tmp) == 2)
+		ft_cylindre(e);
+	else if (isshape(tmp) == 3)
+		ft_cone(e);
+	else if (isshape(tmp) == 4)
+		ft_plan(e);
 }
 
 int		main(int argc, char **argv)

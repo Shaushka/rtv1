@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 18:33:48 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/12 19:05:26 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,16 @@ typedef struct		t_env
 	int				bpp;
 	int				sizeline;
 	int				endian;
+	t_scene*		scene;//tableau de listes chainees
 }					s_env;
+
+typedef struct		t_scene
+{
+	t_sphere		*spheres;
+	t_cone			*cones;
+	t_cylindre		*cylindre;
+	t_plan			*plan;
+}					s_scene;
 
 typedef	struct		t_vector
 {
@@ -76,6 +85,13 @@ int			main(int argc, char **argv);
 int			key_hook(int keycode, t_env *e);
 void		ft_render(env *e);
 t_color		check_collide(e, ray);
+
+//---------------USER INPUT SYSTEM---------------
+
+//creates lists depending on the shape entered
+void		create_scene(t_env *e);
+
+//---------------GEOMETRY---------------
 
 //trigo in degree | you can use radian with regular cos/sin/acos
 float		d_cos(float angle);
