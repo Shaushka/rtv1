@@ -6,13 +6,13 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:31:14 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/12 19:35:23 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/12 20:01:54 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-float			dotproduct(t_vector a, t_vector b)
+float			dotpro_vect(t_vector a, t_vector b)
 {
 	float		ret;
 
