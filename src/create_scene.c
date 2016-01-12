@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 19:05:30 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/12 19:10:01 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	create_scene(t_env *e)
 
 	tmp	= ft_memalloc(sizeof(char) * 200);
 	read(0, tmp, 200);
-	while (/*!ft_isword(tmp) || */!isshape(tmp))
+	while (!isshape(tmp))
 	{	
 		ft_putstr("Choisissez sphere, cone, cylindre ou plan : ");
 		ft_bzero(tmp, 200);
