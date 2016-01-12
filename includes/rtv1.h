@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 19:43:57 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/12 19:53:54 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ float		d_acos(float value);
 //vector
 float		dotproduct(t_vector a, t_vector b);
 float		norm_vector(t_vector a);
-t_vector	unit_vector(t_vector v);*/
+t_vector	unit_vector(t_vector v);
+t_vector	add_vector(t_vector v, t_vector u);
+t_vector	sub_vector(t_vector v, t_vector u);
+t_vector	cross_vector(t_vector v, t_vector u);*/
 
 #endif
