@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 16:55:00 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/12 18:36:54 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../libft/libft.h"
 // valeur de retour ?
 
-int		ft_isword(char *str)
+/*int		ft_isword(char *str)
 {
 	int i = 0;
 	while (str[i] != '\0')
@@ -28,40 +28,44 @@ int		ft_isword(char *str)
 			i++;
 	}
 	return (1);
-}
+}*/
 
-int		isshape(char *str)
+static int		isshape(char *str)
 {
-	if (ft_strequ(str, "sphere\n"))
+	if (ft_strequ(str, "sphere\n") || ft_strequ(str, "Sphere\n"))
 		return (1);
-	if (ft_strequ(str, "cylindre\n"))
+	if (ft_strequ(str, "cylindre\n") || ft_strequ(str, "Cylindre\n"))
 		return (2);
-	if (ft_strequ(str, "cone\n"))
+	if (ft_strequ(str, "cone\n") || ft_strequ(str, "Cone\n"))
 		return (3);
-	if (ft_strequ(str, "plan\n"))
+	if (ft_strequ(str, "plan\n") || ft_strequ(str, "Plan\n"))
 		return (4);
 	else
 		return (0);
 }
 
-void	create_scene()//je passerai l'env en param aussi
+static void	create_scene()//je passerai l'env en param aussi
 {
 	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
 	char *tmp;
-   
-	tmp	= ft_memalloc(sizeof(char) * 11);
-	read(0, tmp, 11);
-	while (!ft_isword(tmp))
+
+	tmp	= ft_memalloc(sizeof(char) * 200);
+	read(0, tmp, 200);
+	while (/*!ft_isword(tmp) || */!isshape(tmp))
 	{	
 		ft_putstr("Choisissez sphere, cone, cylindre ou plan : ");
-		ft_bzero(tmp, 11);
-		read(0, tmp, 10);
-		ft_putstr(tmp);
+		ft_bzero(tmp, 200);
+		read(0, tmp, 200);
+		if (!isshape(tmp))
+			ft_putstr("Vous m'avez encore demande l'impossible ! ");
 	}
 	if (isshape(tmp))
-	{
-		ft_putstr("Oh la jolie sphere !\n");
-	}		//add a la liste correspondante
+		ft_putstr("Ah, bah voila un utilisateur cooperatif !\n");
+	if (isshape(tmp) == 1)//SPHERE
+		ft_sphere(e)	
+		
+		//add a la liste correspondante
+	}
 	else
 	{
 		ft_putstr("Pas une forme autorisee, ca !");
