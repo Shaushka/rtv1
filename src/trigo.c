@@ -6,24 +6,24 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:06:29 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/06 17:12:47 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/12 18:22:48 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+#include "rtv1.h"
 #define PI 3,14159265
 #define RATIO (PI / 180)
 
-double		d_cos(double angle)
+float		d_cos(float angle)
 {
 	return (cos(angle * RATIO));
 }
 
-double		d_sin(double angle)
+float		d_sin(float angle)
 {
 	return (sin(angle * RATIO));
 }
-double		d_acos(double value)
+float		d_acos(float value)
 {
 	return (d_acos(value) * (180 / PI));
 }

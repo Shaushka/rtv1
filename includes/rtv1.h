@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/11 19:07:10 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/12 18:33:48 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 
 # define WIN_WIDTH 640
 # define WIN_HEIGHT 480
-# define HFOV 2 * atan(0.5 * WIN_H / 20)
-# define WFOV 2 * atan(0.5 * WIN_W / 20)
+#define FOV 90
 #include <mlx.h>
 #include <math.h>
 #include "libft.h"
@@ -48,14 +47,14 @@ typedef struct 		t_sphere
 typedef struct 		t_cone
 {
 	s_vector		pos;
-	float			rayon;	
+	float			rayon;
 	float			hauteur;
 }					s_cone;
 
 typedef struct 		t_cylindre
 {
 	s_vector		pos;
-	float			rayon;	
+	float			rayon;
 	float			hauteur;
 }					s_cylindre;
 
@@ -64,6 +63,26 @@ typedef	struct		t_plan
 	s_vecteur		v_plan;
 }					s_plan;
 
-void	new_image(t_env *e);
-int		main(int argc, char **argv);
-int		key_hook(int keycode, t_env *e);
+//might add shine to the color
+typedef	struct		t_color
+{
+	int				r;
+	int				g;
+	int				b;
+}					s_color;
+
+void		new_image(t_env *e);
+int			main(int argc, char **argv);
+int			key_hook(int keycode, t_env *e);
+void		ft_render(env *e);
+t_color		check_collide(e, ray);
+
+//trigo in degree | you can use radian with regular cos/sin/acos
+float		d_cos(float angle);
+float		d_sin(float angle);
+float		d_acos(float value);
+
+//vector
+float		dotproduct(t_vector a, t_vector b);
+float		norm_vector(t_vector a);
+t_vector	unit_vector(t_vector v);
