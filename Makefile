@@ -6,7 +6,7 @@
 #    By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/01/13 18:13:14 by agadiffe         ###   ########.fr        #
+#    Updated: 2016/01/13 19:12:06 by agadiffe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ LIBMLX_INC_PATH = ./libmlx/includes/
 LIBMLX = $(addprefix -L,$(LIBMLX_PATH))
 LIBMLX_INC = $(addprefix -I,$(LIBMLX_INC_PATH))
 
-LIBMLX_COMPILE_PATH = ./mlx/
+LIBMLX_COMPILE_PATH = ./minilibx_macos/
 LIBMLX_COMPILE_HEADERS = $(LIBMLX_COMPILE_PATH)mlx.h \
 						 $(LIBMLX_COMPILE_PATH)mlx_int.h \
 						 $(LIBMLX_COMPILE_PATH)mlx_new_window.h

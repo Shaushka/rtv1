@@ -6,11 +6,12 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/13 18:12:50 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/13 19:10:59 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "libft.h"
 #include <math.h>
 
 t_color		check_collision(t_env *e, t_vector ray)
@@ -43,7 +44,7 @@ void		ft_render(t_env *e)
 			ray = unit_vector(ray);
 			addr = y * e->mlx_init.img.sizeline + x * e->mlx_init.img.opp;
 			//put_pixel_to_img(e, adrr, check_collide(e, ray));
-			put_pixel_to_img(e, addr, (t_color){255,0,0});
+			put_pixel_to_img(e, addr, (t_color){255,255,255});
 		}
 	}
 }
