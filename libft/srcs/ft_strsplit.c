@@ -6,7 +6,7 @@
 /*   By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/13 13:15:31 by mguillon          #+#    #+#             */
-/*   Updated: 2014/11/13 15:35:43 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/13 11:47:07 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ char		**ft_strsplit(char const *s, char c)
 	n = ft_count_all((char *)s, c);
 	i = 0;
 	j = 0;
-	dest = ft_newtab(n + 1);
+	if ((dest = ft_newtab(n + 1)) == NULL)
+		return (NULL);
 	while (s[i])
 	{
 		while (is_c(s[i], c))
