@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook.c                                         :+:      :+:    :+:   */
+/*   hook_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 19:00:12 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/06 19:01:34 by mguillon         ###   ########.fr       */
+/*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
+/*   Updated: 2016/01/13 17:23:19 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include "mlx.h"
+#include "key_define.h"
+#include <stdlib.h>
 
-int		key_hook(int keycode, t_env *e)
+int				expose_hook(t_env *e)
 {
-	if (keycode == 53)
+	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
+			e->mlx_init.img.img_ptr, 0, 0);
+	return (0);
+}
+
+int		key_press_hook(int keycode, t_env *e)
+{
+	if (keycode == KEY_ESC)
 		exit (0);
 }

@@ -6,18 +6,17 @@
 /*   By: chuang <chuang@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/09 09:12:09 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/11 19:07:09 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:33:42 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include '../includes/rtv1.h'
+#include "../includes/rtv1.h"
 
-void			put_pxl_image(int x, int y, t_env *e, t_color color)
+//	raytracing.c need to be rename in draw.c
+//	ft_render in draw()
+//	delete this file
+
+void			draw(t_env *e)
 {
-	int		ptr;
-
-	ptr = y * e->sizeline + x * (e->bpp / 8);
-	e->data[ptr] = color.b;
-	e->data[ptr + 1] = color.g;
-	e->data[ptr + 2] = color.r;
+	(void)e;
 }
