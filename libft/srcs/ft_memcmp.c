@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/08 14:22:16 by mguillon          #+#    #+#             */
-/*   Updated: 2015/08/07 13:25:50 by mguillon         ###   ########.fr       */
+/*   Created: 2014/11/09 16:25:58 by mguillon          #+#    #+#             */
+/*   Updated: 2016/01/13 10:47:35 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int		i;
-	char	*dst;
+	size_t			i;
+	unsigned char	*ss1;
+	unsigned char	*ss2;
 
+	ss2 = 0;
+	ss1 = 0;
 	i = 0;
-	dst = NULL;
-	if (f && s)
+	if (n != 0)
 	{
-		dst = (char*)malloc(sizeof(char) * ft_strlen(s) + 1);
-		while (s[i] != '\0')
+		ss2 = (unsigned char*)s2;
+		ss1 = (unsigned char*)s1;
+		while (i < n)
 		{
-			dst[i] = f(s[i]);
+			if (ss1[i] != ss2[i])
+				return (ss1[i] - ss2[i]);
 			i++;
 		}
-		dst[i] = '\0';
 	}
-	return (dst);
+	return (0);
 }
