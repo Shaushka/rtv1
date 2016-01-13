@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 19:44:01 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/13 10:42:42 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ static int		isshape(char *str)
 		return (0);
 }
 
-void		ft_initialize(s_env *e)
+void		ft_initialize(t_env *e)
 {
 	e->scene->spheres = NULL;	
 	e->scene->cylindres = NULL;	
 	e->scene->plans = NULL;	
 	e->scene->cones = NULL;	
 }
-void	create_scene(s_env *e)
+void	create_scene(t_env *e)
 {//PENSER A INITIALISER LES VALEURS DES T_SPHERE, PLAN, ETC. A 0 pour le cas ou ils ne sont pas utlises
 	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
 	char *tmp;
@@ -66,7 +66,7 @@ void	create_scene(s_env *e)
 
 int		main(int argc, char **argv)
 {
-	s_env e;
+	t_env e;
 	ft_initialize(&e);
 	argv = (char **)argv; 
 	if (argc > 1)

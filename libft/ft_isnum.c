@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_isnum.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 12:08:57 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/13 10:54:42 by mguillon         ###   ########.fr       */
+/*   Created: 2016/01/13 11:11:54 by mguillon          #+#    #+#             */
+/*   Updated: 2016/01/13 11:17:26 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_isalnum(int c)
+int		ft_isnum(char *str)
 {
-	if (ft_isalpha(c) || ft_isdigit(c))
+	if (str[0] == '-' || str[0] == '+')
+		str++;
+	while (ft_isdigit(*str))
+		str++;
+	if (*str == '\0')
 		return (1);
 	else
 		return (0);
