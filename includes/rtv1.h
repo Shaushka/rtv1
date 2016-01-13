@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 19:58:30 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/13 10:49:32 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,61 +18,63 @@
 #define FOV 90
 #include <mlx.h>
 #include <math.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "../libft/libft.h"
-typedef	struct			t_vector
+typedef	struct			s_vector
 {
 	float				x;
 	float				y;
 	float				z;
-}						s_vector;
+}						t_vector;
 
-typedef struct 			t_sphere
+typedef struct 			s_sphere
 {
-	s_vector			pos;
+	t_vector			pos;
 	int					rayon;
-	struct t_sphere		*next;
-}						s_sphere;
+	struct s_sphere		*next;
+}						t_sphere;
 
-typedef struct 			t_cone
+typedef struct 			s_cone
 {
-	s_vector			pos;
+	t_vector			pos;
 	float				rayon;
 	float				hauteur;
-	struct t_cone		*next;
-}						s_cone;
+	struct s_cone		*next;
+}						t_cone;
 
-typedef struct 			t_cylindre
+typedef struct 			s_cylindre
 {
-	s_vector			pos;
+	t_vector			pos;
 	float				rayon;
 	float				hauteur;
-	struct t_cylindre	*next;
-}						s_cylindre;
+	struct s_cylindre	*next;
+}						t_cylindre;
 
-typedef	struct			t_plan
+typedef	struct			s_plan
 {
-	s_vector			v_plan;
-	struct t_plan		 *next;
-}						s_plan;
+	t_vector			pos;
+	struct s_plan		*next;
+}						t_plan;
 
-typedef struct			t_scene
+typedef struct			s_scene
 {
-	s_sphere			*spheres;
-	s_cone				*cones;
-	s_cylindre			*cylindres;
-	s_plan				*plans;
-}						s_scene;
+	t_sphere			*spheres;
+	t_cone				*cones;
+	t_cylindre			*cylindres;
+	t_plan				*plans;
+}						t_scene;
 
 
 //might add shine to the color
-/*typedef	struct		t_color
+/*typedef	struct		s_color
 {
 	int				r;
 	int				g;
 	int				b;
-}					s_color;
+}					t_color;
 */
-typedef struct		t_env
+typedef struct		s_env
 {
 	void			*mlx;
 	void			*win;
@@ -81,26 +83,26 @@ typedef struct		t_env
 	int				bpp;
 	int				sizeline;
 	int				endian;
-	s_scene*		scene;//tableau de listes chainees
-}					s_env;
+	t_scene*		scene;//tableau de listes chainees
+}					t_env;
 
-void		ft_initialize(s_env *e);
+void		ft_initialize(t_env *e);
 
 /*
 void		new_image(t_env *e);
 int			main(int argc, char **argv);
 int			key_hook(int keycode, t_env *e);
-void		ft_render(env *e);
-t_color		check_collide(e, ray);
+void		ft_render(t_env *e);
+t_color		check_collide(t_env e, ray);
 */
 //---------------USER INPUT SYSTEM---------------
 
 //creates lists depending on the shape entered
-void		create_scene(s_env *e);
-void		ft_sphere(s_env *e);
-void		ft_cylindre(s_env *e);
-void		ft_cone(s_env *e);
-void		ft_plan(s_env *e);
+void		create_scene(t_env *e);
+void		ft_sphere(t_env *e);
+void		ft_cylindre(t_env *e);
+void		ft_cone(t_env *e);
+void		ft_plan(t_env *e);
 //---------------GEOMETRY---------------
 
 //trigo in degree | you can use radian with regular cos/sin/acos

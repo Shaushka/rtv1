@@ -6,9 +6,11 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:09:16 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/12 19:43:59 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/13 10:52:54 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/rtv1.h"
 
 void	ft_sphere(t_env *e)
 {
