@@ -6,7 +6,7 @@
 #    By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/01/13 17:14:25 by agadiffe         ###   ########.fr        #
+#    Updated: 2016/01/13 18:13:14 by agadiffe         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,9 +23,8 @@ SRC_NAME = main.c				\
 		   graphics_tools.c		\
 		   initialization.c		\
 		   hook_functions.c		\
-		   draw.c				\
-
-
+		   ray_tracing.c		\
+		   vector.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

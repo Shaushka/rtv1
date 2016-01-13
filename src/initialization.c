@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/01/13 17:29:39 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/13 17:52:56 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void			init_and_draw(t_env *e, char *av)
 													&e->mlx_init.img.endian)))
 		ft_exit("Can't get image adress", 1);
 	e->mlx_init.img.opp = e->mlx_init.img.bpp / 8;
-	draw(e);
+	ft_render(e);
 	mlx_expose_hook(e->mlx_init.win, &expose_hook, e);
 	mlx_hook(e->mlx_init.win, KEYPRESS, KEYPRESSMASK, &key_press_hook, e);
 	mlx_loop(e->mlx_init.mlx);

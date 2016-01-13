@@ -6,11 +6,12 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:31:14 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/13 15:49:19 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/13 18:13:32 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include <math.h>
 
 float			dotpro_vector(t_vector a, t_vector b)
 {

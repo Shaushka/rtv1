@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/01/13 17:23:19 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/13 18:10:43 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int				expose_hook(t_env *e)
 
 int		key_press_hook(int keycode, t_env *e)
 {
+	(void)e;
 	if (keycode == KEY_ESC)
 		exit (0);
+	return (0);
 }

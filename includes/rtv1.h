@@ -6,15 +6,17 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/13 17:39:58 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/13 18:09:54 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
-# define SCREEN_W	640
-# define SCREEN_H	480
+# define SCREEN_W		640
+# define SCREEN_H		480
+# define INV_SCREEN_W	(1 / SCREEN_W)
+# define INV_SCREEN_H	(1 / SCREEN_H)
 
 # define FOV		90
 # define PI			3.14159265
@@ -119,9 +121,9 @@ int				expose_hook(t_env *e);
 void			init_and_draw(t_env *e, char *av);
 
 /*
-**	draw.c
+**	ray_tracing.c
 */
-void			draw(t_env *e);
+void			ft_render(t_env *e);
 
 /*
 **	hook_functions.c
