@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/13 18:09:54 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/14 19:27:11 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef	struct	s_vector
 typedef struct 	s_sphere
 {
 	t_vector			pos;
-	int					rayon;
+	float				radius;
 	struct s_sphere		*next;
 }				t_sphere;
 
@@ -165,6 +165,11 @@ void			ft_plan(t_env *e);
 float			d_cos(float angle);
 float			d_sin(float angle);
 float			d_acos(float value);
+
+/*
+**>----------> INTERSECTION <-----
+*/
+float			inter_sphere(t_vector cam, t_vector ray, t_sphere);
 
 
 /*

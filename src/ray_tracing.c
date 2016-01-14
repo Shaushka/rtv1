@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/14 18:29:47 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/14 19:30:22 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,16 @@
 
 t_color		check_collision(t_env *e, t_vector ray)
 {
+	float	inter;
+
 	(void)e;
-	(void)ray;
+	inter = inter_sphere((t_vector){0,0,0}, ray, (t_sphere){(t_vector){5,0,0}, 0.5, NULL});
+	if (inter > 0)
+		return ((t_color) {255,255,0});
 	return ((t_color){0,0,0});
 }
 
+/*
 t_vector	ft_posHGV(t_cam cam)
 {
 	t_vector posHGV;
@@ -30,6 +35,7 @@ t_vector	ft_posHGV(t_cam cam)
 	posHGV = sub_vector(posHGV, mult_vector(cam.d, largV / 2));
 	return (posHGV);
 }
+*/
 
 void		ft_render(t_env *e)
 {
@@ -53,8 +59,8 @@ void		ft_render(t_env *e)
 			ray.z = -1;
 			ray = unit_vector(ray);
 			addr = y * e->mlx_init.img.sizeline + x * e->mlx_init.img.opp;
-			//put_pixel_to_img(e, adrr, check_collide(e, ray));
-			put_pixel_to_img(e, addr, (t_color){255,255,255});
+			put_pixel_to_img(e, addr, check_collision(e, ray));
+//			put_pixel_to_img(e, addr, (t_color){255, 255, 255});
 			x++;
 		}
 		y++;

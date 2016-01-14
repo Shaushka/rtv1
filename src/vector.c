@@ -6,12 +6,20 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:31:14 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/13 18:13:32 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/14 19:06:10 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <math.h>
+
+t_vector		set_vector(t_vector v, float x, float y, float z)
+{
+	v.x = x;
+	v.y = y;
+	v.z = z;
+	return (v);
+}
 
 float			dotpro_vector(t_vector a, t_vector b)
 {
@@ -67,4 +75,12 @@ t_vector		cross_vector(t_vector a, t_vector b)
 	c.y = b.z * a.x - b.y * a.z;
 	c.z = a.x * b.y - a.y * b.x;
 	return(c);
+}
+
+t_vector		mult_vector(t_vector a, float m)
+{
+	a.x *= m;
+	a.y *= m;
+	a.z *= m;
+	return (a);
 }
