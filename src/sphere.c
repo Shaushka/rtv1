@@ -6,11 +6,12 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/14 18:44:19 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/14 18:46:04 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
+#include <math.h>
 
 //sq = square
 float		sq_segment(t_vector a)
