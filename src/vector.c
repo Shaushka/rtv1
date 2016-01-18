@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:31:14 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/14 19:06:10 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/18 19:47:14 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ t_vector		unit_vector(t_vector v)
 
 	if ((norm = norm_vector(v)) != 1)
 	{
-		v.x /= norm;
-		v.y /= norm;
-		v.z /= norm;
+		v.x /= (float)norm;
+		v.y /= (float)norm;
+		v.z /= (float)norm;
 	}
 	return (v);
 }

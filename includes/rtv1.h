@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/14 19:27:11 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/18 19:17:01 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,14 @@ typedef struct	s_scene
 	t_plan		*plans;
 }				t_scene;
 
+typedef struct	s_cam
+{
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	h;
+	t_vector	d;
+}				t_cam;
+
 typedef	struct	s_color
 {
 	int			r;
@@ -96,6 +104,7 @@ typedef struct	s_env
 {
 	t_mlx_init	mlx_init;
 	t_scene		*scene;
+	t_cam		cam;
 }				t_env;
 
 /*	??
@@ -181,5 +190,6 @@ t_vector		unit_vector(t_vector v);
 t_vector		add_vector(t_vector v, t_vector u);
 t_vector		sub_vector(t_vector v, t_vector u);
 t_vector		cross_vector(t_vector v, t_vector u);
+t_vector		mult_vector(t_vector a, float m);
 
 #endif

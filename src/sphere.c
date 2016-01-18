@@ -6,12 +6,12 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/14 19:25:34 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/18 19:26:41 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "rtv1.h"
 #include <math.h>
+
 #define MAX_VISION 50
 
 //sq = square
