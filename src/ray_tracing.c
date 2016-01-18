@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/18 20:42:11 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/18 21:31:55 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ t_vector	pixel_x_vector(t_env *e, t_vector posHGV, int x)
 	t_vector	d;
 	t_vector	v;
 
-	d = mult_vector(e->cam.d, (x * (float)LARGV / (float)SCREEN_W));
-	printf("%f\n", LARGV/ x * SCREEN_W);
+	d = mult_vector(e->cam.d, ( (float)(LARGV / x) * (float)SCREEN_W));
 	v = sub_vector(mult_vector(posHGV, DISTVUE), d);
 	return (v);
 }
@@ -56,8 +55,8 @@ t_vector	pixel_y_vector(t_env *e, t_vector v_per_x, int y)
 {
 	t_vector	v;
 	t_vector	h;
-
-	h = mult_vector(e->cam.h, (y * (float)LONGV / (float) SCREEN_H));
+	
+	h = mult_vector(e->cam.h, ((float)(LONGV / y) * (float) SCREEN_H));
 	v = add_vector(v_per_x, h);
 	return (v);
 }
@@ -67,6 +66,7 @@ void		ft_render(t_env *e)
 {
 	t_vector	ray;
 	t_vector	posHGV;
+	t_vector	v_line_x;
 	int			x;
 	int			y;
 	int			addr;
@@ -75,17 +75,17 @@ void		ft_render(t_env *e)
 	e->cam.h =(t_vector){0., 1., 0.};
 	e->cam.dir = (t_vector){1., 0., 0.};
 	posHGV = ft_posHGV(e);
-	e->cam.d = cross_vector(e->cam.h, e->cam.dir);
-	x = 0;
+	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
+	x = 1;
 	while (x < SCREEN_W)
 	{
-		ray = pixel_x_vector(e, posHGV, x);
-		y = 0;
+		v_line_x = pixel_x_vector(e, posHGV, x);
+		y = 1;
 		while (y < SCREEN_H)
 		{
-			ray = pixel_y_vector(e, ray, y);
-//			ray = unit_vector(ray);
-//			printf("%f, %f, %f\n", ray.x, ray.y, ray.z);
+			ray = pixel_y_vector(e, v_line_x, y);
+		//	ray = unit_vector(ray);
+			printf("%f,%f,%f\n", ray.x, ray.y, ray.z);
 			addr = y * e->mlx_init.img.sizeline + x * e->mlx_init.img.opp;
 			put_pixel_to_img(e, addr, check_collision(e, ray));
 			y++;
