@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/19 19:34:28 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/19 19:45:57 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_color		check_collision(t_env *e, t_vector ray)
 
 	(void)e;
 	inter = inter_sphere(e->cam, ray,
-						(t_sphere){(t_vector){3.,0.,0.}, 1, NULL});
+						(t_sphere){(t_vector){10.,0.,0.}, 1, NULL});
 	if (inter > 0.0f)
 		return ((t_color) {255,255,0});
 	return ((t_color){0,0,0});
@@ -38,8 +38,8 @@ t_vector	ft_posHGV(t_env *e)
 	t_vector posHGV;
 
 	posHGV = mult_vector(e->cam.dir, DISTVUE);
-	posHGV = add_vector(posHGV, mult_vector(e->cam.h, LONGV / 2));
-	posHGV = sub_vector(posHGV, mult_vector(e->cam.d, LARGV / 2));
+	posHGV = sub_vector(posHGV, mult_vector(e->cam.h, LONGV / 2));
+	posHGV = add_vector(posHGV, mult_vector(e->cam.d, LARGV / 2));
 	return (posHGV);
 }
 
@@ -75,10 +75,11 @@ void		ft_render(t_env *e)
 	int			addr;
 
 	e->cam.pos = (t_vector){0.,0.,0.};
-	e->cam.h = (t_vector){0., 0., 1.};
+	e->cam.h = (t_vector){0., 0., 1};
 	e->cam.dir = (t_vector){1., 0., 0.};
-	posHGV = ft_posHGV(e);
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
+	posHGV = ft_posHGV(e);
+	printf("%f,%f,%f\n", posHGV.x, posHGV.y, posHGV.z);
 	x = 1;
 	while (x < SCREEN_W)
 	{
