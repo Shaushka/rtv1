@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/19 20:00:29 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/19 20:28:55 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,35 +95,3 @@ void		ft_render(t_env *e)
 		x++;
 	}
 }
-
-/*
-   void		ft_render(t_env *e)
-   {
-   t_vector		ray;
-   float			ratio;
-   float			angle;
-   int				x;
-   int				y;
-   int				addr;
-
-   ratio = (float) SCREEN_W / (float) SCREEN_H;
-   angle = tanf(PI *0.5f * FOV/180.);
-   y = 0;
-   while(y < SCREEN_H)
-   {
-   x = -1;
-   while (x < SCREEN_W)
-   {
-   ray.x = (2 *((x) * INV_SCREEN_W) - 1) * angle * ratio;
-   ray.y = (1 - 2 * ((y) * INV_SCREEN_H)) * angle;
-   ray.z = -1;
-   ray = unit_vector(ray);
-
-	printf("%f, %f, %f\n", ray.x, ray.y, ray.z);
-   addr = y * e->mlx_init.img.sizeline + x * e->mlx_init.img.opp;
-   put_pixel_to_img(e, addr, check_collision(e, ray));
-//			put_pixel_to_img(e, addr, (t_color){255, 255, 255});
-x++;
-}
-y++;
-}*/
