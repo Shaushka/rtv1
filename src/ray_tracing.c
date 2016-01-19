@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/19 16:19:33 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/19 19:34:28 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 #include "libft.h"
 #include <math.h>
 #include <stdio.h>
-#define DISTVUE 1.0
-#define LONGV 0.35
-#define LARGV 0.5
 
+#define DISTVUE		1.0
+#define LONGV		0.35
+#define LARGV		0.5
+
+#include <stdio.h>
 
 t_color		check_collision(t_env *e, t_vector ray)
 {
 	float	inter;
 
 	(void)e;
-	inter = inter_sphere(e->cam.pos, ray, (t_sphere){(t_vector){3.,0.,0.}, 1, NULL});
-	if (inter > 0)
+	inter = inter_sphere(e->cam, ray,
+						(t_sphere){(t_vector){3.,0.,0.}, 1, NULL});
+	if (inter > 0.0f)
 		return ((t_color) {255,255,0});
 	return ((t_color){0,0,0});
 }
@@ -72,7 +75,7 @@ void		ft_render(t_env *e)
 	int			addr;
 
 	e->cam.pos = (t_vector){0.,0.,0.};
-	e->cam.h =(t_vector){0., 0., 1.};
+	e->cam.h = (t_vector){0., 0., 1.};
 	e->cam.dir = (t_vector){1., 0., 0.};
 	posHGV = ft_posHGV(e);
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
@@ -85,7 +88,7 @@ void		ft_render(t_env *e)
 		{
 			ray = pixel_y_vector(e, v_line_x, y);
 			ray = unit_vector(ray);
-			printf("%f,%f,%f\n", ray.x, ray.y, ray.z);
+			//printf("%f,%f,%f\n", ray.x, ray.y, ray.z);
 			addr = y * e->mlx_init.img.sizeline + x * e->mlx_init.img.opp;
 			put_pixel_to_img(e, addr, check_collision(e, ray));
 			y++;

@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:31:14 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/18 19:47:14 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/19 19:33:37 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ t_vector		set_vector(t_vector v, float x, float y, float z)
 
 float			dotpro_vector(t_vector a, t_vector b)
 {
-	float		ret;
-
-	ret = a.x * b.x + a.y * b.y + a.z * b.z;
-	return (ret);
+	return (a.x * b.x + a.y * b.y + a.z * b.z);
 }
 
 float			norm_vector(t_vector a)

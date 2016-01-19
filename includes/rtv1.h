@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/18 19:17:01 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/19 17:56:55 by agadiffe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,13 +178,13 @@ float			d_acos(float value);
 /*
 **>----------> INTERSECTION <-----
 */
-float			inter_sphere(t_vector cam, t_vector ray, t_sphere);
+float			inter_sphere(t_cam cam, t_vector ray, t_sphere);
 
 
 /*
 **	vector.c
 */
-float			dotproduct(t_vector a, t_vector b);
+float			dotpro_vector(t_vector a, t_vector b);
 float			norm_vector(t_vector v);
 t_vector		unit_vector(t_vector v);
 t_vector		add_vector(t_vector v, t_vector u);
