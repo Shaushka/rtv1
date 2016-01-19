@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/19 19:33:41 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/19 19:51:03 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "rtv1.h"
@@ -48,39 +48,3 @@ float		inter_sphere(t_cam cam, t_vector ray, t_sphere obj)
 	else
 		return (-b / (2 * a)); 
 }
-
-/*
-float		inter_sphere(t_vector cam, t_vector ray, t_sphere object)
-{
-	float			w;
-	float			t;
-	float			d;
-	float			dist_sq_obj_ray;
-	float			n_ray;
-	t_vector		orig;
-
-	w = 1;
-	t = -1;
-	n_ray = 0;
-	orig = sub_vector(object.pos, cam);
-	while (w < MAX_VISION)
-	{
-		n_ray += norm_vector(ray);
-		dist_sq_obj_ray = sq_segment((orig)) - (n_ray * n_ray);
-		if (dist_sq_obj_ray <= (object.radius * object.radius))
-		{
-			d = sqrtf((object.radius * object.radius)
-						- (dist_sq_obj_ray * dist_sq_obj_ray));
-			if (n_ray + d > 0 && n_ray + d < n_ray - d)
-				t = n_ray + d;
-			else if ( n_ray - d > 0 && n_ray - d < n_ray + d)
-				t = n_ray - d;
-			w = MAX_VISION;
-		}
-		else
-			break;
-		w++;
-	}
-	return (t);
-}
-*/

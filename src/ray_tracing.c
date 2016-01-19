@@ -6,17 +6,16 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/19 19:45:57 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/19 20:00:29 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "libft.h"
 #include <math.h>
-#include <stdio.h>
 
 #define DISTVUE		1.0
-#define LONGV		0.35
+#define LONGV		0.375
 #define LARGV		0.5
 
 #include <stdio.h>
@@ -79,7 +78,6 @@ void		ft_render(t_env *e)
 	e->cam.dir = (t_vector){1., 0., 0.};
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
 	posHGV = ft_posHGV(e);
-	printf("%f,%f,%f\n", posHGV.x, posHGV.y, posHGV.z);
 	x = 1;
 	while (x < SCREEN_W)
 	{
@@ -89,7 +87,6 @@ void		ft_render(t_env *e)
 		{
 			ray = pixel_y_vector(e, v_line_x, y);
 			ray = unit_vector(ray);
-			//printf("%f,%f,%f\n", ray.x, ray.y, ray.z);
 			addr = y * e->mlx_init.img.sizeline + x * e->mlx_init.img.opp;
 			put_pixel_to_img(e, addr, check_collision(e, ray));
 			y++;

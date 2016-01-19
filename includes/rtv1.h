@@ -6,19 +6,16 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/19 17:56:55 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/19 19:58:48 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
-# define SCREEN_W		640
-# define SCREEN_H		480
-# define INV_SCREEN_W	(1 / SCREEN_W)
-# define INV_SCREEN_H	(1 / SCREEN_H)
+# define SCREEN_W		1280
+# define SCREEN_H		960
 
-# define FOV		90
 # define PI			3.14159265
 # define RATIO		(PI / 180)
 
@@ -106,14 +103,6 @@ typedef struct	s_env
 	t_scene		*scene;
 	t_cam		cam;
 }				t_env;
-
-/*	??
-void		new_image(t_env *e);
-int			main(int argc, char **argv);
-int			key_hook(int keycode, t_env *e);
-void		ft_render(t_env *e);
-t_color		check_collide(t_env e, ray);
-*/
 
 /*
 **	main.c
