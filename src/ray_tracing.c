@@ -27,6 +27,7 @@ t_color		check_collision(t_env *e, t_vector ray)
 	(void)e;
 	inter = inter_sphere(e->cam, ray,
 						(t_sphere){(t_vector){10.,0.,0.}, 1, NULL});
+
 	if (inter > 0.0f)
 		return ((t_color) {255,255,0});
 	return ((t_color){0,0,0});
