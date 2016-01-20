@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/19 19:58:48 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/20 18:35:58 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,21 @@ typedef	struct	s_vector
 	float		z;
 }				t_vector;
 
-typedef struct 	s_sphere
+typedef	struct	s_color
+{
+	int			r;
+	int			g;
+	int			b;
+}				t_color;
+
+typedef struct	s_sphere
 {
 	t_vector			pos;
 	float				radius;
 	struct s_sphere		*next;
 }				t_sphere;
 
-typedef struct 	s_cone
+typedef struct	s_cone
 {
 	t_vector			pos;
 	float				rayon;
@@ -41,7 +48,7 @@ typedef struct 	s_cone
 	struct s_cone		*next;
 }				t_cone;
 
-typedef struct 	s_cylindre
+typedef struct	s_cylindre
 {
 	t_vector			pos;
 	float				rayon;
@@ -54,6 +61,14 @@ typedef	struct	s_plan
 	t_vector			pos;
 	struct s_plan		*next;
 }				t_plan;
+
+typedef struct		s_light
+{
+	t_vector		pos;
+	t_vector		dir;
+	t_color			color;
+	float			intensity;
+}					t_light;
 
 typedef struct	s_scene
 {
@@ -70,13 +85,6 @@ typedef struct	s_cam
 	t_vector	h;
 	t_vector	d;
 }				t_cam;
-
-typedef	struct	s_color
-{
-	int			r;
-	int			g;
-	int			b;
-}				t_color;
 
 typedef struct	s_img
 {
@@ -167,7 +175,18 @@ float			d_acos(float value);
 /*
 **>----------> INTERSECTION <-----
 */
+
+/*
+**	sphere.c
+*/
 float			inter_sphere(t_cam cam, t_vector ray, t_sphere);
+t_vector		normal_sphere(t_sphere obj, t_vector ray, float inter);
+
+
+/*
+**	light.c
+*/
+t_color			diffuse_light(t_light light, t_color color, t_vector normal);
 
 
 /*
