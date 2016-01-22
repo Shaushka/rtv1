@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/22 15:25:02 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/22 15:51:04 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_color		check_collision(t_env *e, t_vector ray)
 	float		inter;
 	t_vector	normal;
 	t_sphere	sphere = {(t_vector){6, 0, 0}, 1, NULL};
-	t_light		light = {(t_vector){4 , 0, 0},
+	t_light		light = {(t_vector){-6, 0, 0},
 						(t_vector){0,1,0},
 						(t_color){255, 255, 255}, 0.7};
 
