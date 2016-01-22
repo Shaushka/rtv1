@@ -6,13 +6,12 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/20 18:38:56 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/22 15:27:41 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "rtv1.h"
 #include <math.h>
 
-#define MAX_VISION 50
 
 float		sq_segment(t_vector a)
 {
@@ -51,5 +50,5 @@ float		inter_sphere(t_cam cam, t_vector ray, t_sphere obj)
 
 t_vector		normal_sphere(t_sphere obj, t_vector ray, float inter)
 {
-	return(sub_vector(obj.pos, mult_vector(ray, inter)));
+	return(sub_vector(mult_vector(ray, inter), obj.pos));
 }

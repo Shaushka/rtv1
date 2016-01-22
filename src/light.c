@@ -6,35 +6,27 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/21 18:54:53 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/22 15:28:28 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <stdio.h>
 
+#define MAX_VISION 50
 
-t_color		diffuse_light(t_light light, t_color color, t_vector normal,t_vector s_ray)
+t_color		diffuse_light(t_light light, t_color color, t_vector normal,t_vector inter)
 {
-	float	coef;
+	float		coef;
+	t_vector	light_ray;
 //		float	tmp;
 //		float	tmplight;
 
-//plsu distance courte plus lumiere faible
-	coef = dotpro_vector(normal, sub_vector(light.pos, s_ray)) * light.intensity;
-	printf ("coef %f, L %f\n", coef, norm_vector(sub_vector(light.pos, s_ray)));
-/*		tmp = color.r / 255.0;
-		tmplight = light.color.r / 255.0;
-		tmp = tmp + (tmplight) * coef;
-		color.r = tmp * 127.5;
-		tmp = color.g / 255.0;
-		tmplight = light.color.g / 255.0;
-		tmp = tmp + (tmplight) * coef;
-		color.g = tmp * 127.5;
-		tmp = color.b / 255.0;
-		tmplight = light.color.b / 255.0;
-		tmp = tmp + (tmplight) * coef;
-		color.b = tmp * 127.5; */
+//plus distance courte plus lumiere faible
+	light_ray = sub_vector(light.pos, inter);
+	coef = dotpro_vector(unit_vector(light_ray), unit_vector(normal));
+	coef = coef * light.intensity;
+	printf ("coef %f, L %f\n", coef, norm_vector(light_ray));
 	color.r = ((color.r * light.intensity) + (light.color.r * coef)) / 2;
 	color.g = ((color.g * light.intensity) + (light.color.g * coef)) / 2;
 	color.b = ((color.b * light.intensity) + (light.color.b * coef)) / 2;
