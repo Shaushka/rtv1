@@ -6,12 +6,12 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 14:49:52 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/13 18:14:53 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/22 17:18:09 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
-
+#include <stdlib.h>
 void	get_scene(t_env *e)
 {
 	(void)e;
@@ -22,6 +22,9 @@ int		main(int argc, char **argv)
 {
 	t_env	e;
 
+	e.lights = malloc(sizeof(t_light));
+	e.lights->next = NULL;
+	init_lights(e);
 	argv = (char **)argv;
 	if (argc != 1)
 		ft_exit("usage: ./rtv1", 1);

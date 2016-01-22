@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/20 19:44:19 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/22 17:16:03 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ typedef struct		s_light
 	t_vector		dir;
 	t_color			color;
 	float			intensity;
+	struct s_light	*next;
 }					t_light;
 
 typedef struct	s_scene
@@ -110,6 +111,7 @@ typedef struct	s_env
 	t_mlx_init	mlx_init;
 	t_scene		*scene;
 	t_cam		cam;
+	t_light		*lights;
 }				t_env;
 
 /*
@@ -187,7 +189,7 @@ t_vector		normal_sphere(t_sphere obj, t_vector ray, float inter);
 **	light.c
 */
 t_color			diffuse_light(t_light light, t_color color, t_vector normal, t_vector s_ray);
-
+void			init_lights(t_env e);
 
 /*
 **	vector.c

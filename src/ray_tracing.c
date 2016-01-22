@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/22 15:51:04 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/22 17:14:40 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,18 @@
 #define LONGV		1.05
 #define LARGV		1.5
 
-#include <stdio.h>
-
 t_color		check_collision(t_env *e, t_vector ray)
 {
 	float		inter;
 	t_vector	normal;
 	t_sphere	sphere = {(t_vector){6, 0, 0}, 1, NULL};
-	t_light		light = {(t_vector){-6, 0, 0},
-						(t_vector){0,1,0},
-						(t_color){255, 255, 255}, 0.7};
-
-	(void)e;
+//APPEL DES LUMIERES	
 	inter = inter_sphere(e->cam, ray, sphere);
 	if (inter > 0.0f)
 	{
 		normal = normal_sphere(sphere, ray, inter);
 //		printf("%f, %f, %f\n", normal.x, normal.y, normal.z);
-		return (diffuse_light(light, (t_color) {255,255,0}, normal, mult_vector(ray,inter)));
+		return (diffuse_light(*e->lights, (t_color) {255,255,0}, normal, mult_vector(ray,inter)));
 	}
 	return ((t_color){0,0,0});
 }

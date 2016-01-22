@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/01/13 18:10:43 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/22 17:28:23 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlx.h"
 #include "key_define.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 int				expose_hook(t_env *e)
 {
@@ -24,8 +25,21 @@ int				expose_hook(t_env *e)
 
 int		key_press_hook(int keycode, t_env *e)
 {
-	(void)e;
 	if (keycode == KEY_ESC)
 		exit (0);
+
+	if (keycode == KEY_PGUP)
+	{
+		e->lights->pos.x += 1;	
+		printf("PageUp\n");
+		ft_render(e);
+	}
+
+	if (keycode == KEY_PGDN)
+	{
+		e->lights->pos.x -= 1;	
+		printf("PageDown\n");
+		ft_render(e);
+	}
 	return (0);
 }
