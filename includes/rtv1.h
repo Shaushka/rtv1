@@ -6,16 +6,18 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/26 19:32:48 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/26 19:38:55 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV1_H
 # define RTV1_H
 
+# include <math.h>
 # define SCREEN_W		1280
 # define SCREEN_H		960
 
+# define MAX_VISION(h)		(3570 + sqrt((h)))
 # define PI			3.14159265
 # define RATIO		(PI / 180)
 
@@ -59,6 +61,8 @@ typedef struct	s_cylinder
 typedef	struct	s_plane
 {
 	t_vector			pos;
+	t_vector			normal;
+	float				constant;
 	struct s_plane		*next;
 }				t_plane;
 
@@ -181,9 +185,13 @@ float			d_acos(float value);
 /*
 **	sphere.c
 */
-float			inter_sphere(t_cam cam, t_vector ray, t_sphere);
+float			inter_sphere(t_cam cam, t_vector ray, t_sphere sphere);
 t_vector		normal_sphere(t_sphere obj, t_vector ray, float inter);
 
+/*
+**	plane.c
+*/
+float			inter_plane(t_cam cam, t_vector ray, t_plane plane);
 
 /*
 **	light.c

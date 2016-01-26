@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/26 16:57:34 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/26 18:53:04 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_color		check_collision(t_env *e, t_vector ray)
 	float		inter;
 	t_vector	normal;
 //	t_sphere	sphere = {(t_vector){6, 0, 0}, 1, NULL};
-	t_plane		plane = {(t_vector){6,0,0},(t_vector){1, 4, 0},(float) 0, NULL};
+	t_plane		plane = {(t_vector){10,0, 0},(t_vector){ 4, 0, 1},(float) 0, NULL};
 //APPEL DES LUMIERES	
 	//inter = inter_sphere(e->cam, ray, sphere);
 	inter = inter_plane(e->cam, ray, plane);
