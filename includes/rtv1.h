@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/26 18:02:56 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/26 19:32:48 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,6 +194,7 @@ void			init_lights(t_env e);
 /*
 **	vector.c
 */
+t_vector		set_vector(t_vector v, float x, float y, float z);
 float			dotpro_vector(t_vector a, t_vector b);
 float			norm_vector(t_vector v);
 t_vector		unit_vector(t_vector v);
