@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/26 15:15:01 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/26 15:16:43 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,6 +188,7 @@ t_vector		normal_sphere(t_sphere obj, t_vector ray, float inter);
 /*
 **	light.c
 */
+t_color			check_color(t_color color);
 t_color			diffuse_light(t_light light, t_color color, t_vector normal, t_vector s_ray);
 void			init_lights(t_env e);
 
