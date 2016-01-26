@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/26 15:18:37 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/26 17:38:49 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,8 @@ typedef struct	s_cylinder
 typedef	struct	s_plane
 {
 	t_vector			pos;
-	t_vector			normal;
-	float				constant;
-	struct s_plan		*next;
-}				t_plan;
+	struct s_plane		*next;
+}				t_plane;
 
 typedef struct		s_light
 {
@@ -78,7 +76,7 @@ typedef struct	s_scene
 	t_sphere	*spheres;
 	t_cone		*cones;
 	t_cylinder	*cylinders;
-	t_plan		*planes;
+	t_plane		*planes;
 }				t_scene;
 
 typedef struct	s_cam
@@ -190,7 +188,6 @@ t_vector		normal_sphere(t_sphere obj, t_vector ray, float inter);
 /*
 **	light.c
 */
-t_color			check_color(t_color color);
 t_color			diffuse_light(t_light light, t_color color, t_vector normal, t_vector s_ray);
 void			init_lights(t_env e);
 

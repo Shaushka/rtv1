@@ -6,20 +6,20 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/13 10:42:42 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/26 17:38:45 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
 #include "../includes/rtv1.h"
-//#include "../libft/libft.h"
+#include "../libft/includes/libft.h"
 
 static int		isshape(char *str)
 {
 	if (ft_strequ(str, "sphere\n") || ft_strequ(str, "Sphere\n"))
 		return (1);
-	if (ft_strequ(str, "cylindre\n") || ft_strequ(str, "Cylindre\n"))
+	if (ft_strequ(str, "cylinder\n") || ft_strequ(str, "Cylinder\n"))
 		return (2);
 	if (ft_strequ(str, "cone\n") || ft_strequ(str, "Cone\n"))
 		return (3);
@@ -32,8 +32,8 @@ static int		isshape(char *str)
 void		ft_initialize(t_env *e)
 {
 	e->scene->spheres = NULL;	
-	e->scene->cylindres = NULL;	
-	e->scene->plans = NULL;	
+	e->scene->cylinders = NULL;	
+	e->scene->planes = NULL;	
 	e->scene->cones = NULL;	
 }
 void	create_scene(t_env *e)
@@ -54,13 +54,13 @@ void	create_scene(t_env *e)
 	if (isshape(tmp))
 		ft_putstr("Ah, bah voila un utilisateur cooperatif !\n");
 	if (isshape(tmp) == 1)//SPHERE
-		ft_sphere(e);
+		add_sphere(e);
 	else if (isshape(tmp) == 2)
-		ft_cylindre(e);
+		add_cylinder(e);
 	else if (isshape(tmp) == 3)
-		ft_cone(e);
+		add_cone(e);
 	else if (isshape(tmp) == 4)
-		ft_plan(e);
+		add_plane(e);
 	free(tmp);
 }
 
