@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/26 15:16:43 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/26 15:18:37 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,11 @@ typedef struct	s_cylinder
 	struct s_cylinder	*next;
 }				t_cylinder;
 
-typedef	struct	s_plan
+typedef	struct	s_plane
 {
 	t_vector			pos;
+	t_vector			normal;
+	float				constant;
 	struct s_plan		*next;
 }				t_plan;
 
