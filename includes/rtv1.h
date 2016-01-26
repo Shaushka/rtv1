@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/22 17:16:03 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/26 15:15:01 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ typedef struct	s_cone
 	struct s_cone		*next;
 }				t_cone;
 
-typedef struct	s_cylindre
+typedef struct	s_cylinder
 {
 	t_vector			pos;
 	float				rayon;
 	float				hauteur;
-	struct s_cylindre	*next;
-}				t_cylindre;
+	struct s_cylinder	*next;
+}				t_cylinder;
 
 typedef	struct	s_plan
 {
@@ -75,8 +75,8 @@ typedef struct	s_scene
 {
 	t_sphere	*spheres;
 	t_cone		*cones;
-	t_cylindre	*cylindres;
-	t_plan		*plans;
+	t_cylinder	*cylinders;
+	t_plan		*planes;
 }				t_scene;
 
 typedef struct	s_cam
@@ -159,10 +159,10 @@ void			create_scene(t_env *e);
 /*
 **	shapes.c
 */
-void			ft_sphere(t_env *e);
-void			ft_cylindre(t_env *e);
-void			ft_cone(t_env *e);
-void			ft_plan(t_env *e);
+void			add_sphere(t_env *e);
+void			add_cylinder(t_env *e);
+void			add_cone(t_env *e);
+void			add_plane(t_env *e);
 
 /*
 **	----------> GEOMETRY <-----
