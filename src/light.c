@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/26 16:46:10 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/26 18:49:56 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ t_color		diffuse_light(t_light light, t_color color, t_vector normal,t_vector in
 
 	light_ray = sub_vector(light.pos, inter);
 	coef = dotpro_vector(unit_vector(light_ray), unit_vector(normal));
-	coef = coef * light.intensity;
+	coef = coef * light.intensity * ((MAX_VISION(0) - norm_vector(light_ray)) / 5000);
 	color.r = ((color.r * light.intensity) + (light.color.r * coef)) / 2;
 	color.g = ((color.g * light.intensity) + (light.color.g * coef)) / 2;
 	color.b = ((color.b * light.intensity) + (light.color.b * coef)) / 2;
@@ -47,7 +47,7 @@ t_color		diffuse_light(t_light light, t_color color, t_vector normal,t_vector in
 
 void	init_lights(t_env e)
 {
-	e.lights->pos = (t_vector){4.5,2,-1};
+	e.lights->pos = (t_vector){8, 0,1};
 	e.lights->dir = (t_vector){0,1,0};
 	e.lights->color = (t_color){255,255,255};
 	e.lights->intensity = 1.5;
