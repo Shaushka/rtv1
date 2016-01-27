@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/27 13:37:57 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/27 15:10:47 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,13 +159,26 @@ void			blend_color(t_color *c, t_color c1, t_color c2, double percent);
 **	create_scene.c
 */
 void			create_scene(t_env *e);
+void			ft_initialize_scene(t_env *e);
 
 /*
-**	shapes.c
+**	add_sphere.c
 */
 void			add_sphere(t_env *e);
+
+/*
+**	add_cylinder.c
+*/	
 void			add_cylinder(t_env *e);
+
+/*
+**	add_cone.c
+*/
 void			add_cone(t_env *e);
+
+/*
+**	add_plane.c
+*/
 void			add_plane(t_env *e);
 
 /*
