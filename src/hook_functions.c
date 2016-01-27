@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/01/22 17:28:23 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/27 11:22:53 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int		key_press_hook(int keycode, t_env *e)
 	if (keycode == KEY_ESC)
 		exit (0);
 
-	if (keycode == KEY_PGUP)
+	if (keycode == KEY_UP)
 	{
 		e->lights->pos.x += 1;	
 		printf("PageUp\n");
 		ft_render(e);
 	}
 
-	if (keycode == KEY_PGDN)
+	if (keycode == KEY_DOWN)
 	{
 		e->lights->pos.x -= 1;	
 		printf("PageDown\n");

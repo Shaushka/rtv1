@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:09:16 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/26 19:32:50 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/27 12:13:46 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 #include "../includes/rtv1.h"
 #include "../libft/includes/libft.h"
 //GERER SI Y'A PAS DE T_SPHERE DEJA EXISTANT
-void	add_sphere(t_env *e)
+/*void	add_sphere(t_env *e)
 {
-	char *tmp;
 	t_sphere *a;
 	t_sphere *b;
 
@@ -47,9 +46,10 @@ void	add_sphere(t_env *e)
 	}
 	sphere_dimensions(e, a);	
 }
-
+*/
 void	sphere_dimensions(t_env *e, t_sphere *node)
 {
+	char * tmp;
 	ft_putstr("Nous allons maintenant definir les dimensions de la sphere :\n");
 	tmp = ft_memalloc(sizeof(char) * 200);
 	read(0, tmp, 200);
