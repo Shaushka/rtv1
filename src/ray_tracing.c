@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/27 11:25:02 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/27 16:40:13 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,32 @@
 t_color		check_collision(t_env *e, t_vector ray)
 {
 	float		inter;
+//	float		test;
 	t_vector	normal;
-	t_sphere	sphere = {(t_vector){6, 0, 0}, 1, NULL};
-//	t_plane		plane = {(t_vector){10,0, 0},(t_vector){ 4, 0, 1},(float) 0, NULL};
+//	void		*item;
+//	t_sphere	sphere = {(t_vector){8, 1, 1}, 1, NULL};
+	t_plane		plane = {(t_vector){9, 0, 0},(t_vector){ -1, 4, 0},(float) 0, NULL};
+
 //APPEL DES LUMIERES	
-	inter = inter_sphere(e->cam, ray, sphere);
-//	inter = inter_plane(e->cam, ray, plane);
+/*
+	inter = 20; //MAX_VISION(e->cam.pos.z);
+	//TANT qu'il a des objets test
+	while (e->obj)// ** TO DO
+	{
+		inter = inter_sphere(e->cam, ray, sphere);
+		test = inter_plane(e->cam, ray, plane);
+		if (inter < test)
+		{
+			inter = test;
+			item = // **ITEM IN COLLISION WITH RAY
+		}
+	}*/
+//	inter = inter_sphere(e->cam, ray, sphere);
+	inter = inter_plane(e->cam, ray, plane);
 	if (inter > 0.0f) //&& inter < (float)MAX_VISION(e->cam.pos.z))
 	{
-//		normal = plane.normal; 
-		normal_sphere(sphere, ray, inter);
+		normal = plane.normal; // call assigning normal function
+//		normal = normal_sphere(sphere, ray, inter);
 //		printf("%f, %f, %f\n", normal.x, normal.y, normal.z);
 		return (diffuse_light(*e->lights, (t_color) {255,255,0}, normal, mult_vector(ray,inter)));
 	}
@@ -80,7 +96,7 @@ void		ft_render(t_env *e)
 	int			addr;
 
 	e->cam.pos = (t_vector){0.,0.,0.};
-	e->cam.h = (t_vector){0., 0., 1};
+	e->cam.h = (t_vector){0., 0., -1};
 	e->cam.dir = (t_vector){1., 0., 0.};
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
 	posHGV = ft_posHGV(e);
