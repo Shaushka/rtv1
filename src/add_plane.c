@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:09:16 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/27 15:07:33 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/27 15:10:49 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ static void		sphere_diameter(t_sphere *node)
 	sphere_position_x(node);
 }
 
-void			add_sphere(t_env *e)
+void			add_plane(t_env *e)
 {
-	t_sphere *a;
+	t_plane *a;
 	t_sphere *b;
 
 	a = (t_sphere*)malloc(sizeof(t_sphere));

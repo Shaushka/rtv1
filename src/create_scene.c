@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/26 19:32:52 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/27 15:07:36 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,23 @@ static int		isshape(char *str)
 		return (0);
 }
 
-void		ft_initialize(t_env *e)
+void		ft_initialize_scene(t_env *e)
 {
-	e->scene->spheres = NULL;	
-	e->scene->cylinders = NULL;	
-	e->scene->planes = NULL;	
-	e->scene->cones = NULL;	
+	e->scene->spheres = NULL;
+	e->scene->cylinders = NULL;
+	e->scene->planes = NULL;
+	e->scene->cones = NULL;
 }
-void	create_scene(t_env *e)
-{//PENSER A INITIALISER LES VALEURS DES T_SPHERE, PLAN, ETC. A 0 pour le cas ou ils ne sont pas utlises
-	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
+
+void		create_scene(t_env *e)
+{//PENSER A INITIALISER LES VALEURS DES T_SPHERE, ETC. A 0
 	char *tmp;
 
-	tmp	= ft_memalloc(sizeof(char) * 200);
+	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
+	tmp = ft_memalloc(sizeof(char) * 200);
 	read(0, tmp, 200);
 	while (!isshape(tmp))
-	{	
+	{
 		ft_putstr("Choisissez sphere, cone, cylindre ou plan : ");
 		ft_bzero(tmp, 200);
 		read(0, tmp, 200);
@@ -64,11 +65,12 @@ void	create_scene(t_env *e)
 	free(tmp);
 }
 
-int		main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	t_env e;
-	ft_initialize(&e);
-	argv = (char **)argv; 
+
+	ft_initialize_scene(&e);
+	argv = (char **)argv;
 	if (argc > 1)
 		return (0);
 	else
