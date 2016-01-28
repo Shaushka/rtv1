@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 17:31:14 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/26 19:06:50 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/28 16:48:59 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,9 @@ t_vector		mult_vector(t_vector a, float m)
 	a.y *= m;
 	a.z *= m;
 	return (a);
+}
+
+float		sq_vector(t_vector a)
+{
+	return (a.x * a.x + a.y * a.y + a.z * a.z);
 }
