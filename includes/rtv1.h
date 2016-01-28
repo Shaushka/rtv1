@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 17:02:59 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/28 17:42:03 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,34 +39,11 @@ typedef struct	s_object
 {
 	void				*next;
 	t_vector			pos;
-	float				radius;
+	float				radius;//sphere cone cylindre
+	float				height;//cone cylindre
+	t_vector			normal;//plan
+	float				constant;//plan
 }				t_object;
-
-typedef struct	s_cone
-{
-	void				*next;
-	t_vector			pos;
-	float				rayon;
-	float				hauteur;
-}				t_cone;
-
-typedef struct	s_cylinder
-{
-
-	void				*next;
-	t_vector			pos;
-	float				rayon;
-	float				hauteur;
-}				t_cylinder;
-
-typedef	struct	s_plane
-{
-
-	void				*next;
-	t_vector			pos;
-	t_vector			normal;
-	float				constant;
-}				t_plane;
 
 typedef struct		s_light
 {
