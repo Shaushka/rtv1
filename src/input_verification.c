@@ -6,13 +6,13 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 12:03:15 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 13:12:38 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/28 14:38:26 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char 	*ft_str_nospace(char *str)
 {
-	char *clean
+	char *clean;
 	int len = ft_strlen(char *str);
 	int i = 0;
 	while (str[i] != '\0')
@@ -44,28 +44,47 @@ char 	*ft_str_nospace(char *str)
 	return (clean);
 }
 
-int		isvector(char *str)
-{//on a une str sans espace et ne contenant que des chiffres et des /
-	
-}
-
-int		isclean(char *str)
+char *separators(char *str)//remplace les /// en trop par des espaces
 {
 	char *clean;
+	int i = 0;
+	while(str[i] != '\0')
+	{
+		if (str[i] == '/')
+		{
+			i++;
+			while(str[i] == '/')
+			{
+				str[i] = ' ';
+				j++;
+			}
+		}
+		else
+			i++;
+	}
+}
 
+
+int		isvector(char *str)
+{
+	//je supprime les espaces
+	char *clean;
 	clean = ft_str_nospace(str);
 	free(str);
+	//j'ai une nouvelle string propre sans espaces. 
+	//je verifie si ce sont bien des chiffres et des nombres.
+	if (is_slashes_and_digits)
+}
+
+int		is_slashes_and_digits(char *str)
+{
 	int i = 0;
-	while (clean[i] != '\0')//est ce que ce sont bien des chiffres et des '/'
+	while (str[i] != '\0')
 	{
-		if (!ft_isdigit(clean[i]) && clean[i] != '/')
+		if (!ft_isdigit(str[i]) && str[i] != '/')
 			return (0);
 		else
 			i++;
 	}
-	// si oui :
-	if (isvector(clean))
-		return (1);
-	else
-		return (0);
+	return (1);
 }
