@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 19:30:46 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/28 19:40:42 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		ft_initialize_scene(t_env *e)
 }
 
 void		create_scene(t_env *e)
-{//PENSER A INITIALISER LES VALEURS DES T_OBJECTS A 0
+{
 	char *tmp;
 
 	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
@@ -55,9 +55,11 @@ void		create_scene(t_env *e)
 	if (isshape(tmp) == 1)//SPHERE
 		add_sphere(e);
 	else if (isshape(tmp) == 2)//CYLINDER
-		add_cylinder(e);
+		ft_putstr("Je cree un cylindre");
+		//add_cylinder(e);
 	else if (isshape(tmp) == 3)//CONE
-		add_cone(e);
+		ft_putstr("Je cree un cylindre");
+		//add_cone(e);
 	else if (isshape(tmp) == 4)//PLANE
 		add_plane(e);
 	free(tmp);
