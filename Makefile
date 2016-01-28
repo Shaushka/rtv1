@@ -6,7 +6,7 @@
 #    By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/01/26 16:03:54 by chuang           ###   ########.fr        #
+#    Updated: 2016/01/28 14:40:21 by chuang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ SRC_NAME = main.c				\
 		   sphere.c				\
 		   plane.c				\
 		   light.c				\
-		   vector.c
+		   vector.c				\
+		   plane.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 
