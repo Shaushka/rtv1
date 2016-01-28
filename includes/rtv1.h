@@ -6,6 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
+/*   Updated: 2016/01/28 18:07:29 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,20 +37,14 @@ typedef	struct	s_color
 
 typedef struct	s_object
 {
-	t_vector			pos;
-<<<<<<< HEAD
-	float				radius;
 	void				*next;
-}				t_object;
-
-=======
+	t_vector			pos;
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
 	t_vector			normal;//plan
 	float				constant;//plan
 }				t_object;
 
->>>>>>> 20ab199dcf11dbab27c8cf516368df778f32da25
 typedef struct		s_light
 {
 	t_vector		pos;
