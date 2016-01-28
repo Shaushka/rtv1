@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 14:38:21 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/28 17:02:59 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,35 +35,37 @@ typedef	struct	s_color
 	int			b;
 }				t_color;
 
-typedef struct	s_sphere
+typedef struct	s_object
 {
+	void				*next;
 	t_vector			pos;
 	float				radius;
-	struct s_sphere		*next;
-}				t_sphere;
+}				t_object;
 
 typedef struct	s_cone
 {
+	void				*next;
 	t_vector			pos;
 	float				rayon;
 	float				hauteur;
-	struct s_cone		*next;
 }				t_cone;
 
 typedef struct	s_cylinder
 {
+
+	void				*next;
 	t_vector			pos;
 	float				rayon;
 	float				hauteur;
-	struct s_cylinder	*next;
 }				t_cylinder;
 
 typedef	struct	s_plane
 {
+
+	void				*next;
 	t_vector			pos;
 	t_vector			normal;
 	float				constant;
-	struct s_plane		*next;
 }				t_plane;
 
 typedef struct		s_light
@@ -77,10 +79,8 @@ typedef struct		s_light
 
 typedef struct	s_scene
 {
-	t_sphere	*spheres;
-	t_cone		*cones;
-	t_cylinder	*cylinders;
-	t_plane		*planes;
+	void		*l_obj;
+	t_light		*light;
 }				t_scene;
 
 typedef struct	s_cam
@@ -223,5 +223,6 @@ t_vector		add_vector(t_vector v, t_vector u);
 t_vector		sub_vector(t_vector v, t_vector u);
 t_vector		cross_vector(t_vector v, t_vector u);
 t_vector		mult_vector(t_vector a, float m);
+float			sq_vector(t_vector a);
 
 #endif
