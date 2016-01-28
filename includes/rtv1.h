@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 17:02:59 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/28 17:06:06 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,35 +37,34 @@ typedef	struct	s_color
 
 typedef struct	s_object
 {
-	void				*next;
 	t_vector			pos;
 	float				radius;
+	void				*next;
 }				t_object;
 
 typedef struct	s_cone
 {
-	void				*next;
 	t_vector			pos;
 	float				rayon;
 	float				hauteur;
+	void				*next;
 }				t_cone;
 
 typedef struct	s_cylinder
 {
 
-	void				*next;
 	t_vector			pos;
 	float				rayon;
 	float				hauteur;
+	void				*next;
 }				t_cylinder;
 
 typedef	struct	s_plane
 {
-
-	void				*next;
 	t_vector			pos;
 	t_vector			normal;
 	float				constant;
+	void				*next;
 }				t_plane;
 
 typedef struct		s_light
@@ -198,8 +197,8 @@ float			d_acos(float value);
 /*
 **	sphere.c
 */
-float			inter_sphere(t_cam cam, t_vector ray, t_sphere sphere);
-t_vector		normal_sphere(t_sphere obj, t_vector ray, float inter);
+float			inter_sphere(t_cam cam, t_vector ray, t_object sphere);
+t_vector		normal_sphere(t_object obj, t_vector ray, float inter);
 
 /*
 **	plane.c

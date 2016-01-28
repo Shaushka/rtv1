@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/27 16:40:13 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/28 17:57:28 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ t_color		check_collision(t_env *e, t_vector ray)
 //	float		test;
 	t_vector	normal;
 //	void		*item;
-//	t_sphere	sphere = {(t_vector){8, 1, 1}, 1, NULL};
-	t_plane		plane = {(t_vector){9, 0, 0},(t_vector){ -1, 4, 0},(float) 0, NULL};
+	t_object	sphere = {(t_vector){18, 0, 0}, 1, NULL};
+//	t_plane		plane = {(t_vector){9, 0, 0},(t_vector){ -1, 4, 0},(float) 0, NULL};
 
 //APPEL DES LUMIERES	
 /*
@@ -42,14 +42,14 @@ t_color		check_collision(t_env *e, t_vector ray)
 			item = // **ITEM IN COLLISION WITH RAY
 		}
 	}*/
-//	inter = inter_sphere(e->cam, ray, sphere);
-	inter = inter_plane(e->cam, ray, plane);
+	inter = inter_sphere(e->cam, ray, sphere);
+//	inter = inter_plane(e->cam, ray, plane);
 	if (inter > 0.0f) //&& inter < (float)MAX_VISION(e->cam.pos.z))
 	{
-		normal = plane.normal; // call assigning normal function
-//		normal = normal_sphere(sphere, ray, inter);
+//		normal = plane.normal; // call assigning normal function
+		normal = normal_sphere(sphere, ray, inter);
 //		printf("%f, %f, %f\n", normal.x, normal.y, normal.z);
-		return (diffuse_light(*e->lights, (t_color) {255,255,0}, normal, mult_vector(ray,inter)));
+		return (diffuse_light(*e->lights, (t_color) {0,255,255}, normal, mult_vector(ray,inter)));
 	}
 	return ((t_color){0,0,0});
 }

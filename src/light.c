@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/27 16:36:43 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/28 17:57:06 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ t_color		diffuse_light(t_light light, t_color color, t_vector normal,t_vector in
 
 	light_ray = sub_vector(light.pos, inter);
 	coef = dotpro_vector(unit_vector(light_ray), unit_vector(normal));
-	attenuation = (((MAX_VISION(0) - (norm_vector(light_ray))) / (MAX_VISION(0) / (light.intensity) * 0.5)));
-	if (attenuation >= 5)
+	attenuation = ((MAX_VISION(0) / 300) - norm_vector(light_ray)) / (MAX_VISION(0) / 300) * 2.5;
+	if (attenuation > 5)
 		attenuation = 5;
-	coef = coef* attenuation;
+	if (attenuation < 1)
+		attenuation = 1;
+	coef = coef * attenuation;
 	color.r = ((color.r + light.color.r * coef) * light.intensity) / 2;
 	color.g = ((color.g + light.color.g * coef) * light.intensity) / 2;
 	color.b = ((color.b + light.color.b * coef) * light.intensity) / 2;
@@ -51,7 +53,7 @@ t_color		diffuse_light(t_light light, t_color color, t_vector normal,t_vector in
 
 void	init_lights(t_env e)
 {
-	e.lights->pos = (t_vector){8, 2, 0};
+	e.lights->pos = (t_vector){5, -5, 0};
 	e.lights->dir = (t_vector){0,1,0};
 	e.lights->color = (t_color){255,255,255};
 	e.lights->intensity = 0.7;
