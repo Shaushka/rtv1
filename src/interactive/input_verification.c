@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 16:28:17 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 17:22:11 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/28 19:24:18 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,20 +128,14 @@ int		correct_input(char *str)
 {
 	char *clean;
 	char *final;
-//	printf("\nWelcome to correct_input_land\n");
 	clean = remove_spaces(str);
-//	printf("After remove_spaces : %s\n", clean);
 	if (is_slashes_and_digits(clean))
 	{
-//		printf("It's slashes and digits !\n");
 		separators(clean);
-//		printf("After separators : %s\n", clean);
 		final = remove_spaces(clean);
-//		printf("After remove_spaces again : %s\n", final);
 		free(clean);
 		if (is_vector(final))
 			return (1);
-
 	}
 	return (0);
 }

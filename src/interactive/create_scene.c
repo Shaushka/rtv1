@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 12:10:14 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/27 15:07:36 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/28 19:30:46 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ static int		isshape(char *str)
 
 void		ft_initialize_scene(t_env *e)
 {
-	e->scene->spheres = NULL;
-	e->scene->cylinders = NULL;
-	e->scene->planes = NULL;
-	e->scene->cones = NULL;
+	e->scene->l_obj->next = NULL;
+	e->scene->light->next = NULL;
 }
 
 void		create_scene(t_env *e)
-{//PENSER A INITIALISER LES VALEURS DES T_SPHERE, ETC. A 0
+{//PENSER A INITIALISER LES VALEURS DES T_OBJECTS A 0
 	char *tmp;
 
 	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
@@ -56,15 +54,15 @@ void		create_scene(t_env *e)
 		ft_putstr("Ah, bah voila un utilisateur cooperatif !\n");
 	if (isshape(tmp) == 1)//SPHERE
 		add_sphere(e);
-	else if (isshape(tmp) == 2)
+	else if (isshape(tmp) == 2)//CYLINDER
 		add_cylinder(e);
-	else if (isshape(tmp) == 3)
+	else if (isshape(tmp) == 3)//CONE
 		add_cone(e);
-	else if (isshape(tmp) == 4)
+	else if (isshape(tmp) == 4)//PLANE
 		add_plane(e);
 	free(tmp);
 }
-
+/*
 int			main(int argc, char **argv)
 {
 	t_env e;
@@ -79,3 +77,4 @@ int			main(int argc, char **argv)
 		return (1);
 	}
 }
+*/

@@ -6,7 +6,7 @@
 #    By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/01/28 17:15:02 by chuang           ###   ########.fr        #
+#    Updated: 2016/01/28 19:15:47 by mguillon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,19 @@ CC = gcc
 CFLAGS += -Wall -Werror -Wextra
 
 SRC_PATH = ./src/
-SRC_NAME = main.c				\
-		   graphics_tools.c		\
-		   initialization.c		\
-		   hook_functions.c		\
-		   ray_tracing.c		\
-		   sphere.c				\
-		   light.c				\
-		   vector.c				\
-		   plane.c
+SRC_NAME = main.c							\
+		   graphics_tools.c					\
+		   initialization.c					\
+		   hook_functions.c					\
+		   ray_tracing.c					\
+		   sphere.c							\
+		   light.c							\
+		   vector.c							\
+		   plane.c							\
+		   interactive/add_plane.c 			\
+		   interactive/add_sphere.c			\
+		   interactive/create_scene.c		\
+		   interactive/input_verification.c	
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

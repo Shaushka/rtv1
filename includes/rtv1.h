@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 18:07:29 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/28 19:30:48 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,21 @@ void			add_cone(t_env *e);
 /*
 **	add_plane.c
 */
+
 void			add_plane(t_env *e);
+/*
+**	input_verification.c
+*/
+char			*remove_spaces(char *str);//passer en static si pas reutilisee
+void			separators(char *str);//passer en static si pas reutilisee
+int				is_slashes_and_digits(char *str);//static si pas reutilisee
+int				is_vector(char *str);//passer en static si pas reutilisee
+int				correct_input(char *str);
+
+/*
+**	infos_shapes.c
+*/
+int			count_objects(t_env *e);
 
 /*
 **	----------> GEOMETRY <-----
