@@ -1,0 +1,32 @@
+add shape : contient simplement add_sphere add_plan add_cone et add_cylinder.
+
+infos_shapes : contient les fonctions correspondqnt aux differents node->rad/x/y
+				contient : 	diameter(node)
+							count_objects(e)
+							constant(node)
+							==> TODO : ajouter normal(node)
+input_vectors_clean : contient les fonctions de nettoyage de la str pour les vect
+				contient :	remove_spaces(str)
+							separators(str)
+
+create_object : contient la fonction de creation du maillon quand on add un objet
+				contient :	create_object(e) => return un t_object*
+
+input_position : contient les fonctions de gestion de la position
+				contient :	cut_pos(str, i)	=> decoupe en 3 morceaux la str propre
+							assign_pos(node, str) => assigne l'input nettoye a xyz
+							position(node) => recup l'input
+
+input_verification : contient les fonctions de verification de la valide de la pos
+				contient :	is_slashes_and_digits(str)
+							is_vector(str) =>verifie s'il y a bien 3chiffres & 2/
+							correct_input(str)	=> appelle toutes les ft de clean
+												=> return int
+
+input_vectors_clean : contient les fonctions de nettoyage de str
+				contient :	remove_spaces(str)
+							separators(str) => remplace les / en trop par des ' '
+
+input_vectors : contient VIDE
+				contient :	VIDE
+

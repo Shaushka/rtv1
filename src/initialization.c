@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/01/29 14:19:29 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/29 15:22:53 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ void			init_obj(t_object *node)
 
 void			init_scene(t_env *e)
 {
-	e->scene->l_obj->next = NULL;
-	e->scene->light->next = NULL;
+	e->scene->l_obj = NULL;
+	e->scene->light = NULL;
 }
