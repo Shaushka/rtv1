@@ -29,7 +29,6 @@ void		diameter(t_sphere *node)
 	}
 	node->radius = ft_atoi(tmp);
 	free(tmp);
-	position(node);
 }
 
 int		count_objects(t_env *e)
@@ -47,6 +46,23 @@ int		count_objects(t_env *e)
 	free (a);
 	return (i);
 }
-//possibilite de faire une fonction qui compte les objets par type
 
+int		constant(t_object *node)
+{
+	char *tmp;
 
+	tmp = ft_memalloc(sizeof(char) * 200);
+	ft_bzero(tmp, 200);
+	read(0, tmp, 200);
+	while (!ft_isnum(tmp))
+	{
+		ft_putstr("Constante du plan (entre 1 et 10) : ");
+		ft_bzero(tmp, 200);
+		read(0, tmp, 200);
+		if (!ft_isnum(tmp) || ft_atoi(tmp) > 10 || ft_atoi(tmp) < 1)
+			ft_putstr("Entrez un nombre entre 1 et 10 !");
+	}
+	node->constant = ft_atoi(tmp);
+	free(tmp);
+
+}

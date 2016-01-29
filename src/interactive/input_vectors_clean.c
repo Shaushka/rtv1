@@ -14,65 +14,65 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int		is_slashes_and_digits(char *str)
+
+char		*remove_spaces(char *str)
 {
-	int i;
+	char	*clean;
+	int		len;
+	int		i;
+	int		j;
 
 	i = 0;
+	j = 0;
+	len = ft_strlen(str);
 	while (str[i] != '\0')
 	{
-		if (!ft_isdigit(str[i]) && str[i] != '/')
-			return (0);
-		else
+		if (ft_isspace(str[i]))
+		{
+			j++;
 			i++;
+		}
+		else
+		{
+			i++;
+		}
 	}
-	return (1);
+	len -= j;
+	clean = malloc(sizeof(char) * (len + 1));
+	i = 0;
+	j = 0;
+	while (str[i] != '\0')
+	{
+		if (ft_isspace(str[i]))
+			i++;
+		else
+		{
+			clean[j] = str[i];
+			i++;
+			j++;
+		}
+	}
+	return (clean);
 }
 
-int		is_vector(char *str)
+void	separators(char *str)//remplace les / en trop par des espaces
 {
 	int i;
-	int s;
-	int n;
+	int j;
 
 	i = 0;
-	s = 0;
-	n = 0;
-	if (!ft_isdigit(str[0]))
-		return (0);
+	j = 0;
 	while (str[i] != '\0')
 	{
-		if (ft_isdigit(str[i]))
-		{
-			n++;
-			while (ft_isdigit(str[i]) && str[i] != '\0')
-				i++;
-		}
 		if (str[i] == '/')
 		{
 			i++;
-			s++;
+			while (str[i] == '/')
+			{
+				str[i] = ' ';
+				j++;
+			}
 		}
+		else
+			i++;
 	}
-	if (n == 3 && s == 2)
-		return (1);
-	else
-		return (0);
-}
-
-int		correct_input(char *str)
-{
-	char *clean;
-	char *final;
-	clean = remove_spaces(str);
-	if (is_slashes_and_digits(clean))
-	{
-		separators(clean);
-		final = remove_spaces(clean);
-		free(clean);
-		if (is_vector(final))//attention, a ce stade on n'a pas verifie 
-			//si les chiffres sont dans la fourchette demandee
-			return (1);
-	}
-	return (0);
-}

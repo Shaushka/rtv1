@@ -1,4 +1,4 @@
-char		*cut_pos(char *str, int i)
+static char		*cut_pos(char *str, int i)
 {
 	char *tmp;
 	while(str[i] != '/')
@@ -17,7 +17,7 @@ char		*cut_pos(char *str, int i)
 		return (tmp);
 }
 
-void		assign_pos(t_object *node, char *str)
+static void		assign_pos(t_object *node, char *str)
 {
 	node->pos.x = ft_atoi(cut_pos(str, i));
 	while(ft_isdigit(str[i]))

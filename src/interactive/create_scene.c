@@ -53,7 +53,7 @@ void		create_scene(t_env *e)
 	if (isshape(tmp))
 		ft_putstr("Ah, bah voila un utilisateur cooperatif !\n");
 	if (isshape(tmp) == 1)//SPHERE
-		add_sphere(e);
+		input_sphere(e);
 	else if (isshape(tmp) == 2)//CYLINDER
 		ft_putstr("Je cree un cylindre");
 		//add_cylinder(e);
@@ -61,7 +61,7 @@ void		create_scene(t_env *e)
 		ft_putstr("Je cree un cylindre");
 		//add_cone(e);
 	else if (isshape(tmp) == 4)//PLANE
-		add_plane(e);
+		input_plane(e);
 	free(tmp);
 }
 /*
