@@ -1,42 +1,52 @@
+#include <stdlib.h>
+#include <unistd.h>
+#include "../../includes/rtv1.h"
+
 static char		*cut_pos(char *str, int i)
 {
-	char *tmp;
-	while(str[i] != '/')
+	char		*tmp;
+	int			j;
+
+	j = 0;
+	while (str[i] != '/')
 	{
 		i++;
 		j++;
 	}
 	tmp = malloc(sizeof(char) * (j + 1));
 	i = 0;
-	while(str[i] != '/')
+	while (str[i] != '/')
 	{
 		tmp[i] = str[i];
 		i++;
 	}
-	tmp[i] = '\n'
-		return (tmp);
+	tmp[i] = '\n';
+	return (tmp);
 }
 
 static void		assign_pos(t_object *node, char *str)
 {
+	int			i;
+
+	i = 0;
 	node->pos.x = ft_atoi(cut_pos(str, i));
-	while(ft_isdigit(str[i]))
+	while (ft_isdigit(str[i]))
 		i++;
 	i++;
 	node->pos.y = ft_atoi(cut_pos(str, i));
-	while(ft_isdigit(str[i]))
+	while (ft_isdigit(str[i]))
 		i++;
 	i++;
 	node->pos.z = ft_atoi(cut_pos(str, i));
 }
 
-void		position(t_object *node)
+void			position(t_object *node)
 {
-	char *tmp;
+	char		*tmp;
 
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
-	ft_putstr("Definition de la position :");
+	ft_putstr("Definition de la position :\n");
 	ft_putstr("Format : x/y/z (entre 1 et 100) : ");
 	read(0, tmp, 200);
 	while (!correct_input(tmp))

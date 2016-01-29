@@ -1,21 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   input_verification.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/28 16:28:17 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 19:24:18 by mguillon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "../libft/includes/libft.h"
+#include "../../libft/includes/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-
-char		*remove_spaces(char *str)
+char		*no_more_spaces(char *str)
 {
 	char	*clean;
 	int		len;
@@ -24,23 +11,28 @@ char		*remove_spaces(char *str)
 
 	i = 0;
 	j = 0;
-	len = ft_strlen(str);
+	len = ft_strlen(str);//longueur de 
 	while (str[i] != '\0')
 	{
 		if (ft_isspace(str[i]))
 		{
-			j++;
+			j++; 
 			i++;
 		}
 		else
-		{
 			i++;
-		}
 	}
 	len -= j;
 	clean = malloc(sizeof(char) * (len + 1));
-	i = 0;
+	return (remove_spaces(char *str, i, clean));
+}
+char		**remove_spaces(char *str, int i, char **str)
+{
+	int i;
+	int j;
+
 	j = 0;
+	i = 0;
 	while (str[i] != '\0')
 	{
 		if (ft_isspace(str[i]))
@@ -55,10 +47,10 @@ char		*remove_spaces(char *str)
 	return (clean);
 }
 
-void	separators(char *str)//remplace les / en trop par des espaces
+void		separators(char *str)//remplace les / en trop par des espaces
 {
-	int i;
-	int j;
+	int 	i;
+	int 	j;
 
 	i = 0;
 	j = 0;
@@ -76,3 +68,4 @@ void	separators(char *str)//remplace les / en trop par des espaces
 		else
 			i++;
 	}
+}

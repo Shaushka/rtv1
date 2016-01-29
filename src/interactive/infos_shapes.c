@@ -1,20 +1,8 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   infos_shapes.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/26 15:59:22 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 19:20:25 by mguillon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
 
-void		diameter(t_sphere *node)
+void			diameter(t_object *node)
 {
-	char *tmp;
+	char		*tmp;
 
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
@@ -27,29 +15,29 @@ void		diameter(t_sphere *node)
 		if (!ft_isnum(tmp) || ft_atoi(tmp) > 10 || ft_atoi(tmp) < 1)
 			ft_putstr("Entrez un nombre entre 1 et 10 !");
 	}
-	node->radius = ft_atoi(tmp);
+	node->radius = ft_atoi(tmp) / 2;
 	free(tmp);
 }
 
-int		count_objects(t_env *e)
+int				count_objects(t_env *e)
 {
-	int i;
-	t_object *a; 
+	int			i;
+	t_object	*a;
 
 	i = 0;
-	a = e->scene->l_obj;	
+	a = e->scene->l_obj;
 	while (a->next != NULL)
 	{
 		i++;
 		a = a->next;
 	}
-	free (a);
+	free(a);
 	return (i);
-}
+}//remove if unused
 
-int		constant(t_object *node)
+int				constant(t_object *node)
 {
-	char *tmp;
+	char		*tmp;
 
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
@@ -64,5 +52,4 @@ int		constant(t_object *node)
 	}
 	node->constant = ft_atoi(tmp);
 	free(tmp);
-
 }

@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/28 19:30:48 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/29 15:00:29 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ typedef struct	s_env
 	t_mlx_init	mlx_init;
 	t_scene		*scene;
 	t_cam		cam;
-	t_light		*lights;
 }				t_env;
 
 /*
@@ -195,7 +194,7 @@ t_vector		normal_sphere(t_object obj, t_vector ray, float inter);
 /*
 **	plane.c
 */
-float			inter_plane(t_cam cam, t_vector ray, t_plane plane);
+float			inter_plane(t_cam cam, t_vector ray, t_object plane);
 
 /*
 **	light.c

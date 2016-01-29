@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/01/13 17:52:56 by agadiffe         ###   ########.fr       */
+/*   Updated: 2016/01/29 14:19:29 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,15 @@ void			init_and_draw(t_env *e, char *av)
 void			init_obj(t_object *node)
 {
 	node->next = NULL;
-	node->pos = setvector(node->pos, 0, 0, 0);
+	node->pos = set_vector(node->pos, 0, 0, 0);
 	node->normal = set_vector(node->pos, 0, 0, 0);
 	node->radius = 0;
 	node->height = 0;
 	node->constant = 0;
+}
+
+void			init_scene(t_env *e)
+{
+	e->scene->l_obj->next = NULL;
+	e->scene->light->next = NULL;
 }
