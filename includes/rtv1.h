@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/29 15:00:29 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/29 15:09:29 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,17 @@ typedef	struct	s_color
 	int			b;
 }				t_color;
 
-typedef struct	s_object
+typedef	enum {SPHERE, PLANE, CYLINDER, CONE} t_type;
+
+typedef	struct	s_object
 {
 	void				*next;
+	t_type				type;
+	t_color				color;
 	t_vector			pos;
+	t_vector			normal;//plan
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
-	t_vector			normal;//plan
 	float				constant;//plan
 }				t_object;
 
