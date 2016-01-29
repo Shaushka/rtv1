@@ -57,3 +57,13 @@ void			init_and_draw(t_env *e, char *av)
 	mlx_hook(e->mlx_init.win, KEYPRESS, KEYPRESSMASK, &key_press_hook, e);
 	mlx_loop(e->mlx_init.mlx);
 }
+
+void			init_obj(t_object *node)
+{
+	node->next = NULL;
+	node->pos = setvector(node->pos, 0, 0, 0);
+	node->normal = set_vector(node->pos, 0, 0, 0);
+	node->radius = 0;
+	node->height = 0;
+	node->constant = 0;
+}
