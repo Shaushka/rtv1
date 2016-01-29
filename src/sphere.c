@@ -6,11 +6,21 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/28 19:10:57 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/29 17:59:58 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "rtv1.h"
 #include <math.h>
+
+t_object	set_sphere(t_vector pos, float radius)
+{
+		t_object sphere;
+
+		sphere.type = SPHERE;
+		sphere.pos = pos;
+		sphere.radius = radius;
+		return (sphere);
+}
 
 float		inter_sphere(t_cam cam, t_vector ray, t_object obj)
 {

@@ -6,14 +6,25 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 15:57:57 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/27 16:30:36 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/29 17:59:45 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <math.h>
 
-float	inter_plane(t_cam cam, t_vector ray, t_plane obj)
+t_object	set_plane(t_vector pos, t_vector normal)
+{
+	t_object	plane;
+
+	plane.type = PLANE;
+	plane.pos = pos;
+	plane.normal = normal;
+	plane.constant = 0;
+	return (plane);
+}
+
+float		inter_plane(t_cam cam, t_vector ray, t_object obj)
 {
 	float		t;
 
