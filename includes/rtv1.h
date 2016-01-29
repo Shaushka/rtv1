@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/29 15:09:29 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/29 17:59:26 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ typedef	struct	s_object
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
 	float				constant;//plan
-}				t_object;
+}						t_object;
 
 typedef struct		s_light
 {
@@ -95,6 +95,7 @@ typedef struct	s_env
 {
 	t_mlx_init	mlx_init;
 	t_scene		*scene;
+	t_light		*lights;
 	t_cam		cam;
 }				t_env;
 
@@ -192,12 +193,14 @@ float			d_acos(float value);
 /*
 **	sphere.c
 */
+t_object		set_sphere(t_vector pos,float radius);
 float			inter_sphere(t_cam cam, t_vector ray, t_object sphere);
 t_vector		normal_sphere(t_object obj, t_vector ray, float inter);
 
 /*
 **	plane.c
 */
+t_object		set_plane(t_vector pos, t_vector normal);
 float			inter_plane(t_cam cam, t_vector ray, t_object plane);
 
 /*
