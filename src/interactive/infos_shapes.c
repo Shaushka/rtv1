@@ -72,3 +72,7 @@ void			constant(t_object *node)
 	node->constant = ft_atoi(tmp);
 	free(tmp);
 }
+
+//FAIRE LE VECT NORM
+//
+

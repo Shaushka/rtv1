@@ -31,6 +31,7 @@ static int		isshape(char *str)
 
 void			create_scene(t_env *e)
 {
+	int			x;
 	char		*tmp;
 
 	ft_putstr("Quel type d'element voulez-vous ajouter a la scene ? : ");
@@ -41,33 +42,15 @@ void			create_scene(t_env *e)
 		ft_putstr("Choisissez sphere, cone, cylindre ou plan : ");
 		ft_bzero(tmp, 200);
 		read(0, tmp, 200);
-		if (!isshape(tmp))
-			ft_putstr("Vous m'avez encore demande l'impossible ! ");
 	}
-	if (isshape(tmp) == 1)//SPHERE
+	x = isshape(tmp);
+	if (x == 1)//SPHERE
 		input_sphere(e);
-	else if (isshape(tmp) == 2)//CYLINDER
-		ft_putstr("Je cree un cylindre");
-		//add_cylinder(e);
-	else if (isshape(tmp) == 3)//CONE
-		ft_putstr("Je cree un cylindre");
-		//add_cone(e);
-	else if (isshape(tmp) == 4)//PLANE
+	else if (x == 2)//CYLINDER
+		input_cylinder(e);
+	else if (x == 3)//CONE
+		input_cone(e);
+	else if (x == 4)//PLANE
 		input_plane(e);
 	free(tmp);
 }
-
-/*int			main(int argc, char **argv)
-{
-	t_env e;
-
-	init_scene(&e);
-	argv = (char **)argv;
-	if (argc > 1)
-		return (0);
-	else
-	{
-		create_scene(&e);
-		return (1);
-	}
-}*/

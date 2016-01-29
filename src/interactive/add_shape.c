@@ -11,6 +11,10 @@ void			input_plane(t_env *e)
 	position(node);
 	normal(node);
 	constant(node);
+	if (color_choice)
+		color(node->color);
+	else
+		color_auto(node->color);
 }
 
 void			input_sphere(t_env *e)
@@ -21,8 +25,10 @@ void			input_sphere(t_env *e)
 	node->type = SPHERE;
 	position(node);
 	radius(node);
-	//color(node);
-	//colorscheme?
+	if (color_choice)
+		color(node->color);
+	else
+		color_auto(node->color);
 }
 void			input_cylinder(t_env *e)
 {
@@ -33,8 +39,10 @@ void			input_cylinder(t_env *e)
 	position(node);
 	radius(node);
 	height(node);
-	//color(node);
-	//colorscheme?
+	if (color_choice)
+		color(node->color);
+	else
+		color_auto(node->color);
 }
 
 
@@ -47,9 +55,8 @@ void			input_cone(t_env *e)
 	position(node);
 	radius(node);
 	height(node);
-	//color(node);
-	//colorscheme?
+	if (color_choice)
+		color(node->color);
+	else
+		color_auto(node->color);
 }
-
-
-//creer une fonction set_object qui permet d'avoir en 1l les infos

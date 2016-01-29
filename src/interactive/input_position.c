@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include "../../includes/rtv1.h"
 
-static char		*cut_pos(char *str, int i)
+char		*cut_pos(char *str, int i)
 {
 	char		*tmp;
 	int			j;
@@ -24,7 +24,30 @@ static char		*cut_pos(char *str, int i)
 	return (tmp);
 }
 
-static void		assign_pos(t_object *node, char *str)
+int				check_values(char *str, int min, int max)
+{
+	int			i;
+
+	i = 0;
+	x = ft_atoi(cut_pos(str, i));
+	if (x < min || x > max)
+		return (0);
+	while (ft_isdigit(str[i]))
+		i++;
+	i++;
+	x = ft_atoi(cut_pos(str, i));
+	if (x < min || x > max)
+		return (0);
+	while (ft_isdigit(str[i]))
+			i++;
+	i++;
+	x = ft_atoi(cut_pos(str, i));
+	if (x < min || x > max)
+		return (0);
+	return (1);
+}
+
+void		assign_pos(t_object *node, char *str)
 {
 	int			i;
 
@@ -55,6 +78,7 @@ void			position(t_object *node)
 		ft_putstr("Entrez la position sous la forme x/y/z : ");
 		read(0, tmp, 200);
 	}//gerer si trop loin pour etre visible ??
-	assign_pos(node, tmp);
+	if (check_values(tmp, 0, 100))
+		assign_pos(node, tmp);
 	free(tmp);
 }
