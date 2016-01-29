@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-void			diameter(t_object *node)
+void			radius(t_object *node)
 {
 	char		*tmp;
 
@@ -9,16 +9,16 @@ void			diameter(t_object *node)
 	read(0, tmp, 200);
 	while (!ft_isnum(tmp))
 	{
-		ft_putstr("Diametre (entre 1 et 10) : ");
+		ft_putstr("Rayon (entre 1 et 10) : ");
 		ft_bzero(tmp, 200);
 		read(0, tmp, 200);
 		if (!ft_isnum(tmp) || ft_atoi(tmp) > 10 || ft_atoi(tmp) < 1)
 			ft_putstr("Entrez un nombre entre 1 et 10 !");
 	}
-	node->radius = ft_atoi(tmp) / 2;
+	node->radius = ft_atoi(tmp);
 	free(tmp);
 }
-
+/*
 int				count_objects(t_env *e)
 {
 	int			i;
@@ -34,8 +34,27 @@ int				count_objects(t_env *e)
 	free(a);
 	return (i);
 }//remove if unused
+*/
+void			height(t_object *node)
+{
+	char		*tmp;
 
-int				constant(t_object *node)
+	tmp = ft_memalloc(sizeof(char) * 200);
+	ft_bzero(tmp, 200);
+	read(0, tmp, 200);
+	while (!ft_isnum(tmp))
+	{
+		ft_putstr("Hauteur (entre 1 et 10) : ");
+		ft_bzero(tmp, 200);
+		read(0, tmp, 200);
+		if (!ft_isnum(tmp) || ft_atoi(tmp) > 10 || ft_atoi(tmp) < 1)
+			ft_putstr("Entrez un nombre entre 1 et 10 !");
+	}
+	node->height = ft_atoi(tmp) / 2;
+	free(tmp);
+}
+
+void			constant(t_object *node)
 {
 	char		*tmp;
 
