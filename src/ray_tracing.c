@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/30 15:54:49 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/30 16:38:18 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ t_color		check_collision(t_env *e, t_vector ray)
 	t_vector	normal;
 	t_object	*item;
 	t_object	sphere = set_sphere((t_vector){8, 0, 0}, 1);
-	t_object	cylinder = set_cylinder((t_vector){6, 2, 0},(t_vector){1, 1, 1}, 0.2, -1);
+	t_object	cylinder = set_cylinder((t_vector){6, 0, 0},(t_vector){1, 1, 1}, 0.2, -1);
 	t_object	plane = set_plane((t_vector){0, -5, 0},(t_vector){ -1, 5, 0});
-	t_object	plane1 = set_plane((t_vector){0, 5, 0},(t_vector){ 1, 5, 0});
-	t_object	plane2 = set_plane((t_vector){0, 0, 5},(t_vector){ 1, 0, 5});
-	t_object	plane3 = set_plane((t_vector){0, 0, -5},(t_vector){ 1, 0, -5});
-	t_object	plane4 = set_plane((t_vector){8, 0, 0},(t_vector){ -1, 0, 0});
+	t_object	plane1 = set_plane((t_vector){0, 5, 0},(t_vector){ -1, -5, 0});
+	t_object	plane2 = set_plane((t_vector){0, 0, 5},(t_vector){ -1, 0, -5});
+	t_object	plane3 = set_plane((t_vector){0, 0, -5},(t_vector){ -1, 0, 5});
+	t_object	plane4 = set_plane((t_vector){15, 0, 0},(t_vector){ -1, 0, 0});
 
 
 //APPEL DES LUMIERES	
-	item = &plane;
+	item = &sphere;
 	plane.next = &plane1;
 	plane1.next = &plane2;
 	plane2.next = &plane3;
@@ -48,7 +48,7 @@ t_color		check_collision(t_env *e, t_vector ray)
 	plane1.color = (t_color){0,255,0};
 	plane2.color = (t_color){0,0,255};
 	plane3.color = (t_color){255,0,0};
-	plane4.color = (t_color){255, 255, 255};
+	plane4.color = (t_color){125, 125, 125};
 
 	sphere.color = (t_color){255,255,0};
 	cylinder.color = (t_color){254, 191, 210};
@@ -71,8 +71,8 @@ t_color		check_collision(t_env *e, t_vector ray)
 			test = inter_cylinder(e->cam, ray, *item);
 			normal = normal_cylinder(*item, ray, inter, e->cam);
 		}
-	//	if(norm_vector(normal) == 0)
-	//		test = 0;
+//		if(norm_vector(normal) == 0)
+//			test = 0;
 		if (test > 0.01f && test < inter)
 		{
 			inter = test;
@@ -87,7 +87,7 @@ t_color		check_collision(t_env *e, t_vector ray)
 		if (tmp->type == SPHERE)
 			normal = normal_sphere(*tmp, ray, inter);
 		else if ( tmp->type == PLANE)
-			normal = tmp->normal; // call assigning normal function
+			normal = normal_plane(*tmp, ray); // call assigning normal function
 		else
 			normal = normal_cylinder(*tmp, ray, inter, e->cam);
 //		printf("%f, %f, %f\n", normal.x, normal.y, normal.z);

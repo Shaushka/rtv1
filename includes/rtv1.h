@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/30 14:00:07 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/30 15:53:23 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,6 +224,7 @@ t_vector		normal_sphere(t_object obj, t_vector ray, float inter);
 */
 t_object		set_plane(t_vector pos, t_vector normal);
 float			inter_plane(t_cam cam, t_vector ray, t_object plane);
+t_vector		normal_plane(t_object obj, t_vector ray);
 
 /*
 **	cylinder.c
