@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/29 20:48:44 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/30 13:53:04 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,27 @@ t_color		check_collision(t_env *e, t_vector ray)
 	t_vector	normal;
 	t_object	*item;
 	t_object	sphere = set_sphere((t_vector){8, 0, 0}, 1);
-	t_object	sphere2 = set_sphere((t_vector){8, 1, 0}, 0.2);
+	t_object	cylinder = set_cylinder((t_vector){5, 0, 0},(t_vector){0, 1, 0}, 0.4);
 	t_object	plane = set_plane((t_vector){9, 0, 0},(t_vector){ -1, 4, 0});
 
 //APPEL DES LUMIERES	
-	item = &plane;
+	item = &cylinder;
 	plane.next = &sphere;
-	sphere.next = &sphere2;
-	sphere2.next = NULL;
+	sphere.next = &cylinder;
+	cylinder.next = NULL;
 	plane.color = (t_color){0,255,255};
 	sphere.color = (t_color){255,255,0};
-	sphere2.color = (t_color){254, 191, 210};
+	cylinder.color = (t_color){254, 191, 210};
 	inter = 150.f; //MAX_VISION(e->cam.pos.z);
 	//TANT qu'il a des objets test
 	while (item)// ** TO DO
 	{
 		if (item->type == SPHERE)
 			test = inter_sphere(e->cam, ray, *item);
-		else
+		else if(item->type == PLANE)
 			test = inter_plane(e->cam, ray, *item);
+		else
+			test = inter_cylinder(e->cam, ray, *item);
 		if (test > 0.01f && test < inter)
 		{
 			inter = test;
@@ -57,10 +59,12 @@ t_color		check_collision(t_env *e, t_vector ray)
 //	inter = inter_plane(e->cam, ray, plane);
 	if (inter > 0.0f && inter < 150.f) //&& inter < (float)MAX_VISION(e->cam.pos.z))
 	{
-		if ( tmp->type == SPHERE)
+		if (tmp->type == SPHERE)
 			normal = normal_sphere(*tmp, ray, inter);
-		else
+		else if ( tmp->type == PLANE)
 			normal = tmp->normal; // call assigning normal function
+		else
+			normal = normal_cylinder(*tmp, ray, inter, e->cam);
 //		printf("%f, %f, %f\n", normal.x, normal.y, normal.z);
 		return (diffuse_light(*e->lights, tmp->color, normal, mult_vector(ray, inter)));
 //		return (diffuse_light(*e->lights, (t_color) {0,255,255}, normal, mult_vector(ray,inter)));
