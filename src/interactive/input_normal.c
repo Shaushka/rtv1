@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/rtv1.h"
+#include "../../libft/includes/libft.h"
 
 void		assign_normal(t_object *node, char *str)
 {

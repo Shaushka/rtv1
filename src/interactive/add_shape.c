@@ -11,10 +11,7 @@ void			input_plane(t_env *e)
 	position(node);
 	normal(node);
 	constant(node);
-	if (color_choice)
-		color(node->color);
-	else
-		color_auto(node->color);
+	color_choice(&node->color);
 }
 
 void			input_sphere(t_env *e)
@@ -25,10 +22,7 @@ void			input_sphere(t_env *e)
 	node->type = SPHERE;
 	position(node);
 	radius(node);
-	if (color_choice)
-		color(node->color);
-	else
-		color_auto(node->color);
+	color_choice(&node->color);
 }
 void			input_cylinder(t_env *e)
 {
@@ -39,10 +33,7 @@ void			input_cylinder(t_env *e)
 	position(node);
 	radius(node);
 	height(node);
-	if (color_choice)
-		color(node->color);
-	else
-		color_auto(node->color);
+	color_choice(&node->color);
 }
 
 
@@ -55,8 +46,5 @@ void			input_cone(t_env *e)
 	position(node);
 	radius(node);
 	height(node);
-	if (color_choice)
-		color(node->color);
-	else
-		color_auto(node->color);
+	color_choice(&node->color);
 }

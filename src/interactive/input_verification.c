@@ -1,4 +1,5 @@
 #include "../libft/includes/libft.h"
+#include "../includes/rtv1.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -50,11 +51,11 @@ int				correct_input(char *str)
 	char		*clean;
 	char		*final;
 
-	clean = remove_spaces(str);
+	clean = no_more_spaces(str);
 	if (is_slashes_and_digits(clean))
 	{
 		separators(clean);
-		final = remove_spaces(clean);
+		final = no_more_spaces(clean);
 		free(clean);
 		if (is_vector(final))//attention, a ce stade on n'a pas verifie
 		//si les chiffres sont dans la fourchette demandee

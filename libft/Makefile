@@ -6,7 +6,7 @@
 #    By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/13 16:16:56 by mguillon          #+#    #+#              #
-#    Updated: 2016/01/28 17:13:36 by mguillon         ###   ########.fr        #
+#    Updated: 2016/01/29 20:21:15 by mguillon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,8 @@ SRC_NAME =	ft_atoi.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
 			ft_lstpushback.c \
-			ft_isspace.c
+			ft_isspace.c \
+			ft_strcapitalize.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

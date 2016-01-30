@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/rtv1.h"
+#include "../../libft/includes/libft.h"
 
 char		*cut_pos(char *str, int i)
 {
@@ -27,6 +28,7 @@ char		*cut_pos(char *str, int i)
 int				check_values(char *str, int min, int max)
 {
 	int			i;
+	int			x;
 
 	i = 0;
 	x = ft_atoi(cut_pos(str, i));

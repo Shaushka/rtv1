@@ -1,5 +1,7 @@
 #include <stdlib.h>
-
+#include <unistd.h>
+#include "../../includes/rtv1.h"
+#include "../../libft/includes/libft.h"
 void			radius(t_object *node)
 {
 	char		*tmp;
@@ -72,7 +74,3 @@ void			constant(t_object *node)
 	node->constant = ft_atoi(tmp);
 	free(tmp);
 }
-
-//FAIRE LE VECT NORM
-//
-

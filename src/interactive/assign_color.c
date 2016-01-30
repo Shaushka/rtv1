@@ -1,10 +1,13 @@
 #include <stdlib.h>
+#include "../includes/rtv1.h"
+#include "../libft/includes/libft.h"
+#include <unistd.h>
 
 static void		random_color(t_color *color)
 {
-	color.r = rand() % 255;
-	color.g = rand() % 255;
-	color.b = rand() % 255;
+	color->r = rand() % 255;
+	color->g = rand() % 255;
+	color->b = rand() % 255;
 }
 
 static void		assign_color(t_color *color, char *str)
@@ -12,15 +15,15 @@ static void		assign_color(t_color *color, char *str)
 	int			i;
 
 	i = 0;
-	color.r = ft_atoi(cut_pos(str, i));
+	color->r = ft_atoi(cut_pos(str, i));
 	while (ft_isdigit(str[i]))
 		i++;
 	i++;
-	color.g = ft_atoi(cut_pos(str, i));
+	color->g = ft_atoi(cut_pos(str, i));
 	while (ft_isdigit(str[i]))
 		i++;
 	i++;
-	color.b = ft_atoi(cut_pos(str, i));
+	color->b = ft_atoi(cut_pos(str, i));
 
 	
 }
@@ -42,24 +45,27 @@ void			color(t_color *color)
 	if (check_values(tmp, 0, 255))
 		assign_color(color, tmp);
 	free(tmp);
-	}
 }
 
 static int		yes_or_no(char *str)
 {
-	if (ft_strequ(ft_strcapitalize(str, "OUI\n")))
+	if (ft_strequ(ft_strcapitalize(str), "OUI\n"))
 	{
 		ft_putstr("D'accord ! Vous choisissez les couleurs.\n");
 		return (1);
 	}
-	if (ft_strequ(ft_strcapitalize(str, "NON\n")))
+	if (ft_strequ(ft_strcapitalize(str), "NON\n"))
 	{
 		ft_putstr("Pas de probleme ! On a des couleurs toutes pretes !");
 		return (0);
 	}
-
+	else
+	{
+		ft_putstr("Je n'ai pas compris. Du coup, j'ai choisi les couleurs !");
+		return (0);
+	}
 }
-int				color_choice(t_color color)
+void			color_choice(t_color *color)
 {
 	char		*tmp;
 	tmp = ft_memalloc(sizeof(char) * 200);
@@ -76,8 +82,6 @@ int				color_choice(t_color color)
 	if (yes_or_no(tmp))
 		assign_color(color, tmp);
 	else
-		random_color(color, tmp);
+		random_color(color);
 	free(tmp);
-	}
-
 }

@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/29 17:59:26 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/29 20:43:44 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void			quit_and_free(t_env *e);
 void			init_env(t_env *e);
 int				expose_hook(t_env *e);
 void			init_and_draw(t_env *e, char *av);
+void			init_obj(t_object *node);
 
 /*
 **	ray_tracing.c
@@ -140,41 +141,61 @@ void			blend_color(t_color *c, t_color c1, t_color c2, double percent);
 **	create_scene.c
 */
 void			create_scene(t_env *e);
-void			ft_initialize_scene(t_env *e);
 
 /*
-**	add_sphere.c
+**	add_shape.c
 */
-void			add_sphere(t_env *e);
+void			input_sphere(t_env *e);
+void			input_plane(t_env *e);
+void			input_cylinder(t_env *e);
+void			input_cone(t_env *e);
 
 /*
-**	add_cylinder.c
-*/	
-void			add_cylinder(t_env *e);
-
-/*
-**	add_cone.c
+**	assign_color.c
 */
-void			add_cone(t_env *e);
+void			color(t_color *color);
+void			color_choice(t_color *color);
 
 /*
-**	add_plane.c
+**	create_object.c
 */
-
-void			add_plane(t_env *e);
-/*
-**	input_verification.c
-*/
-char			*remove_spaces(char *str);//passer en static si pas reutilisee
-void			separators(char *str);//passer en static si pas reutilisee
-int				is_slashes_and_digits(char *str);//static si pas reutilisee
-int				is_vector(char *str);//passer en static si pas reutilisee
-int				correct_input(char *str);
+t_object		*create_object(t_env *e);
 
 /*
 **	infos_shapes.c
 */
-int			count_objects(t_env *e);
+void			radius(t_object *node);
+void			height(t_object *node);
+void			constant(t_object *node);
+//int			count_objects(t_env *e);
+
+/*
+**	input_normal.c
+*/
+void			assign_normal(t_object *node, char *str);//static ?
+void			normal(t_object *node);
+
+/*
+**	input_vectors_clean.c
+*/
+char			**remove_spaces(char *str, int i, char **clean);//static ?
+void			separators(char *str);//static ?
+char			*no_more_spaces(char *str);
+
+/*
+**	input_verification.c
+*/
+int				is_slashes_and_digits(char *str);//static ?
+int				is_vector(char *str);//static ?
+int				correct_input(char *str);
+
+/*
+**	input_position.c
+*/
+char			*cut_pos(char *str, int i);
+int				check_values(char *str, int min, int max);
+void			assign_pos(t_object *node, char *str);
+void			position(t_object *node);
 
 /*
 **	----------> GEOMETRY <-----

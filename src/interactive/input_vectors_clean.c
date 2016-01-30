@@ -1,21 +1,20 @@
 #include "../../libft/includes/libft.h"
+#include "../../includes/rtv1.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-char		**remove_spaces(char *str, int i, char **str)
+char		**remove_spaces(char *str, int i, char **clean)
 {
-	int i;
 	int j;
 
 	j = 0;
-	i = 0;
 	while (str[i] != '\0')
 	{
 		if (ft_isspace(str[i]))
 			i++;
 		else
 		{
-			clean[j] = str[i];
+			*clean[j] = str[i];
 			i++;
 			j++;
 		}
@@ -45,7 +44,7 @@ char		*no_more_spaces(char *str)
 	}
 	len -= j;// len = longueur de la str propre
 	clean = malloc(sizeof(char) * (len + 1));// malloc len propre + '\0'
-	return (remove_spaces(str, i, &clean));
+	return (*remove_spaces(str, i, &clean));
 }
 
 void		separators(char *str)//remplace les / en trop par des espaces
