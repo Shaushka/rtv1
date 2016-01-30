@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/30 14:31:20 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/30 15:43:31 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,6 @@ void	init_lights(t_env e)
 	e.lights->pos = (t_vector){6, 0, 0};
 	e.lights->dir = (t_vector){0,1,0};
 	e.lights->color = (t_color){255,255,255};
-	e.lights->intensity = 1;
+	e.lights->intensity = 0.6;
 	e.lights->next = NULL;;
 }
