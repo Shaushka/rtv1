@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/29 20:43:44 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/30 12:29:11 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef	struct	s_object
 	t_type				type;
 	t_color				color;
 	t_vector			pos;
+	t_vector			dir;//cylinder cone
 	t_vector			normal;//plan
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
@@ -223,6 +224,13 @@ t_vector		normal_sphere(t_object obj, t_vector ray, float inter);
 */
 t_object		set_plane(t_vector pos, t_vector normal);
 float			inter_plane(t_cam cam, t_vector ray, t_object plane);
+
+/*
+**	cylinder.c
+*/
+t_object		set_cylinder(t_vector pos, t_vector dir, float radius);
+float			inter_cylinder(t_cam cam, t_vector ray, t_object cylinder);
+t_vector		normal_cylinder(t_object obj, t_vector ray, float inter, t_cam cam);
 
 /*
 **	light.c

@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 14:49:52 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/29 20:48:52 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/01/30 12:31:12 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		main(int argc, char **argv)
 {
 	t_env	e;
 	
-	create_scene(e);
+//	create_scene(&e);
 	e.lights = malloc(sizeof(t_light));
 	e.lights->next = NULL;
 	init_lights(e);
