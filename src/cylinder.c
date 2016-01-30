@@ -6,19 +6,20 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/30 13:54:46 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/30 15:12:52 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-t_object	set_cylinder(t_vector pos, t_vector dir, float radius)
+t_object	set_cylinder(t_vector pos, t_vector dir, float radius, float height)
 {
 	t_object	cylinder;
 
 	cylinder.pos = pos;
 	cylinder.dir = unit_vector(dir);
 	cylinder.radius = radius;
+	cylinder.height = height;
 	return(cylinder);
 }
 
@@ -52,8 +53,14 @@ t_vector	normal_cylinder(t_object cylinder, t_vector ray, float inter, t_cam cam
 	float		m;
 	t_vector	tmp;
 
-	m = dotpro_vector(ray, cylinder.dir) * inter
+	tmp = set_vector(tmp, 0, 0, 0);
+	m = dotpro_vector(ray, mult_vector(cylinder.dir, inter))
 		+ dotpro_vector(sub_vector(cam.pos, cylinder.pos), cylinder.dir);
-	tmp = sub_vector(add_vector(cam.pos, mult_vector(ray,inter)), cylinder.dir);
+	if ( cylinder.height > 0)
+	{
+		if (m < (0)  || m > (cylinder.height))
+			return(tmp);
+	}
+	tmp = sub_vector(sub_vector(cam.pos, mult_vector(ray,inter)), cylinder.dir);
 	return (unit_vector(sub_vector( mult_vector(cylinder.dir, m), tmp)));
 }

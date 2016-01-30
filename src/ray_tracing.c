@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/30 13:53:04 by chuang           ###   ########.fr       */
+/*   Updated: 2016/01/30 15:17:19 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,51 @@ t_color		check_collision(t_env *e, t_vector ray)
 	t_vector	normal;
 	t_object	*item;
 	t_object	sphere = set_sphere((t_vector){8, 0, 0}, 1);
-	t_object	cylinder = set_cylinder((t_vector){5, 0, 0},(t_vector){0, 1, 0}, 0.4);
-	t_object	plane = set_plane((t_vector){9, 0, 0},(t_vector){ -1, 4, 0});
+//	t_object	cylinder = set_cylinder((t_vector){6, 2, 0},(t_vector){1, 1, 1}, 0.2, 100);
+	t_object	plane = set_plane((t_vector){0, -5, 0},(t_vector){ -1, 5, 0});
+	t_object	plane1 = set_plane((t_vector){0, 5, 0},(t_vector){ 1, 5, 0});
+	t_object	plane2 = set_plane((t_vector){0, 0, 5},(t_vector){ 1, 0, 5});
+	t_object	plane3 = set_plane((t_vector){0, 0, -5},(t_vector){ 1, 0, -5});
+	t_object	plane4 = set_plane((t_vector){8, 0, 0},(t_vector){ -1, 0, 0});
+
 
 //APPEL DES LUMIERES	
-	item = &cylinder;
-	plane.next = &sphere;
-	sphere.next = &cylinder;
-	cylinder.next = NULL;
+	item = &plane;
+	plane.next = &plane1;
+	plane1.next = &plane2;
+	plane2.next = &plane3;
+	plane3.next = &plane4;
+	plane4.next = &sphere;
+	sphere.next = NULL;
+//	cylinder.next = NULL;
 	plane.color = (t_color){0,255,255};
+	plane1.color = (t_color){0,255,0};
+	plane2.color = (t_color){0,0,255};
+	plane3.color = (t_color){255,0,0};
+	plane4.color = (t_color){255, 255, 255};
+
 	sphere.color = (t_color){255,255,0};
-	cylinder.color = (t_color){254, 191, 210};
+//	cylinder.color = (t_color){254, 191, 210};
 	inter = 150.f; //MAX_VISION(e->cam.pos.z);
 	//TANT qu'il a des objets test
 	while (item)// ** TO DO
 	{
 		if (item->type == SPHERE)
+		{
 			test = inter_sphere(e->cam, ray, *item);
+			normal = normal_sphere(*item, ray, inter);
+		}
 		else if(item->type == PLANE)
+		{
 			test = inter_plane(e->cam, ray, *item);
+			normal = item->normal;}
 		else
+		{
 			test = inter_cylinder(e->cam, ray, *item);
+			normal = normal_cylinder(*item, ray, inter, e->cam);
+		}
+	//	if(norm_vector(normal) == 0)
+	//		test = 0;
 		if (test > 0.01f && test < inter)
 		{
 			inter = test;
