@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/30 16:38:18 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 19:00:22 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,33 @@ t_color		check_collision(t_env *e, t_vector ray)
 	t_vector	normal;
 	t_object	*item;
 	t_object	sphere = set_sphere((t_vector){8, 0, 0}, 1);
-	t_object	cylinder = set_cylinder((t_vector){6, 0, 0},(t_vector){1, 1, 1}, 0.2, -1);
-	t_object	plane = set_plane((t_vector){0, -5, 0},(t_vector){ -1, 5, 0});
+	t_object	cone = set_cone((t_vector){8, 0, 0},(t_vector){0, 1, 1}, 0.3, 1);
+	t_object	cylinder = set_cylinder((t_vector){6, 0, 2},(t_vector){0, 1, 0}, 0.2, 1);
+	t_object	plane = set_plane((t_vector){0, -5, 0},(t_vector){ 1, -5, 0});
 	t_object	plane1 = set_plane((t_vector){0, 5, 0},(t_vector){ -1, -5, 0});
 	t_object	plane2 = set_plane((t_vector){0, 0, 5},(t_vector){ -1, 0, -5});
-	t_object	plane3 = set_plane((t_vector){0, 0, -5},(t_vector){ -1, 0, 5});
+	t_object	plane3 = set_plane((t_vector){0, 0, -5},(t_vector){ 1, 0, -5});
 	t_object	plane4 = set_plane((t_vector){15, 0, 0},(t_vector){ -1, 0, 0});
 
 
 //APPEL DES LUMIERES	
-	item = &sphere;
+	item = &plane;
 	plane.next = &plane1;
 	plane1.next = &plane2;
 	plane2.next = &plane3;
 	plane3.next = &plane4;
 	plane4.next = &sphere;
 	sphere.next = &cylinder;
-	cylinder.next = NULL;
-	plane.color = (t_color){0,255,255};
-	plane1.color = (t_color){0,255,0};
-	plane2.color = (t_color){0,0,255};
-	plane3.color = (t_color){255,0,0};
+	cylinder.next = &cone;
+	cone.next = NULL;
+	plane.color = (t_color){0,125,125};
+	plane1.color = (t_color){0,125,0};
+	plane2.color = (t_color){0,0,125};
+	plane3.color = (t_color){125, 0, 0};
 	plane4.color = (t_color){125, 125, 125};
-
-	sphere.color = (t_color){255,255,0};
-	cylinder.color = (t_color){254, 191, 210};
+	cone.color = (t_color){125,0,125};
+	sphere.color = (t_color){125,125,0};
+	cylinder.color = (t_color){125, 85, 105};
 	inter = 150.f; //MAX_VISION(e->cam.pos.z);
 	//TANT qu'il a des objets test
 	while (item)// ** TO DO
@@ -65,6 +67,11 @@ t_color		check_collision(t_env *e, t_vector ray)
 		{
 			test = inter_plane(e->cam, ray, *item);
 			normal = normal_plane(*item, ray);
+		}
+		else if (item->type == CONE)
+		{
+			test = inter_cone(e->cam, ray, *item);
+			normal = normal_cone(*item, ray, inter, e->cam);
 		}
 		else
 		{
@@ -88,6 +95,8 @@ t_color		check_collision(t_env *e, t_vector ray)
 			normal = normal_sphere(*tmp, ray, inter);
 		else if ( tmp->type == PLANE)
 			normal = normal_plane(*tmp, ray); // call assigning normal function
+		else if (tmp->type == CONE)
+			normal = normal_cone(*tmp, ray, inter, e->cam);
 		else
 			normal = normal_cylinder(*tmp, ray, inter, e->cam);
 //		printf("%f, %f, %f\n", normal.x, normal.y, normal.z);
@@ -104,6 +113,7 @@ t_vector	ft_posHGV(t_env *e)
 	posHGV = mult_vector(e->cam.dir, DISTVUE);
 	posHGV = sub_vector(posHGV, mult_vector(e->cam.h, LONGV / 2));
 	posHGV = add_vector(posHGV, mult_vector(e->cam.d, LARGV / 2));
+//	posHGV = add_vector(posHGV, e->cam.pos);
 	return (posHGV);
 }
 
@@ -138,7 +148,7 @@ void		ft_render(t_env *e)
 	int			y;
 	int			addr;
 
-	e->cam.pos = (t_vector){0.,0.,0.};
+	e->cam.pos = (t_vector){0., 0., 0.};
 	e->cam.h = (t_vector){0., 0., -1};
 	e->cam.dir = (t_vector){1., 0., 0.};
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);

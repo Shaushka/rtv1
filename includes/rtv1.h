@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/30 15:53:23 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 15:38:33 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,6 +232,13 @@ t_vector		normal_plane(t_object obj, t_vector ray);
 t_object		set_cylinder(t_vector pos, t_vector dir, float radius,float height);
 float			inter_cylinder(t_cam cam, t_vector ray, t_object cylinder);
 t_vector		normal_cylinder(t_object obj, t_vector ray, float inter, t_cam cam);
+
+/*
+**	cone.c
+*/
+t_object		set_cone(t_vector pos, t_vector dir, float radius,float height);
+float			inter_cone(t_cam cam, t_vector ray, t_object obj);
+t_vector		normal_cone(t_object obj, t_vector ray, float inter, t_cam cam);
 
 /*
 **	light.c
