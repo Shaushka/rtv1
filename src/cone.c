@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 19:43:19 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 21:18:00 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,7 @@ float		inter_cone(t_cam cam, t_vector ray, t_object cone)
 	det = b*b - 4*a*c;
 	if (det < 0.0f)
 		return (0);
-	if (((-b + sqrt(det)) / (2 * a)) < 0)
-		return ((-b - sqrt(det)) / (2 * a));
-	else
-	if (((-b + sqrt(det)) / (2 * a)) < ((-b - sqrt(det)) / (2 * a)))
+	else if (((-b + sqrt(det)) / (2 * a)) < ((-b - sqrt(det)) / (2 * a)))
 		return ((-b + sqrt(det)) / (2 * a));
 	else
 		return ((-b - sqrt(det)) / (2 * a));

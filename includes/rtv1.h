@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/01 15:38:33 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 21:25:49 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ float			d_acos(float value);
 */
 t_object		set_sphere(t_vector pos,float radius);
 float			inter_sphere(t_cam cam, t_vector ray, t_object sphere);
-t_vector		normal_sphere(t_object obj, t_vector ray, float inter);
+t_vector		normal_sphere(t_cam cam, t_object obj, t_vector ray, float inter);
 
 /*
 **	plane.c

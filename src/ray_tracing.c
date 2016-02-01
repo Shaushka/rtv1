@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 19:00:22 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 21:38:40 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 #define DISTVUE		1.0
-#define LONGV		1.05
+#define LONGV		1.125
 #define LARGV		1.5
 
 t_color		check_collision(t_env *e, t_vector ray)
@@ -27,13 +27,13 @@ t_color		check_collision(t_env *e, t_vector ray)
 	t_vector	normal;
 	t_object	*item;
 	t_object	sphere = set_sphere((t_vector){8, 0, 0}, 1);
-	t_object	cone = set_cone((t_vector){8, 0, 0},(t_vector){0, 1, 1}, 0.3, 1);
-	t_object	cylinder = set_cylinder((t_vector){6, 0, 2},(t_vector){0, 1, 0}, 0.2, 1);
+	t_object	cone = set_cone((t_vector){8, 0, 0},(t_vector){1, 1, 1}, 0.3, 6);
+	t_object	cylinder = set_cylinder((t_vector){6, 0, 2},(t_vector){0, 1, 1}, 0.2, 1);
 	t_object	plane = set_plane((t_vector){0, -5, 0},(t_vector){ 1, -5, 0});
 	t_object	plane1 = set_plane((t_vector){0, 5, 0},(t_vector){ -1, -5, 0});
 	t_object	plane2 = set_plane((t_vector){0, 0, 5},(t_vector){ -1, 0, -5});
 	t_object	plane3 = set_plane((t_vector){0, 0, -5},(t_vector){ 1, 0, -5});
-	t_object	plane4 = set_plane((t_vector){15, 0, 0},(t_vector){ -1, 0, 0});
+	t_object	plane4 = set_plane((t_vector){15, 0, 0},(t_vector){ 1, 0, 0});
 
 
 //APPEL DES LUMIERES	
@@ -61,7 +61,7 @@ t_color		check_collision(t_env *e, t_vector ray)
 		if (item->type == SPHERE)
 		{
 			test = inter_sphere(e->cam, ray, *item);
-			normal = normal_sphere(*item, ray, inter);
+			normal = normal_sphere(e->cam, *item, ray, inter);
 		}
 		else if(item->type == PLANE)
 		{
@@ -78,8 +78,8 @@ t_color		check_collision(t_env *e, t_vector ray)
 			test = inter_cylinder(e->cam, ray, *item);
 			normal = normal_cylinder(*item, ray, inter, e->cam);
 		}
-//		if(norm_vector(normal) == 0)
-//			test = 0;
+		if(norm_vector(normal) == 0)
+			test = 150.f;
 		if (test > 0.01f && test < inter)
 		{
 			inter = test;
@@ -87,21 +87,17 @@ t_color		check_collision(t_env *e, t_vector ray)
 		}
 		item = item->next;
 	}
-//	inter = inter_sphere(e->cam, ray, sphere);
-//	inter = inter_plane(e->cam, ray, plane);
 	if (inter > 0.0f && inter < 150.f) //&& inter < (float)MAX_VISION(e->cam.pos.z))
 	{
 		if (tmp->type == SPHERE)
-			normal = normal_sphere(*tmp, ray, inter);
+			normal = normal_sphere(e->cam, *tmp, ray, inter);
 		else if ( tmp->type == PLANE)
 			normal = normal_plane(*tmp, ray); // call assigning normal function
 		else if (tmp->type == CONE)
 			normal = normal_cone(*tmp, ray, inter, e->cam);
 		else
 			normal = normal_cylinder(*tmp, ray, inter, e->cam);
-//		printf("%f, %f, %f\n", normal.x, normal.y, normal.z);
 		return (diffuse_light(*e->lights, tmp->color, normal, mult_vector(ray, inter)));
-//		return (diffuse_light(*e->lights, (t_color) {0,255,255}, normal, mult_vector(ray,inter)));
 	}
 	return ((t_color){0,0,0});
 }
@@ -149,8 +145,8 @@ void		ft_render(t_env *e)
 	int			addr;
 
 	e->cam.pos = (t_vector){0., 0., 0.};
-	e->cam.h = (t_vector){0., 0., -1};
-	e->cam.dir = (t_vector){1., 0., 0.};
+	e->cam.h = unit_vector((t_vector){0., 0., -1});
+	e->cam.dir = unit_vector((t_vector){1., 0., 0.});
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
 	posHGV = ft_posHGV(e);
 	x = 1;
