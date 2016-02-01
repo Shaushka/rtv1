@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/30 16:39:40 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 13:57:39 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,14 @@ t_vector	normal_cylinder(t_object cylinder, t_vector ray, float inter, t_cam cam
 	float		m;
 	t_vector	tmp;
 
-//	tmp = set_vector(tmp, 0, 0, 0);
-	m = dotpro_vector(ray,cylinder.dir) * inter
+	tmp = set_vector(tmp, 0, 0, 0);
+	m = dotpro_vector(ray, cylinder.dir) * inter
 		+ dotpro_vector(sub_vector(cam.pos, cylinder.pos), cylinder.dir);
-//	if ( cylinder.height > 0)
+//	if (cylinder.height > 0)
 //	{
-//		if (m < (0)  || m > (cylinder.height))
+//		if (m < (cylinder.height / 2)  || m > (cylinder.height / 2))
 //			return(tmp);
 //	}
-	tmp = sub_vector(sub_vector(cam.pos, mult_vector(ray,inter)), cylinder.dir);
-	return (unit_vector(mult_vector(sub_vector(cylinder.dir, tmp), m)));
+	tmp = sub_vector(add_vector(cam.pos, mult_vector(ray,inter)), cylinder.pos);
+	return (unit_vector(sub_vector(tmp, mult_vector(cylinder.dir, m))));
 }
