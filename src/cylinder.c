@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 13:57:39 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 17:41:12 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_object	set_cylinder(t_vector pos, t_vector dir, float radius, float height)
 {
 	t_object	cylinder;
 
+	cylinder.type = CYLINDER;
 	cylinder.pos = pos;
 	cylinder.dir = unit_vector(dir);
 	cylinder.radius = radius;
@@ -61,6 +62,6 @@ t_vector	normal_cylinder(t_object cylinder, t_vector ray, float inter, t_cam cam
 //		if (m < (cylinder.height / 2)  || m > (cylinder.height / 2))
 //			return(tmp);
 //	}
-	tmp = sub_vector(add_vector(cam.pos, mult_vector(ray,inter)), cylinder.pos);
+	tmp = add_vector(sub_vector(cam.pos, cylinder.pos), mult_vector(ray,inter));
 	return (unit_vector(sub_vector(tmp, mult_vector(cylinder.dir, m))));
 }
