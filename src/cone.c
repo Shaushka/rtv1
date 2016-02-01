@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 18:55:10 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 19:43:19 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ float		inter_cone(t_cam cam, t_vector ray, t_object cone)
 	det = b*b - 4*a*c;
 	if (det < 0.0f)
 		return (0);
+	if (((-b + sqrt(det)) / (2 * a)) < 0)
+		return ((-b - sqrt(det)) / (2 * a));
+	else
 	if (((-b + sqrt(det)) / (2 * a)) < ((-b - sqrt(det)) / (2 * a)))
 		return ((-b + sqrt(det)) / (2 * a));
 	else
@@ -59,14 +62,10 @@ t_vector	normal_cone(t_object cone, t_vector ray, float inter, t_cam cam)
 	tmp = set_vector(tmp, 0, 0, 0);
 	m = dotpro_vector(ray, cone.dir) * inter
 		+ dotpro_vector(sub_vector(cam.pos, cone.pos), cone.dir);
-//	if(m < 0)
+//	if(m < -4 || m > 4)
+//		return(tmp);
 //	{
-//		cone.dir = mult_vector(cone.dir, -1);
-//		m = dotpro_vector(ray, cone.dir) * inter
-//		+ dotpro_vector(sub_vector(cam.pos, cone.pos), cone.dir);
-//	}
-//	{
-//		if (m < (cone.height / 2)  || m > (cone.height / 2))
+//		if (m < (-cone.height / 2.f)  || m > (cone.height / 2.f))
 //			return(tmp);
 //	}
 	tmp = add_vector(sub_vector(cam.pos, cone.pos), mult_vector(ray,inter));
