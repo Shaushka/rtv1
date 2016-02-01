@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 15:14:08 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 18:55:10 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_object	set_cone(t_vector pos, t_vector dir, float radius, float height)
 {
 	t_object	cone;
 
+	cone.type = CONE;
 	cone.pos = pos;
 	cone.dir = unit_vector(dir);
 	cone.radius = radius;
@@ -58,11 +59,18 @@ t_vector	normal_cone(t_object cone, t_vector ray, float inter, t_cam cam)
 	tmp = set_vector(tmp, 0, 0, 0);
 	m = dotpro_vector(ray, cone.dir) * inter
 		+ dotpro_vector(sub_vector(cam.pos, cone.pos), cone.dir);
-//	if (cone.height > 0)
+//	if(m < 0)
+//	{
+//		cone.dir = mult_vector(cone.dir, -1);
+//		m = dotpro_vector(ray, cone.dir) * inter
+//		+ dotpro_vector(sub_vector(cam.pos, cone.pos), cone.dir);
+//	}
 //	{
 //		if (m < (cone.height / 2)  || m > (cone.height / 2))
 //			return(tmp);
 //	}
-	tmp = sub_vector(add_vector(cam.pos, mult_vector(ray,inter)), cone.pos);
-	return (unit_vector(sub_vector(tmp, mult_vector(cone.dir, (1 + cone.radius * cone.radius * m)))));
+	tmp = add_vector(sub_vector(cam.pos, cone.pos), mult_vector(ray,inter));
+	tmp = sub_vector(tmp, mult_vector(cone.dir, m));
+	tmp = unit_vector(sub_vector(tmp, mult_vector(cone.dir, (cone.radius * cone.radius * m))));
+	return (tmp);
 }
