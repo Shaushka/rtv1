@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 14:49:52 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/30 12:31:12 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 22:46:40 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,12 @@ int		main(int argc, char **argv)
 {
 	t_env	e;
 	
-//	create_scene(&e);
-	e.lights = malloc(sizeof(t_light));
-	e.lights->next = NULL;
-	init_lights(e);
+	init_scene(&e);
+	//IF INTERACTIVE
+	//		create_scene(&e);
+	//ELSE
+	init_lights(&e);
+	set_list_obj(&e);
 	argv = (char **)argv;
 	if (argc != 1)
 		ft_exit("usage: ./rtv1", 1);

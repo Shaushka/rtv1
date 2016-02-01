@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 21:38:40 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 22:44:29 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,9 @@ t_color		check_collision(t_env *e, t_vector ray)
 	t_object	*tmp;
 	t_vector	normal;
 	t_object	*item;
-	t_object	sphere = set_sphere((t_vector){8, 0, 0}, 1);
-	t_object	cone = set_cone((t_vector){8, 0, 0},(t_vector){1, 1, 1}, 0.3, 6);
-	t_object	cylinder = set_cylinder((t_vector){6, 0, 2},(t_vector){0, 1, 1}, 0.2, 1);
-	t_object	plane = set_plane((t_vector){0, -5, 0},(t_vector){ 1, -5, 0});
-	t_object	plane1 = set_plane((t_vector){0, 5, 0},(t_vector){ -1, -5, 0});
-	t_object	plane2 = set_plane((t_vector){0, 0, 5},(t_vector){ -1, 0, -5});
-	t_object	plane3 = set_plane((t_vector){0, 0, -5},(t_vector){ 1, 0, -5});
-	t_object	plane4 = set_plane((t_vector){15, 0, 0},(t_vector){ 1, 0, 0});
-
 
 //APPEL DES LUMIERES	
-	item = &plane;
-	plane.next = &plane1;
-	plane1.next = &plane2;
-	plane2.next = &plane3;
-	plane3.next = &plane4;
-	plane4.next = &sphere;
-	sphere.next = &cylinder;
-	cylinder.next = &cone;
-	cone.next = NULL;
-	plane.color = (t_color){0,125,125};
-	plane1.color = (t_color){0,125,0};
-	plane2.color = (t_color){0,0,125};
-	plane3.color = (t_color){125, 0, 0};
-	plane4.color = (t_color){125, 125, 125};
-	cone.color = (t_color){125,0,125};
-	sphere.color = (t_color){125,125,0};
-	cylinder.color = (t_color){125, 85, 105};
+	item = e->scene->l_obj;
 	inter = 150.f; //MAX_VISION(e->cam.pos.z);
 	//TANT qu'il a des objets test
 	while (item)// ** TO DO

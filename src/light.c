@@ -6,12 +6,13 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 19:01:42 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 22:46:36 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 t_color		check_color(t_color color)
 {
@@ -51,11 +52,12 @@ t_color		diffuse_light(t_light light, t_color color, t_vector normal,t_vector in
 	return(color);
 }
 
-void	init_lights(t_env e)
+void	init_lights(t_env *e)
 {
-	e.lights->pos = (t_vector){-1, 0, 0};
-	e.lights->dir = (t_vector){0,1,0};
-	e.lights->color = (t_color){255,255,255};
-	e.lights->intensity = 0.7;
-	e.lights->next = NULL;
+	e->lights = malloc(sizeof(t_light));
+	e->lights->pos = (t_vector){-1, 0, 0};
+	e->lights->dir = (t_vector){0,1,0};
+	e->lights->color = (t_color){255,255,255};
+	e->lights->intensity = 0.7;
+	e->lights->next = NULL;
 }

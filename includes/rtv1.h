@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/01 21:25:49 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/01 22:44:13 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,12 @@ void			init_env(t_env *e);
 int				expose_hook(t_env *e);
 void			init_and_draw(t_env *e, char *av);
 void			init_obj(t_object *node);
+void			init_scene(t_env *e);
+
+/*
+**	premade_objects.c
+*/
+void			set_list_obj(t_env *e);
 
 /*
 **	ray_tracing.c
@@ -244,7 +250,7 @@ t_vector		normal_cone(t_object obj, t_vector ray, float inter, t_cam cam);
 **	light.c
 */
 t_color			diffuse_light(t_light light, t_color color, t_vector normal, t_vector s_ray);
-void			init_lights(t_env e);
+void			init_lights(t_env *e);
 
 /*
 **	vector.c

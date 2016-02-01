@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/01/29 20:31:37 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/01 22:38:02 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ void			init_obj(t_object *node)
 
 void			init_scene(t_env *e)
 {
+	e->scene = malloc(sizeof(t_scene));
 	e->scene->l_obj = NULL;
 	e->scene->light = NULL;
 }
