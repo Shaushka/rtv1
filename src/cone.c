@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/03 13:12:52 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/03 13:43:05 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_object	set_cone(t_vector pos, t_vector dir, float radius, float height)
 	return(cone);
 }
 
-float		inter_cone(t_cam cam, t_vector ray, t_object cone)
+float		inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
 {
 	t_vector	tmp;
 	float		a;
@@ -32,7 +32,7 @@ float		inter_cone(t_cam cam, t_vector ray, t_object cone)
 	float		c;
 	float		det;
 	
-	tmp = sub_vector(cam.pos, cone.pos);
+	tmp = sub_vector(cam_pos, cone.pos);
 	a = dotpro_vector(ray,ray)
 		- ((1 + cone.radius * cone.radius) * dotpro_vector(ray, cone.dir)
 				* dotpro_vector(ray, cone.dir));

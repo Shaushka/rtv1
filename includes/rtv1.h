@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/03 13:09:43 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/03 13:41:30 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -222,28 +222,28 @@ float			d_acos(float value);
 **	sphere.c
 */
 t_object		set_sphere(t_vector pos,float radius);
-float			inter_sphere(t_cam cam, t_vector ray, t_object sphere);
+float			inter_sphere(t_vector cam_pos, t_vector ray, t_object sphere);
 t_vector		normal_sphere(t_cam cam, t_object obj, t_vector ray);
 
 /*
 **	plane.c
 */
 t_object		set_plane(t_vector pos, t_vector normal);
-float			inter_plane(t_cam cam, t_vector ray, t_object plane);
+float			inter_plane(t_vector cam_pos, t_vector ray, t_object plane);
 t_vector		normal_plane(t_object obj, t_vector ray);
 
 /*
 **	cylinder.c
 */
 t_object		set_cylinder(t_vector pos, t_vector dir, float radius,float height);
-float			inter_cylinder(t_cam cam, t_vector ray, t_object cylinder);
+float			inter_cylinder(t_vector cam_pos, t_vector ray, t_object cylinder);
 t_vector		normal_cylinder( t_cam cam, t_object obj, t_vector ray);
 
 /*
 **	cone.c
 */
 t_object		set_cone(t_vector pos, t_vector dir, float radius,float height);
-float			inter_cone(t_cam cam, t_vector ray, t_object obj);
+float			inter_cone(t_vector cam_pos, t_vector ray, t_object obj);
 t_vector		normal_cone(t_cam cam, t_object obj, t_vector ray);
 
 /*

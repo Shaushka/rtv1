@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/03 12:57:46 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/03 13:44:13 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "rtv1.h"
@@ -22,7 +22,7 @@ t_object	set_sphere(t_vector pos, float radius)
 		return (sphere);
 }
 
-float		inter_sphere(t_cam cam, t_vector ray, t_object obj)
+float		inter_sphere(t_vector cam_pos, t_vector ray, t_object obj)
 {
 	float		a;
 	float		b;
@@ -32,7 +32,7 @@ float		inter_sphere(t_cam cam, t_vector ray, t_object obj)
 	float		t2;
 	t_vector	tmp;
 
-	tmp = sub_vector(cam.pos, obj.pos);
+	tmp = sub_vector(cam_pos, obj.pos);
 	a = sq_vector(ray);
 	b =  2 * dotpro_vector(tmp, ray);
 	c = dotpro_vector(tmp, tmp) - (obj.radius * obj.radius);

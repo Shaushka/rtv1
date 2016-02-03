@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/03 13:19:12 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/03 16:07:09 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ t_color		check_collision(t_env *e, t_vector ray)
 	{
 		if (tmp->type == SPHERE)
 		{
-			test = inter_sphere(e->cam, ray, *tmp);
+			test = inter_sphere(e->cam.pos, ray, *tmp);
 //			normal = normal_sphere(e->cam, *item, ray, inter);
 		}
 		else if(tmp->type == PLANE)
 		{
-			test = inter_plane(e->cam, ray, *tmp);
+			test = inter_plane(e->cam.pos, ray, *tmp);
 //			normal = normal_plane(*item, ray);
 		}
 		else if (tmp->type == CONE)
 		{
-			test = inter_cone(e->cam, ray, *tmp);
+			test = inter_cone(e->cam.pos, ray, *tmp);
 //			normal = normal_cone(*item, ray, inter, e->cam);
 		}
 		else
 		{
-			test = inter_cylinder(e->cam, ray, *tmp);
+			test = inter_cylinder(e->cam.pos, ray, *tmp);
 //			normal = normal_cylinder(*item, ray, inter, e->cam);
 		}
 //		if(norm_vector(normal) == 0)

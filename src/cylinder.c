@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/03 13:12:09 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/03 13:45:27 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_object	set_cylinder(t_vector pos, t_vector dir, float radius, float height)
 	return(cylinder);
 }
 
-float		inter_cylinder(t_cam cam, t_vector ray, t_object cylinder)
+float		inter_cylinder(t_vector cam_pos, t_vector ray, t_object cylinder)
 {
 	t_vector	tmp;
 	float		a;
@@ -32,7 +32,7 @@ float		inter_cylinder(t_cam cam, t_vector ray, t_object cylinder)
 	float		c;
 	float		det;
 	
-	tmp = sub_vector(cam.pos, cylinder.pos);
+	tmp = sub_vector(cam_pos, cylinder.pos);
 	a = dotpro_vector(ray,ray)
 		- (dotpro_vector(ray, cylinder.dir) * dotpro_vector(ray, cylinder.dir));
 	b = 2 * (dotpro_vector(ray, tmp)
