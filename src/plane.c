@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 15:57:57 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/01 21:33:03 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/03 12:58:08 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ float		inter_plane(t_cam cam, t_vector ray, t_object obj)
 
 t_vector	normal_plane(t_object obj, t_vector ray)
 {
-	if (dotpro_vector(obj.normal, ray) > 0)
+	if (dotpro_vector(obj.normal, unit_vector(ray)) > 0)
 		obj.normal = mult_vector(obj.normal, -1);
 	return (obj.normal);
 }

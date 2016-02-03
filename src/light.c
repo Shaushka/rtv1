@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 22:46:36 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/03 13:25:36 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,43 @@ t_color		check_color(t_color color)
 	return(color);
 }
 
-t_color		diffuse_light(t_light light, t_color color, t_vector normal,t_vector inter)
+t_color		diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
 {
 	float		coef;
 	float		attenuation;
 	t_vector	light_ray;
+	t_vector	normal;
 
-	light_ray = sub_vector(light.pos, inter);
+		if (item.type == SPHERE)
+			normal = normal_sphere(e->cam, item, inter_ray);
+		else if ( item.type == PLANE)
+			normal = normal_plane(item, inter_ray); // call assigning normal function
+		else if (item.type == CONE)
+			normal = normal_cone(e->cam, item, inter_ray);
+		else
+			normal = normal_cylinder( e->cam, item, inter_ray);
+
+	light_ray = sub_vector(light.pos, add_vector(inter_ray, e->cam.pos));
 	coef = dotpro_vector(unit_vector(light_ray), unit_vector(normal));
-	attenuation = ((MAX_VISION(0) / 300) - norm_vector(light_ray)) / (MAX_VISION(0) / 300) * 2.5;
+	attenuation = ((10.f - norm_vector(light_ray)) / 10.f) * 1.5;
 	if (attenuation > 5)
 		attenuation = 5;
-	if (attenuation < 1)
-		attenuation = 1;
+	if (attenuation < 0)
+		attenuation = 0;
 //	coef = coef * attenuation;
-	color.r = ((color.r + light.color.r * coef) * light.intensity) / 2;
-	color.g = ((color.g + light.color.g * coef) * light.intensity) / 2;
-	color.b = ((color.b + light.color.b * coef) * light.intensity) / 2;
-	color = check_color(color);
-	return(color);
+	item.color.r = ((item.color.r + light.color.r * coef) * light.intensity) / 2;
+	item.color.g = ((item.color.g + light.color.g * coef) * light.intensity) / 2;
+	item.color.b = ((item.color.b + light.color.b * coef) * light.intensity) / 2;
+	item.color = check_color(item.color);
+	return(item.color);
 }
 
 void	init_lights(t_env *e)
 {
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){-1, 0, 0};
+	e->lights->pos = (t_vector){5, 0, 0};
 	e->lights->dir = (t_vector){0,1,0};
 	e->lights->color = (t_color){255,255,255};
-	e->lights->intensity = 0.7;
+	e->lights->intensity = 1;
 	e->lights->next = NULL;
 }

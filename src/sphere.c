@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 21:28:27 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/03 12:57:46 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "rtv1.h"
@@ -52,10 +52,10 @@ float		inter_sphere(t_cam cam, t_vector ray, t_object obj)
 		return (-b / (2 * a));
 }
 
-t_vector		normal_sphere(t_cam cam, t_object obj, t_vector ray, float inter)
+t_vector		normal_sphere(t_cam cam, t_object obj, t_vector ray)
 {
 		t_vector	tmp;
 
 	tmp = sub_vector(cam.pos, obj.pos);
-	return(unit_vector(add_vector(mult_vector(ray, inter), tmp)));
+	return(unit_vector(add_vector(ray, tmp)));
 }

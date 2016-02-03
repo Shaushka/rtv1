@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/01 22:44:29 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/03 13:19:12 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,55 +24,47 @@ t_color		check_collision(t_env *e, t_vector ray)
 	float		inter;
 	float		test;
 	t_object	*tmp;
-	t_vector	normal;
+//	t_vector	normal;
 	t_object	*item;
 
 //APPEL DES LUMIERES	
-	item = e->scene->l_obj;
+	tmp = e->scene->l_obj;
 	inter = 150.f; //MAX_VISION(e->cam.pos.z);
 	//TANT qu'il a des objets test
-	while (item)// ** TO DO
+	while (tmp)// ** TO DO
 	{
-		if (item->type == SPHERE)
+		if (tmp->type == SPHERE)
 		{
-			test = inter_sphere(e->cam, ray, *item);
-			normal = normal_sphere(e->cam, *item, ray, inter);
+			test = inter_sphere(e->cam, ray, *tmp);
+//			normal = normal_sphere(e->cam, *item, ray, inter);
 		}
-		else if(item->type == PLANE)
+		else if(tmp->type == PLANE)
 		{
-			test = inter_plane(e->cam, ray, *item);
-			normal = normal_plane(*item, ray);
+			test = inter_plane(e->cam, ray, *tmp);
+//			normal = normal_plane(*item, ray);
 		}
-		else if (item->type == CONE)
+		else if (tmp->type == CONE)
 		{
-			test = inter_cone(e->cam, ray, *item);
-			normal = normal_cone(*item, ray, inter, e->cam);
+			test = inter_cone(e->cam, ray, *tmp);
+//			normal = normal_cone(*item, ray, inter, e->cam);
 		}
 		else
 		{
-			test = inter_cylinder(e->cam, ray, *item);
-			normal = normal_cylinder(*item, ray, inter, e->cam);
+			test = inter_cylinder(e->cam, ray, *tmp);
+//			normal = normal_cylinder(*item, ray, inter, e->cam);
 		}
-		if(norm_vector(normal) == 0)
-			test = 150.f;
+//		if(norm_vector(normal) == 0)
+//			test = 150.f;
 		if (test > 0.01f && test < inter)
 		{
 			inter = test;
-			tmp = item;
+			item = tmp;
 		}
-		item = item->next;
+		tmp = tmp->next;
 	}
 	if (inter > 0.0f && inter < 150.f) //&& inter < (float)MAX_VISION(e->cam.pos.z))
 	{
-		if (tmp->type == SPHERE)
-			normal = normal_sphere(e->cam, *tmp, ray, inter);
-		else if ( tmp->type == PLANE)
-			normal = normal_plane(*tmp, ray); // call assigning normal function
-		else if (tmp->type == CONE)
-			normal = normal_cone(*tmp, ray, inter, e->cam);
-		else
-			normal = normal_cylinder(*tmp, ray, inter, e->cam);
-		return (diffuse_light(*e->lights, tmp->color, normal, mult_vector(ray, inter)));
+		return (diffuse_light(*e->lights, *item,  mult_vector(ray, inter), e));
 	}
 	return ((t_color){0,0,0});
 }
