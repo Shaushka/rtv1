@@ -22,6 +22,7 @@ SRC_PATH = ./src/
 SRC_NAME = main.c								\
 		   graphics_tools.c						\
 		   initialization.c						\
+		   exit_and_quit.c						\
 		   hook_functions.c						\
 		   ray_tracing.c						\
 		   sphere.c								\

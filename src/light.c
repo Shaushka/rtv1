@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/05 14:23:07 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/09 14:50:20 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,20 @@ t_color		check_color(t_color color)
 
 int		same_item(t_object a, t_object b)
 {
-		if (a.type == b.type && a.radius == b.radius && a.height == b.height
-				&& (norm_vector(sub_vector(a.dir,b.dir))) == 0
+		if (a.type == b.type && (norm_vector(sub_vector(a.dir,b.dir))) == 0
 				&& (norm_vector(sub_vector(a.pos, b.pos))) == 0
-					&& (norm_vector(sub_vector(a.normal, b.normal))) == 0)
+					&& (norm_vector(sub_vector(a.normal, b.normal))) == 0
+					&& a.radius == b.radius && a.height == b.height)
 			return (1);
 		return (0);
 }
 
-
-t_color		diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
+float		check_shadow(t_light light, t_vector inter_ray,  t_env *e)
 {
-	float		coef;
-	float		attenuation;
 	float		test;
-	t_vector	light_ray;
-	t_vector	normal;
 	t_vector	inter_pos;
-	t_object	*tmp;
+	t_vector	light_ray;
+	t_object*	tmp;
 
 	inter_pos = add_vector(inter_ray, e->cam.pos);
 	light_ray = sub_vector(inter_pos, light.pos);
@@ -60,10 +56,7 @@ t_color		diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *
 	{
 		test = 0;
 		if (tmp->type == SPHERE)
-		{
 			test = inter_sphere(inter_pos, unit_vector(light_ray), *tmp);
-			printf("%f\n", test);
-		}
 		else if(tmp->type == PLANE)
 			test = inter_plane(inter_pos, unit_vector(light_ray), *tmp);
 		else if (tmp->type == CONE)
@@ -73,12 +66,23 @@ t_color		diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *
 	tmp = tmp->next;
 		if (-test > 0.1 && -test < (float)norm_vector(light_ray))
 		{
-			item.color = (t_color){item.color.r,item.color.g,item.color.b};
-			light.intensity /= 4;
+			return (test);
 			//tmp = NULL;
 		}
-	//	printf("%f\n", test);
 	}
+	return (0);
+	}
+
+t_color		diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
+{
+	float		coef;
+	float		attenuation;
+	t_vector	light_ray;
+	t_vector	normal;
+
+	light_ray = sub_vector(add_vector(inter_ray,e->cam.pos), light.pos);
+		if (check_shadow(light, inter_ray, e))
+			light.intensity /= 2;
 		if (item.type == SPHERE)
 			normal = normal_sphere(e->cam, item, inter_ray);
 		else if ( item.type == PLANE)
@@ -104,7 +108,7 @@ t_color		diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *
 void	init_lights(t_env *e)
 {
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){7, 0, 1};
+	e->lights->pos = (t_vector){3, 2, 0};
 	e->lights->dir = (t_vector){0,1,0};
 	e->lights->color = (t_color){255,255,255};
 	e->lights->intensity = 1;
