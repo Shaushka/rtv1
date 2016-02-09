@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/09 14:49:57 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/09 14:52:07 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		set_list_obj(t_env *e)
 	*plane2 = set_plane((t_vector){0, 0, 5},(t_vector){ 0, 0, -5});
 	*plane3 = set_plane((t_vector){0, 0, -5},(t_vector){ 0, 0, 5});
 	*plane4 = set_plane((t_vector){15, 0, 0},(t_vector){ -1, 0, 0});
-	*sphere = set_sphere((t_vector){8, 0, 0}, 1);
+	*sphere = set_sphere((t_vector){8, -2, 0}, 1);
 	*cylinder = set_cylinder((t_vector){5, 0, 0},(t_vector){0, 1, 1}, 0.2, -1);
 	*cone = set_cone((t_vector){11, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 
