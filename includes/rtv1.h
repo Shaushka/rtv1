@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 18:12:09 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/12 19:04:08 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define SCREEN_W		1280
 # define SCREEN_H		960
 
-# define AMBIANT		0.2
+# define AMBIANT		0.4
 # define MAX_VISION(h)		(3570 + sqrt((h)))
 # define PI			3.14159265
 # define RATIO		(PI / 180)
@@ -49,7 +49,7 @@ typedef	struct	s_object
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
 	float				constant;//plan
-	int					shine;//brillance
+	int				shine;//brillance
 }						t_object;
 
 typedef struct		s_light

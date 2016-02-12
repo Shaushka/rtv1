@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 17:59:16 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/12 19:05:26 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static t_object	*set_list_obj_other(void)
 	*cylinder = set_cylinder((t_vector){5, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
 	*cone = set_cone((t_vector){11, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 0};
-	sphere->shine = 1;
+	sphere->shine = 0;
 	cylinder->color = (t_color){254, 191, 210};
 	cylinder->shine = 1;
 	cone->color = (t_color){255, 0, 255};
@@ -72,7 +72,7 @@ void			set_list_obj(t_env *e)
 	plane2->color = (t_color){0, 0, 255};
 	plane0->shine = 0;
 	plane1->shine = 0;
-	plane2->shine = 1;
+	plane2->shine = 0;
 	e->scene->l_obj = plane0;
 	plane0->next = plane1;
 	plane1->next = plane2;

@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/12 18:03:41 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/12 19:05:08 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,9 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 		normal = normal_cone(e->cam, item, inter_ray);
 	else 
 		normal = normal_cylinder(e->cam, item, inter_ray);
+
 	reflect = mult_vector(normal, (dotpro_vector(light_ray, normal) * 2.0f));
-	reflect = sub_vector(reflect, light_ray);
+	reflect = sub_vector(light_ray, reflect);
 	spec = dotpro_vector(sub_vector(inter_ray,e->cam.pos),reflect);
 	if (spec > 0)
 	spec = powf(spec, 20) * item.shine;
@@ -126,21 +127,33 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 {
 	float		coef;
+	float		spec;
 
 	coef = 0;
+	spec = 0;
 	while(lights)
 	{
 		if (!check_shadow(*lights, inter_ray, e))
 		{
-		coef += diffuse_light(*lights, item, inter_ray, e);
-//		if (item.shine)
-//			coef += specular_light(*lights, item, inter_ray, e);
+			coef += diffuse_light(*lights, item, inter_ray, e);
+			if (item.shine > 0)
+			{
+				spec += specular_light(*lights, item, inter_ray, e);
+			}
 		}
 		lights = lights->next;
 	}
-	item.color.r *= coef;
-	item.color.g *= coef;
-	item.color.b *= coef;
+	if (spec > 1)
+		spec = 1;
+	if (spec < 0)
+		spec = 0;
+	if(coef > 1)
+		coef = 1;
+	if(coef < 0)
+		coef = 0;
+	item.color.r *= (AMBIANT + coef + spec);
+	item.color.g *= (AMBIANT + coef + spec);
+	item.color.b *= (AMBIANT + coef + spec);
 	item.color = check_color(item.color);
 	return (item.color);
 }
@@ -151,6 +164,6 @@ void			init_lights(t_env *e)
 	e->lights->pos = (t_vector){3, 0, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){255, 255, 255};
-	e->lights->intensity = 1;
+	e->lights->intensity = 0.7;
 	e->lights->next = NULL;
 }
