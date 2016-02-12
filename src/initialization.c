@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/01 22:38:02 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/12 17:22:52 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 void			init_env(t_env *e)
 {
 	(void)e;
-	//if need, if not, jsut delete this function
 }
 
 void			init_and_draw(t_env *e, char *av)

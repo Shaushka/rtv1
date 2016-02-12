@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/03 13:43:05 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/12 17:39:16 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_object	set_cone(t_vector pos, t_vector dir, float radius, float height)
 	cone.dir = unit_vector(dir);
 	cone.radius = radius;
 	cone.height = height;
-	return(cone);
+	return (cone);
 }
 
 float		inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
@@ -31,9 +31,9 @@ float		inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
 	float		b;
 	float		c;
 	float		det;
-	
+
 	tmp = sub_vector(cam_pos, cone.pos);
-	a = dotpro_vector(ray,ray)
+	a = dotpro_vector(ray, ray)
 		- ((1 + cone.radius * cone.radius) * dotpro_vector(ray, cone.dir)
 				* dotpro_vector(ray, cone.dir));
 	b = 2 * (dotpro_vector(ray, tmp)
@@ -41,8 +41,8 @@ float		inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
 				* dotpro_vector(tmp, cone.dir)));
 	c = dotpro_vector(tmp, tmp)
 		- ((1 + cone.radius * cone.radius) * dotpro_vector(tmp, cone.dir)
-					* dotpro_vector(tmp,cone.dir));
-	det = b*b - 4*a*c;
+					* dotpro_vector(tmp, cone.dir));
+	det = b * b - 4 * a * c;
 	if (det < 0.0f)
 		return (0);
 	else if (((-b + sqrt(det)) / (2 * a)) < ((-b - sqrt(det)) / (2 * a)))

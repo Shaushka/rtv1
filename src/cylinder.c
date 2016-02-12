@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/03 13:45:27 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/12 17:29:42 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_object	set_cylinder(t_vector pos, t_vector dir, float radius, float height)
 	cylinder.dir = unit_vector(dir);
 	cylinder.radius = radius;
 	cylinder.height = height;
-	return(cylinder);
+	return (cylinder);
 }
 
 float		inter_cylinder(t_vector cam_pos, t_vector ray, t_object cylinder)
@@ -31,16 +31,16 @@ float		inter_cylinder(t_vector cam_pos, t_vector ray, t_object cylinder)
 	float		b;
 	float		c;
 	float		det;
-	
+
 	tmp = sub_vector(cam_pos, cylinder.pos);
-	a = dotpro_vector(ray,ray)
+	a = dotpro_vector(ray, ray)
 		- (dotpro_vector(ray, cylinder.dir) * dotpro_vector(ray, cylinder.dir));
 	b = 2 * (dotpro_vector(ray, tmp)
 			- (dotpro_vector(ray, cylinder.dir) * dotpro_vector(tmp, cylinder.dir)));
 	c = dotpro_vector(tmp, tmp)
-		- (dotpro_vector(tmp, cylinder.dir) * dotpro_vector(tmp,cylinder.dir))
+		- (dotpro_vector(tmp, cylinder.dir) * dotpro_vector(tmp, cylinder.dir))
 		- cylinder.radius * cylinder.radius;
-	det = b*b - 4*a*c;
+	det = b * b - 4 * a * c;
 	if (det < 0.0f)
 		return (0);
 	if (((-b + sqrt(det)) / (2 * a)) < ((-b - sqrt(det)) / (2 * a)))
