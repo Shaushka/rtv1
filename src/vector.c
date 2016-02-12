@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/11 17:31:14 by chuang            #+#    #+#             */
-/*   Updated: 2016/01/28 16:48:59 by chuang           ###   ########.fr       */
+/*   Created: 2016/02/12 14:44:01 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:50:53 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,44 +42,6 @@ t_vector		unit_vector(t_vector v)
 		v.z /= (float)norm;
 	}
 	return (v);
-}
-
-t_vector		add_vector(t_vector a, t_vector b)
-{
-	t_vector		c;
-
-	c.x = a.x + b.x;
-	c.y = a.y + b.y;
-	c.z = a.z + b.z;
-	return (c);
-}
-
-t_vector		sub_vector(t_vector a, t_vector b)
-{
-	t_vector		c;
-
-	c.x = a.x - b.x;
-	c.y = a.y - b.y;
-	c.z = a.z - b.z;
-	return (c);
-}
-
-t_vector		cross_vector(t_vector a, t_vector b)
-{
-	t_vector		c;
-
-	c.x = a.y * b.z - b.z * c.y;
-	c.y = b.z * a.x - b.y * a.z;
-	c.z = a.x * b.y - a.y * b.x;
-	return(c);
-}
-
-t_vector		mult_vector(t_vector a, float m)
-{
-	a.x *= m;
-	a.y *= m;
-	a.z *= m;
-	return (a);
 }
 
 float		sq_vector(t_vector a)
