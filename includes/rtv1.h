@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 14:48:49 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/12 17:22:23 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void			ft_initialize(t_env *e);
 */
 void			ft_exit(char *str, int n);
 void			quit_and_free(t_env *e);
-void			init_env(t_env *e);
+//void			init_env(t_env *e);
 int				expose_hook(t_env *e);
 void			init_and_draw(t_env *e, char *av);
 void			init_obj(t_object *node);
