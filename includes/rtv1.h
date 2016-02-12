@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/03 13:41:30 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/12 14:48:49 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,10 +259,14 @@ t_vector		set_vector(t_vector v, float x, float y, float z);
 float			dotpro_vector(t_vector a, t_vector b);
 float			norm_vector(t_vector v);
 t_vector		unit_vector(t_vector v);
+float			sq_vector(t_vector a);
+
+/*
+**	vector2.c
+*/
 t_vector		add_vector(t_vector v, t_vector u);
 t_vector		sub_vector(t_vector v, t_vector u);
 t_vector		cross_vector(t_vector v, t_vector u);
 t_vector		mult_vector(t_vector a, float m);
-float			sq_vector(t_vector a);
 
 #endif
