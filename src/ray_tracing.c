@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/12 16:09:21 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/12 17:46:18 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ t_color		check_collision(t_env *e, t_vector ray)
 	if (inter > 0.0f && inter < 150.f)
 	//&& inter < (float)MAX_VISION(e->cam.pos.z))
 	{
-		return (diffuse_light(*e->lights, *item, mult_vector(ray, inter), e));
+		return (ft_light(&(*e->lights), *item, mult_vector(ray, inter), e));
 	}
 	return ((t_color){0, 0, 0});
 }
