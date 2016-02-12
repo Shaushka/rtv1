@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/12 14:58:49 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/12 18:03:41 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,6 @@ t_color			check_color(t_color color)
 	return (color);
 }
 
-int				same_item(t_object a, t_object b)
-{
-	if (a.type == b.type && (norm_vector(sub_vector(a.dir, b.dir))) == 0
-			&& (norm_vector(sub_vector(a.pos, b.pos))) == 0
-			&& (norm_vector(sub_vector(a.normal, b.normal))) == 0
-			&& a.radius == b.radius && a.height == b.height)
-		return (1);
-	return (0);
-}
-
 float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 {
 	float		test;
@@ -49,7 +39,7 @@ float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 	t_object	*tmp;
 
 	inter_pos = add_vector(inter_ray, e->cam.pos);
-	light_ray = sub_vector(inter_pos, light.pos);
+	light_ray = sub_vector(light.pos, inter_pos);
 	// check shadow
 	tmp = e->scene->l_obj;
 	while (tmp)
@@ -64,7 +54,7 @@ float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 		else if (tmp->type == CYLINDER)
 			test = inter_cylinder(inter_pos, unit_vector(light_ray), *tmp);
 		tmp = tmp->next;
-		if (-test > 0.1 && -test < (float)norm_vector(light_ray))
+		if (test > 0.1 && test < (float)norm_vector(light_ray))
 		{
 			return (test);
 			//tmp = NULL;
@@ -73,16 +63,16 @@ float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 	return (0);
 }
 
-t_color			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
+float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
 {
 	float		coef;
 	float		attenuation;
 	t_vector	light_ray;
 	t_vector	normal;
 
-	light_ray = sub_vector(add_vector(inter_ray, e->cam.pos), light.pos);
+	light_ray = sub_vector(light.pos, add_vector(inter_ray, e->cam.pos));
 	if (check_shadow(light, inter_ray, e))
-		light.intensity /= 2;
+		light.intensity = 0;
 	if (item.type == SPHERE)
 		normal = normal_sphere(e->cam, item, inter_ray);
 	else if (item.type == PLANE)
@@ -91,16 +81,66 @@ t_color			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env 
 		normal = normal_cone(e->cam, item, inter_ray);
 	else
 		normal = normal_cylinder(e->cam, item, inter_ray);
-	coef = dotpro_vector(unit_vector(mult_vector(light_ray, -1)), unit_vector(normal));
-	attenuation = ((10.f - norm_vector(light_ray)) / 10.f) * 1.5;
-	if (attenuation > 5)
-		attenuation = 5;
+	coef = dotpro_vector(unit_vector((light_ray)), unit_vector(normal));
+	attenuation = ((100.f - norm_vector(light_ray)) / 100.f);
 	if (attenuation < 0)
 		attenuation = 0;
-	//coef = coef * attenuation;
-	item.color.r = ((item.color.r + light.color.r * coef) * light.intensity) / 2;
+	coef *= light.intensity;
+//	coef = coef * attenuation;
+	return(coef);
+/*	item.color.r = ((item.color.r + light.color.r * coef) * light.intensity) / 2;
 	item.color.g = ((item.color.g + light.color.g * coef) * light.intensity) / 2;
 	item.color.b = ((item.color.b + light.color.b * coef) * light.intensity) / 2;
+	item.color = check_color(item.color);
+	return (item.color);*/
+}
+
+float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
+{
+	t_vector	reflect;
+	t_vector	light_ray;
+	t_vector	normal;
+	float		spec;
+
+	light_ray = sub_vector(light.pos, add_vector(inter_ray, e->cam.pos));
+//	if (check_shadow(light, inter_ray, e))
+//		normal = set_vector(normal, 0, 0, 0);
+	if (item.type == SPHERE)
+		normal = normal_sphere(e->cam, item, inter_ray);
+	else if (item.type == PLANE)
+		normal = normal_plane(item, inter_ray); // call assigning normal function
+	else if (item.type == CONE)
+		normal = normal_cone(e->cam, item, inter_ray);
+	else 
+		normal = normal_cylinder(e->cam, item, inter_ray);
+	reflect = mult_vector(normal, (dotpro_vector(light_ray, normal) * 2.0f));
+	reflect = sub_vector(reflect, light_ray);
+	spec = dotpro_vector(sub_vector(inter_ray,e->cam.pos),reflect);
+	if (spec > 0)
+	spec = powf(spec, 20) * item.shine;
+	else
+		return (0);
+	return(spec);
+}
+
+t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
+{
+	float		coef;
+
+	coef = 0;
+	while(lights)
+	{
+		if (!check_shadow(*lights, inter_ray, e))
+		{
+		coef += diffuse_light(*lights, item, inter_ray, e);
+//		if (item.shine)
+//			coef += specular_light(*lights, item, inter_ray, e);
+		}
+		lights = lights->next;
+	}
+	item.color.r *= coef;
+	item.color.g *= coef;
+	item.color.b *= coef;
 	item.color = check_color(item.color);
 	return (item.color);
 }

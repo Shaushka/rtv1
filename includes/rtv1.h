@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 17:22:23 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/12 18:12:09 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define SCREEN_W		1280
 # define SCREEN_H		960
 
+# define AMBIANT		0.2
 # define MAX_VISION(h)		(3570 + sqrt((h)))
 # define PI			3.14159265
 # define RATIO		(PI / 180)
@@ -48,6 +49,7 @@ typedef	struct	s_object
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
 	float				constant;//plan
+	int					shine;//brillance
 }						t_object;
 
 typedef struct		s_light
@@ -110,7 +112,7 @@ void			ft_initialize(t_env *e);
 */
 void			ft_exit(char *str, int n);
 void			quit_and_free(t_env *e);
-//void			init_env(t_env *e);
+void			init_env(t_env *e);
 int				expose_hook(t_env *e);
 void			init_and_draw(t_env *e, char *av);
 void			init_obj(t_object *node);
@@ -249,7 +251,9 @@ t_vector		normal_cone(t_cam cam, t_object obj, t_vector ray);
 /*
 **	light.c
 */
-t_color			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
+float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
+float			specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
+t_color			ft_light (t_light *lights, t_object item, t_vector inter_ray, t_env *e);
 void			init_lights(t_env *e);
 
 /*
