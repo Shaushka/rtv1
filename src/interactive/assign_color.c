@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   assign_color.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:26:41 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:37:54 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "../includes/rtv1.h"
 #include "../libft/includes/libft.h"
@@ -24,19 +36,18 @@ static void		assign_color(t_color *color, char *str)
 		i++;
 	i++;
 	color->b = ft_atoi(cut_pos(str, i));
-
-	
 }
 
 void			color(t_color *color)
 {
 	char		*tmp;
+
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
 	ft_putstr("Definition de la couleur :\n");
 	ft_putstr("format : r/g/b (entre 0 et 255)");
 	read(0, tmp, 200);
-	while(!correct_input(tmp))
+	while (!correct_input(tmp))
 	{
 		ft_bzero(tmp, 200);
 		ft_putstr("entrez la couleur sous la forme r/g/b");
@@ -65,15 +76,17 @@ static int		yes_or_no(char *str)
 		return (0);
 	}
 }
+
 void			color_choice(t_color *color)
 {
 	char		*tmp;
+
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
 	ft_putstr("Voulez-vous choisir la couleur ?\n");
 	ft_putstr("repondez oui ou non !");
 	read(0, tmp, 200);
-	while(!correct_input(tmp))
+	while (!correct_input(tmp))
 	{
 		ft_bzero(tmp, 200);
 		ft_putstr("ecrivez \"oui\" ou \"non\" : ");

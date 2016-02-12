@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   infos_shapes.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:18:25 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:40:20 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/rtv1.h"
 #include "../../libft/includes/libft.h"
+
 void			radius(t_object *node)
 {
 	char		*tmp;
@@ -20,6 +33,7 @@ void			radius(t_object *node)
 	node->radius = ft_atoi(tmp);
 	free(tmp);
 }
+
 /*
 int				count_objects(t_env *e)
 {
@@ -37,6 +51,7 @@ int				count_objects(t_env *e)
 	return (i);
 }//remove if unused
 */
+
 void			height(t_object *node)
 {
 	char		*tmp;

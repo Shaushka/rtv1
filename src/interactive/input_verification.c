@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_verification.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:38:01 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:38:50 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libft/includes/libft.h"
 #include "../includes/rtv1.h"
 #include <stdlib.h>
@@ -57,8 +69,7 @@ int				correct_input(char *str)
 		separators(clean);
 		final = no_more_spaces(clean);
 		free(clean);
-		if (is_vector(final))//attention, a ce stade on n'a pas verifie
-		//si les chiffres sont dans la fourchette demandee
+		if (is_vector(final))
 			return (1);
 	}
 	return (0);

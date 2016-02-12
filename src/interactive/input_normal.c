@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_normal.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:17:01 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:17:37 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/rtv1.h"
@@ -19,9 +31,9 @@ void		assign_normal(t_object *node, char *str)
 	node->normal.z = ft_atoi(cut_pos(str, i));
 }
 
-void			normal(t_object *node)
+void		normal(t_object *node)
 {
-	char		*tmp;
+	char	*tmp;
 
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
@@ -33,7 +45,7 @@ void			normal(t_object *node)
 		ft_bzero(tmp, 200);
 		ft_putstr("Entrez la position sous la forme x/y/z : ");
 		read(0, tmp, 200);
-	}//gerer si trop loin pour etre visible ??
+	}
 	if (check_values(tmp, 0, 100))
 		assign_pos(node, tmp);
 	free(tmp);

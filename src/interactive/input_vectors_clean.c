@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_vectors_clean.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:20:51 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:21:32 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../libft/includes/libft.h"
 #include "../../includes/rtv1.h"
 #include <stdlib.h>
@@ -31,7 +43,7 @@ char		*no_more_spaces(char *str)
 
 	i = 0;
 	j = 0;
-	len = ft_strlen(str);//longueur de la str sale
+	len = ft_strlen(str);
 	while (str[i] != '\0')
 	{
 		if (ft_isspace(str[i]))
@@ -42,12 +54,12 @@ char		*no_more_spaces(char *str)
 		else
 			i++;
 	}
-	len -= j;// len = longueur de la str propre
-	clean = malloc(sizeof(char) * (len + 1));// malloc len propre + '\0'
+	len -= j;
+	clean = malloc(sizeof(char) * (len + 1));
 	return (*remove_spaces(str, i, &clean));
 }
 
-void		separators(char *str)//remplace les / en trop par des espaces
+void		separators(char *str)
 {
 	int		i;
 	int		j;

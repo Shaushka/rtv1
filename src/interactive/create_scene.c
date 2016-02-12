@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_scene.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:17:45 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:18:20 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdio.h>
 #include "../includes/rtv1.h"
 #include "../libft/includes/libft.h"
 
 static int		isshape(char *str)
-{//strcapitalize pour verif toutes les orthographes possibles
+{
 	if (ft_strequ(str, "sphere\n") || ft_strequ(str, "Sphere\n"))
 	{
 		ft_putstr("Ah, bah voila un utilisateur cooperatif !\n");
@@ -44,13 +56,13 @@ void			create_scene(t_env *e)
 		read(0, tmp, 200);
 	}
 	x = isshape(tmp);
-	if (x == 1)//SPHERE
+	if (x == 1)
 		input_sphere(e);
-	else if (x == 2)//CYLINDER
+	else if (x == 2)
 		input_cylinder(e);
-	else if (x == 3)//CONE
+	else if (x == 3)
 		input_cone(e);
-	else if (x == 4)//PLANE
+	else if (x == 4)
 		input_plane(e);
 	free(tmp);
 }

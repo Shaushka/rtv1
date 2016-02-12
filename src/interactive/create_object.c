@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   create_object.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:15:16 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:16:44 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include "../includes/rtv1.h"
 #include "../libft/includes/libft.h"
@@ -8,19 +20,19 @@ t_object		*create_object(t_env *e)
 	t_object *b;
 
 	a = (t_object*)malloc(sizeof(t_object));
-	init_obj(a);//MET TOUTES LES VALEURS A ZERO
-	if (e->scene->l_obj == NULL)//si le l_obj est vide
+	init_obj(a);
+	if (e->scene->l_obj == NULL)
 	{
-		e->scene->l_obj = a;//j'accroche le t_object A a liste_obj
+		e->scene->l_obj = a;
 		if (e->scene->l_obj == NULL)
 			return (NULL);
 	}
-	else//si il y a deja d'autres objets
+	else
 	{
 		b = e->scene->l_obj;
 		while (b->next != NULL)
-			b = b->next;//je vais prendre le dernier maillon
-		b->next = a;//et j'accroche le t_object A a la liste
+			b = b->next;
+		b->next = a;
 	}
 	return (a);
 }

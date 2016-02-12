@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   add_shape.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:12:37 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:13:05 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include "../includes/rtv1.h"
 #include "../libft/includes/libft.h"
@@ -24,6 +36,7 @@ void			input_sphere(t_env *e)
 	radius(node);
 	color_choice(&node->color);
 }
+
 void			input_cylinder(t_env *e)
 {
 	t_object	*node;
@@ -35,7 +48,6 @@ void			input_cylinder(t_env *e)
 	height(node);
 	color_choice(&node->color);
 }
-
 
 void			input_cone(t_env *e)
 {

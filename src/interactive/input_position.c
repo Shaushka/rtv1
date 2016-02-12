@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_position.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/12 14:38:09 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/12 14:39:49 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/rtv1.h"
 #include "../../libft/includes/libft.h"
 
-char		*cut_pos(char *str, int i)
+char			*cut_pos(char *str, int i)
 {
 	char		*tmp;
 	int			j;
@@ -41,7 +53,7 @@ int				check_values(char *str, int min, int max)
 	if (x < min || x > max)
 		return (0);
 	while (ft_isdigit(str[i]))
-			i++;
+		i++;
 	i++;
 	x = ft_atoi(cut_pos(str, i));
 	if (x < min || x > max)
@@ -49,7 +61,7 @@ int				check_values(char *str, int min, int max)
 	return (1);
 }
 
-void		assign_pos(t_object *node, char *str)
+void			assign_pos(t_object *node, char *str)
 {
 	int			i;
 
@@ -79,7 +91,7 @@ void			position(t_object *node)
 		ft_bzero(tmp, 200);
 		ft_putstr("Entrez la position sous la forme x/y/z : ");
 		read(0, tmp, 200);
-	}//gerer si trop loin pour etre visible ??
+	}
 	if (check_values(tmp, 0, 100))
 		assign_pos(node, tmp);
 	free(tmp);
