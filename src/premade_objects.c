@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/13 17:58:40 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/13 20:18:03 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ static t_object	*set_list_obj_other(void)
 	sphere = malloc(sizeof(t_object));
 	cylinder = malloc(sizeof(t_object));
 	cone = malloc(sizeof(t_object));
-	*sphere = set_sphere((t_vector){32, -2, 0}, 1);
-	*cylinder = set_cylinder((t_vector){32, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
-	*cone = set_cone((t_vector){32, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
+	*sphere = set_sphere((t_vector){5, -2, 0}, 1);
+	*cylinder = set_cylinder((t_vector){8, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
+	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
-	sphere->shine = 10;
+	sphere->shine = 100;
 	cylinder->color = (t_color){254, 191, 210};
-	cylinder->shine = 10;
+	cylinder->shine = 0;
 	cone->color = (t_color){255, 0, 255};
-	cone->shine = 0;
+	cone->shine = 1;
 	sphere->next = cylinder;
 	cylinder->next = cone;
 	cone->next = NULL;
@@ -44,8 +44,8 @@ static t_object	*set_list_obj_planes_part2(void)
 
 	plane3 = malloc(sizeof(t_object));
 	plane4 = malloc(sizeof(t_object));
-	*plane3 = set_plane((t_vector){0, 0, -15}, (t_vector){ 0, 0, 5});
-	*plane4 = set_plane((t_vector){40, 0, 0}, (t_vector){ -1, 0, 0});
+	*plane3 = set_plane((t_vector){0, 0, -10}, (t_vector){ 0, 0, 5});
+	*plane4 = set_plane((t_vector){20, 0, 0}, (t_vector){ -1, 0, 0});
 	plane3->color = (t_color){255, 10, 10};
 	plane4->color = (t_color){10, 10, 10};
 	plane3->shine = 0;
@@ -64,13 +64,13 @@ void			set_list_obj(t_env *e)
 	plane0 = malloc(sizeof(t_object));
 	plane1 = malloc(sizeof(t_object));
 	plane2 = malloc(sizeof(t_object));
-	*plane0 = set_plane((t_vector){0, -15, 0}, (t_vector){ 0, 5, 0});
-	*plane1 = set_plane((t_vector){0, 15, 0}, (t_vector){ 0, 5, 0});
-	*plane2 = set_plane((t_vector){0, 0, 15}, (t_vector){ 0, 0, -5});
+	*plane0 = set_plane((t_vector){0, -10, 0}, (t_vector){ 0, 5, 0});
+	*plane1 = set_plane((t_vector){0, 10, 0}, (t_vector){ 0, 5, 0});
+	*plane2 = set_plane((t_vector){0, 0, 10}, (t_vector){ 0, 0, -5});
 	plane0->color = (t_color){1, 255, 255};
 	plane1->color = (t_color){10, 255, 10};
 	plane2->color = (t_color){10, 10, 255};
-	plane0->shine = 1;
+	plane0->shine = 0;
 	plane1->shine = 0;
 	plane2->shine = 0;
 	e->scene->l_obj = plane0;

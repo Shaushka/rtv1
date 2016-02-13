@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/13 16:25:27 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/13 19:52:52 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -272,5 +272,11 @@ t_vector		add_vector(t_vector v, t_vector u);
 t_vector		sub_vector(t_vector v, t_vector u);
 t_vector		cross_vector(t_vector v, t_vector u);
 t_vector		mult_vector(t_vector a, float m);
+
+/*
+**	color.c
+*/
+t_color			add_color(t_color a, t_color b);
+t_color			mult_color(t_color color, float coef);
 
 #endif

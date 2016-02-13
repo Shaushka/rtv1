@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/13 18:00:48 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/13 20:18:58 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SPECULAR 16
+#define SPECULAR 100 // plus la specular est grande moins la tache est grande
 
 t_color			check_color(t_color color)
 {
@@ -75,8 +75,6 @@ float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	t_vector	normal;
 
 	light_ray = sub_vector(light.pos, add_vector(inter_ray, e->cam.pos));
-	if (check_shadow(light, inter_ray, e))
-		light.intensity = 0;
 	if (item.type == SPHERE)
 		normal = normal_sphere(e->cam, item, inter_ray);
 	else if (item.type == PLANE)
@@ -107,8 +105,6 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	float		spec;
 
 	light_ray = sub_vector(light.pos, add_vector(inter_ray, e->cam.pos));
-//	if (check_shadow(light, inter_ray, e))
-//		normal = set_vector(normal, 0, 0, 0);
 	if (item.type == SPHERE)
 		normal = normal_sphere(e->cam, item, inter_ray);
 	else if (item.type == PLANE)
@@ -119,16 +115,15 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 		normal = normal_cylinder(e->cam, item, inter_ray);
 	reflect = mult_vector(normal, (2.0f * dotpro_vector(light_ray, normal)));
 	reflect = sub_vector(light_ray, reflect);
-	spec = dotpro_vector(inter_ray,reflect);
+	spec = dotpro_vector(inter_ray, reflect);
 	
 	if (spec > 0)
 	{
-		spec = dotpro_vector(normal, reflect) / norm_vector(reflect);
+		spec = -dotpro_vector(normal, reflect) / norm_vector(reflect);
 		spec = powf(spec, SPECULAR) * item.shine;
-		printf("%f\n", spec);
 	}
-	if (spec > 2000)
-		spec = 2000;
+//	if (spec > 2000)
+//		spec = 2000;
 	if (spec < 0)
 		spec = 0;
 	return(spec);
@@ -136,30 +131,29 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 
 t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 {
+	t_color		c_light;
 	float		coef;
 	float		spec;
 
-	coef = 0;
-	spec = 0;
+	item.color = mult_color(item.color, AMBIANT);
 	while(lights)
 	{
+		coef = 0;
+		spec = 0;
 		if (!check_shadow(*lights, inter_ray, e))
 		{
 			coef += diffuse_light(*lights, item, inter_ray, e);
+			if(coef > 1)
+				coef = 1;
+			if(coef < 0)
+				coef = 0;
 			if (item.shine > 0)
-			{
 				spec += specular_light(*lights, item, inter_ray, e);
-			}
+			c_light = mult_color(lights->color, (coef + spec));
+			item.color = add_color(item.color, c_light);
 		}
 		lights = lights->next;
 	}
-	if(coef > 1)
-		coef = 1;
-	if(coef < 0)
-		coef = 0;
-	item.color.r *= (AMBIANT + coef + spec);
-	item.color.g *= (AMBIANT + coef + spec);
-	item.color.b *= (AMBIANT + coef + spec);
 	item.color = check_color(item.color);
 	return (item.color);
 }
@@ -167,7 +161,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 void			init_lights(t_env *e)
 {
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){2, 0, 0};
+	e->lights->pos = (t_vector){2, 2, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){255, 255, 255};
 	e->lights->intensity = 0.4;

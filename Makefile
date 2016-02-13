@@ -6,7 +6,7 @@
 #    By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/12 16:29:15 by chuang           ###   ########.fr        #
+#    Updated: 2016/02/13 19:53:16 by chuang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRC_NAME = main.c								\
 		   light.c								\
 		   vector.c								\
 		   vector2.c							\
+		   color.c								\
 		   plane.c								\
 		   cylinder.c							\
 		   cone.c								\
