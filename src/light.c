@@ -6,13 +6,15 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/12 19:05:08 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/13 18:00:48 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+#define SPECULAR 16
 
 t_color			check_color(t_color color)
 {
@@ -52,7 +54,9 @@ float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 		else if (tmp->type == CONE)
 			test = inter_cone(inter_pos, unit_vector(light_ray), *tmp);
 		else if (tmp->type == CYLINDER)
+		{
 			test = inter_cylinder(inter_pos, unit_vector(light_ray), *tmp);
+		}
 		tmp = tmp->next;
 		if (test > 0.1 && test < (float)norm_vector(light_ray))
 		{
@@ -111,16 +115,22 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 		normal = normal_plane(item, inter_ray); // call assigning normal function
 	else if (item.type == CONE)
 		normal = normal_cone(e->cam, item, inter_ray);
-	else 
-		normal = normal_cylinder(e->cam, item, inter_ray);
-
-	reflect = mult_vector(normal, (dotpro_vector(light_ray, normal) * 2.0f));
-	reflect = sub_vector(light_ray, reflect);
-	spec = dotpro_vector(sub_vector(inter_ray,e->cam.pos),reflect);
-	if (spec > 0)
-	spec = powf(spec, 20) * item.shine;
 	else
-		return (0);
+		normal = normal_cylinder(e->cam, item, inter_ray);
+	reflect = mult_vector(normal, (2.0f * dotpro_vector(light_ray, normal)));
+	reflect = sub_vector(light_ray, reflect);
+	spec = dotpro_vector(inter_ray,reflect);
+	
+	if (spec > 0)
+	{
+		spec = dotpro_vector(normal, reflect) / norm_vector(reflect);
+		spec = powf(spec, SPECULAR) * item.shine;
+		printf("%f\n", spec);
+	}
+	if (spec > 2000)
+		spec = 2000;
+	if (spec < 0)
+		spec = 0;
 	return(spec);
 }
 
@@ -143,10 +153,6 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 		}
 		lights = lights->next;
 	}
-	if (spec > 1)
-		spec = 1;
-	if (spec < 0)
-		spec = 0;
 	if(coef > 1)
 		coef = 1;
 	if(coef < 0)
@@ -161,9 +167,9 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 void			init_lights(t_env *e)
 {
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){3, 0, 0};
+	e->lights->pos = (t_vector){2, 0, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){255, 255, 255};
-	e->lights->intensity = 0.7;
+	e->lights->intensity = 0.4;
 	e->lights->next = NULL;
 }

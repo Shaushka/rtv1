@@ -6,14 +6,13 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/12 17:46:18 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/13 17:04:46 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "libft.h"
 #include <math.h>
-#include <stdio.h>
 
 #define DISTVUE		1.0
 #define LONGV		1.125
