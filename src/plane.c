@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 15:57:57 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 13:30:27 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 13:41:09 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ float		inter_plane(t_vector cam_pos, t_vector ray, t_object obj)
 {
 	float		t;
 
-	t = -((dotpro_vector(obj.normal, sub_vector(cam_pos, obj.pos)) + obj.constant)
+	t = -(dotpro_vector(obj.normal, sub_vector(cam_pos, obj.pos))
 			/ (dotpro_vector(obj.normal, ray)));
 	return (t);
 }

@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/13 20:26:24 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 13:40:34 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,10 +160,18 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 
 void			init_lights(t_env *e)
 {
+	t_light		*test;
+
+	test = malloc(sizeof(t_light));
+	test->pos = (t_vector){2, -2, 0};
+	test->dir = (t_vector){0, 1, 0};
+	test->color = (t_color){255, 255, 255};
+	test->intensity = 0.4;
+	test->next = NULL;
 	e->lights = malloc(sizeof(t_light));
 	e->lights->pos = (t_vector){2, 2, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){255, 255, 255};
 	e->lights->intensity = 0.4;
-	e->lights->next = NULL;
+	e->lights->next = test;
 }

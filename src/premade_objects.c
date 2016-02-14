@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/13 20:31:46 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 13:43:06 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static t_object	*set_list_obj_other(void)
 	sphere = malloc(sizeof(t_object));
 	cylinder = malloc(sizeof(t_object));
 	cone = malloc(sizeof(t_object));
-	*sphere = set_sphere((t_vector){5, -2, 0}, 1);
+	*sphere = set_sphere((t_vector){15, -2, 0}, 1);
 	*cylinder = set_cylinder((t_vector){8, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
-	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
+	*cone = set_cone((t_vector){-15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
-	sphere->shine = 100;
+	sphere->shine = 1;
 	cylinder->color = (t_color){254, 191, 210};
 	cylinder->shine = 0;
 	cone->color = (t_color){255, 0, 255};
