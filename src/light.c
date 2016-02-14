@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/14 14:25:25 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 14:37:22 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 		spec = 0;
 	return(spec);
 }
+
 
 t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 {

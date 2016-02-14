@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:18:25 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 14:40:20 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/14 14:38:56 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void			height(t_object *node)
 	free(tmp);
 }
 
-void			constant(t_object *node)
+void			shine(t_object *node)
 {
 	char		*tmp;
 
@@ -86,6 +86,6 @@ void			constant(t_object *node)
 		if (!ft_isnum(tmp) || ft_atoi(tmp) > 10 || ft_atoi(tmp) < 1)
 			ft_putstr("Entrez un nombre entre 1 et 10 !");
 	}
-	node->constant = ft_atoi(tmp);
+	node->shine = ft_atoi(tmp);
 	free(tmp);
 }

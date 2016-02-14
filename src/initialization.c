@@ -6,7 +6,7 @@
 /*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/13 16:28:03 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 14:37:31 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void			init_obj(t_object *node)
 	node->normal = set_vector(node->pos, 0, 0, 0);
 	node->radius = 0;
 	node->height = 0;
-	node->constant = 0;
 }
 
 void			init_scene(t_env *e)

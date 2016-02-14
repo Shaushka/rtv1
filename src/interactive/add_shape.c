@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:12:37 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 14:13:05 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/14 14:40:14 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void			input_plane(t_env *e)
 	node->type = PLANE;
 	position(node);
 	normal(node);
-	constant(node);
 	color_choice(&node->color);
 }
 
