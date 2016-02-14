@@ -6,7 +6,7 @@
 /*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 17:44:49 by kervrangwendoline###   ########.fr       */
+/*   Updated: 2016/02/14 17:54:12 by kervrangwendoline###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,14 +121,6 @@ typedef struct		s_node
 typedef struct 		s_parse
 {
 	char 						*name;
-	int							win_h;
-	int							win_w;
-	int							cam_pos_x;
-	int							cam_pos_y;
-	int							cam_pos_z;
-	int							cam_dir_x;
-	int							cam_dir_y;
-	int							cam_dir_z;
 	t_node					*nodes;
 	t_object				*obj;
 }									t_parse;
