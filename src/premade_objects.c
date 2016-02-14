@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 13:43:06 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 13:52:43 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static t_object	*set_list_obj_other(void)
 	sphere = malloc(sizeof(t_object));
 	cylinder = malloc(sizeof(t_object));
 	cone = malloc(sizeof(t_object));
-	*sphere = set_sphere((t_vector){15, -2, 0}, 1);
+	*sphere = set_sphere((t_vector){10, -2, 0}, 1);
 	*cylinder = set_cylinder((t_vector){8, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
-	*cone = set_cone((t_vector){-15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
+	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
 	sphere->shine = 1;
 	cylinder->color = (t_color){254, 191, 210};
@@ -47,7 +47,7 @@ static t_object	*set_list_obj_planes_part2(void)
 	*plane3 = set_plane((t_vector){0, 0, -5}, (t_vector){ 0, 0, 5});
 	*plane4 = set_plane((t_vector){20, 0, 0}, (t_vector){ -1, 0, 0});
 	plane3->color = (t_color){255, 10, 10};
-	plane4->color = (t_color){0, 0, 0};
+	plane4->color = (t_color){125, 125, 125};
 	plane3->shine = 0;
 	plane4->shine = 0;
 	plane3->next = plane4;

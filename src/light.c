@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/14 13:40:34 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 14:25:25 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdlib.h>
 
 #define SPECULAR 100 // plus la specular est grande moins la tache est grande
+#define BLUR 5
+
 
 t_color			check_color(t_color color)
 {
@@ -88,6 +90,10 @@ float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	if (attenuation < 0)
 		attenuation = 0;
 	coef *= light.intensity;
+			if(coef > 1)
+				coef = 1;
+			if(coef < 0)
+				coef = 0;
 //	coef = coef * attenuation;
 	return(coef);
 /*	item.color.r = ((item.color.r + light.color.r * coef) * light.intensity) / 2;
@@ -99,7 +105,7 @@ float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 
 float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
 {
-	t_vector	reflect;
+	t_vector	shine;
 	t_vector	light_ray;
 	t_vector	normal;
 	float		spec;
@@ -113,13 +119,13 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 		normal = normal_cone(e->cam, item, inter_ray);
 	else
 		normal = normal_cylinder(e->cam, item, inter_ray);
-	reflect = mult_vector(normal, (2.0f * dotpro_vector(light_ray, normal)));
-	reflect = sub_vector(light_ray, reflect);
-	spec = dotpro_vector(inter_ray, reflect);
+	shine = mult_vector(normal, (2.0f * dotpro_vector(light_ray, normal)));
+	shine = sub_vector(light_ray, shine);
+	spec = dotpro_vector(inter_ray, shine);
 	
 	if (spec > 0)
 	{
-		spec = dotpro_vector(normal, reflect) / norm_vector(reflect);
+		spec = dotpro_vector(normal, shine) / norm_vector(shine);
 		spec = powf(spec, SPECULAR) * item.shine;
 	}
 	if (spec > 20000)
@@ -134,21 +140,18 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 	t_color		c_light;
 	float		coef;
 	float		spec;
+	float		shade;
 
 	item.color = mult_color(item.color, AMBIANT);
 	while(lights)
 	{
 		coef = 0;
 		spec = 0;
-		if (!check_shadow(*lights, inter_ray, e))
+		if (!(shade = check_shadow(*lights, inter_ray, e)))
 		{
-			coef += diffuse_light(*lights, item, inter_ray, e);
-			if(coef > 1)
-				coef = 1;
-			if(coef < 0)
-				coef = 0;
+			coef = diffuse_light(*lights, item, inter_ray, e);
 			if (item.shine > 0)
-				spec += specular_light(*lights, item, inter_ray, e);
+				spec = specular_light(*lights, item, inter_ray, e);
 			c_light = mult_color(lights->color, (coef + spec));
 			item.color = add_color(item.color, c_light);
 		}
@@ -163,15 +166,38 @@ void			init_lights(t_env *e)
 	t_light		*test;
 
 	test = malloc(sizeof(t_light));
-	test->pos = (t_vector){2, -2, 0};
+	test->pos = (t_vector){0, -2, 0};
 	test->dir = (t_vector){0, 1, 0};
-	test->color = (t_color){255, 255, 255};
-	test->intensity = 0.4;
+	test->color = (t_color){150, 150, 150};
+	test->intensity = 0.2;
 	test->next = NULL;
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){2, 2, 0};
+	e->lights->pos = (t_vector){0, -1.90, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
-	e->lights->color = (t_color){255, 255, 255};
-	e->lights->intensity = 0.4;
+	e->lights->color = (t_color){150, 150, 150};
+	e->lights->intensity = 0.2;
 	e->lights->next = test;
+
+	test = malloc(sizeof(t_light));
+	test->pos = (t_vector){0, -1.8, 0};
+	test->dir = (t_vector){0, 1, 0};
+	test->color = (t_color){150, 150, 150};
+	test->intensity = 0.2;
+	test->next = e->lights;
+	e->lights = test;
+	test = malloc(sizeof(t_light));
+	test->pos = (t_vector){0, -1.7, 0};
+	test->dir = (t_vector){0, 1, 0};
+	test->color = (t_color){150, 150, 150};
+	test->intensity = 0.2;
+	test->next = e->lights;
+	e->lights = test;
+	test = malloc(sizeof(t_light));
+	test->pos = (t_vector){0, -1.6, 0};
+	test->dir = (t_vector){0, 1, 0};
+	test->color = (t_color){150, 150, 150};
+	test->intensity = 0.2;
+	test->next = e->lights;
+	e->lights = test;
+
 }
