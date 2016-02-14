@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+         #
+#    By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/13 19:53:16 by chuang           ###   ########.fr        #
+#    Updated: 2016/02/14 17:34:11 by kervrangwendoline###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,11 @@ SRC_NAME = main.c								\
 		   interactive/input_normal.c			\
 		   interactive/input_vectors_clean.c	\
 		   interactive/input_position.c			\
-		   interactive/input_verification.c	
+		   interactive/input_verification.c	\
+			 atof.c	\
+			 debug.c	\
+			 setter.c	\
+			 parser.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

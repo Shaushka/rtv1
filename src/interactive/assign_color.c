@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assign_color.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:26:41 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 14:37:54 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/14 17:45:09 by kervrangwendoline###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void		random_color(t_color *color)
 	color->b = rand() % 255;
 }
 
-static void		assign_color(t_color *color, char *str)
+void		assign_color(t_color *color, char *str)
 {
 	int			i;
 
