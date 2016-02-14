@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 15:57:57 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/03 13:43:49 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 13:30:27 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ t_object	set_plane(t_vector pos, t_vector normal)
 	plane.type = PLANE;
 	plane.pos = pos;
 	plane.normal = normal;
-	plane.constant = 0;
+	plane.radius = 0;
+	plane.height = 0;
+	plane.shine = 0;
 	return (plane);
 }
 

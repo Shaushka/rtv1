@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/13 20:18:58 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/13 20:26:24 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,11 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	
 	if (spec > 0)
 	{
-		spec = -dotpro_vector(normal, reflect) / norm_vector(reflect);
+		spec = dotpro_vector(normal, reflect) / norm_vector(reflect);
 		spec = powf(spec, SPECULAR) * item.shine;
 	}
-//	if (spec > 2000)
-//		spec = 2000;
+	if (spec > 20000)
+		spec = 20000;
 	if (spec < 0)
 		spec = 0;
 	return(spec);

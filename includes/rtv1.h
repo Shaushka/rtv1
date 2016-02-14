@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/13 19:52:52 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 13:28:35 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef	struct	s_object
 	t_vector			normal;//plan
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
-	float				constant;//plan
 	float				shine;//brillance
 }						t_object;
 

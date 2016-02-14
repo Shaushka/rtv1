@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/12 17:39:16 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/14 13:28:30 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_object	set_cone(t_vector pos, t_vector dir, float radius, float height)
 	cone.dir = unit_vector(dir);
 	cone.radius = radius;
 	cone.height = height;
+	cone.shine = 0;
 	return (cone);
 }
 

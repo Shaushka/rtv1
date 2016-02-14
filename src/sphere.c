@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/12 17:35:45 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/14 13:30:50 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ t_object		set_sphere(t_vector pos, float radius)
 	sphere.type = SPHERE;
 	sphere.pos = pos;
 	sphere.radius = radius;
+	sphere.height = 0;
+	sphere.shine = 0;
 	return (sphere);
 }
 

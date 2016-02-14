@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/13 20:18:03 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/13 20:31:46 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ static t_object	*set_list_obj_planes_part2(void)
 
 	plane3 = malloc(sizeof(t_object));
 	plane4 = malloc(sizeof(t_object));
-	*plane3 = set_plane((t_vector){0, 0, -10}, (t_vector){ 0, 0, 5});
+	*plane3 = set_plane((t_vector){0, 0, -5}, (t_vector){ 0, 0, 5});
 	*plane4 = set_plane((t_vector){20, 0, 0}, (t_vector){ -1, 0, 0});
 	plane3->color = (t_color){255, 10, 10};
-	plane4->color = (t_color){10, 10, 10};
+	plane4->color = (t_color){0, 0, 0};
 	plane3->shine = 0;
-	plane4->shine = 100;
+	plane4->shine = 0;
 	plane3->next = plane4;
 	plane4->next = set_list_obj_other();
 	return (plane3);
@@ -64,9 +64,9 @@ void			set_list_obj(t_env *e)
 	plane0 = malloc(sizeof(t_object));
 	plane1 = malloc(sizeof(t_object));
 	plane2 = malloc(sizeof(t_object));
-	*plane0 = set_plane((t_vector){0, -10, 0}, (t_vector){ 0, 5, 0});
-	*plane1 = set_plane((t_vector){0, 10, 0}, (t_vector){ 0, 5, 0});
-	*plane2 = set_plane((t_vector){0, 0, 10}, (t_vector){ 0, 0, -5});
+	*plane0 = set_plane((t_vector){0, -5, 0}, (t_vector){ 0, 5, 0});
+	*plane1 = set_plane((t_vector){0, 5, 0}, (t_vector){ 0, 5, 0});
+	*plane2 = set_plane((t_vector){0, 0, 5}, (t_vector){ 0, 0, -5});
 	plane0->color = (t_color){1, 255, 255};
 	plane1->color = (t_color){10, 255, 10};
 	plane2->color = (t_color){10, 10, 255};
