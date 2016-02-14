@@ -6,7 +6,7 @@
 #    By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/14 17:34:11 by kervrangwendoline###   ########.fr        #
+#    Updated: 2016/02/14 21:11:55 by chuang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRC_NAME = main.c								\
 		   ray_tracing.c						\
 		   sphere.c								\
 		   light.c								\
+		   reflection_light.c					\
 		   vector.c								\
 		   vector2.c							\
 		   color.c								\

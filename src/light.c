@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/14 14:37:22 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/14 21:47:55 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 
 t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 {
-	t_color		c_light;
+	t_color		tmp_color;
 	float		coef;
 	float		spec;
 	float		shade;
@@ -153,8 +153,13 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 			coef = diffuse_light(*lights, item, inter_ray, e);
 			if (item.shine > 0)
 				spec = specular_light(*lights, item, inter_ray, e);
-			c_light = mult_color(lights->color, (coef + spec));
-			item.color = add_color(item.color, c_light);
+			if (item.reflect > 0)
+			{
+				tmp_color = reflection(*lights, item, inter_ray, e);
+				item.color = add_color(item.color, tmp_color);
+			}
+			tmp_color = mult_color(lights->color, (coef + spec));
+			item.color = add_color(item.color, tmp_color);
 		}
 		lights = lights->next;
 	}
@@ -170,35 +175,12 @@ void			init_lights(t_env *e)
 	test->pos = (t_vector){0, -2, 0};
 	test->dir = (t_vector){0, 1, 0};
 	test->color = (t_color){150, 150, 150};
-	test->intensity = 0.2;
+	test->intensity = 0.1;
 	test->next = NULL;
 	e->lights = malloc(sizeof(t_light));
 	e->lights->pos = (t_vector){0, -1.90, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){150, 150, 150};
-	e->lights->intensity = 0.2;
+	e->lights->intensity = 0.1;
 	e->lights->next = test;
-
-	test = malloc(sizeof(t_light));
-	test->pos = (t_vector){0, -1.8, 0};
-	test->dir = (t_vector){0, 1, 0};
-	test->color = (t_color){150, 150, 150};
-	test->intensity = 0.2;
-	test->next = e->lights;
-	e->lights = test;
-	test = malloc(sizeof(t_light));
-	test->pos = (t_vector){0, -1.7, 0};
-	test->dir = (t_vector){0, 1, 0};
-	test->color = (t_color){150, 150, 150};
-	test->intensity = 0.2;
-	test->next = e->lights;
-	e->lights = test;
-	test = malloc(sizeof(t_light));
-	test->pos = (t_vector){0, -1.6, 0};
-	test->dir = (t_vector){0, 1, 0};
-	test->color = (t_color){150, 150, 150};
-	test->intensity = 0.2;
-	test->next = e->lights;
-	e->lights = test;
-
 }

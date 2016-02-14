@@ -6,7 +6,7 @@
 /*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 17:54:12 by kervrangwendoline###   ########.fr       */
+/*   Updated: 2016/02/14 21:23:38 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef	struct	s_object
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
 	float				shine;//brillance
+	float				reflect; // reflexion
 }						t_object;
 
 typedef struct		s_light
@@ -278,6 +279,16 @@ float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 float			specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
 t_color			ft_light (t_light *lights, t_object item, t_vector inter_ray, t_env *e);
 void			init_lights(t_env *e);
+
+/*
+**	reflection_light.c
+*/
+t_color			reflection(t_light light, t_object item, t_vector inter_ray, t_env *e);
+
+/*
+**	ray_tracing.c
+*/
+t_color			check_collision(t_env *e, t_vector ray);
 
 /*
 **	vector.c
