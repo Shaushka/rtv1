@@ -6,11 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/02/15 17:06:38 by mguillon         ###   ########.fr       */
-=======
-/*   Updated: 2016/02/15 17:00:57 by chuang           ###   ########.fr       */
->>>>>>> 1653244124042d1302e67731150bc5f7b8e9de37
+/*   Updated: 2016/02/15 17:40:51 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +27,9 @@ static t_object	*set_list_obj_other(void)
 	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
 	sphere->shine = 1;
-<<<<<<< HEAD
 	sphere->reflect = 0;
 	sphere->checkered = 0;
-=======
 	sphere->reflect = 0.4;
->>>>>>> 1653244124042d1302e67731150bc5f7b8e9de37
 	cylinder->color = (t_color){254, 191, 210};
 	cylinder->shine = 1;
 	cylinder->reflect = 0;
@@ -63,13 +56,10 @@ static t_object	*set_list_obj_planes_part2(void)
 	plane3->color = (t_color){255, 10, 10};
 	plane4->color = (t_color){125, 125, 125};
 	plane3->shine = 0;
-<<<<<<< HEAD
 	plane4->shine = 0;
 	plane3->checkered = 1;
 	plane4->checkered = 1;
-=======
 	plane4->shine = 1;
->>>>>>> 1653244124042d1302e67731150bc5f7b8e9de37
 	plane3->reflect = 0;
 	plane4->reflect = 0.2;
 	plane3->next = plane4;

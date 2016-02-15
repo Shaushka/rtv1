@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 16:58:17 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 17:43:12 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,10 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 	float		spec;
 	float		shade;
 
-	item.color = mult_color(item.color, AMBIANT);
+	if (item.checkered == 1)
+		item.color = mult_color(checkered_floor(inter_ray), AMBIANT);
+	else
+		item.color = mult_color(item.color, AMBIANT);
 	while(lights)
 	{
 		coef = 0;
