@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 17:43:12 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/15 18:16:54 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,12 @@ float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	attenuation = ((100.f - norm_vector(light_ray)) / 100.f);
 	if (attenuation < 0)
 		attenuation = 0;
-	coef *= light.intensity;
+	coef *= (light.intensity - 0.1 * (norm_vector(inter_ray) / 10));
 			if(coef > 1)
 				coef = 1;
 			if(coef < 0)
 				coef = 0;
-//	coef = coef * attenuation;
 	return(coef);
-/*	item.color.r = ((item.color.r + light.color.r * coef) * light.intensity) / 2;
-	item.color.g = ((item.color.g + light.color.g * coef) * light.intensity) / 2;
-	item.color.b = ((item.color.b + light.color.b * coef) * light.intensity) / 2;
-	item.color = check_color(item.color);
-	return (item.color);*/
 }
 
 float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
@@ -143,10 +137,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 	float		spec;
 	float		shade;
 
-	if (item.checkered == 1)
-		item.color = mult_color(checkered_floor(inter_ray), AMBIANT);
-	else
-		item.color = mult_color(item.color, AMBIANT);
+	item.color = mult_color(item.color, AMBIANT);
 	while(lights)
 	{
 		coef = 0;
@@ -154,9 +145,9 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 		if (!(shade = check_shadow(*lights, inter_ray, e)))
 		{
 			coef = diffuse_light(*lights, item, inter_ray, e);
-			if (item.shine > 0)
+			if (item.shine > 0 && coef)
 				spec = specular_light(*lights, item, inter_ray, e);
-			if (item.reflect > 0 && coef != 0)
+			if (item.reflect > 0 && coef)
 			{
 				tmp_color = reflection(*lights, item, inter_ray, e);
 				item.color = add_color(item.color, tmp_color);
@@ -181,9 +172,9 @@ void			init_lights(t_env *e)
 	test->intensity = 0.1;
 	test->next = NULL;*/
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){2, -2, 0};
+	e->lights->pos = (t_vector){0, 0, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){150, 150, 150};
-	e->lights->intensity = 0.3;
+	e->lights->intensity = 0.4;
 	e->lights->next = NULL;
 }

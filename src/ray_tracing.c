@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 16:59:12 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 17:58:47 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 		}
 		tmp = tmp->next;
 	}
-	if (inter > 0.0f && inter < 150.f)
+	if (inter > 0.0001f && inter < 150.f)
 	//&& inter < (float)MAX_VISION(e->cam.pos.z))
 	{
 		return (ft_light(&(*e->lights), *item, mult_vector(ray, inter), e));
