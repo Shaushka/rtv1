@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 21:32:24 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 17:06:38 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,20 @@ static t_object	*set_list_obj_other(void)
 	cylinder = malloc(sizeof(t_object));
 	cone = malloc(sizeof(t_object));
 	*sphere = set_sphere((t_vector){10, -2, 0}, 1);
-	*cylinder = set_cylinder((t_vector){8, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
+	*cylinder = set_cylinder((t_vector){15, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
 	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
-	sphere->shine = 0;
-	sphere->reflect = 1;
+	sphere->shine = 1;
+	sphere->reflect = 0;
+	sphere->checkered = 0;
 	cylinder->color = (t_color){254, 191, 210};
-	cylinder->shine = 0;
+	cylinder->shine = 1;
 	cylinder->reflect = 0;
+	cylinder->checkered = 0;
 	cone->color = (t_color){255, 0, 255};
 	cone->shine = 1;
 	cone->reflect = 0;
+	cone->checkered = 0;
 	sphere->next = cylinder;
 	cylinder->next = cone;
 	cone->next = NULL;
@@ -53,6 +56,8 @@ static t_object	*set_list_obj_planes_part2(void)
 	plane4->color = (t_color){125, 125, 125};
 	plane3->shine = 0;
 	plane4->shine = 0;
+	plane3->checkered = 1;
+	plane4->checkered = 1;
 	plane3->reflect = 0;
 	plane4->reflect = 0;
 	plane3->next = plane4;
@@ -70,7 +75,7 @@ void			set_list_obj(t_env *e)
 	plane1 = malloc(sizeof(t_object));
 	plane2 = malloc(sizeof(t_object));
 	*plane0 = set_plane((t_vector){0, -5, 0}, (t_vector){ 0, 5, 0});
-	*plane1 = set_plane((t_vector){0, 5, 0}, (t_vector){ 0, 5, 0});
+	*plane1 = set_plane((t_vector){0, 5, 3}, (t_vector){ 0, 5, 3});
 	*plane2 = set_plane((t_vector){0, 0, 5}, (t_vector){ 0, 0, -5});
 	plane0->color = (t_color){1, 255, 255};
 	plane1->color = (t_color){10, 255, 10};
@@ -78,6 +83,9 @@ void			set_list_obj(t_env *e)
 	plane0->shine = 0;
 	plane1->shine = 0;
 	plane2->shine = 0;
+	plane0->checkered = 1;
+	plane1->checkered = 1;
+	plane2->checkered = 1;
 	plane0->reflect = 0;
 	plane1->reflect = 0;
 	plane2->reflect = 0;

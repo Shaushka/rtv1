@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 21:23:38 by chuang           ###   ########.fr       */
+/*   Created: 2016/02/15 11:38:22 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/15 14:25:41 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef	struct	s_object
 	float				height;//cone cylindre
 	float				shine;//brillance
 	float				reflect; // reflexion
+	float				checkered;//dallage_carreaux
 }						t_object;
 
 typedef struct		s_light
@@ -273,6 +274,10 @@ float			inter_cone(t_vector cam_pos, t_vector ray, t_object obj);
 t_vector		normal_cone(t_cam cam, t_object obj, t_vector ray);
 
 /*
+**>----------> LIGHTS <-----
+*/
+
+/*
 **	light.c
 */
 float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
@@ -308,10 +313,24 @@ t_vector		cross_vector(t_vector v, t_vector u);
 t_vector		mult_vector(t_vector a, float m);
 
 /*
+**>----------> COLOR AND TEXTURE <-----
+*/
+
+/*
+**	texture.c
+*/
+t_color			checkered_floor(t_vector coord);
+
+/*
 **	color.c
 */
 t_color			add_color(t_color a, t_color b);
 t_color			mult_color(t_color color, float coef);
+
+/*
+**>----------> PARSER <-----
+*/
+
 
 /*
 **	parser
