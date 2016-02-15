@@ -6,7 +6,11 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/02/15 17:06:38 by mguillon         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/15 17:00:57 by chuang           ###   ########.fr       */
+>>>>>>> 1653244124042d1302e67731150bc5f7b8e9de37
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +31,12 @@ static t_object	*set_list_obj_other(void)
 	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
 	sphere->shine = 1;
+<<<<<<< HEAD
 	sphere->reflect = 0;
 	sphere->checkered = 0;
+=======
+	sphere->reflect = 0.4;
+>>>>>>> 1653244124042d1302e67731150bc5f7b8e9de37
 	cylinder->color = (t_color){254, 191, 210};
 	cylinder->shine = 1;
 	cylinder->reflect = 0;
@@ -55,11 +63,15 @@ static t_object	*set_list_obj_planes_part2(void)
 	plane3->color = (t_color){255, 10, 10};
 	plane4->color = (t_color){125, 125, 125};
 	plane3->shine = 0;
+<<<<<<< HEAD
 	plane4->shine = 0;
 	plane3->checkered = 1;
 	plane4->checkered = 1;
+=======
+	plane4->shine = 1;
+>>>>>>> 1653244124042d1302e67731150bc5f7b8e9de37
 	plane3->reflect = 0;
-	plane4->reflect = 0;
+	plane4->reflect = 0.2;
 	plane3->next = plane4;
 	plane4->next = set_list_obj_other();
 	return (plane3);
@@ -77,8 +89,8 @@ void			set_list_obj(t_env *e)
 	*plane0 = set_plane((t_vector){0, -5, 0}, (t_vector){ 0, 5, 0});
 	*plane1 = set_plane((t_vector){0, 5, 3}, (t_vector){ 0, 5, 3});
 	*plane2 = set_plane((t_vector){0, 0, 5}, (t_vector){ 0, 0, -5});
-	plane0->color = (t_color){1, 255, 255};
-	plane1->color = (t_color){10, 255, 10};
+	plane0->color = (t_color){0, 255, 255};
+	plane1->color = (t_color){0, 255, 0};
 	plane2->color = (t_color){10, 10, 255};
 	plane0->shine = 0;
 	plane1->shine = 0;

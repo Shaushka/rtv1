@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/14 21:47:55 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 16:58:17 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_color			check_color(t_color color)
 	return (color);
 }
 
-float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
+int			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 {
 	float		test;
 	t_vector	inter_pos;
@@ -60,9 +60,9 @@ float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 			test = inter_cylinder(inter_pos, unit_vector(light_ray), *tmp);
 		}
 		tmp = tmp->next;
-		if (test > 0.1 && test < (float)norm_vector(light_ray))
+		if (test > 0.0001 && test < (float)norm_vector(light_ray))
 		{
-			return (test);
+			return (1);
 			//tmp = NULL;
 		}
 	}
@@ -153,7 +153,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 			coef = diffuse_light(*lights, item, inter_ray, e);
 			if (item.shine > 0)
 				spec = specular_light(*lights, item, inter_ray, e);
-			if (item.reflect > 0)
+			if (item.reflect > 0 && coef != 0)
 			{
 				tmp_color = reflection(*lights, item, inter_ray, e);
 				item.color = add_color(item.color, tmp_color);
@@ -169,18 +169,18 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 
 void			init_lights(t_env *e)
 {
-	t_light		*test;
+//	t_light		*test;
 
-	test = malloc(sizeof(t_light));
-	test->pos = (t_vector){0, -2, 0};
+/*	test = malloc(sizeof(t_light));
+	test->pos = (t_vector){13, 0, 0};
 	test->dir = (t_vector){0, 1, 0};
 	test->color = (t_color){150, 150, 150};
 	test->intensity = 0.1;
-	test->next = NULL;
+	test->next = NULL;*/
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){0, -1.90, 0};
+	e->lights->pos = (t_vector){2, -2, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){150, 150, 150};
-	e->lights->intensity = 0.1;
-	e->lights->next = test;
+	e->lights->intensity = 0.3;
+	e->lights->next = NULL;
 }

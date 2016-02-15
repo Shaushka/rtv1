@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/15 11:38:22 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/15 14:25:41 by mguillon         ###   ########.fr       */
+/*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/15 17:35:09 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,7 +293,7 @@ t_color			reflection(t_light light, t_object item, t_vector inter_ray, t_env *e)
 /*
 **	ray_tracing.c
 */
-t_color			check_collision(t_env *e, t_vector ray);
+t_color			check_collision(t_env *e, t_vector ray, t_vector pos);
 
 /*
 **	vector.c
