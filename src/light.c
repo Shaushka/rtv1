@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 14:16:27 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 16:58:17 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ t_color			check_color(t_color color)
 	return (color);
 }
 
-float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
+int			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 {
 	float		test;
 	t_vector	inter_pos;
@@ -60,9 +60,9 @@ float			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 			test = inter_cylinder(inter_pos, unit_vector(light_ray), *tmp);
 		}
 		tmp = tmp->next;
-		if (test > 0.1 && test < (float)norm_vector(light_ray))
+		if (test > 0.0001 && test < (float)norm_vector(light_ray))
 		{
-			return (test);
+			return (1);
 			//tmp = NULL;
 		}
 	}

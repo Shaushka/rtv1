@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 16:54:59 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 14:21:05 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 17:02:41 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,15 @@ t_color		reflection(t_light light, t_object item, t_vector inter_ray, t_env *e)
 	else
 		normal = normal_cylinder(e->cam, item, inter_ray);
 	reflect = ray_reflect(normal, light_ray);
-	depth++;
 	if (depth < MAX_DEPTH)
 	{
 		c_tmp = check_collision(e, unit_vector(reflect), inter_ray);
 		color = add_color(mult_color(c_tmp, item.reflect), color);
+		depth++;
 	}
 	else
+	{
 		depth = 0;
+	}
 	return (color);
 }

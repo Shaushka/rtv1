@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/15 14:10:31 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 17:00:57 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static t_object	*set_list_obj_other(void)
 	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
 	sphere->shine = 1;
-	sphere->reflect = 0.2;
+	sphere->reflect = 0.4;
 	cylinder->color = (t_color){254, 191, 210};
 	cylinder->shine = 0;
 	cylinder->reflect = 0;
