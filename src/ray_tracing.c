@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/13 17:04:46 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 10:07:34 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #define LONGV		1.125
 #define LARGV		1.5
 
-t_color		check_collision(t_env *e, t_vector ray)
+t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 {
 	float		inter;
 	float		test;
@@ -35,27 +35,27 @@ t_color		check_collision(t_env *e, t_vector ray)
 	{
 		if (tmp->type == SPHERE)
 		{
-			test = inter_sphere(e->cam.pos, ray, *tmp);
+			test = inter_sphere(pos, ray, *tmp);
 			//normal = normal_sphere(e->cam, *item, ray, inter);
 		}
 		else if (tmp->type == PLANE)
 		{
-			test = inter_plane(e->cam.pos, ray, *tmp);
+			test = inter_plane(pos, ray, *tmp);
 			//normal = normal_plane(*item, ray);
 		}
 		else if (tmp->type == CONE)
 		{
-			test = inter_cone(e->cam.pos, ray, *tmp);
+			test = inter_cone(pos, ray, *tmp);
 			//normal = normal_cone(*item, ray, inter, e->cam);
 		}
 		else
 		{
-			test = inter_cylinder(e->cam.pos, ray, *tmp);
+			test = inter_cylinder(pos, ray, *tmp);
 			//normal = normal_cylinder(*item, ray, inter, e->cam);
 		}
 		//if(norm_vector(normal) == 0)
 			//test = 150.f;
-		if (test > 0.01f && test < inter)
+		if (test > 0.0001f && test < inter)
 		{
 			inter = test;
 			item = tmp;
@@ -125,7 +125,7 @@ void		ft_render(t_env *e)
 			ray = pixel_y_vector(e, v_line_x, y);
 			ray = unit_vector(ray);
 			addr = y * e->mlx_init.img.sizeline + x * e->mlx_init.img.opp;
-			put_pixel_to_img(e, addr, check_collision(e, ray));
+			put_pixel_to_img(e, addr, check_collision(e, ray, e->cam.pos));
 			y++;
 		}
 		x++;

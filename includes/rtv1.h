@@ -6,7 +6,7 @@
 /*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 21:23:38 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/15 14:16:12 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,7 +288,7 @@ t_color			reflection(t_light light, t_object item, t_vector inter_ray, t_env *e)
 /*
 **	ray_tracing.c
 */
-t_color			check_collision(t_env *e, t_vector ray);
+t_color			check_collision(t_env *e, t_vector ray, t_vector pos);
 
 /*
 **	vector.c
