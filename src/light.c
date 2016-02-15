@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 18:02:33 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 17:43:12 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/15 22:17:14 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,18 @@ float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	return (item.color);*/
 }
 
+t_vector	calc_normal(t_env *e, t_object item, t_vector inter_ray)
+{
+	if (item.type == SPHERE)
+		return(normal_sphere(e->cam, item, inter_ray));
+	else if (item.type == PLANE)
+		return(normal_plane(item, inter_ray));
+	else if (item.type == CONE)
+		return(normal_cone(e->cam, item, inter_ray));
+	else
+		return(normal_cylinder(e->cam, item, inter_ray));
+}
+
 float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
 {
 	t_vector	shine;
@@ -111,14 +123,7 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	float		spec;
 
 	light_ray = sub_vector(light.pos, add_vector(inter_ray, e->cam.pos));
-	if (item.type == SPHERE)
-		normal = normal_sphere(e->cam, item, inter_ray);
-	else if (item.type == PLANE)
-		normal = normal_plane(item, inter_ray); // call assigning normal function
-	else if (item.type == CONE)
-		normal = normal_cone(e->cam, item, inter_ray);
-	else
-		normal = normal_cylinder(e->cam, item, inter_ray);
+	normal = calc_normal(e, item, inter_ray);
 	shine = mult_vector(normal, (2.0f * dotpro_vector(light_ray, normal)));
 	shine = sub_vector(light_ray, shine);
 	spec = dotpro_vector(inter_ray, shine);
@@ -144,7 +149,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 	float		shade;
 
 	if (item.checkered == 1)
-		item.color = mult_color(checkered_floor(inter_ray), AMBIANT);
+		item.color = mult_color(checkered_floor(inter_ray, calc_normal(e, item, inter_ray)), AMBIANT);
 	else
 		item.color = mult_color(item.color, AMBIANT);
 	while(lights)

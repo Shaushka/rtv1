@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/15 17:40:51 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/15 22:17:12 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_object	*set_list_obj_other(void)
 	cylinder = malloc(sizeof(t_object));
 	cone = malloc(sizeof(t_object));
 	*sphere = set_sphere((t_vector){10, -2, 0}, 1);
-	*cylinder = set_cylinder((t_vector){15, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
+	*cylinder = set_cylinder((t_vector){10, 0, 0}, (t_vector){0, 1, 1}, 0.2, -1);
 	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
 	sphere->shine = 1;
@@ -55,11 +55,11 @@ static t_object	*set_list_obj_planes_part2(void)
 	*plane4 = set_plane((t_vector){20, 0, 0}, (t_vector){ -1, 0, 0});
 	plane3->color = (t_color){255, 10, 10};
 	plane4->color = (t_color){125, 125, 125};
-	plane3->shine = 0;
-	plane4->shine = 0;
+	plane3->shine = 0;//bas
+	plane4->shine = 0;//fond
 	plane3->checkered = 1;
 	plane4->checkered = 1;
-	plane4->shine = 1;
+	plane4->shine = 0;
 	plane3->reflect = 0;
 	plane4->reflect = 0.2;
 	plane3->next = plane4;
@@ -85,9 +85,9 @@ void			set_list_obj(t_env *e)
 	plane0->shine = 0;
 	plane1->shine = 0;
 	plane2->shine = 0;
-	plane0->checkered = 1;
-	plane1->checkered = 1;
-	plane2->checkered = 1;
+	plane0->checkered = 1;//gauche
+	plane1->checkered = 1;//droite
+	plane2->checkered = 1;//haut
 	plane0->reflect = 0;
 	plane1->reflect = 0;
 	plane2->reflect = 0;
