@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 20:26:19 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/16 20:36:24 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 
 #define BLUR 5
-#define SPECULAR 100
+//#define SPECULAR 100 //taille du reflet ++ qd specular --
 
 int			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 {

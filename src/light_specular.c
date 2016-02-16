@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:45:01 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 19:31:30 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 20:37:15 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** plus la specular est grande moins la tache est grande
 */
-#define SPECULAR 100000
+#define SPECULAR 100
 
 float	specular_light(t_light light, t_object item, t_vector inter, t_env *e)
 {
