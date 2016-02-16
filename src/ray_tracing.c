@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 17:58:47 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 14:21:52 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <math.h>
 
 #define DISTVUE		1.0
-#define LONGV		1.125
+#define LONGV		(LARGV * SCREEN_H / SCREEN_W)
 #define LARGV		1.5
 
 t_color		check_collision(t_env *e, t_vector ray, t_vector pos)

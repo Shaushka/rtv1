@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:39:23 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 12:48:03 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 15:03:46 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,19 @@ t_color			checkered_floor(t_vector coord, t_vector normal)
 	color1 = (t_color){12, 232, 219};
 	color2 = (t_color){12, 128, 232};
 
-//	coord.x = coord.x > 0.f ? coord.x + 1: coord.x;
-	mpx = (int)(fabsf(coord.x / (float)TILE_LEN)) % 2;
+	mpx = (int)(fabs((coord.x + 0.0001) / (float)TILE_LEN)) % 2;
 	mpx = (coord.x > 0.f) ? (mpx + 1) % 2 : mpx;
-//		coord.y = coord.y > 0.f ? coord.y + 1: coord.y;
-	mpy = (int)(fabsf(coord.y / (float)TILE_LEN)) % 2;
+	
+	mpy = (int)(fabs((coord.y + 0.0001) / (float)TILE_LEN)) % 2;
 	mpy = (coord.y > 0.f) ? (mpy + 1) % 2 : mpy;
-//	coord.z = coord.z > 0.f ? coord.z + 1 : coord.z;
-	mpz = (int)(fabsf(coord.z / (float)TILE_LEN)) % 2;
-	mpz = (coord.z > 0.f) ? (mpz + 1) % 2 : mpz;
+	mpz = (int)(fabs((coord.z + 0.0001) / (float)TILE_LEN)) % 2;
+	mpz = (int)(coord.z > 0.f) ? (mpz + 1) % 2 : mpz;
 	printf("x %d,y %d,z %d\n",mpx, mpy, mpz);
 	printf("x %f,y %f,z %f\n",coord.x, coord.y, coord.z);
  normal = (t_vector)normal; // ATTENTION : IL FAUT FAIRE LES VERTICALES EN UTILISANT LA NORMALE DU PLAN
-	if (mpz > 0)//!dotpro_vector(normal, (t_vector){0, 1, 0}))
+	if (mpy > 0)//!dotpro_vector(normal, (t_vector){0, 1, 0}))
 	{
-		if (((mpx == 0 && mpy == 0) || (mpx != 0 && mpy != 0)))
+		if (((mpx == 0 && mpz == 0) || (mpx != 0 && mpz != 0)))
 			return (color1);
 		else
 			return (color2);
@@ -48,7 +46,7 @@ t_color			checkered_floor(t_vector coord, t_vector normal)
 	}
 	else
 	{
-		if (((mpx == 0 && mpy == 0) || (mpx != 0 && mpy != 0)))
+		if (((mpx == 0 && mpz == 0) || (mpx != 0 && mpz != 0)))
 			return (color2);
 		else
 			return (color1);
