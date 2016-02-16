@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 19:08:12 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 19:31:48 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ static t_object	*set_list_obj_planes_part2(void)
 	*plane4 = set_plane((t_vector){30, 0, 0}, (t_vector){ -1, 0, 0});
 	plane3->color = (t_color){255, 10, 10};
 	plane4->color = (t_color){125, 125, 125};
-	plane3->shine = 0;//bas
-	plane4->shine = 1;//fond
+	plane3->checkered = 0;
+	plane3->shine = 0;
+	plane4->shine = 0;//fond
 	plane4->reflect = 0.4;
 	plane3->next = plane4;
 	plane4->next = set_list_obj_other();
@@ -71,6 +72,7 @@ void			set_list_obj(t_env *e)
 	plane0->color = (t_color){0, 255, 255};
 	plane1->color = (t_color){0, 255, 0};
 	plane2->color = (t_color){10, 10, 255};
+	plane0->shine = 10;
 	plane0->checkered = 0;//gauche
 	plane1->checkered = 0;//droite
 	plane2->checkered = 0;//haut
