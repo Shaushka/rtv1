@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 18:06:39 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 19:00:47 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_object		set_sphere(t_vector pos, float radius)
 	sphere.height = 0;
 	sphere.shine = 0;
 	sphere.reflect = 0;
+	sphere.checkered = 0;
 	return (sphere);
 }
 

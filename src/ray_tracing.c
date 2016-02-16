@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 18:24:15 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 19:02:20 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 	float		test;
 	t_object	*tmp;
 	t_object	*item;
-	t_vector	normal;
+//	t_vector	normal;
 
 	//APPEL DES LUMIERES
 	tmp = e->scene->l_obj;

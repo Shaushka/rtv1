@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:39:23 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 18:45:11 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 19:02:36 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_color			checkered_floor(t_vector coord)
 {
 	int			mpx;
 	int			mpy;
-	inti		mpz;
+	int		mpz;
 	t_color		color1;
 	t_color		color2;
 

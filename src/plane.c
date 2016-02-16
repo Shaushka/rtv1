@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/22 15:57:57 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 14:11:31 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 19:00:37 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_object	set_plane(t_vector pos, t_vector normal)
 	plane.height = 0;
 	plane.shine = 0;
 	plane.reflect = 0;
+	plane.checkered = 0;
 	return (plane);
 }
 
