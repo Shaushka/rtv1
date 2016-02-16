@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/16 15:32:06 by mgras            ###   ########.fr        #
+#    Updated: 2016/02/16 19:51:08 by gkervran         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,9 +47,9 @@ SRC_NAME = main.c								\
 		   interactive/input_verification.c		\
 		   atof.c								\
 		   debug.c								\
-		   setter.c								\
 		   parser.c								\
-		   loading_bar.c						\
+		   setter.c								\
+		   loading_bar.c						
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

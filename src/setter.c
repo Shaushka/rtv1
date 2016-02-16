@@ -1,30 +1,5 @@
 #include "rtv1.h"
 
-int	get_size(char *get, int i, char c)
-{
-	int	len;
-
-	(void)c;
-	len = 0;
-	while (get[i] && (get[i] != '}' && get[i] != '{' && get[i] != '(' && \
-	get[i] != ')' && get[i] != '[' && get[i] != ']'))
-	{
-		i++;
-		len++;
-	}
-	return(len);
-}
-
-char	*recup_name(t_node *node, char *get, char c)
-{
-	int	i = node->beg;
-	while (get[i] && get[i] != c)
-		i--;
-	if (!get[i])
-		i = 0;
-	return(ft_strtrim(ft_strsub(get, i, node->beg - i)));
-}
-
 void	set_object_type(char *name, t_object *obj)
 {
 	if (ft_strcmp(name, "sphere") == 0)

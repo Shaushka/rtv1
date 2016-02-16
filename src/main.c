@@ -6,7 +6,7 @@
 /*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 14:49:52 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 17:43:40 by kervrangwendoline###   ########.fr       */
+/*   Updated: 2016/02/16 19:52:57 by gkervran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	read_scene(int fd, t_parse *parse, t_env *e)
 	}
 	free(line);
 	line = NULL;
-//	ft_putstr(get);
 	get_instr(get, parse, e);
 }
 
@@ -88,6 +87,7 @@ int		main(int argc, char **argv)
 //		ft_exit("usage: ./rtv1", 1);
 	if (argc == 2)
 		get_scene(&e, argv[1]);
+	return (0);
 	init_and_draw(&e, argv[0]);
 	return (0);
 }
