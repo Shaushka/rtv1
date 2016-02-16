@@ -3,11 +3,12 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+         #
+#    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/15 12:13:45 by mguillon         ###   ########.fr        #
+#    Updated: 2016/02/16 20:27:42 by mgras            ###   ########.fr        #
 #                                                                              #
+# **************************************************************************** #
 # **************************************************************************** #
 
 # ----------------------------------------------------------------------------
@@ -16,7 +17,7 @@
 NAME = rtv1
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra
+CFLAGS += -Wall -Werror -Wextra -g
 
 SRC_PATH = ./src/
 SRC_NAME = main.c								\
@@ -27,7 +28,10 @@ SRC_NAME = main.c								\
 		   ray_tracing.c						\
 		   sphere.c								\
 		   light.c								\
-		   reflection_light.c					\
+		   light_ambiant.c						\
+		   light_reflection.c					\
+		   light_specular.c						\
+		   light_diffuse.c						\
 		   vector.c								\
 		   vector2.c							\
 		   color.c								\
@@ -47,8 +51,11 @@ SRC_NAME = main.c								\
 		   interactive/input_verification.c		\
 		   atof.c								\
 		   debug.c								\
+		   parser.c								\
+		   draw_2d_shapes.c						\
+		   ft_keyring.c							\
 		   setter.c								\
-		   parser.c
+		   loading_bar.c						\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

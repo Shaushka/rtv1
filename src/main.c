@@ -1,7 +1,22 @@
+<<<<<<< HEAD
+=======
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
+/*   Updated: 2016/02/16 20:07:30 by chuang           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+>>>>>>> b65ba7ea85326383cb6f1cb8662a7bc74122391d
 #include <stdlib.h>
 #include "rtv1.h"
 
-static void	read_scene(int fd, t_parse *parse, t_env *e)
+static void		read_scene(int fd, t_parse *parse, t_env *e)
 {
 	int		ret;
 	char	*line;
@@ -22,7 +37,7 @@ static void	read_scene(int fd, t_parse *parse, t_env *e)
 	get_instr(get, parse, e);
 }
 
-void		open_file(char *file, t_parse *parse, t_env *e)
+void			open_file(char *file, t_parse *parse, t_env *e)
 {
 	int fd;
 
@@ -41,7 +56,7 @@ void		open_file(char *file, t_parse *parse, t_env *e)
 	print_result(parse);
 }
 
-void	get_scene(t_env *e, char *file)
+void			get_scene(t_env *e, char *file)
 {
 	t_parse		*parse;
 
@@ -60,7 +75,7 @@ void	get_scene(t_env *e, char *file)
 	open_file(file, parse, e);
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_env	e;
 

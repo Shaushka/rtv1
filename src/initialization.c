@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialization.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/14 14:37:31 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 20:28:23 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,23 @@
 #include "key_define.h"
 #include <stdlib.h>
 
-void			init_env(t_env *e)
+void			new_img_in_old_env(t_env *e, t_env *old)
 {
-	(void)e;
+	e->mlx_init.mlx = old->mlx_init.mlx;
+	e->mlx_init.win = old->mlx_init.win;
+	if (!(e->mlx_init.img.img_ptr = mlx_new_image(e->mlx_init.mlx,
+													SCREEN_W, SCREEN_H)))
+		ft_exit("Can't create image", 1);
+	if (!(e->mlx_init.img.img_data = mlx_get_data_addr(e->mlx_init.img.img_ptr,
+													&e->mlx_init.img.bpp,
+													&e->mlx_init.img.sizeline,
+													&e->mlx_init.img.endian)))
+		ft_exit("Can't get image adress", 1);
+	e->mlx_init.img.opp = e->mlx_init.img.bpp / 8;
 }
 
 void			init_and_draw(t_env *e, char *av)
 {
-	init_env(e);
 	if (!(e->mlx_init.mlx = mlx_init()))
 		ft_exit("Can't initialize minilibX", 1);
 	if (!(e->mlx_init.win = mlx_new_window(e->mlx_init.mlx,
@@ -38,8 +47,11 @@ void			init_and_draw(t_env *e, char *av)
 													&e->mlx_init.img.endian)))
 		ft_exit("Can't get image adress", 1);
 	e->mlx_init.img.opp = e->mlx_init.img.bpp / 8;
+	init_keyring(e);
 	ft_render(e);
 	mlx_expose_hook(e->mlx_init.win, &expose_hook, e);
+	//mlx_hook(e->mlx_init.win, BUTTONPRESS, BUTTONPRESSMASK, &ft_key, e);
+	//mlx_hook(e->mlx_init.win, 6, 1L << 6, &ft_mouse_move, e);
 	mlx_hook(e->mlx_init.win, KEYPRESS, KEYPRESSMASK, &key_press_hook, e);
 	mlx_loop(e->mlx_init.mlx);
 }

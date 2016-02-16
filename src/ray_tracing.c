@@ -3,10 +3,9 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 17:58:47 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +14,7 @@
 #include <math.h>
 
 #define DISTVUE		1.0
-#define LONGV		1.125
+#define LONGV		(LARGV * SCREEN_H / SCREEN_W)
 #define LARGV		1.5
 
 t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
@@ -24,8 +23,7 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 	float		test;
 	t_object	*tmp;
 	t_object	*item;
-
-	//t_vector	normal;
+//	t_vector	normal;
 
 	//APPEL DES LUMIERES
 	tmp = e->scene->l_obj;
@@ -46,15 +44,15 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 		else if (tmp->type == CONE)
 		{
 			test = inter_cone(pos, ray, *tmp);
-			//normal = normal_cone(*item, ray, inter, e->cam);
+			//normal = normal_cone(pos, *item, ray);
 		}
 		else
 		{
 			test = inter_cylinder(pos, ray, *tmp);
 			//normal = normal_cylinder(*item, ray, inter, e->cam);
 		}
-		//if(norm_vector(normal) == 0)
-			//test = 150.f;
+//		if(norm_vector(normal) == 0)
+//			test = 200.f;
 		if (test > 0.0001f && test < inter)
 		{
 			inter = test;
@@ -109,6 +107,7 @@ void		ft_render(t_env *e)
 	int			x;
 	int			y;
 	int			addr;
+	t_env		e_load;
 
 	e->cam.pos = (t_vector){0., 0., 0.};
 	e->cam.h = unit_vector((t_vector){0., 0., -1});
@@ -116,10 +115,12 @@ void		ft_render(t_env *e)
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
 	pos_hgv = ft_pos_hgv(e);
 	x = 1;
+	new_img_in_old_env(&e_load, e);
 	while (x < SCREEN_W)
 	{
 		v_line_x = pixel_x_vector(e, pos_hgv, x);
 		y = 1;
+		ft_loading_bar(x , &e_load);
 		while (y < SCREEN_H)
 		{
 			ray = pixel_y_vector(e, v_line_x, y);

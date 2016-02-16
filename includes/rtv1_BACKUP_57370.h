@@ -6,7 +6,11 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 20:23:25 by mgras            ###   ########.fr       */
+<<<<<<< HEAD
+/*   Updated: 2016/02/16 15:25:26 by mgras            ###   ########.fr       */
+=======
+/*   Updated: 2016/02/16 15:15:01 by chuang           ###   ########.fr       */
+>>>>>>> b82e6964b59101932a3ac51331e929a0fb0f13be
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +29,6 @@
 # define SCREEN_W		1280
 # define SCREEN_H		960
 
-# define INTER_W		SCREEN_W / 5
-# define INTER_H		SCREEN_H / 5
-
 # define AMBIANT		0.4
 # define MAX_VISION(h)		(3570 + sqrt((h)))
 # define PI			3.14159265
@@ -35,28 +36,23 @@
 
 # define BUF_SIZE 10
 
-typedef	struct		s_vector
+typedef	struct	s_vector
 {
-	float			x;
-	float			y;
-	float			z;
-}					t_vector;
+	float		x;
+	float		y;
+	float		z;
+}				t_vector;
 
-typedef	struct		s_color
+typedef	struct	s_color
 {
-	int				r;
-	int				g;
-	int				b;
-}					t_color;
+	int			r;
+	int			g;
+	int			b;
+}				t_color;
 
-typedef	enum {
-	SPHERE,
-	PLANE,
-	CYLINDER,
-	CONE
-}	t_type;
+typedef	enum {SPHERE, PLANE, CYLINDER, CONE} t_type;
 
-typedef	struct		s_object
+typedef	struct	s_object
 {
 	void				*next;
 	t_type				type;
@@ -67,7 +63,7 @@ typedef	struct		s_object
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
 	float				shine;//brillance
-	float				reflect;//reflexion
+	float				reflect; // reflexion
 	float				checkered;//dallage_carreaux
 }						t_object;
 
@@ -80,49 +76,38 @@ typedef struct		s_light
 	struct s_light	*next;
 }					t_light;
 
-typedef struct		s_scene
+typedef struct	s_scene
 {
-	void			*l_obj;
-	t_light			*light;
-}					t_scene;
+	void		*l_obj;
+	t_light		*light;
+}				t_scene;
 
-typedef struct		s_cam
+typedef struct	s_cam
 {
-	t_vector		pos;
-	t_vector		dir;
-	t_vector		h;
-	t_vector		d;
-}					t_cam;
+	t_vector	pos;
+	t_vector	dir;
+	t_vector	h;
+	t_vector	d;
+}				t_cam;
 
-typedef struct		s_img
+typedef struct	s_img
 {
-	void			*img_ptr;
-	char			*img_data;
-	int				bpp;
-	int				opp;
-	int				sizeline;
-	int				endian;
-	int				width;
-	int				height;
-}					t_img;
+	void		*img_ptr;
+	char		*img_data;
+	int			bpp;
+	int			opp;
+	int			sizeline;
+	int			endian;
+	int			width;
+	int			height;
+}				t_img;
 
-typedef struct		s_mlx_init
+typedef struct	s_mlx_init
 {
 	t_img		img;
 	void		*mlx;
 	void		*win;
-}					t_mlx_init;
-
-typedef struct	s_keyring
-{
-	double		mouse_x;
-	double		mouse_y;
-	int			selected_light;
-	int			selected_obj;
-	int			mode;
-	int			visible;
-	t_mlx_init	interface;
-}				t_keyring;
+}				t_mlx_init;
 
 typedef struct	s_env
 {
@@ -130,22 +115,21 @@ typedef struct	s_env
 	t_scene		*scene;
 	t_light		*lights;
 	t_cam		cam;
-	t_keyring	key;
 }				t_env;
 
 typedef struct		s_node
 {
-	char			*value;
-	char			*type;
-	struct s_node	*next;
-}					t_node;
+	int							beg;
+	char						type;
+	struct				 	s_node	*next;
+}									t_node;
 
-typedef struct		s_parse
+typedef struct 		s_parse
 {
-	char			*name;
-	t_node			*nodes;
-	t_object		*obj;
-}					t_parse;
+	char 						*name;
+	t_node					*nodes;
+	t_object				*obj;
+}									t_parse;
 
 /*
 **	main.c
@@ -155,7 +139,6 @@ void			ft_initialize(t_env *e);
 /*
 **	initialization.c
 */
-void			init_keyring(t_env *e);
 void			ft_exit(char *str, int n);
 void			quit_and_free(t_env *e);
 void			init_env(t_env *e, char *av);
@@ -223,9 +206,8 @@ t_object		*create_object(t_env *e);
 void			radius(t_object *node);
 void			height(t_object *node);
 void			constant(t_object *node);
-/*
-** int			count_objects(t_env *e);
-*/
+//int			count_objects(t_env *e);
+
 /*
 **	input_normal.c
 */
@@ -271,7 +253,7 @@ float			d_acos(float value);
 /*
 **	sphere.c
 */
-t_object		set_sphere(t_vector pos, float radius);
+t_object		set_sphere(t_vector pos,float radius);
 float			inter_sphere(t_vector cam_pos, t_vector ray, t_object sphere);
 t_vector		normal_sphere(t_vector cam, t_object obj, t_vector ray);
 
@@ -285,14 +267,14 @@ t_vector		normal_plane(t_object obj, t_vector ray);
 /*
 **	cylinder.c
 */
-t_object		set_cylinder(t_vector pos, t_vector dir, float r, float h);
-float			inter_cylinder(t_vector cam_pos, t_vector ray, t_object obj);
-t_vector		normal_cylinder(t_vector cam, t_object obj, t_vector ray);
+t_object		set_cylinder(t_vector pos, t_vector dir, float radius,float height);
+float			inter_cylinder(t_vector cam_pos, t_vector ray, t_object cylinder);
+t_vector		normal_cylinder( t_vector cam, t_object obj, t_vector ray);
 
 /*
 **	cone.c
 */
-t_object		set_cone(t_vector pos, t_vector dir, float r, float h);
+t_object		set_cone(t_vector pos, t_vector dir, float radius,float height);
 float			inter_cone(t_vector cam_pos, t_vector ray, t_object obj);
 t_vector		normal_cone(t_vector cam, t_object obj, t_vector ray);
 
@@ -303,25 +285,16 @@ t_vector		normal_cone(t_vector cam, t_object obj, t_vector ray);
 /*
 **	light.c
 */
-
-t_vector		calc_normal(t_vector pos, t_object obj, t_vector inter);
-t_color			ft_light (t_light *ls, t_object o, t_vector inter, t_env *e);
+float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
+t_vector		calc_normal(t_vector pos, t_object item, t_vector inter_ray);
+float			specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
+t_color			ft_light (t_light *lights, t_object item, t_vector inter_ray, t_env *e);
 void			init_lights(t_env *e);
-
-/*
-**	light_diffuse.c
-*/
-float			diffuse_light(t_light l, t_object o, t_vector inter, t_env *e);
-
-/*
-**	light_specular.c
-*/
-float			specular_light(t_light l, t_object o, t_vector inter, t_env *e);
 
 /*
 **	reflection_light.c
 */
-t_color			reflection(t_light l, t_object o, t_vector inter, t_env *e);
+t_color			reflection(t_light light, t_object item, t_vector inter_ray, t_env *e);
 
 /*
 **	ray_tracing.c
@@ -359,7 +332,6 @@ t_color			checkered_floor(t_vector coord);
 */
 t_color			add_color(t_color a, t_color b);
 t_color			mult_color(t_color color, float coef);
-t_color			check_color(t_color color);
 
 /*
 **>----------> PARSER <-----
@@ -371,7 +343,7 @@ t_color			check_color(t_color color);
 void				open_file(char *file, t_parse *parse, t_env *e);
 float				ft_atof(char *number);
 void				assign_color(t_color *color, char *str);
-t_object			*create_object();
+t_object		*create_object();
 void				assign_normal(t_object *node, char *str);
 void				assign_pos(t_object *node, char *str);
 int					check_values(char *str, int min, int max);
@@ -383,7 +355,7 @@ int					correct_input(char *str);
 int					is_vector(char *str);
 int					is_slashes_and_digits(char *str);
 void				init_obj(t_object *node);
-t_vector			set_vector(t_vector v, float x, float y, float z);
+t_vector		set_vector(t_vector v, float x, float y, float z);
 void				print_nodes(t_node *nodes);
 void				print_result(t_parse *parse);
 char				*recup_name(t_node *node, char *get, char c);
@@ -396,23 +368,9 @@ void				get_instr(char *get, t_parse *parse, t_env *e);
 /*
 **	ft_loading_bar.c
 */
+void				ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e);
 void				ft_gen_loading_border(t_env *e);
 void				ft_fill_loading_border(t_env *e, int x);
 int					ft_loading_bar(int x, t_env *e);
-
-/*
-**	ft_print_2d_shapes.c
-*/
-void				ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e);
-void				ft_print_square(t_color c, t_vector st, t_vector en, t_env *e);
-
-/*
-**	ft_keyring.c
-*/
-void				new_interface_image(t_env *e);
-void				init_keyring(t_env *e);
-int					ft_mouse_move(int x, int y, t_env *e);
-int					ft_key(int boutton, t_env *e);
-void				ft_keyring(t_env *e);
 
 #endif

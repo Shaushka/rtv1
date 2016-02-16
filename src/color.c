@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 19:36:51 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/13 19:45:38 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 17:36:29 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,21 @@ t_color		add_color(t_color a, t_color b)
 	a.g += b.g;
 	a.b += b.b;
 	return (a);
+}
+
+t_color		check_color(t_color color)
+{
+	if (color.r < 0)
+		color.r = 0;
+	if (color.g < 0)
+		color.g = 0;
+	if (color.b < 0)
+		color.b = 0;
+	if (color.r > 255)
+		color.r = 255;
+	if (color.g > 255)
+		color.g = 255;
+	if (color.b > 255)
+		color.b = 255;
+	return (color);
 }
