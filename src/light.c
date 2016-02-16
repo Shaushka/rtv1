@@ -77,7 +77,7 @@ float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	attenuation = ((100.f - norm_vector(light_ray)) / 100.f);
 	if (attenuation < 0)
 		attenuation = 0;
-	coef *= (light.intensity - 0.1 * (norm_M@;vector(inter_ray) / 10));
+	coef *= (light.intensity - 0.1 * (norm_vector(inter_ray) / 10));
 			if(coef > 1)
 				coef = 1;
 			if(coef < 0)
@@ -109,7 +109,7 @@ float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e
 	shine = mult_vector(normal, (2.0f * dotpro_vector(light_ray, normal)));
 	shine = sub_vector(light_ray, shine);
 	spec = dotpro_vector(inter_ray, shine);
-	
+
 	if (spec > 0)
 	{
 		spec = dotpro_vector(normal, shine) / norm_vector(shine);

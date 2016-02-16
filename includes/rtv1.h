@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/15 22:15:28 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/16 15:25:26 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,11 +137,12 @@ void			ft_initialize(t_env *e);
 */
 void			ft_exit(char *str, int n);
 void			quit_and_free(t_env *e);
-void			init_env(t_env *e);
+void			init_env(t_env *e, char *av);
 int				expose_hook(t_env *e);
 void			init_and_draw(t_env *e, char *av);
 void			init_obj(t_object *node);
 void			init_scene(t_env *e);
+void			new_img_in_old_env(t_env *e, t_env *old);
 
 /*
 **	premade_objects.c
@@ -332,7 +333,6 @@ t_color			mult_color(t_color color, float coef);
 **>----------> PARSER <-----
 */
 
-
 /*
 **	parser
 */
@@ -361,5 +361,12 @@ void				set_object_param(char *value, char *data, t_object *obj);
 void				error_in_parse(char *str);
 void				get_instr(char *get, t_parse *parse, t_env *e);
 
+/*
+**	ft_loading_bar.c
+*/
+void				ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e);
+void				ft_gen_loading_border(t_env *e);
+void				ft_fill_loading_border(t_env *e, int x);
+int					ft_loading_bar(int x, t_env *e);
 
 #endif
