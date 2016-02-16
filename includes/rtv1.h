@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 15:25:26 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/16 16:47:13 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -251,7 +251,7 @@ float			d_acos(float value);
 */
 t_object		set_sphere(t_vector pos,float radius);
 float			inter_sphere(t_vector cam_pos, t_vector ray, t_object sphere);
-t_vector		normal_sphere(t_cam cam, t_object obj, t_vector ray);
+t_vector		normal_sphere(t_vector cam, t_object obj, t_vector ray);
 
 /*
 **	plane.c
@@ -265,14 +265,14 @@ t_vector		normal_plane(t_object obj, t_vector ray);
 */
 t_object		set_cylinder(t_vector pos, t_vector dir, float radius,float height);
 float			inter_cylinder(t_vector cam_pos, t_vector ray, t_object cylinder);
-t_vector		normal_cylinder( t_cam cam, t_object obj, t_vector ray);
+t_vector		normal_cylinder( t_vector cam, t_object obj, t_vector ray);
 
 /*
 **	cone.c
 */
 t_object		set_cone(t_vector pos, t_vector dir, float radius,float height);
 float			inter_cone(t_vector cam_pos, t_vector ray, t_object obj);
-t_vector		normal_cone(t_cam cam, t_object obj, t_vector ray);
+t_vector		normal_cone(t_vector cam, t_object obj, t_vector ray);
 
 /*
 **>----------> LIGHTS <-----
@@ -282,7 +282,7 @@ t_vector		normal_cone(t_cam cam, t_object obj, t_vector ray);
 **	light.c
 */
 float			diffuse_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
-t_vector		calc_normal(t_env *e, t_object item, t_vector inter_ray);
+t_vector		calc_normal(t_vector pos, t_object item, t_vector inter_ray);
 float			specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e);
 t_color			ft_light (t_light *lights, t_object item, t_vector inter_ray, t_env *e);
 void			init_lights(t_env *e);
@@ -321,7 +321,7 @@ t_vector		mult_vector(t_vector a, float m);
 /*
 **	texture.c
 */
-t_color			checkered_floor(t_vector coord, t_vector normal);
+t_color			checkered_floor(t_vector coord);
 
 /*
 **	color.c
