@@ -124,7 +124,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter_ray, t_env *e)
 	float		shade;
 
 	if (item.checkered == 1)
-		item.color = mult_color(checkered_floor(inter_ray, calc_normal(e->cam.pos, item, inter_ray)), AMBIANT);
+		item.color = mult_color(checkered_floor(inter_ray), AMBIANT);
 	else
 		item.color = mult_color(item.color, AMBIANT);
 	while(lights)

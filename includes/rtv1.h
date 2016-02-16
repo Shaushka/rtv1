@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 14:14:38 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 15:15:01 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,7 +320,7 @@ t_vector		mult_vector(t_vector a, float m);
 /*
 **	texture.c
 */
-t_color			checkered_floor(t_vector coord, t_vector normal);
+t_color			checkered_floor(t_vector coord);
 
 /*
 **	color.c

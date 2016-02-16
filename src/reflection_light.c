@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 16:54:59 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 14:17:40 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 15:33:24 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,21 +31,22 @@ t_color		reflection(t_light light, t_object item, t_vector inter_ray, t_env *e)
 	t_vector				normal;
 	t_color					c_tmp;
 	t_color					color;
+	t_vector					tmp;
 
 	color = (t_color){0,0,0};
 	c_tmp = (t_color){0,0,0};
-	light_ray = sub_vector( add_vector(inter_ray, e->cam.pos), light.pos);
+	light_ray = sub_vector( add_vector(inter_ray, e->cam.pos),light.pos);
 	normal = calc_normal(e->cam.pos, item, inter_ray);
 	reflect = ray_reflect(normal, light_ray);
 	if (depth < MAX_DEPTH)
 	{
+		tmp = e->cam.pos;
+		e->cam.pos = inter_ray;
 		c_tmp = check_collision(e, unit_vector(reflect), inter_ray);
 		color = add_color(mult_color(c_tmp, item.reflect), color);
+		e->cam.pos = tmp;
 		depth++;
 	}
-	else
-	{
-		depth = 0;
-	}
+	depth = 0;
 	return (color);
 }
