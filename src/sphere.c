@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/15 17:00:08 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 14:11:50 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ float			inter_sphere(t_vector cam_pos, t_vector ray, t_object obj)
 		return (-b / (2 * a));
 }
 
-t_vector		normal_sphere(t_cam cam, t_object obj, t_vector ray)
+t_vector		normal_sphere(t_vector cam, t_object obj, t_vector ray)
 {
 	t_vector	tmp;
 
-	tmp = sub_vector(cam.pos, obj.pos);
+	tmp = sub_vector(cam, obj.pos);
 	return (unit_vector(add_vector(ray, tmp)));
 }

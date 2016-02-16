@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/15 22:21:36 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/16 13:28:12 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ static t_object	*set_list_obj_other(void)
 	*cone = set_cone((t_vector){15, 0, 0}, (t_vector){0, 0, 1}, 0.2, -1);
 	sphere->color = (t_color){255, 255, 80};
 	sphere->shine = 1;
-	sphere->reflect = 1;
+	sphere->reflect = 0.4;
+	sphere->checkered = 0;
 	cylinder->color = (t_color){254, 191, 210};
 	cylinder->shine = 0;
 	cylinder->reflect = 0;
+	cylinder->checkered = 0;
 	cone->color = (t_color){170, 0, 170};
 	cone->shine = 1;
 	cone->reflect = 0;
@@ -53,10 +55,10 @@ static t_object	*set_list_obj_planes_part2(void)
 	plane4->color = (t_color){125, 125, 125};
 	plane3->shine = 0;//bas
 	plane4->shine = 0;//fond
-	plane3->checkered = 1;
-	plane4->checkered = 1;
+	plane3->checkered = 0;
+	plane4->checkered = 0;
 	plane3->reflect = 0;
-	plane4->reflect = 0.2;
+	plane4->reflect = 0.4;
 	plane3->next = plane4;
 	plane4->next = set_list_obj_other();
 	return (plane3);
@@ -80,9 +82,9 @@ void			set_list_obj(t_env *e)
 	plane0->shine = 0;
 	plane1->shine = 0;
 	plane2->shine = 0;
-	plane0->checkered = 1;//gauche
-	plane1->checkered = 1;//droite
-	plane2->checkered = 1;//haut
+	plane0->checkered = 0;//gauche
+	plane1->checkered = 0;//droite
+	plane2->checkered = 0;//haut
 	plane0->reflect = 0;
 	plane1->reflect = 0;
 	plane2->reflect = 0;
