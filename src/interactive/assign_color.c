@@ -6,7 +6,7 @@
 /*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:26:41 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 17:45:09 by kervrangwendoline###   ########.fr       */
+/*   Updated: 2016/02/16 20:11:58 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,20 +80,22 @@ static int		yes_or_no(char *str)
 void			color_choice(t_color *color)
 {
 	char		*tmp;
+	char		*clean;
 
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
 	ft_putstr("Voulez-vous choisir la couleur ?\n");
 	ft_putstr("repondez oui ou non !");
 	read(0, tmp, 200);
-	while (!correct_input(tmp))
+	clean = no_more_spaces(tmp);
+	if (!correct_input(clean))
 	{
 		ft_bzero(tmp, 200);
 		ft_putstr("ecrivez \"oui\" ou \"non\" : ");
 		read(0, tmp, 200);
 	}
-	if (yes_or_no(tmp))
-		assign_color(color, tmp);
+	if (yes_or_no(clean))
+		assign_color(color, clean);
 	else
 		random_color(color);
 	free(tmp);

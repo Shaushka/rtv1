@@ -1,19 +1,21 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   create_scene.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 14:17:45 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 14:18:20 by mguillon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
 #include <stdio.h>
 #include "../includes/rtv1.h"
 #include "../libft/includes/libft.h"
+
+static int		silent_isshape(char *str)
+{
+	if (ft_strequ(str, "sphere\n") || ft_strequ(str, "Sphere\n"))
+		return (1);
+	if (ft_strequ(str, "cylinder\n") || ft_strequ(str, "Cylinder\n"))
+		return (2);
+	if (ft_strequ(str, "cone\n") || ft_strequ(str, "Cone\n"))
+		return (3);
+	if (ft_strequ(str, "plan\n") || ft_strequ(str, "Plan\n"))
+		return (4);
+	else
+		return (0);
+}
 
 static int		isshape(char *str)
 {
@@ -55,7 +57,7 @@ void			create_scene(t_env *e)
 		ft_bzero(tmp, 200);
 		read(0, tmp, 200);
 	}
-	x = isshape(tmp);
+	x = silent_isshape(tmp);
 	if (x == 1)
 		input_sphere(e);
 	else if (x == 2)

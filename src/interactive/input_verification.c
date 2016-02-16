@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   input_verification.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 14:38:01 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 14:38:50 by mguillon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../libft/includes/libft.h"
 #include "../includes/rtv1.h"
 #include <stdlib.h>
@@ -17,11 +5,13 @@
 
 int				is_slashes_and_digits(char *str)
 {
+//	printf("STR en entrant dans isslashes...%s\n", str);
 	int			i;
 
 	i = 0;
 	while (str[i] != '\0')
 	{
+//		printf("i :%c\n", str[i]);
 		if (!ft_isdigit(str[i]) && str[i] != '/')
 			return (0);
 		else
@@ -62,15 +52,21 @@ int				correct_input(char *str)
 {
 	char		*clean;
 	char		*final;
-
 	clean = no_more_spaces(str);
 	if (is_slashes_and_digits(clean))
 	{
 		separators(clean);
 		final = no_more_spaces(clean);
+		printf("Good final =  \"%s\"\n", final);
 		free(clean);
 		if (is_vector(final))
+		{
+			printf("And it's a vector ! =  \"%s\"\n", final);
 			return (1);
+		}
 	}
+	else
+		printf("It's not slashes and digits\n");
+	printf("Bad final =  \"%s\"\n", clean);
 	return (0);
 }

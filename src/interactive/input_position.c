@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   input_position.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 14:38:09 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 14:39:49 by mguillon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
 #include <unistd.h>
 #include "../../includes/rtv1.h"
@@ -43,6 +31,7 @@ int				check_values(char *str, int min, int max)
 	int			x;
 
 	i = 0;
+	printf("Valeur de str dans check_values : \"%s\"\n", str);
 	x = ft_atoi(cut_pos(str, i));
 	if (x < min || x > max)
 		return (0);

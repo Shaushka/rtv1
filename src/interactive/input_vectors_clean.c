@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   input_vectors_clean.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 14:20:51 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/12 14:21:32 by mguillon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../../libft/includes/libft.h"
 #include "../../includes/rtv1.h"
 #include <stdlib.h>
@@ -20,17 +8,22 @@ char		**remove_spaces(char *str, int i, char **clean)
 	int j;
 
 	j = 0;
+	i = 0;
+	char *tmp;
+	printf("Je suis dans remove_spaces et tout va bien\n");
+	tmp = *clean;
 	while (str[i] != '\0')
 	{
-		if (ft_isspace(str[i]))
+		if (ft_isspace(str[i]) || str[i] == '\n')
 			i++;
 		else
 		{
-			*clean[j] = str[i];
+			tmp[j] = str[i];
 			i++;
 			j++;
 		}
 	}
+	printf("RS : Clean = \"%s\"\n", *clean);
 	return (clean);
 }
 
@@ -46,7 +39,7 @@ char		*no_more_spaces(char *str)
 	len = ft_strlen(str);
 	while (str[i] != '\0')
 	{
-		if (ft_isspace(str[i]))
+		if (ft_isspace(str[i]) || str[i] == '\n')
 		{
 			j++;
 			i++;
@@ -56,6 +49,8 @@ char		*no_more_spaces(char *str)
 	}
 	len -= j;
 	clean = malloc(sizeof(char) * (len + 1));
+	printf("NMS : Clean = \"%s\"\n", clean);
+	ft_bzero(clean, len + 1);
 	return (*remove_spaces(str, i, &clean));
 }
 

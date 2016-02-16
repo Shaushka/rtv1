@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:12:37 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 14:40:14 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 20:11:56 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			input_sphere(t_env *e)
 	t_object	*node;
 
 	node = create_object(e);
+	printf("J'ai successfully cree un objetct");
 	node->type = SPHERE;
 	position(node);
 	radius(node);

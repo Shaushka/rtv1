@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 14:49:52 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/14 17:43:40 by kervrangwendoline###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <stdlib.h>
 #include "rtv1.h"
 
@@ -31,7 +19,6 @@ static void	read_scene(int fd, t_parse *parse, t_env *e)
 	}
 	free(line);
 	line = NULL;
-//	ft_putstr(get);
 	get_instr(get, parse, e);
 }
 
@@ -78,11 +65,13 @@ int		main(int argc, char **argv)
 	t_env	e;
 
 	init_scene(&e);
-	//if(INTERACTIVE)
-	//		create_scene(&e);
-	//else
+	if(ft_strequ(argv[1], "interactive"))
+		create_scene(&e);
+	else
+	{
+		set_list_obj(&e);
+	}
 	init_lights(&e);
-	set_list_obj(&e);
 	argv = (char **)argv;
 //	if (argc != 1)
 //		ft_exit("usage: ./rtv1", 1);

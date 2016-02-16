@@ -30,3 +30,8 @@ input_vectors_clean : contient les fonctions de nettoyage de str
 input_vectors : contient VIDE
 				contient :	VIDE
 
+
+=============PARCOURS=============
+input_plane
+create_object-> return un t_object
+
