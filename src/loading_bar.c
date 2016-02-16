@@ -6,37 +6,13 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 14:12:09 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/16 16:41:27 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/16 18:20:34 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "mlx.h"
 #include <stdio.h>
-
-void		ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e)
-{
-	t_vector	p;
-	int			ix;
-	int			iy;
-	int			addr;
-
-	p.x = e.x - s.x;
-	p.y = e.y - s.y;
-	p.z = p.x >= p.y ? p.x : p.y;
-	p.z *= p.z > 0 ? 1 : -1;
-	if (p.z == 0)
-		return ;
-	ix = p.x / p.z;
-	iy = p.y / p.z;
-	while (p.z-- > 0)
-	{
-		addr = s.y * ev->mlx_init.img.sizeline + s.x * ev->mlx_init.img.opp;
-		put_pixel_to_img(ev, addr, c);
-		s.x += ix;
-		s.y += iy;
-	}
-}
 
 void		ft_gen_loading_border(t_env *e)
 {

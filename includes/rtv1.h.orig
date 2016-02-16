@@ -6,7 +6,11 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 19:27:42 by mgras            ###   ########.fr       */
+<<<<<<< HEAD
+/*   Updated: 2016/02/16 15:25:26 by mgras            ###   ########.fr       */
+=======
+/*   Updated: 2016/02/16 15:15:01 by chuang           ###   ########.fr       */
+>>>>>>> b82e6964b59101932a3ac51331e929a0fb0f13be
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +28,6 @@
 
 # define SCREEN_W		1280
 # define SCREEN_H		960
-
-# define INTER_W		SCREEN_W / 5
-# define INTER_H		SCREEN_H / 5
 
 # define AMBIANT		0.4
 # define MAX_VISION(h)		(3570 + sqrt((h)))
@@ -62,7 +63,7 @@ typedef	struct	s_object
 	float				radius;//sphere cone cylindre
 	float				height;//cone cylindre
 	float				shine;//brillance
-	float				reflect;//reflexion
+	float				reflect; // reflexion
 	float				checkered;//dallage_carreaux
 }						t_object;
 
@@ -108,24 +109,12 @@ typedef struct	s_mlx_init
 	void		*win;
 }				t_mlx_init;
 
-typedef struct	s_keyring
-{
-	double		mouse_x;
-	double		mouse_y;
-	int			selected_light;
-	int			selected_obj;
-	int			mode;
-	int			visible;
-	t_mlx_init	interface;
-}				t_keyring;
-
 typedef struct	s_env
 {
 	t_mlx_init	mlx_init;
 	t_scene		*scene;
 	t_light		*lights;
 	t_cam		cam;
-	t_keyring	key;
 }				t_env;
 
 typedef struct		s_node
@@ -150,7 +139,6 @@ void			ft_initialize(t_env *e);
 /*
 **	initialization.c
 */
-void			init_keyring(t_env *e);
 void			ft_exit(char *str, int n);
 void			quit_and_free(t_env *e);
 void			init_env(t_env *e, char *av);
@@ -380,23 +368,9 @@ void				get_instr(char *get, t_parse *parse, t_env *e);
 /*
 **	ft_loading_bar.c
 */
+void				ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e);
 void				ft_gen_loading_border(t_env *e);
 void				ft_fill_loading_border(t_env *e, int x);
 int					ft_loading_bar(int x, t_env *e);
-
-/*
-**	ft_print_2d_shapes.c
-*/
-void				ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e);
-void				ft_print_square(t_color c, t_vector st, t_vector en, t_env *e);
-
-/*
-**	ft_keyring.c
-*/
-void				new_interface_image(t_env *e);
-void				init_keyring(t_env *e);
-int					ft_mouse_move(int x, int y, t_env *e);
-int					ft_key(int boutton, t_env *e);
-void				ft_keyring(t_env *e);
 
 #endif

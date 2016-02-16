@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/16 15:32:06 by mgras            ###   ########.fr        #
+#    Updated: 2016/02/16 18:30:02 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,8 @@ SRC_NAME = main.c								\
 		   setter.c								\
 		   parser.c								\
 		   loading_bar.c						\
+		   draw_2d_shapes.c						\
+		   ft_keyring.c							\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 
