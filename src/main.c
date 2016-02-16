@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 18:28:38 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 20:07:30 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void		read_scene(int fd, t_parse *parse, t_env *e)
 	}
 	free(line);
 	line = NULL;
-//	ft_putstr(get);
 	get_instr(get, parse, e);
 }
 

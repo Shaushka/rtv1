@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 19:06:33 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 20:06:29 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,31 @@ t_vector	calc_normal(t_vector pos, t_object item, t_vector inter_ray)
 		return (normal_cone(pos, item, inter_ray));
 	else
 		return (normal_cylinder(pos, item, inter_ray));
+}
+
+float		specular_light(t_light light, t_object item, t_vector inter_ray, t_env *e)
+{
+	t_vector	shine;
+	t_vector	light_ray;
+	t_vector	normal;
+	float		spec;
+
+	light_ray = sub_vector(light.pos, add_vector(inter_ray, e->cam.pos));
+	normal = calc_normal(e->cam.pos, item, inter_ray);
+	shine = mult_vector(normal, (2.0f * dotpro_vector(light_ray, normal)));
+	shine = sub_vector(light_ray, shine);
+	spec = dotpro_vector(inter_ray, shine);
+
+	if (spec > 0)
+	{
+		spec = dotpro_vector(normal, shine) / norm_vector(shine);
+		spec = powf(spec, SPECULAR) * item.shine;
+	}
+	if (spec > 20000)
+		spec = 20000;
+	if (spec < 0)
+		spec = 0;
+	return(spec);
 }
 
 t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)

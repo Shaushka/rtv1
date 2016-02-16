@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 19:02:20 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 20:08:20 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ void		ft_render(t_env *e)
 	int			x;
 	int			y;
 	int			addr;
+	t_env		e_load;
 
 	e->cam.pos = (t_vector){0., 0., 0.};
 	e->cam.h = unit_vector((t_vector){0., 0., -1});
@@ -115,10 +116,12 @@ void		ft_render(t_env *e)
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
 	pos_hgv = ft_pos_hgv(e);
 	x = 1;
+	new_img_in_old_env(&e_load, e);
 	while (x < SCREEN_W)
 	{
 		v_line_x = pixel_x_vector(e, pos_hgv, x);
 		y = 1;
+		ft_loading_bar(x , &e_load);
 		while (y < SCREEN_H)
 		{
 			ray = pixel_y_vector(e, v_line_x, y);

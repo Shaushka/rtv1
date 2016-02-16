@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 18:59:04 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 20:04:41 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,20 +118,18 @@ typedef struct		s_env
 	t_cam			cam;
 }					t_env;
 
-typedef struct		s_node
-{
-	int				beg;
-	char			type;
-	struct s_node	*next;
-}					t_node;
-
-typedef struct		s_parse
+	typedef struct		s_parse
 {
 	char			*name;
 	t_node			*nodes;
 	t_object		*obj;
 }					t_parse;
 
+typedef struct s_node
+char		*value;
+	char		*type;
+	struct		s_node	*next;
+}				t_node;
 /*
 **	main.c
 */
@@ -142,11 +140,12 @@ void			ft_initialize(t_env *e);
 */
 void			ft_exit(char *str, int n);
 void			quit_and_free(t_env *e);
-void			init_env(t_env *e);
+void			init_env(t_env *e, char *av);
 int				expose_hook(t_env *e);
 void			init_and_draw(t_env *e, char *av);
 void			init_obj(t_object *node);
 void			init_scene(t_env *e);
+void			new_img_in_old_env(t_env *e, t_env *old);
 
 /*
 **	premade_objects.c
@@ -351,29 +350,37 @@ t_color			check_color(t_color color);
 /*
 **	parser
 */
-void			open_file(char *file, t_parse *parse, t_env *e);
-float			ft_atof(char *number);
-void			assign_color(t_color *color, char *str);
-t_object		*create_object();
-void			assign_normal(t_object *node, char *str);
-void			assign_pos(t_object *node, char *str);
-int				check_values(char *str, int min, int max);
-char			*cut_pos(char *str, int i);
-void			separators(char *str);
-char			*no_more_spaces(char *str);
-char			**remove_spaces(char *str, int i, char **clean);
-int				correct_input(char *str);
-int				is_vector(char *str);
-int				is_slashes_and_digits(char *str);
-void			init_obj(t_object *node);
-t_vector		set_vector(t_vector v, float x, float y, float z);
-void			print_nodes(t_node *nodes);
-void			print_result(t_parse *parse);
-char			*recup_name(t_node *node, char *get, char c);
-int				get_size(char *get, int i, char c);
-void			set_object_type(char *name, t_object *obj);
-void			set_object_param(char *value, char *data, t_object *obj);
-void			error_in_parse(char *str);
-void			get_instr(char *get, t_parse *parse, t_env *e);
+void				open_file(char *file, t_parse *parse, t_env *e);
+float				ft_atof(char *number);
+void				assign_color(t_color *color, char *str);
+t_object			*create_object();
+void				assign_normal(t_object *node, char *str);
+void				assign_pos(t_object *node, char *str);
+int					check_values(char *str, int min, int max);
+char				*cut_pos(char *str, int i);
+void				separators(char *str);
+char				*no_more_spaces(char *str);
+char				**remove_spaces(char *str, int i, char **clean);
+int					correct_input(char *str);
+int					is_vector(char *str);
+int					is_slashes_and_digits(char *str);
+void				init_obj(t_object *node);
+t_vector			set_vector(t_vector v, float x, float y, float z);
+void				print_nodes(t_node *nodes);
+void				print_result(t_parse *parse);
+char				*recup_name(t_node *node, char *get, char c);
+int					get_size(char *get, int i, char c);
+void				set_object_type(char *name, t_object *obj);
+void				set_object_param(char *value, char *data, t_object *obj);
+void				error_in_parse(char *str);
+void				get_instr(char *get, t_parse *parse, t_env *e);
+
+/*
+**	ft_loading_bar.c
+*/
+void				ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e);
+void				ft_gen_loading_border(t_env *e);
+void				ft_fill_loading_border(t_env *e, int x);
+int					ft_loading_bar(int x, t_env *e);
 
 #endif
