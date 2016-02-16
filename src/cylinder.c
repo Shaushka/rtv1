@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 14:11:22 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 18:36:45 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_object	set_cylinder(t_vector pos, t_vector dir, float radius, float height)
 	cylinder.height = height;
 	cylinder.shine = 0;
 	cylinder.reflect = 0;
+	cylinder.checkered = 0;
 	return (cylinder);
 }
 
@@ -38,7 +39,8 @@ float		inter_cylinder(t_vector cam_pos, t_vector ray, t_object cylinder)
 	a = dotpro_vector(ray, ray)
 		- (dotpro_vector(ray, cylinder.dir) * dotpro_vector(ray, cylinder.dir));
 	b = 2 * (dotpro_vector(ray, tmp)
-			- (dotpro_vector(ray, cylinder.dir) * dotpro_vector(tmp, cylinder.dir)));
+			- (dotpro_vector(ray, cylinder.dir)
+				* dotpro_vector(tmp, cylinder.dir)));
 	c = dotpro_vector(tmp, tmp)
 		- (dotpro_vector(tmp, cylinder.dir) * dotpro_vector(tmp, cylinder.dir))
 		- cylinder.radius * cylinder.radius;
@@ -59,11 +61,11 @@ t_vector	normal_cylinder(t_vector cam, t_object cylinder, t_vector ray)
 	tmp = set_vector(tmp, 0, 0, 0);
 	m = dotpro_vector(unit_vector(ray), cylinder.dir) * norm_vector(ray)
 		+ dotpro_vector(sub_vector(cam, cylinder.pos), cylinder.dir);
-//	if (cylinder.height > 0)
-//	{
-//		if (m < (cylinder.height / 2)  || m > (cylinder.height / 2))
-//			return(tmp);
-//	}
+	if (cylinder.height > 0)
+	{
+		if (m < 0 || m > (cylinder.height))
+			return (tmp);
+	}
 	tmp = add_vector(sub_vector(cam, cylinder.pos), ray);
 	return (unit_vector(sub_vector(tmp, mult_vector(cylinder.dir, m))));
 }

@@ -1,0 +1,28 @@
+<objet>
+	<type>sphere</type>
+	<radius>1.12</radius>
+	<color>255/255/255/</color>
+	<pos>200/100/100/</pos>
+	<shine>0.76</shine>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<radius>1.12</radius>
+	<color>255/255/255/</color>
+	<pos>200/100/100/</pos>
+	<shine>0.76</shine>
+</objet>
+<objet>
+	<type>cone</type>
+	<radius>1.12</radius>
+	<color>255/255/255/</color>
+	<pos>200/100/100/</pos>
+	<shine>0.76</shine>
+</objet>
+<objet>
+	<type>plan</type>
+	<radius>1.12</radius>
+	<color>255/255/255/</color>
+	<pos>200/100/100/</pos>
+	<shine>0.76</shine>
+</objet>

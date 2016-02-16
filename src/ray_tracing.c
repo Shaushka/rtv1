@@ -6,7 +6,6 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 18:10:39 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +23,7 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 	float		test;
 	t_object	*tmp;
 	t_object	*item;
-
-	//t_vector	normal;
+//	t_vector	normal;
 
 	//APPEL DES LUMIERES
 	tmp = e->scene->l_obj;
@@ -46,15 +44,15 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 		else if (tmp->type == CONE)
 		{
 			test = inter_cone(pos, ray, *tmp);
-			//normal = normal_cone(*item, ray, inter, e->cam);
+			//normal = normal_cone(pos, *item, ray);
 		}
 		else
 		{
 			test = inter_cylinder(pos, ray, *tmp);
 			//normal = normal_cylinder(*item, ray, inter, e->cam);
 		}
-		//if(norm_vector(normal) == 0)
-			//test = 150.f;
+//		if(norm_vector(normal) == 0)
+//			test = 200.f;
 		if (test > 0.0001f && test < inter)
 		{
 			inter = test;

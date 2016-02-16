@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:39:23 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 15:16:02 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 19:02:36 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 
 t_color			checkered_floor(t_vector coord)
 {
-	int	mpx;
-	int	mpy;
-	int	mpz;
-	t_color	color1;
-	t_color	color2;
-	
+	int			mpx;
+	int			mpy;
+	int		mpz;
+	t_color		color1;
+	t_color		color2;
+
 	color1 = (t_color){12, 232, 219};
 	color2 = (t_color){12, 128, 232};
 	mpx = (int)(fabs((coord.x + 0.0001) / (float)TILE_LEN)) % 2;

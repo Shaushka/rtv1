@@ -6,23 +6,6 @@ void	error_in_parse(char *str)
 	exit(1);
 }
 
-void	print_nodes(t_node *nodes)
-{
-	/*if pour avancer de un puisque ne fonctionne pas dans include node*/
-	/* on peut mettre une compteur de premiere fois si necessaire */
-	if (nodes && (nodes = nodes->next) != NULL)
-	{
-		while (nodes)
-		{
-			ft_putnbr(nodes->beg);
-			ft_putchar('\n');
-			ft_putchar(nodes->type);
-			ft_putchar('\n');
-			nodes = nodes->next;
-		}
-	}
-}
-
 void	print_result(t_parse *parse)
 {
 	int	i;
