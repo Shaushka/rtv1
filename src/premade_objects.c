@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 15:33:53 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/16 18:25:08 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static t_object	*set_list_obj_other(void)
 	cylinder->reflect = 0;
 	cylinder->checkered = 0;
 	cone->color = (t_color){170, 0, 170};
-	cone->shine = 0;
+	cone->shine = 1;
 	cone->reflect = 0;
 	cone->checkered = 0;
 	sphere->next = cylinder;

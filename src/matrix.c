@@ -6,14 +6,16 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/11 16:40:38 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/12 17:36:23 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/16 18:26:41 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 
-// might not need it
-// rodrigues rotation v = cos(o)U + (1-cos(o))(U dotproduct N) n + sin(o) (N /\U)
+/* might not need it
+** rodrigues rotation AKA Real rotation
+** v = cos(o)U + (1-cos(o))(U dotproduct N) n + sin(o) (N /\U)
+*/
 
 t_vector		vect_rot_angle(t_vector u, float o)
 {
@@ -36,4 +38,3 @@ t_vector		vect_rot_angle(t_vector u, float o)
 		+ cos(o) + u.z * u.z * inv_o;
 	return (v);
 }
-//t_vect		vect_angle(t_vect u)
