@@ -6,9 +6,9 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/16 20:11:02 by mgras            ###   ########.fr        #
-#    Updated: 2016/02/16 19:59:59 by chuang           ###   ########.fr        #
+#    Updated: 2016/02/16 20:27:42 by mgras            ###   ########.fr        #
 #                                                                              #
+# **************************************************************************** #
 # **************************************************************************** #
 
 # ----------------------------------------------------------------------------
@@ -52,11 +52,10 @@ SRC_NAME = main.c								\
 		   atof.c								\
 		   debug.c								\
 		   parser.c								\
-		   loading_bar.c						\
 		   draw_2d_shapes.c						\
 		   ft_keyring.c							\
 		   setter.c								\
-		   loading_bar.c						
+		   loading_bar.c						\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

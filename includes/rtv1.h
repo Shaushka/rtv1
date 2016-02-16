@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 20:13:24 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/16 20:23:25 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef	enum {
 
 typedef	struct		s_object
 {
-<<<<<<< HEAD
 	void				*next;
 	t_type				type;
 	t_color				color;
@@ -71,19 +70,6 @@ typedef	struct		s_object
 	float				reflect;//reflexion
 	float				checkered;//dallage_carreaux
 }						t_object;
-=======
-	void			*next;
-	t_type			type;
-	t_color			color;
-	t_vector		pos;
-	t_vector		dir;//cylinder cone
-	t_vector		normal;//plan
-	float			radius;//sphere cone cylindre
-	float			height;//cone cylindre
-	float			shine;//brillance
-	float			reflect; // reflexion
-	float			checkered;//dallage_carreaux
-}					t_object;
 
 typedef struct		s_light
 {
@@ -110,11 +96,22 @@ typedef struct		s_cam
 
 typedef struct		s_img
 {
-<<<<<<< HEAD
+	void			*img_ptr;
+	char			*img_data;
+	int				bpp;
+	int				opp;
+	int				sizeline;
+	int				endian;
+	int				width;
+	int				height;
+}					t_img;
+
+typedef struct		s_mlx_init
+{
 	t_img		img;
 	void		*mlx;
 	void		*win;
-}				t_mlx_init;
+}					t_mlx_init;
 
 typedef struct	s_keyring
 {
@@ -136,45 +133,20 @@ typedef struct	s_env
 	t_keyring	key;
 }				t_env;
 
-typedef struct		s_img
-	void			*img_ptr;
-	char			*img_data;
-	int				bpp;
-	int				opp;
-	int				sizeline;
-	int				endian;
-	int				width;
-	int				height;
-}					t_img;
-
-typedef struct		s_mlx_init
+typedef struct		s_node
 {
-	t_img			img;
-	void			*mlx;
-	void			*win;
-}					t_mlx_init;
-					t_mlx_init;
+	char			*value;
+	char			*type;
+	struct s_node	*next;
+}					t_node;
 
-typedef struct		s_env
-{
-	t_mlx_init		mlx_init;
-	t_scene			*scene;
-	t_light			*lights;
-	t_cam			cam;
-}					t_env;
-
-	typedef struct		s_parse
+typedef struct		s_parse
 {
 	char			*name;
 	t_node			*nodes;
 	t_object		*obj;
 }					t_parse;
 
-typedef struct s_node
-char		*value;
-	char		*type;
-	struct		s_node	*next;
-}				t_node;
 /*
 **	main.c
 */
