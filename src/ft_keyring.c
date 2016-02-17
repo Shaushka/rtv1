@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 21:14:30 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 22:29:50 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 /*
 **	mode -1 = all is hidden, will go to mode 1 when respawned whith keybinding
-**	mode 0 = all must be hidden (useless ?)
-**	mode 1 = must spaw main menu (useless ?)
+**	mode 0 = all must be hidden
+**	mode 1 = must spaw main menu
 **	mode 2 = main menu is up waiting for command
-**	mode 3 = must spawn camera menu (useless ?)
-**	mode 4 = must spaw light menu (useless ?)
+**	mode 3 = must spawn camera menu
+**	mode 4 = must spaw light menu
 **	mode 5 = light menu is up and waiting for command
 **		**mode 500 + 01 = light.pos.x++;
 **		**mode 500 + 02 = light.pos.x--;
@@ -58,7 +58,7 @@
 **		**mode 600 + 11 = cam.dir.z++;
 **		**mode 600 + 12 = cam.dir.z--;
 **
-**	mode 7 = must spaw obj menu (useless ?)
+**	mode 7 = must spaw obj menu
 **	mode 8 = obj menu is up and waiting for command
 */
 
@@ -85,6 +85,8 @@ int		ft_get_cmd_interface(int press, int x, int y, t_env *e)
 		return (ft_get_lm_cmd_interface(x, y, e));
 	else if (e->key.mode == 6)
 		return (ft_get_cm_cmd_interface(x, y, e));
+	else if (e->key.mode == 8)
+		return (ft_get_om_cmd_interface(x, y, e));
 	return (e->key.mode);
 }
 
@@ -105,12 +107,25 @@ void	ft_print_pending_light(t_env *e, int mod)
 	e->key.mode = 5;
 }
 
+void	ft_print_pending_obj(t_env *e, int mod)
+{
+	ft_mod_obj_inc(e, mod);
+	hide_interface_image(e);
+	spawn_obj_menu(e);
+	ft_print_pending_objpos_modif(ft_get_obj_at_nb(e->key.selected_obj,
+									e->scene->l_obj), e);
+	ft_print_selected_obj(e);
+	e->key.mode = 8;
+}
+
 int		ft_exec_cmd(int mod, t_env *e)
 {
 	if (mod == 3)
 		spawn_cam_menu(e);
 	if (e->key.mode == 4)
 		spawn_light_menu(e);
+	if (e->key.mode == 7)
+		spawn_obj_menu(e);
 	if (mod > 600 && mod <= 612)
 	{
 		ft_mod_cam_inc(e, mod);
@@ -122,6 +137,8 @@ int		ft_exec_cmd(int mod, t_env *e)
 	}
 	if (mod > 500 && mod <= 520)
 		ft_print_pending_light(e, mod);
+	if (mod > 800 && mod <= 806)
+		ft_print_pending_obj(e, mod);
 	return (0);
 }
 

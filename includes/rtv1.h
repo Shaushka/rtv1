@@ -6,10 +6,10 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 21:34:12 by mgras            ###   ########.fr       */
-/*   Updated: 2016/02/17 20:00:00 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/17 22:33:45 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef RTV1_H
 # define RTV1_H
@@ -443,6 +443,7 @@ int					ft_get_cmd_interface(int press, int x, int y, t_env *e);
 int					ft_exec_cmd(int mod, t_env *e);
 int					ft_click(int press, int x, int y, t_env *e);
 void				ft_print_pending_light(t_env *e, int mod);
+void				ft_print_pending_obj(t_env *e, int mod);
 
 /*
 **	ft_keyring_reset.c
@@ -459,6 +460,7 @@ void				ft_keyring_cammod_reset_pos(t_env *e, int render);
 void				ft_keyring_cammod_reset_dir(t_env *e, int render);
 void				ft_keyring_cammod_apply(t_env *e);
 void				ft_keyring_lightmod_apply(t_env *e);
+void				ft_keyring_objmod_apply(t_env *e);
 
 /*
 **	ft_keyring_light_interface.c
@@ -483,6 +485,8 @@ void				ft_mod_light_inc(t_env *e, int mod);
 */
 t_light				*ft_get_light_at_nb(int nb, t_light *s);
 void				ft_get_next_light(t_env	*e);
+void				ft_get_next_obj(t_env *e);
+t_object			*ft_get_obj_at_nb(int nb, t_object *s);
 
 /*
 **	ft_keyring_light_interface_2.c
@@ -492,5 +496,15 @@ void				ft_print_pending_lightdir_modif(t_light *l, t_env *e);
 void				ft_print_pending_lightcol_modif(t_light *l, t_env *e);
 void				ft_print_pending_lightint_modif(t_light *l, t_env *e);
 void				ft_print_selected_light(t_env *e);
+
+/*
+**	ft_keyring_object_interface.c
+*/
+int					ft_get_om_cmd_interface(int x, int y, t_env *e);
+void				spawn_obj_menu(t_env *e);
+void				spawn_obj_pos_controls(t_color c, t_vector v, t_env *e);
+void				ft_print_pending_objpos_modif(t_object *l, t_env *e);
+void				ft_print_selected_obj(t_env *e);
+void				ft_mod_obj_inc(t_env *e, int mod);
 
 #endif
