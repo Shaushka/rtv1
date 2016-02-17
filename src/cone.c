@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/27 18:46:35 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 18:36:34 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/17 19:18:05 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ float		inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
 		- ((1 + cone.radius * cone.radius) * dotpro_vector(ray, cone.dir)
 				* dotpro_vector(ray, cone.dir));
 	b = 2 * (dotpro_vector(ray, tmp)
-			- ((1 - cone.radius * cone.radius) * dotpro_vector(ray, cone.dir)
+			- ((1 + cone.radius * cone.radius) * dotpro_vector(ray, cone.dir)
 				* dotpro_vector(tmp, cone.dir)));
 	c = dotpro_vector(tmp, tmp)
 		- ((1 + cone.radius * cone.radius) * dotpro_vector(tmp, cone.dir)
