@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:20:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 18:00:33 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 18:21:09 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,22 @@ void	ft_keyring_cammod_reset_pos(t_env *e, int render)
 {
 	e->cam.pos = (t_vector){0., 0., 0.};
 	if (render)
+	{
 		ft_render(e);
+		mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
+				e->mlx_init.img.img_ptr, 0, 0);
+	}
 }
 
 void	ft_keyring_cammod_reset_dir(t_env *e, int render)
 {
 	e->cam.dir = unit_vector((t_vector){1., 0., 0.});
 	if (render)
+	{
 		ft_render(e);
+		mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
+				e->mlx_init.img.img_ptr, 0, 0);
+	}
 }
 
 void	ft_keyring_cammod_apply(t_env *e)

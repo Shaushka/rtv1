@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 18:23:44 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/17 18:25:58 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,7 +321,7 @@ float				specular_light(t_light l, t_object o, t_vector inter, t_env *e);
 /*
 **	reflection_light.c
 */
-t_color				reflection(t_object o, t_vector inter, t_env *e);
+t_color				reflection(t_object item, t_vector inter, t_env *e);
 
 /*
 **	ray_tracing.c
@@ -456,6 +456,8 @@ void				hide_interface_image(t_env *e);
 /*
 **	ft_keyring_apply.c
 */
+void				ft_keyring_cammod_reset_pos(t_env *e, int render);
+void				ft_keyring_cammod_reset_dir(t_env *e, int render);
 void				ft_keyring_cammod_apply(t_env *e);
 
 #endif
