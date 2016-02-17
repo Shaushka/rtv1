@@ -6,7 +6,8 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 23:40:00 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 00:00:21 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 23:42:37 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,10 +246,10 @@ char				*no_more_spaces(char *str);
 /*
 **	input_verification.c
 */
-int					is_slashes_and_digits(char *str);//static ?
-int					is_vector(char *str);//static ?
-int					correct_input(char *str);
-
+int				is_slashes_and_digits(char *str);//static ?
+int				is_vector(char *str);//static ?
+int				correct_input(char *str);
+void			remove_bn(char **str);
 /*
 **	input_position.c
 */
