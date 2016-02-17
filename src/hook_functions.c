@@ -41,9 +41,9 @@ int		key_press_hook(int keycode, t_env *e)
 		printf("PageDown\n");
 		ft_render(e);
 	}
-	if (keycode == KEY_COMMAND && e->key.mode == -1)
+	if (keycode == KEY_COMMAND && e->key.mode != 2)
 		spaw_main_menu(e);
-	else if (keycode == KEY_COMMAND && e->key.mode != -1)
+	else if (keycode == KEY_COMMAND && e->key.mode == 2)
 		hide_interface_image(e);
 	return (0);
 }

@@ -125,11 +125,8 @@ int		ft_mouse_move(int x, int y, t_env *e)
 	return (0);
 }
 
-void	spawn_cam_menu(t_env *e)
+void	spawn_cam_pos_controls(t_color c, t_vector v, t_env *e)
 {
-	t_color		c;
-	t_vector	v;
-
 	set_color_from_rgb(&c, 255, 100, 100);
 	ft_print_square(c,
 		set_vector(v, 0. , 0., 0.),
@@ -141,12 +138,57 @@ void	spawn_cam_menu(t_env *e)
 	set_color_from_rgb(&c, 100, 155, 100);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (1. / 3.), 0., 0.),
-		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 4.), 0), e);
-	set_color_from_rgb(&c, 20, 155, 20);
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 4.), 0), e);//cam pos y +
+	set_color_from_rgb(&c, 20, 200, 20);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (1. / 4.), 0.),
-		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (2. / 4.), 0), e);
-	e->key.mode = 2;
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (2. / 4.), 0), e);//cam pos y -
+	set_color_from_rgb(&c, 100, 100, 200);
+	ft_print_square(c,
+		set_vector(v, INTER_W * (2. / 3.), 0., 0.),
+		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (1. / 4.), 0), e);//cam pos z +
+	set_color_from_rgb(&c, 10, 10, 100);
+	ft_print_square(c,
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 4.), 0.),
+		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (2. / 4.), 0), e);//cam pos z -
+}
+
+void	spawn_cam_dir_controls(t_color c, t_vector v, t_env *e)
+{
+	set_color_from_rgb(&c, 255, 100, 100);
+	ft_print_square(c,
+		set_vector(v, 0. , (double)INTER_H * (2. / 4.), 0.),
+		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (3. / 4.), 0), e);//cam dir x +
+	set_color_from_rgb(&c, 255, 20, 20);
+	ft_print_square(c,
+		set_vector(v, 0, (double)INTER_H * (3. / 4.), 0),
+		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (4. / 4.), 0), e);//cam dir x -
+	set_color_from_rgb(&c, 100, 155, 100);
+	ft_print_square(c,
+		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (2. / 4.), 0.),
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (3. / 4.), 0), e);//cam dir y +
+	set_color_from_rgb(&c, 20, 200, 20);
+	ft_print_square(c,
+		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (3. / 4.), 0.),
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (4. / 4.), 0), e);//cam dir y -
+	set_color_from_rgb(&c, 100, 100, 200);
+	ft_print_square(c,
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (2. / 4.), 0.),
+		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (3. / 4.), 0), e);//cam dir z +
+	set_color_from_rgb(&c, 10, 10, 100);
+	ft_print_square(c,
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (3. / 4.), 0.),
+		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (4. / 4.), 0), e);//cam dir z -
+}
+
+void	spawn_cam_menu(t_env *e)
+{
+	t_color		c;
+	t_vector	v;
+
+	spawn_cam_pos_controls(c, v, e);
+	spawn_cam_dir_controls(c, v, e);
+	e->key.mode = 6;
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win, e->key.interface.img.img_ptr, 0, 0);
 }
 
