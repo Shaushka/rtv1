@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/17 18:16:30 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 18:33:32 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 			coef = diffuse_light(*lights, item, inter, e);
 			if (item.shine > 0 && coef)
 				spec = specular_light(*lights, item, inter, e);
-						tmp_color = mult_color(lights->color, (coef + spec));
+			tmp_color = mult_color(lights->color, (coef + spec));
 			item.color = add_color(item.color, tmp_color);
 		}
 		if (item.reflect > 0)
@@ -89,13 +89,13 @@ void		init_lights(t_env *e)
 	t_light		*test;
 
 	test = malloc(sizeof(t_light));
-	test->pos = (t_vector){5, 0, 0};
+	test->pos = (t_vector){0, -4, 0};
 	test->dir = (t_vector){0, 1, 0};
 	test->color = (t_color){255, 255, 255};
 	test->intensity = 0.5;
 	test->next = NULL;
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){0, 0, 0};
+	e->lights->pos = (t_vector){0, 4, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){255, 255, 255};
 	e->lights->intensity = 0.5;

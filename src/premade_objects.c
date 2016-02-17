@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 18:11:28 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/17 18:40:52 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static t_object	*set_list_obj_planes_part2(void)
 	floor->color = (t_color){255, 10, 10};
 	backg_w->color = (t_color){125, 125, 125};
 	floor->checkered = 0;
-	backg_w->shine = 0;
+	backg_w->shine = 0.3;
 	backg_w->reflect = 0;
 	floor->next = backg_w;
 	backg_w->next = set_list_obj_other();
@@ -59,22 +59,23 @@ static t_object	*set_list_obj_planes_part2(void)
 
 void			set_list_obj(t_env *e)
 {
-	t_object	*right_w;
 	t_object	*left_w;
+	t_object	*right_w;
 	t_object	*roof;
 
 	right_w = malloc(sizeof(t_object));
 	left_w = malloc(sizeof(t_object));
 	roof = malloc(sizeof(t_object));
-	*right_w = set_plane((t_vector){0, -5, 0}, (t_vector){ 0, 5, 0});
-	*left_w = set_plane((t_vector){0, 5, 0}, (t_vector){ 0, 5, 0});
+	*left_w = set_plane((t_vector){0, -5, 0}, (t_vector){ 0, 5, 0});
+	*right_w = set_plane((t_vector){0, 5, 0}, (t_vector){ 0, 5, 0});
 	*roof = set_plane((t_vector){0, 0, 5}, (t_vector){ 0, 0, -5});
-	right_w->color = (t_color){0, 255, 255};
-	left_w->color = (t_color){0, 255, 0};
+	left_w->color = (t_color){0, 255, 255};
+	right_w->color = (t_color){0, 255, 0};
 	roof->color = (t_color){10, 10, 255};
-	right_w->reflect = 0;
-	right_w->checkered = 0;
+	left_w->reflect = 0;
 	left_w->checkered = 0;
+	right_w-> shine = 0.7;
+	right_w->checkered = 0;
 	roof->checkered = 0;
 	e->scene->l_obj = right_w;
 	right_w->next = left_w;
