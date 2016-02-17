@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 12:33:18 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 13:04:54 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -414,5 +414,8 @@ void				init_keyring(t_env *e);
 int					ft_mouse_move(int x, int y, t_env *e);
 int					ft_click(int press, int x, int y, t_env *e);
 void				ft_keyring(t_env *e);
+void				spaw_main_menu(t_env *e);
+void				new_interface_image(t_env *e);
+void				hide_interface_image(t_env *e);
 
 #endif

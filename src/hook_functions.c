@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: agadiffe <agadiffe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/12 17:40:23 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/17 13:01:12 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int		expose_hook(t_env *e)
 
 int		key_press_hook(int keycode, t_env *e)
 {
+	ft_putnbr(keycode);
+	ft_putchar('\n');
 	if (keycode == KEY_ESC)
 		exit(0);
 	if (keycode == KEY_UP)
@@ -39,5 +41,9 @@ int		key_press_hook(int keycode, t_env *e)
 		printf("PageDown\n");
 		ft_render(e);
 	}
+	if (keycode == KEY_COMMAND && e->key.mode == -1)
+		spaw_main_menu(e);
+	else if (keycode == KEY_COMMAND && e->key.mode != -1)
+		hide_interface_image(e);
 	return (0);
 }

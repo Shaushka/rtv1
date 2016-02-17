@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/09 16:17:02 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/16 16:59:43 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 13:00:02 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@
 # define KEY_F10			109
 # define KEY_F11			103
 # define KEY_F12			111
-# define KEY_COMMAND		260
+# define KEY_COMMAND		259
 # define KEY_MINUS			27
 # define KEY_EQUAL			24
 # define KEY_SPACE			49
