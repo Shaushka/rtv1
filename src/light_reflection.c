@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 16:54:59 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/17 17:00:09 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/17 17:14:19 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_vector	ray_reflect(t_vector normal, t_vector inter)
 	return (reflect);
 }
 
-t_color		reflection( t_object item, t_vector inter, t_env *e)
+t_color		reflection(t_object item, t_vector inter, t_env *e)
 {
 	t_vector				reflect;
 	t_color					c_tmp;

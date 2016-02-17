@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 17:48:21 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 18:23:44 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -321,7 +321,7 @@ float				specular_light(t_light l, t_object o, t_vector inter, t_env *e);
 /*
 **	reflection_light.c
 */
-t_color				reflection(t_light l, t_object o, t_vector inter, t_env *e);
+t_color				reflection(t_object o, t_vector inter, t_env *e);
 
 /*
 **	ray_tracing.c
