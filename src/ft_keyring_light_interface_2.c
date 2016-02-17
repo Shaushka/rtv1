@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 20:22:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 21:08:42 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 21:40:03 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_print_pending_lightpos_modif(t_light *l, t_env *e)
 	tmp1 = ft_itoa((int)(l->pos.z));
 	ft_strdel(&li);
 	li = ft_strjoin(swp, tmp1);
-	ft_strdel(&tmp2);
+	ft_strdel(&tmp1);
 	ft_strdel(&swp);
 	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10,
 					INTER_H * (1. / 7.), 0x0, li);
@@ -62,7 +62,7 @@ void	ft_print_pending_lightdir_modif(t_light *l, t_env *e)
 	tmp1 = ft_itoa((int)(l->dir.z));
 	ft_strdel(&li);
 	li = ft_strjoin(swp, tmp1);
-	ft_strdel(&tmp2);
+	ft_strdel(&tmp1);
 	ft_strdel(&swp);
 	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10,
 					INTER_H * (3. / 7.), 0x0, li);
@@ -89,7 +89,7 @@ void	ft_print_pending_lightcol_modif(t_light *l, t_env *e)
 	tmp1 = ft_itoa((int)(l->color.b));
 	ft_strdel(&li);
 	li = ft_strjoin(swp, tmp1);
-	ft_strdel(&tmp2);
+	ft_strdel(&tmp1);
 	ft_strdel(&swp);
 	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10,
 					INTER_H * (5. / 7.), 0x0, li);
