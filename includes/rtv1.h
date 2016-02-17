@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 14:12:23 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 17:48:21 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -394,6 +394,10 @@ void				error_in_parse(char *str);
 void				get_instr(char *get, t_parse *parse, t_env *e);
 
 /*
+**>----------> INTERFACE <----------
+*/
+
+/*
 **	ft_loading_bar.c
 */
 void				ft_gen_loading_border(t_env *e);
@@ -407,16 +411,51 @@ void				ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e);
 void				ft_print_square(t_color c, t_vector st, t_vector en, t_env *e);
 
 /*
+**	ft_keyring_cam_interface.c
+*/
+int					ft_get_cm_cmd_interface_2(int x, int y, t_env *e);
+int					ft_get_cm_cmd_interface(int x, int y, t_env *e);
+void				ft_mod_cam_inc(t_env *e, int mod);
+void				spawn_cam_pos_controls(t_color c, t_vector v, t_env *e);
+void				spawn_cam_dir_controls(t_color c, t_vector v, t_env *e);
+
+/*
+**	ft_keyring_cam_interface_2.c
+*/
+void				spawn_cam_menu(t_env *e);
+char				*ft_print_pending_campos_modif2(t_env *e);
+void				ft_print_pending_campos_modif(t_env *e);
+char				*ft_print_pending_camdir_modif2(t_env *e);
+void				ft_print_pending_camdir_modif(t_env *e);
+
+/*
+**	ft_keyring_cam_apply
+*/
+
+/*
+**	ft_keyring_main_menu.c
+*/
+void				spaw_main_menu(t_env *e);
+
+/*
 **	ft_keyring.c
 */
-void				new_interface_image(t_env *e);
-void				init_keyring(t_env *e);
-int					ft_mouse_move(int x, int y, t_env *e);
+int					ft_get_mm_cmd_interface(int x, int y, t_env *e);
+int					ft_get_cmd_interface(int press, int x, int y, t_env *e);
+int					ft_exec_cmd(int mod, t_env *e);
 int					ft_click(int press, int x, int y, t_env *e);
-void				ft_keyring(t_env *e);
-void				spaw_main_menu(t_env *e);
+
+/*
+**	ft_keyring_reset.c
+*/
+void				set_cam_to_zero(t_cam *cam);
+void				init_keyring(t_env *e);
 void				new_interface_image(t_env *e);
 void				hide_interface_image(t_env *e);
-void				spawn_cam_menu(t_env *e);
+
+/*
+**	ft_keyring_apply.c
+*/
+void				ft_keyring_cammod_apply(t_env *e);
 
 #endif

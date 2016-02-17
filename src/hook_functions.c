@@ -6,15 +6,13 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/17 13:01:12 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 17:49:49 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "mlx.h"
 #include "key_define.h"
-#include <stdlib.h>
-#include <stdio.h>
 
 int		expose_hook(t_env *e)
 {
@@ -42,8 +40,13 @@ int		key_press_hook(int keycode, t_env *e)
 		ft_render(e);
 	}
 	if (keycode == KEY_COMMAND && e->key.mode != 2)
+	{
+		hide_interface_image(e);
 		spaw_main_menu(e);
+	}
 	else if (keycode == KEY_COMMAND && e->key.mode == 2)
 		hide_interface_image(e);
+	else if (keycode == KEY_ENTER && e->key.mode == 6)
+		ft_keyring_cammod_apply(e);
 	return (0);
 }

@@ -109,9 +109,7 @@ void		ft_render(t_env *e)
 	int			addr;
 	//t_env		e_load;
 
-	e->cam.pos = (t_vector){0., 0., 0.};
 	e->cam.h = unit_vector((t_vector){0., 0., -1});
-	e->cam.dir = unit_vector((t_vector){1., 0., 0.});
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
 	pos_hgv = ft_pos_hgv(e);
 	x = 1;
