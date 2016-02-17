@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 18:14:32 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 21:30:44 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -429,10 +429,6 @@ char				*ft_print_pending_camdir_modif2(t_env *e);
 void				ft_print_pending_camdir_modif(t_env *e);
 
 /*
-**	ft_keyring_cam_apply
-*/
-
-/*
 **	ft_keyring_main_menu.c
 */
 void				spaw_main_menu(t_env *e);
@@ -444,6 +440,7 @@ int					ft_get_mm_cmd_interface(int x, int y, t_env *e);
 int					ft_get_cmd_interface(int press, int x, int y, t_env *e);
 int					ft_exec_cmd(int mod, t_env *e);
 int					ft_click(int press, int x, int y, t_env *e);
+void				ft_print_pending_light(t_env *e, int mod);
 
 /*
 **	ft_keyring_reset.c
@@ -459,5 +456,39 @@ void				hide_interface_image(t_env *e);
 void				ft_keyring_cammod_reset_pos(t_env *e, int render);
 void				ft_keyring_cammod_reset_dir(t_env *e, int render);
 void				ft_keyring_cammod_apply(t_env *e);
+void				ft_keyring_lightmod_apply(t_env *e);
+
+/*
+**	ft_keyring_light_interface.c
+*/
+void				spawn_light_menu(t_env *e);
+void				spawn_light_pos_controls(t_color c, t_vector v, t_env *e);
+void				spawn_light_dir_controls(t_color c, t_vector v, t_env *e);
+void				spawn_light_int_controls(t_color c, t_vector v, t_env *e);
+void				spawn_light_col_controls(t_color c, t_vector v, t_env *e);
+
+/*
+**	ft_keyring_light_interface_cmd.c
+*/
+int					ft_get_lm_cmd_interface_4(int x, int y, t_env *e);
+int					ft_get_lm_cmd_interface_3(int x, int y, t_env *e);
+int					ft_get_lm_cmd_interface_2(int x, int y, t_env *e);
+int					ft_get_lm_cmd_interface(int x, int y, t_env *e);
+void				ft_mod_light_inc(t_env *e, int mod);
+
+/*
+**	ft_keyring_utility.c
+*/
+t_light				*ft_get_light_at_nb(int nb, t_light *s);
+void				ft_get_next_light(t_env	*e);
+
+/*
+**	ft_keyring_light_interface_2.c
+*/
+void				ft_print_pending_lightpos_modif(t_light *l, t_env *e);
+void				ft_print_pending_lightdir_modif(t_light *l, t_env *e);
+void				ft_print_pending_lightcol_modif(t_light *l, t_env *e);
+void				ft_print_pending_lightint_modif(t_light *l, t_env *e);
+void				ft_print_selected_light(t_env *e);
 
 #endif

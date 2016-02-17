@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/17 17:48:49 by mgras            ###   ########.fr        #
+#    Updated: 2016/02/17 20:41:03 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -60,6 +60,10 @@ SRC_NAME = main.c								\
 		   ft_keyring_main_menu.c				\
 		   ft_keyring_cam_interface.c			\
 		   ft_keyring_cam_interface_2.c			\
+		   ft_keyring_light_interface.c			\
+		   ft_keyring_light_interface_cmd.c		\
+		   ft_keyring_utility.c					\
+		   ft_keyring_light_interface_2.c		\
 		   loading_bar.c						\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

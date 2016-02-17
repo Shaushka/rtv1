@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 17:16:06 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 21:14:30 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,27 @@
 **	mode 3 = must spawn camera menu (useless ?)
 **	mode 4 = must spaw light menu (useless ?)
 **	mode 5 = light menu is up and waiting for command
+**		**mode 500 + 01 = light.pos.x++;
+**		**mode 500 + 02 = light.pos.x--;
+**		**mode 500 + 03 = light.pos.y++;
+**		**mode 500 + 04 = light.pos.y--;
+**		**mode 500 + 05 = light.pos.z++;
+**		**mode 500 + 06 = light.pos.z--;
+**		**mode 500 + 07 = light.dir.x++;
+**		**mode 500 + 08 = light.dir.x--;
+**		**mode 500 + 09 = light.dir.y++;
+**		**mode 500 + 10 = light.dir.y--;
+**		**mode 500 + 11 = light.dir.z++;
+**		**mode 500 + 12 = light.dir.z--;
+**		**mode 500 + 13 = light.color.r++;
+**		**mode 500 + 14 = light.color.r--;
+**		**mode 500 + 15 = light.color.g++;
+**		**mode 500 + 16 = light.color.g--;
+**		**mode 500 + 17 = light.color.b++;
+**		**mode 500 + 18 = light.color.b--;
+**		**mode 500 + 19 = light.intensity++;
+**		**mode 500 + 20 = light.intensity--;
+**
 **	mode 6 = camera menu is up and waiting for command
 **		**mode 600 + 01 = cam.pos.x++;
 **		**mode 600 + 02 = cam.pos.x--;
@@ -60,29 +81,47 @@ int		ft_get_cmd_interface(int press, int x, int y, t_env *e)
 		return (-1);
 	else if (e->key.mode == 2)
 		return (ft_get_mm_cmd_interface(x, y, e));
-	/*else if (e->key.mode = 5)
-		return (ft_get_lm_cmd_interface(press, x, y, e));*/
+	else if (e->key.mode == 5)
+		return (ft_get_lm_cmd_interface(x, y, e));
 	else if (e->key.mode == 6)
 		return (ft_get_cm_cmd_interface(x, y, e));
 	return (e->key.mode);
+}
+
+void	ft_print_pending_light(t_env *e, int mod)
+{
+	ft_mod_light_inc(e, mod);
+	hide_interface_image(e);
+	spawn_light_menu(e);
+	ft_print_pending_lightpos_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightdir_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightcol_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightint_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_selected_light(e);
+	e->key.mode = 5;
 }
 
 int		ft_exec_cmd(int mod, t_env *e)
 {
 	if (mod == 3)
 		spawn_cam_menu(e);
+	if (e->key.mode == 4)
+		spawn_light_menu(e);
 	if (mod > 600 && mod <= 612)
 	{
 		ft_mod_cam_inc(e, mod);
 		e->key.mode = 6;
-	}
-	if (e->key.mode == 6)
-	{
 		hide_interface_image(e);
 		spawn_cam_menu(e);
 		ft_print_pending_campos_modif(e);
 		ft_print_pending_camdir_modif(e);
 	}
+	if (mod > 500 && mod <= 520)
+		ft_print_pending_light(e, mod);
 	return (0);
 }
 
