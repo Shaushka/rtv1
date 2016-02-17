@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/17 18:33:32 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/17 20:04:06 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,15 @@ int			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 	while (tmp)
 	{
 		test = 0;
-		if (tmp->type == SPHERE)
+		test = intersection(tmp, unit_vector(light_ray), inter_pos);
+/*		if (tmp->type == SPHERE)
 			test = inter_sphere(inter_pos, unit_vector(light_ray), *tmp);
 		else if (tmp->type == PLANE)
 			test = inter_plane(inter_pos, unit_vector(light_ray), *tmp);
 		else if (tmp->type == CONE)
 			test = inter_cone(inter_pos, unit_vector(light_ray), *tmp);
 		else if (tmp->type == CYLINDER)
-			test = inter_cylinder(inter_pos, unit_vector(light_ray), *tmp);
+			test = inter_cylinder(inter_pos, unit_vector(light_ray), *tmp);*/
 		tmp = tmp->next;
 		if (test > 0.00001 && test < (float)norm_vector(light_ray))
 			return (1);
