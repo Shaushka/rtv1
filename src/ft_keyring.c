@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/16 19:29:21 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 22:29:50 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,72 +15,135 @@
 #include "mlx.h"
 #include "key_define.h"
 
-void	new_interface_image(t_env *e)
+/*
+**	mode -1 = all is hidden, will go to mode 1 when respawned whith keybinding
+**	mode 0 = all must be hidden
+**	mode 1 = must spaw main menu
+**	mode 2 = main menu is up waiting for command
+**	mode 3 = must spawn camera menu
+**	mode 4 = must spaw light menu
+**	mode 5 = light menu is up and waiting for command
+**		**mode 500 + 01 = light.pos.x++;
+**		**mode 500 + 02 = light.pos.x--;
+**		**mode 500 + 03 = light.pos.y++;
+**		**mode 500 + 04 = light.pos.y--;
+**		**mode 500 + 05 = light.pos.z++;
+**		**mode 500 + 06 = light.pos.z--;
+**		**mode 500 + 07 = light.dir.x++;
+**		**mode 500 + 08 = light.dir.x--;
+**		**mode 500 + 09 = light.dir.y++;
+**		**mode 500 + 10 = light.dir.y--;
+**		**mode 500 + 11 = light.dir.z++;
+**		**mode 500 + 12 = light.dir.z--;
+**		**mode 500 + 13 = light.color.r++;
+**		**mode 500 + 14 = light.color.r--;
+**		**mode 500 + 15 = light.color.g++;
+**		**mode 500 + 16 = light.color.g--;
+**		**mode 500 + 17 = light.color.b++;
+**		**mode 500 + 18 = light.color.b--;
+**		**mode 500 + 19 = light.intensity++;
+**		**mode 500 + 20 = light.intensity--;
+**
+**	mode 6 = camera menu is up and waiting for command
+**		**mode 600 + 01 = cam.pos.x++;
+**		**mode 600 + 02 = cam.pos.x--;
+**		**mode 600 + 03 = cam.pos.y++;
+**		**mode 600 + 04 = cam.pos.y--;
+**		**mode 600 + 05 = cam.pos.z++;
+**		**mode 600 + 06 = cam.pos.z--;
+**		**mode 600 + 07 = cam.dir.x++;
+**		**mode 600 + 08 = cam.dir.x--;
+**		**mode 600 + 09 = cam.dir.y++;
+**		**mode 600 + 10 = cam.dir.y--;
+**		**mode 600 + 11 = cam.dir.z++;
+**		**mode 600 + 12 = cam.dir.z--;
+**
+**	mode 7 = must spaw obj menu
+**	mode 8 = obj menu is up and waiting for command
+*/
+
+int		ft_get_mm_cmd_interface(int x, int y, t_env *e)
 {
-	if (!(e->key.interface.img.img_ptr = mlx_new_image(
-													e->key.interface.mlx,
-													SCREEN_W / 5,
-													SCREEN_H / 5)))
-		ft_exit("Can't create image", 1);
-	if (!(e->key.interface.img.img_data = mlx_get_data_addr(
-												e->key.interface.img.img_ptr,
-												&e->key.interface.img.bpp,
-												&e->key.interface.img.sizeline,
-												&e->key.interface.img.endian)))
-		ft_exit("Can't get image adress", 1);
-	e->key.interface.img.opp = e->key.interface.img.bpp / 8;
+	if (x >= 0 && x <= INTER_W && y >= 0 && y <= (double)INTER_H * (1. / 3.))
+		return (e->key.mode = 3);
+	if (x >= 0 && x <= INTER_W && y >= (double)INTER_H * (1. / 3.) &&
+									y <= (double)INTER_H * (2. / 3.))
+		return (e->key.mode = 4);
+	if (x >= 0 && x <= INTER_W && y >= (double)INTER_H * (2. / 3.) &&
+									y <= (double)INTER_H * (3. / 3.))
+		return (e->key.mode = 7);
+	return (e->key.mode);
 }
 
-void	del_interface_image(t_env *e)
+int		ft_get_cmd_interface(int press, int x, int y, t_env *e)
 {
-	mlx_destroy_image(e->key.interface.mlx, e->key.interface.img.img_ptr);
+	if (e->key.mode == -1 || press == 2)
+		return (-1);
+	else if (e->key.mode == 2)
+		return (ft_get_mm_cmd_interface(x, y, e));
+	else if (e->key.mode == 5)
+		return (ft_get_lm_cmd_interface(x, y, e));
+	else if (e->key.mode == 6)
+		return (ft_get_cm_cmd_interface(x, y, e));
+	else if (e->key.mode == 8)
+		return (ft_get_om_cmd_interface(x, y, e));
+	return (e->key.mode);
 }
 
-void	init_keyring(t_env *e)
+void	ft_print_pending_light(t_env *e, int mod)
 {
-	e->key.mouse_x = 0;
-	e->key.mouse_y = 0;
-	e->key.visible = 0;
-	e->key.interface.mlx = e->mlx_init.mlx;
-	e->key.interface.win = e->mlx_init.win;
-	e->key.selected_light = 0;
-	e->key.selected_obj = 0;
-	e->key.mode = 0;
-	new_interface_image(e);
+	ft_mod_light_inc(e, mod);
+	hide_interface_image(e);
+	spawn_light_menu(e);
+	ft_print_pending_lightpos_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightdir_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightcol_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightint_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_selected_light(e);
+	e->key.mode = 5;
 }
 
-int		ft_mouse_move(int x, int y, t_env *e)
+void	ft_print_pending_obj(t_env *e, int mod)
 {
-	ft_putnbr(e->key.mouse_x = x);
-	ft_putchar('\n');
-	ft_putnbr(e->key.mouse_y = y);
-	ft_putchar('\n');
+	ft_mod_obj_inc(e, mod);
+	hide_interface_image(e);
+	spawn_obj_menu(e);
+	ft_print_pending_objpos_modif(ft_get_obj_at_nb(e->key.selected_obj,
+									e->scene->l_obj), e);
+	ft_print_selected_obj(e);
+	e->key.mode = 8;
+}
+
+int		ft_exec_cmd(int mod, t_env *e)
+{
+	if (mod == 3)
+		spawn_cam_menu(e);
+	if (e->key.mode == 4)
+		spawn_light_menu(e);
+	if (e->key.mode == 7)
+		spawn_obj_menu(e);
+	if (mod > 600 && mod <= 612)
+	{
+		ft_mod_cam_inc(e, mod);
+		e->key.mode = 6;
+		hide_interface_image(e);
+		spawn_cam_menu(e);
+		ft_print_pending_campos_modif(e);
+		ft_print_pending_camdir_modif(e);
+	}
+	if (mod > 500 && mod <= 520)
+		ft_print_pending_light(e, mod);
+	if (mod > 800 && mod <= 806)
+		ft_print_pending_obj(e, mod);
 	return (0);
 }
 
-void	spaw_main_menu(t_env *e)
+int		ft_click(int press, int x, int y, t_env *e)
 {
-	t_color		c;
-	t_vector	v;
-
-	set_color_from_rgb(&c, 190, 30, 30);
-	ft_print_square(c,
-				set_vector(v, 0 + INTER_W / 100., 0 + INTER_H / 100., 0),
-				set_vector(v, 0 + INTER_W / 90., 0 + INTER_H / 90., 0), e);
-	set_color_from_rgb(&c, 30, 190, 30);
-	ft_print_square(c,
-				set_vector(v, 0 + INTER_W / 80., 0 + INTER_H / 80., 0),
-				set_vector(v, 0 + INTER_W / 70., 0 + INTER_H / 70., 0), e);
-	set_color_from_rgb(&c, 30, 30, 190);
-	ft_print_square(c,
-				set_vector(v, 0 + INTER_W / 80., 0 + INTER_H / 80., 0),
-				set_vector(v, 0 + INTER_W / 70., 0 + INTER_H / 70., 0), e);
-}
-
-int		ft_key(int boutton, t_env *e)
-{
-	spaw_main_menu(e);
-	if (boutton == MOUSE_BUTTON_L && e->key.visible == 1)
-		;//ft_iterface_change(ft_check_box_press(e);
-	return (boutton);
+	ft_exec_cmd((ft_get_cmd_interface(press, x, y, e)), e);
+	return (e->key.mode + x + y + press);
 }

@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/16 20:27:42 by mgras            ###   ########.fr        #
+#    Updated: 2016/02/17 22:25:05 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -52,9 +52,19 @@ SRC_NAME = main.c								\
 		   atof.c								\
 		   debug.c								\
 		   parser.c								\
-		   draw_2d_shapes.c						\
-		   ft_keyring.c							\
 		   setter.c								\
+		   ft_keyring_shapes.c					\
+		   ft_keyring_apply.c					\
+		   ft_keyring.c							\
+		   ft_keyring_reset.c					\
+		   ft_keyring_main_menu.c				\
+		   ft_keyring_cam_interface.c			\
+		   ft_keyring_cam_interface_2.c			\
+		   ft_keyring_light_interface.c			\
+		   ft_keyring_object_interface.c		\
+		   ft_keyring_light_interface_cmd.c		\
+		   ft_keyring_utility.c					\
+		   ft_keyring_light_interface_2.c		\
 		   loading_bar.c						\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

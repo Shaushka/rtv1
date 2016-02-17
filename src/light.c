@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 20:36:24 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/17 20:04:06 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <stdlib.h>
 
 #define BLUR 5
-//#define SPECULAR 100 //taille du reflet ++ qd specular --
 
 int			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 {
@@ -30,16 +29,17 @@ int			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 	while (tmp)
 	{
 		test = 0;
-		if (tmp->type == SPHERE)
+		test = intersection(tmp, unit_vector(light_ray), inter_pos);
+/*		if (tmp->type == SPHERE)
 			test = inter_sphere(inter_pos, unit_vector(light_ray), *tmp);
 		else if (tmp->type == PLANE)
 			test = inter_plane(inter_pos, unit_vector(light_ray), *tmp);
 		else if (tmp->type == CONE)
 			test = inter_cone(inter_pos, unit_vector(light_ray), *tmp);
 		else if (tmp->type == CYLINDER)
-			test = inter_cylinder(inter_pos, unit_vector(light_ray), *tmp);
+			test = inter_cylinder(inter_pos, unit_vector(light_ray), *tmp);*/
 		tmp = tmp->next;
-		if (test > 0.0001 && test < (float)norm_vector(light_ray))
+		if (test > 0.00001 && test < (float)norm_vector(light_ray))
 			return (1);
 	}
 	return (0);
@@ -72,13 +72,13 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 			coef = diffuse_light(*lights, item, inter, e);
 			if (item.shine > 0 && coef)
 				spec = specular_light(*lights, item, inter, e);
-			if (item.reflect > 0 && coef)
-			{
-				tmp_color = reflection(*lights, item, inter, e);
-				item.color = mult_color(add_color(item.color, tmp_color), 0.5);
-			}
 			tmp_color = mult_color(lights->color, (coef + spec));
 			item.color = add_color(item.color, tmp_color);
+		}
+		if (item.reflect > 0)
+		{
+			tmp_color = reflection(item, inter, e);
+			item.color = mult_color(add_color(item.color, tmp_color), 0.5);
 		}
 		lights = lights->next;
 	}
@@ -90,13 +90,13 @@ void		init_lights(t_env *e)
 	t_light		*test;
 
 	test = malloc(sizeof(t_light));
-	test->pos = (t_vector){0, -1, 0};
+	test->pos = (t_vector){0, -4, 0};
 	test->dir = (t_vector){0, 1, 0};
 	test->color = (t_color){255, 255, 255};
 	test->intensity = 0.5;
 	test->next = NULL;
 	e->lights = malloc(sizeof(t_light));
-	e->lights->pos = (t_vector){0, 0, 0};
+	e->lights->pos = (t_vector){0, 4, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){255, 255, 255};
 	e->lights->intensity = 0.5;
