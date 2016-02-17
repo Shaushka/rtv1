@@ -17,42 +17,31 @@
 #define LONGV		(LARGV * SCREEN_H / SCREEN_W)
 #define LARGV		1.5
 
+float	intersection(t_object *tmp, t_vector ray, t_vector pos)
+{
+	if (tmp->type == SPHERE)
+			return (inter_sphere(pos, ray, *tmp));
+		else if (tmp->type == PLANE)
+			return (inter_plane(pos, ray, *tmp));
+		else if (tmp->type == CONE)
+			return (inter_cone(pos, ray, *tmp));
+		else if (tmp->type == CYLINDER)
+			return (inter_cylinder(pos, ray, *tmp));
+	return (0.f);
+}
+
 t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 {
 	float		inter;
 	float		test;
 	t_object	*tmp;
 	t_object	*item;
-//	t_vector	normal;
 
-	//APPEL DES LUMIERES
 	tmp = e->scene->l_obj;
-	inter = 150.f; //MAX_VISION(e->cam.pos.z);
-	//TANT qu'il a des objets test
-	while (tmp)// ** TO DO
+	inter = 150.f;
+	while (tmp)
 	{
-		if (tmp->type == SPHERE)
-		{
-			test = inter_sphere(pos, ray, *tmp);
-			//normal = normal_sphere(e->cam, *item, ray, inter);
-		}
-		else if (tmp->type == PLANE)
-		{
-			test = inter_plane(pos, ray, *tmp);
-			//normal = normal_plane(*item, ray);
-		}
-		else if (tmp->type == CONE)
-		{
-			test = inter_cone(pos, ray, *tmp);
-			//normal = normal_cone(pos, *item, ray);
-		}
-		else
-		{
-			test = inter_cylinder(pos, ray, *tmp);
-			//normal = normal_cylinder(*item, ray, inter, e->cam);
-		}
-//		if(norm_vector(normal) == 0)
-//			test = 200.f;
+		test = intersection(tmp, ray, pos);
 		if (test > 0.0001f && test < inter)
 		{
 			inter = test;
@@ -61,7 +50,6 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 		tmp = tmp->next;
 	}
 	if (inter > 0.0001f && inter < 150.f)
-	//&& inter < (float)MAX_VISION(e->cam.pos.z))
 	{
 		return (ft_light(&(*e->lights), *item, mult_vector(ray, inter), e));
 	}
