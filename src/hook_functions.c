@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/17 17:49:49 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 18:12:15 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,6 @@ int		key_press_hook(int keycode, t_env *e)
 	ft_putchar('\n');
 	if (keycode == KEY_ESC)
 		exit(0);
-	if (keycode == KEY_UP)
-	{
-		e->lights->pos.x += 1;
-		printf("PageUp\n");
-		ft_render(e);
-	}
-	if (keycode == KEY_DOWN)
-	{
-		e->lights->pos.x -= 1;
-		printf("PageDown\n");
-		ft_render(e);
-	}
 	if (keycode == KEY_COMMAND && e->key.mode != 2)
 	{
 		hide_interface_image(e);
@@ -48,5 +36,10 @@ int		key_press_hook(int keycode, t_env *e)
 		hide_interface_image(e);
 	else if (keycode == KEY_ENTER && e->key.mode == 6)
 		ft_keyring_cammod_apply(e);
+	else if (e->key.mode == 6 && keycode == KEY_R)
+	{
+		ft_keyring_cammod_reset_pos(e, 0);
+		ft_keyring_cammod_reset_dir(e, 1);
+	}
 	return (0);
 }
