@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/16 20:34:33 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/17 13:53:09 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int				main(int argc, char **argv)
 	t_env	e;
 
 	init_scene(&e);
-	if(ft_strequ(argv[1], "interactive"))
+	if (ft_strequ(argv[1], "interactive"))
 		create_scene(&e);
 	else
 	{
