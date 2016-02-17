@@ -107,7 +107,7 @@ void		ft_render(t_env *e)
 	int			x;
 	int			y;
 	int			addr;
-	t_env		e_load;
+	//t_env		e_load;
 
 	e->cam.pos = (t_vector){0., 0., 0.};
 	e->cam.h = unit_vector((t_vector){0., 0., -1});
@@ -115,12 +115,12 @@ void		ft_render(t_env *e)
 	e->cam.d = cross_vector(e->cam.dir, e->cam.h);
 	pos_hgv = ft_pos_hgv(e);
 	x = 1;
-	new_img_in_old_env(&e_load, e);
+	//new_img_in_old_env(&e_load, e);
 	while (x < SCREEN_W)
 	{
 		v_line_x = pixel_x_vector(e, pos_hgv, x);
 		y = 1;
-		ft_loading_bar(x , &e_load);
+		//ft_loading_bar(x , &e_load);
 		while (y < SCREEN_H)
 		{
 			ray = pixel_y_vector(e, v_line_x, y);

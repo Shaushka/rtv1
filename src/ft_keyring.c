@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 14:12:39 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 14:36:45 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,18 +130,22 @@ void	spawn_cam_menu(t_env *e)
 	t_color		c;
 	t_vector	v;
 
-	set_color_from_rgb(&c, 190, 90, 90);
+	set_color_from_rgb(&c, 255, 100, 100);
 	ft_print_square(c,
 		set_vector(v, 0. , 0., 0.),
-		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (1. / 3.), 0), e);
-	set_color_from_rgb(&c, 90, 190, 90);
+		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (1. / 4.), 0), e);//cam pos x +
+	set_color_from_rgb(&c, 255, 20, 20);
 	ft_print_square(c,
-		set_vector(v, INTER_W * (1. / 3.) , 0., 0.),
-		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 3.), 0), e);
-	set_color_from_rgb(&c, 90, 90, 190);
+		set_vector(v, 0, (double)INTER_H * (1. / 4.), 0),
+		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (2. / 4.), 0), e);//cam pos x -
+	set_color_from_rgb(&c, 100, 155, 100);
 	ft_print_square(c,
-		set_vector(v, INTER_W * (2. / 3.) , 0., 0.),
-		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (1. / 3.), 0), e);
+		set_vector(v, INTER_W * (1. / 3.), 0., 0.),
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 4.), 0), e);
+	set_color_from_rgb(&c, 20, 155, 20);
+	ft_print_square(c,
+		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (1. / 4.), 0.),
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (2. / 4.), 0), e);
 	e->key.mode = 2;
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win, e->key.interface.img.img_ptr, 0, 0);
 }
