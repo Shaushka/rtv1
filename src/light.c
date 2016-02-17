@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/17 20:04:06 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/17 22:39:49 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 	float		spec;
 
 	item.color = item.checkered ? checkered_floor(inter) : item.color;
-	item.color = mult_color(item.color, AMBIANT);
+	item.color = mult_color(item.color, e->ambiant);
 	while (lights && !(coef = 0))
 	{
 		if (!(spec = 0) && !(check_shadow(*lights, inter, e)))

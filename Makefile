@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/17 22:25:05 by mgras            ###   ########.fr        #
+#    Updated: 2016/02/17 23:00:24 by mgras            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -65,6 +65,7 @@ SRC_NAME = main.c								\
 		   ft_keyring_light_interface_cmd.c		\
 		   ft_keyring_utility.c					\
 		   ft_keyring_light_interface_2.c		\
+		   ft_keyring_ui.c						\
 		   loading_bar.c						\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/17 18:00:14 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 22:59:30 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void			init_and_draw(t_env *e, char *av)
 	init_keyring(e);
 	e->cam.pos = (t_vector){0., 0., 0.};
 	e->cam.dir = unit_vector((t_vector){1., 0., 0.});
+	e->ambiant = 0.4;
 	ft_render(e);
 	mlx_expose_hook(e->mlx_init.win, &expose_hook, e);
 	mlx_hook(e->mlx_init.win, BUTTONRELEASE, BUTTONRELEASEMASK, &ft_click, e);

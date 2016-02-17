@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 22:33:45 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 23:40:00 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ typedef struct		s_env
 	t_light			*lights;
 	t_cam			cam;
 	t_keyring		key;
+	float			ambiant;
 }					t_env;
 
 typedef struct		s_node
@@ -506,5 +507,12 @@ void				spawn_obj_pos_controls(t_color c, t_vector v, t_env *e);
 void				ft_print_pending_objpos_modif(t_object *l, t_env *e);
 void				ft_print_selected_obj(t_env *e);
 void				ft_mod_obj_inc(t_env *e, int mod);
+
+/*
+**	ft_keyring_ui.c
+*/
+void				ft_print_obj_ui(t_env *e);
+void				ft_print_light_ui(t_env *e);
+void				ft_print_cam_ui(t_env *e);
 
 #endif

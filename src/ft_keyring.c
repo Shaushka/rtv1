@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 22:29:50 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 23:38:38 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ void	ft_print_pending_light(t_env *e, int mod)
 	ft_print_pending_lightint_modif(ft_get_light_at_nb(
 									e->key.selected_light, e->lights), e);
 	ft_print_selected_light(e);
+	ft_print_light_ui(e);
 	e->key.mode = 5;
 }
 
@@ -115,6 +116,7 @@ void	ft_print_pending_obj(t_env *e, int mod)
 	ft_print_pending_objpos_modif(ft_get_obj_at_nb(e->key.selected_obj,
 									e->scene->l_obj), e);
 	ft_print_selected_obj(e);
+	ft_print_obj_ui(e);
 	e->key.mode = 8;
 }
 
@@ -134,6 +136,7 @@ int		ft_exec_cmd(int mod, t_env *e)
 		spawn_cam_menu(e);
 		ft_print_pending_campos_modif(e);
 		ft_print_pending_camdir_modif(e);
+		ft_print_cam_ui(e);
 	}
 	if (mod > 500 && mod <= 520)
 		ft_print_pending_light(e, mod);

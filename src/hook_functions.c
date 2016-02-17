@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/17 22:33:02 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 22:52:33 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int		expose_hook(t_env *e)
 
 int		key_press_hook(int keycode, t_env *e)
 {
-	ft_putnbr(keycode);
-	ft_putchar('\n');
 	if (keycode == KEY_ESC)
 		exit(0);
 	if (keycode == KEY_COMMAND && e->key.mode != 2)
@@ -54,6 +52,20 @@ int		key_press_hook(int keycode, t_env *e)
 	{
 		ft_keyring_cammod_reset_pos(e, 0);
 		ft_keyring_cammod_reset_dir(e, 1);
+	}
+	else if (keycode == KEY_Z)
+	{
+		e->ambiant += 0.1;
+		ft_render(e);
+		mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
+				e->mlx_init.img.img_ptr, 0, 0);
+	}
+	else if (keycode == KEY_A)
+	{
+		e->ambiant -= 0.1;
+		ft_render(e);
+		mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
+				e->mlx_init.img.img_ptr, 0, 0);
 	}
 	return (0);
 }
