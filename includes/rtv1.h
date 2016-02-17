@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 20:23:25 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 12:33:18 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -412,7 +412,7 @@ void				ft_print_square(t_color c, t_vector st, t_vector en, t_env *e);
 void				new_interface_image(t_env *e);
 void				init_keyring(t_env *e);
 int					ft_mouse_move(int x, int y, t_env *e);
-int					ft_key(int boutton, t_env *e);
+int					ft_click(int press, int x, int y, t_env *e);
 void				ft_keyring(t_env *e);
 
 #endif

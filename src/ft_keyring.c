@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/16 19:29:21 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/17 12:35:00 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #include "libft.h"
 #include "mlx.h"
 #include "key_define.h"
+
+int		ft_click(int press, int x, int y, t_env *e)
+{
+	return (e->key.mode + press + x + y);
+}
 
 void	new_interface_image(t_env *e)
 {
@@ -75,12 +80,4 @@ void	spaw_main_menu(t_env *e)
 	ft_print_square(c,
 				set_vector(v, 0 + INTER_W / 80., 0 + INTER_H / 80., 0),
 				set_vector(v, 0 + INTER_W / 70., 0 + INTER_H / 70., 0), e);
-}
-
-int		ft_key(int boutton, t_env *e)
-{
-	spaw_main_menu(e);
-	if (boutton == MOUSE_BUTTON_L && e->key.visible == 1)
-		;//ft_iterface_change(ft_check_box_press(e);
-	return (boutton);
 }
