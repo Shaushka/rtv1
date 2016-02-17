@@ -7,16 +7,21 @@ char			*cut_pos(char *str, int i)
 {
 	char		*tmp;
 	int			j;
+	int			k;
 
+	k = i;
+	printf("CP :	je rentre dans cut_pos\n");
+	printf("CP :	str : \"%s\", i = %d\n", str, i);
 	j = 0;
-	while (str[i] != '/')
+	while (str[i] != '/' && str[i] != '\0' && str[i] != '\n')
 	{
 		i++;
 		j++;
 	}
+	printf("CP :	je vais malloc %d + 1\n", j);
 	tmp = malloc(sizeof(char) * (j + 1));
-	i = 0;
-	while (str[i] != '/')
+	i = k;
+	while (str[i] != '/' && str[i] != '\0' && str[i] != '\n')
 	{
 		tmp[i] = str[i];
 		i++;
@@ -25,26 +30,40 @@ char			*cut_pos(char *str, int i)
 	return (tmp);
 }
 
+char			*cleanit(char *str)
+{
+	char *clean;
+
+	clean = no_more_spaces(str);
+	separators(clean);
+	return(no_more_spaces(clean));
+}
+
 int				check_values(char *str, int min, int max)
 {
 	int			i;
 	int			x;
+	char		*clean;
 
 	i = 0;
-	printf("Valeur de str dans check_values : \"%s\"\n", str);
-	x = ft_atoi(cut_pos(str, i));
+	clean = cleanit(str);
+	printf("i : %d clean[i] : %c\n", i, clean[i]);
+	x = ft_atoi(cut_pos(clean, i));
 	if (x < min || x > max)
 		return (0);
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(clean[i]))
 		i++;
 	i++;
-	x = ft_atoi(cut_pos(str, i));
+	
+	printf("i : %d clean[i] : %c\n", i, clean[i]);
+	x = ft_atoi(cut_pos(clean, i));
 	if (x < min || x > max)
 		return (0);
-	while (ft_isdigit(str[i]))
+	printf("i : %d clean[i] : %c\n", i, clean[i]);
+	while (ft_isdigit(clean[i]))
 		i++;
 	i++;
-	x = ft_atoi(cut_pos(str, i));
+	x = ft_atoi(cut_pos(clean, i));
 	if (x < min || x > max)
 		return (0);
 	return (1);
@@ -81,7 +100,13 @@ void			position(t_object *node)
 		ft_putstr("Entrez la position sous la forme x/y/z : ");
 		read(0, tmp, 200);
 	}
+	ft_putstr(tmp);
+	remove_bn(&tmp);	
+	printf("POS :	tmp = \"%s\"\n", tmp);
 	if (check_values(tmp, 0, 100))
+	{
+		printf("POS :	Debut d'assign_pos\n");
 		assign_pos(node, tmp);
+	}
 	free(tmp);
 }

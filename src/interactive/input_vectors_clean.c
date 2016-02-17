@@ -12,9 +12,9 @@ char		**remove_spaces(char *str, int i, char **clean)
 	char *tmp;
 	printf("Je suis dans remove_spaces et tout va bien\n");
 	tmp = *clean;
-	while (str[i] != '\0')
+	while (str[i] != '\0' && str[i] != '\n')
 	{
-		if (ft_isspace(str[i]) || str[i] == '\n')
+		if (ft_isspace(str[i]))
 			i++;
 		else
 		{
@@ -37,9 +37,9 @@ char		*no_more_spaces(char *str)
 	i = 0;
 	j = 0;
 	len = ft_strlen(str);
-	while (str[i] != '\0')
+	while (str[i] != '\0' && str[i] != '\n')
 	{
-		if (ft_isspace(str[i]) || str[i] == '\n')
+		if (ft_isspace(str[i]))
 		{
 			j++;
 			i++;
@@ -63,10 +63,10 @@ void		separators(char *str)
 	j = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '/')
+		if (str[i] == '/' || str[i] == '\n')
 		{
 			i++;
-			while (str[i] == '/')
+			while (str[i] == '/' || str[i] == '\n')
 			{
 				str[i] = ' ';
 				j++;

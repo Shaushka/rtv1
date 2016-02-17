@@ -6,7 +6,7 @@
 /*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:26:41 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 20:11:58 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/17 10:59:29 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void			color(t_color *color)
 {
 	char		*tmp;
 
+	printf("Je suis dans color\n");
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
 	ft_putstr("Definition de la couleur :\n");
@@ -82,6 +83,7 @@ void			color_choice(t_color *color)
 	char		*tmp;
 	char		*clean;
 
+	printf("Je suis dans color_choice\n");	
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
 	ft_putstr("Voulez-vous choisir la couleur ?\n");

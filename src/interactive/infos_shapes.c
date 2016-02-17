@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:18:25 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/16 19:03:52 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/17 16:54:15 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@ void			radius(t_object *node)
 {
 	char		*tmp;
 	char 		*clean;
-//GERER  NUL SI DECOUVERT
+//GERER  SI PAS DE PARAM
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
+	ft_putstr("Indiquez le rayon : ");
 	read(0, tmp, 200);
 	printf("Putain de valeur de mon radius avant clean : \"%s\"\n", tmp);
 	clean = no_more_spaces(tmp);
