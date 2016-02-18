@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 21:58:32 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 10:57:38 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 13:25:44 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,6 @@
 #include "libft.h"
 #include "mlx.h"
 #include "key_define.h"
-
-int		ft_get_om_cmd_interface(int x, int y, t_env *e)
-{
-	if (x >= 0 && x <= INTER_W * (1. / 3.) && y > 0 && y <= INTER_H * (1. / 2.))
-		return (e->key.mode = 800 + 1);
-	if (x >= 0 && x <= INTER_W * (1. / 3.) && y > INTER_H * (1. / 2.) &&
-		y <= INTER_H * (2. / 2.))
-		return (e->key.mode = 800 + 2);
-	if (x >= INTER_W * (1. / 3.) && x <= INTER_W * (2. / 3.) && y > 0 &&
-		y <= INTER_H * (1. / 2.))
-		return (e->key.mode = 800 + 3);
-	if (x >= INTER_W * (1. / 3.) && x <= INTER_W * (2. / 3.) &&
-		y > INTER_H * (1. / 2.) && y <= INTER_H * (2. / 2.))
-		return (e->key.mode = 800 + 4);
-	if (x >= INTER_W * (2. / 3.) && x <= INTER_W &&
-		y > 0 && y <= INTER_H * (1. / 2.))
-		return (e->key.mode = 800 + 5);
-	if (x >= INTER_W * (2. / 3.) && x <= INTER_W &&
-		y > INTER_H * (1. / 2.) && y <= INTER_H * (2. / 2.))
-		return (e->key.mode = 800 + 6);
-	return (e->key.mode);
-}
 
 void	spawn_obj_menu(t_env *e)
 {
@@ -57,28 +35,28 @@ void	spawn_obj_pos_controls(t_color c, t_vector v, t_env *e)
 {
 	set_color_from_rgb(&c, 200, 200, 200);
 	ft_print_square(c,
-		set_vector(v, 0. , 0., 0.),
-		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (1. / 2.), 0), e);//cam pos x +
+		set_vector(v, 0., 0., 0.),
+		set_vector(v, (1. / 3.) * INTER_W, (1. / 2.) * (double)INTER_H, 0), e);
 	set_color_from_rgb(&c, 100, 100, 100);
 	ft_print_square(c,
 		set_vector(v, 0, (double)INTER_H * (1. / 2.), 0),
-		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (2. / 2.), 0), e);//cam pos x -
+		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (2. / 2.), 0), e);
 	set_color_from_rgb(&c, 200, 200, 200);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (1. / 3.), 0., 0.),
-		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 2.), 0), e);//cam pos y +
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 2.), 0), e);
 	set_color_from_rgb(&c, 100, 100, 100);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (1. / 2.), 0.),
-		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (2. / 2.), 0), e);//cam pos y -
+		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (2. / 2.), 0), e);
 	set_color_from_rgb(&c, 200, 200, 200);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (2. / 3.), 0., 0.),
-		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (1. / 2.), 0), e);//cam pos z +
+		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (1. / 2.), 0), e);
 	set_color_from_rgb(&c, 100, 100, 100);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 2.), 0.),
-		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (2. / 2.), 0), e);//cam pos z -
+		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (2. / 2.), 0), e);
 }
 
 void	ft_print_pending_objpos_modif(t_object *l, t_env *e)

@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 20:22:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 21:40:03 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 12:38:10 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void	ft_print_pending_lightpos_modif(t_light *l, t_env *e)
 	li = ft_strjoin(swp, tmp1);
 	ft_strdel(&tmp1);
 	ft_strdel(&swp);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10,
-					INTER_H * (1. / 7.), 0x0, li);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, 10 + INTER_W,
+					(1. / 7 * INTER_H), 0x0, li);
 	ft_strdel(&li);
 }
 
@@ -64,8 +64,8 @@ void	ft_print_pending_lightdir_modif(t_light *l, t_env *e)
 	li = ft_strjoin(swp, tmp1);
 	ft_strdel(&tmp1);
 	ft_strdel(&swp);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10,
-					INTER_H * (3. / 7.), 0x0, li);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, 10 + INTER_W,
+					(3. / 7 * INTER_H), 0x0, li);
 	ft_strdel(&li);
 }
 
@@ -91,8 +91,8 @@ void	ft_print_pending_lightcol_modif(t_light *l, t_env *e)
 	li = ft_strjoin(swp, tmp1);
 	ft_strdel(&tmp1);
 	ft_strdel(&swp);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10,
-					INTER_H * (5. / 7.), 0x0, li);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, 10 + INTER_W,
+					(5. / 7 * INTER_H), 0x0, li);
 	ft_strdel(&li);
 }
 
@@ -104,7 +104,7 @@ void	ft_print_pending_lightint_modif(t_light *l, t_env *e)
 	tmp1 = ft_itoa((int)(l->intensity * 100));
 	li = ft_strjoin("Pending light intensity status : i = 0.001 * ", tmp1);
 	ft_strdel(&tmp1);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10,
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, 10 + INTER_W,
 					INTER_H * (6. / 7.), 0x0, li);
 	ft_strdel(&li);
 }
@@ -117,7 +117,7 @@ void	ft_print_selected_light(t_env *e)
 	tmp1 = ft_itoa((int)(e->key.selected_light));
 	li = ft_strjoin("selected_light : ", tmp1);
 	ft_strdel(&tmp1);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10,
-					INTER_H + 10, 0x0, li);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, 10 + INTER_W,
+					10 + INTER_H, 0x0, li);
 	ft_strdel(&li);
 }

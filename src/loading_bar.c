@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 14:12:09 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 10:41:38 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 13:32:19 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void		ft_fill_loading_border(t_env *e, int x)
 	t_vector	v;
 	t_color		c;
 
-	set_color_from_rgb(&c, 255 , 255 , 255);
+	set_color_from_rgb(&c, 255, 255, 255);
 	en.x = x;
 	en.y = (int)((double)SCREEN_H - ((double)SCREEN_H / 100. * 4.));
 	st.y = (int)((double)SCREEN_H - ((double)SCREEN_H / 100. * 3.));
