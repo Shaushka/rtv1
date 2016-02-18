@@ -3,7 +3,7 @@
 void	error_in_parse(char *str)
 {
 	perror(str);
-	exit(1);
+	ft_wait_exit(1);
 }
 
 void	print_result(t_parse *parse)

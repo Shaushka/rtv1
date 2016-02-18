@@ -507,4 +507,12 @@ void				ft_print_light_ui(t_env *e);
 void				ft_print_cam_ui(t_env *e);
 void				ft_print_mm_ui(t_env *e);
 
+/*
+**	cadeau Merlin : FORK 
+*/
+
+void				get_scene(t_env *e, char *file);
+void				ft_wait_exit(int n);
+
+
 #endif
