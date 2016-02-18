@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 13:28:56 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 13:29:09 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 18:59:34 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,22 @@ void	ft_print_light_ui_3(t_env *e)
 
 	x = INTER_W * (3. / 18.);
 	y = INTER_H * ((0. + 12.) / 21.);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "x+");
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "r+");
 	x = INTER_W * (3. / 18.);
 	y = INTER_H * ((3. + 12.) / 21.);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "x-");
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "r-");
 	x = INTER_W * (9. / 18.);
 	y = INTER_H * ((0. + 12.) / 21.);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "y+");
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "g+");
 	x = INTER_W * (9. / 18.);
 	y = INTER_H * ((3. + 12.) / 21.);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "y-");
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "g-");
 	x = INTER_W * (15. / 18.);
 	y = INTER_H * ((0. + 12.) / 21.);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "z+");
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "b+");
 	x = INTER_W * (15. / 18.);
 	y = INTER_H * ((3. + 12.) / 21.);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "z-");
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "b-");
 	ft_print_light_ui_4(e);
 }
 
