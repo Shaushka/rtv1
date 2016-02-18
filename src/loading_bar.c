@@ -6,13 +6,12 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 14:12:09 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 13:32:19 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 14:04:32 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "mlx.h"
-#include <stdio.h>
 
 void		ft_gen_loading_border(t_env *e)
 {

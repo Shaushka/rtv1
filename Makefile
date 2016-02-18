@@ -58,6 +58,7 @@ SRC_NAME = main_fork.c								\
 		   ft_keyring_ui.c						\
 		   ft_keyring_ui_2.c					\
 		   loading_bar.c						\
+		   ft_texture_load.c					\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rtv1.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/18 14:25:28 by mgras             #+#    #+#             */
+/*   Updated: 2016/02/18 14:28:20 by mgras            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RTV1_H
 # define RTV1_H
 
@@ -22,6 +34,8 @@
 # define RATIO				(PI / 180)
 
 # define BUF_SIZE 10
+
+# define XPM_DEFAULT		"texture/default"
 
 typedef	struct		s_vector
 {
@@ -182,7 +196,8 @@ void				put_pixel_to_img(t_env *e, int addr, t_color color);
 void				set_color_from_img(t_color *color, char *data, int addr);
 void				set_color_from_rgb(t_color *color, int r, int g, int b);
 void				get_true_color_value(t_color *color);
-void				blend_color(t_color *c, t_color c1, t_color c2, double percent);
+void				blend_color(t_color *c, t_color c1, t_color c2,
+								double percent);
 
 /*
 **	----------> USER INPUT SYSTEM <-----
@@ -236,10 +251,10 @@ char				*no_more_spaces(char *str);
 /*
 **	input_verification.c
 */
-int				is_slashes_and_digits(char *str);//static ?
-int				is_vector(char *str);//static ?
-int				correct_input(char *str);
-void			remove_bn(char **str);
+int					is_slashes_and_digits(char *str);//static ?
+int					is_vector(char *str);//static ?
+int					correct_input(char *str);
+void				remove_bn(char **str);
 /*
 **	input_position.c
 */
@@ -266,7 +281,8 @@ float				d_acos(float value);
 **	sphere.c
 */
 t_object			set_sphere(t_vector pos, float radius);
-float				inter_sphere(t_vector cam_pos, t_vector ray, t_object sphere);
+float				inter_sphere(t_vector cam_pos, t_vector ray,
+								t_object sphere);
 t_vector			normal_sphere(t_vector cam, t_object obj, t_vector ray);
 
 /*
@@ -280,7 +296,8 @@ t_vector			normal_plane(t_object obj, t_vector ray);
 **	cylinder.c
 */
 t_object			set_cylinder(t_vector pos, t_vector dir, float r, float h);
-float				inter_cylinder(t_vector cam_pos, t_vector ray, t_object obj);
+float				inter_cylinder(t_vector cam_pos, t_vector ray,
+									t_object obj);
 t_vector			normal_cylinder(t_vector cam, t_object obj, t_vector ray);
 
 /*
@@ -299,18 +316,21 @@ t_vector			normal_cone(t_vector cam, t_object obj, t_vector ray);
 */
 
 t_vector			calc_normal(t_vector pos, t_object obj, t_vector inter);
-t_color				ft_light (t_light *ls, t_object o, t_vector inter, t_env *e);
+t_color				ft_light (t_light *ls, t_object o, t_vector inter,
+								t_env *e);
 void				init_lights(t_env *e);
 
 /*
 **	light_diffuse.c
 */
-float				diffuse_light(t_light l, t_object o, t_vector inter, t_env *e);
+float				diffuse_light(t_light l, t_object o, t_vector inter,
+									t_env *e);
 
 /*
 **	light_specular.c
 */
-float				specular_light(t_light l, t_object o, t_vector inter, t_env *e);
+float				specular_light(t_light l, t_object o, t_vector inter,
+									t_env *e);
 
 /*
 **	reflection_light.c
@@ -402,7 +422,8 @@ int					ft_loading_bar(int x, t_env *e);
 **	ft_print_2d_shapes.c
 */
 void				ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e);
-void				ft_print_square(t_color c, t_vector st, t_vector en, t_env *e);
+void				ft_print_square(t_color c, t_vector st, t_vector en,
+									t_env *e);
 
 /*
 **	ft_keyring_cam_interface.c
@@ -508,11 +529,16 @@ void				ft_print_cam_ui(t_env *e);
 void				ft_print_mm_ui(t_env *e);
 
 /*
-**	cadeau Merlin : FORK 
+**	cadeau Merlin : FORK
 */
 
 void				get_scene(t_env *e, char *file);
 void				ft_wait_exit(int n);
 
+/*
+**	ft_texture_load.c
+*/
+t_img				ft_get_texture(char *xpm_file_name, int xpm_w, int xpm_h,
+									t_env *e);
 
 #endif
