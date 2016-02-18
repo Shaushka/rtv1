@@ -1,8 +1,8 @@
 <objet>
 	<type>sphere</type>
-	<radius>1.12</radius>
 	<color>255/255/255/</color>
 	<pos>200/100/100/</pos>
+	<radius>1.12</radius>
 	<shine>0.76</shine>
 </objet>
 <objet>
@@ -19,10 +19,24 @@
 	<pos>200/100/100/</pos>
 	<shine>0.76</shine>
 </objet>
-<objet>
-	<type>plan</type>
-	<radius>1.12</radius>
+<light>
+	<lighttype>normal</type>
+	<dir>125/25/125/</dir>
 	<color>255/255/255/</color>
 	<pos>200/100/100/</pos>
-	<shine>0.76</shine>
-</objet>
+	<intensity>0.76</intensity>>
+</light>
+<light>
+	<lighttype>normal</type>
+	<pos>200/200/100/</pos>
+	<dir>5/125/25/</dir>
+	<color>255/255/255/</color>
+	<intensity>0.54</intensity>>
+</light>
+<light>
+	<lighttype>normal</type>
+	<pos>200/100/200/</pos>
+	<dir>125/25/125/</dir>
+	<color>255/255/255/</color>
+	<intensity>0.35</intensity>>
+</light>

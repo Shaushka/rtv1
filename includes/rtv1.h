@@ -58,6 +58,10 @@ typedef	enum {
 	CONE
 }	t_type;
 
+typedef	enum {
+	NORMAL
+}	t_lighttype;
+
 typedef	struct		s_object
 {
 	void			*next;
@@ -75,6 +79,7 @@ typedef	struct		s_object
 
 typedef struct		s_light
 {
+	t_lighttype			type;
 	t_vector		pos;
 	t_vector		dir;
 	t_color			color;
