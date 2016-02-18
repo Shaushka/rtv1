@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:21:02 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 17:15:21 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 13:18:40 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,11 @@ void		ft_print_line(t_env *ev, t_color c, t_vector s, t_vector e)
 	}
 }
 
-void	ft_print_square(t_color c, t_vector st, t_vector en, t_env *e)
+void		ft_print_square(t_color c, t_vector st, t_vector en, t_env *e)
 {
-	int		x;
-	int		y;
-	int		addr;
+	int			x;
+	int			y;
+	int			addr;
 
 	y = st.y;
 	while (y < en.y)
@@ -48,7 +48,8 @@ void	ft_print_square(t_color c, t_vector st, t_vector en, t_env *e)
 		x = st.x;
 		while (x < en.x)
 		{
-			addr = y * e->key.interface.img.sizeline + x * e->key.interface.img.opp;
+			addr = y * e->key.interface.img.sizeline + x *
+					e->key.interface.img.opp;
 			e->key.interface.img.img_data[addr + 0] = c.b;
 			e->key.interface.img.img_data[addr + 1] = c.g;
 			e->key.interface.img.img_data[addr + 2] = c.r;

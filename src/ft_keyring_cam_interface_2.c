@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:04:09 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 11:05:51 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 12:40:12 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ void	ft_print_pending_campos_modif(t_env *e)
 	cam = ft_strjoin(swp, tmp);
 	ft_strdel(&tmp);
 	ft_strdel(&swp);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10, INTER_H / 4, 0x0, cam);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win,
+					INTER_W + 10, INTER_H / 4, 0x0, cam);
 	ft_strdel(&cam);
 }
 
@@ -124,6 +125,7 @@ void	ft_print_pending_camdir_modif(t_env *e)
 	cam = ft_strjoin(swp, tmp);
 	ft_strdel(&tmp);
 	ft_strdel(&swp);
-	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, INTER_W + 10, INTER_H * (3. / 4.), 0x0, cam);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win,
+		INTER_W + 10, INTER_H * (3. / 4.), 0x0, cam);
 	ft_strdel(&cam);
 }

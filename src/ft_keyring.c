@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 10:52:48 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 13:16:11 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,57 +23,48 @@
 **	mode 3 = must spawn camera menu
 **	mode 4 = must spaw light menu
 **	mode 5 = light menu is up and waiting for command
-**		**mode 500 + 01 = light.pos.x++;
-**		**mode 500 + 02 = light.pos.x--;
-**		**mode 500 + 03 = light.pos.y++;
-**		**mode 500 + 04 = light.pos.y--;
-**		**mode 500 + 05 = light.pos.z++;
-**		**mode 500 + 06 = light.pos.z--;
-**		**mode 500 + 07 = light.dir.x++;
-**		**mode 500 + 08 = light.dir.x--;
-**		**mode 500 + 09 = light.dir.y++;
-**		**mode 500 + 10 = light.dir.y--;
-**		**mode 500 + 11 = light.dir.z++;
-**		**mode 500 + 12 = light.dir.z--;
-**		**mode 500 + 13 = light.color.r++;
-**		**mode 500 + 14 = light.color.r--;
-**		**mode 500 + 15 = light.color.g++;
-**		**mode 500 + 16 = light.color.g--;
-**		**mode 500 + 17 = light.color.b++;
-**		**mode 500 + 18 = light.color.b--;
-**		**mode 500 + 19 = light.intensity++;
-**		**mode 500 + 20 = light.intensity--;
-**
-**	mode 6 = camera menu is up and waiting for command
-**		**mode 600 + 01 = cam.pos.x++;
-**		**mode 600 + 02 = cam.pos.x--;
-**		**mode 600 + 03 = cam.pos.y++;
-**		**mode 600 + 04 = cam.pos.y--;
-**		**mode 600 + 05 = cam.pos.z++;
-**		**mode 600 + 06 = cam.pos.z--;
-**		**mode 600 + 07 = cam.dir.x++;
-**		**mode 600 + 08 = cam.dir.x--;
-**		**mode 600 + 09 = cam.dir.y++;
-**		**mode 600 + 10 = cam.dir.y--;
-**		**mode 600 + 11 = cam.dir.z++;
-**		**mode 600 + 12 = cam.dir.z--;
-**
-**	mode 7 = must spaw obj menu
-**	mode 8 = obj menu is up and waiting for command
+**			**mode 500 + 01 = light.pos.x++;
+**			**mode 500 + 02 = light.pos.x--;
+**			**mode 500 + 03 = light.pos.y++;
+**			**mode 500 + 04 = light.pos.y--;
+**			**mode 500 + 05 = light.pos.z++;
+**			**mode 500 + 06 = light.pos.z--;
+**			**mode 500 + 07 = light.dir.x++;
+**			**mode 500 + 08 = light.dir.x--;
+**			**mode 500 + 09 = light.dir.y++;
+**			**mode 500 + 10 = light.dir.y--;
+**			**mode 500 + 11 = light.dir.z++;
+**			**mode 500 + 12 = light.dir.z--;
+**			**mode 500 + 13 = light.color.r++;
+**			**mode 500 + 14 = light.color.r--;
+**			**mode 500 + 15 = light.color.g++;
+**			**mode 500 + 16 = light.color.g--;
+**			**mode 500 + 17 = light.color.b++;
+**			**mode 500 + 18 = light.color.b--;
+**			**mode 500 + 19 = light.intensity++;
+**			**mode 500 + 20 = light.intensity--;
+** mode 6 = camera menu is up and waiting for command
+**			**mode 600 + 01 = cam.pos.x++;
+**			**mode 600 + 02 = cam.pos.x--;
+**			**mode 600 + 03 = cam.pos.y++;
+**			**mode 600 + 04 = cam.pos.y--;
+**			**mode 600 + 05 = cam.pos.z++;
+**			**mode 600 + 06 = cam.pos.z--;
+**			**mode 600 + 07 = cam.dir.x++;
+**			**mode 600 + 08 = cam.dir.x--;
+**			**mode 600 + 09 = cam.dir.y++;
+**			**mode 600 + 10 = cam.dir.y--;
+**			**mode 600 + 11 = cam.dir.z++;
+**			**mode 600 + 12 = cam.dir.z--;
+** mode 7 = must spaw obj menu
+** mode 8 = obj menu is up and waiting for command
+**			**mode 800 + 01 = obj.pos.x++;
+**			**mode 800 + 02 = obj.pos.x--;
+**			**mode 800 + 03 = obj.pos.y++;
+**			**mode 800 + 04 = obj.pos.y--;
+**			**mode 800 + 05 = obj.pos.z++;
+**			**mode 800 + 06 = obj.pos.z--;
 */
-
-int		ft_get_mm_cmd_interface(int x, int y, t_env *e)
-{
-	if (x >= 0 && x <= INTER_W && y >= 0 && y <= (double)INTER_H * (1. / 3.))
-		return (e->key.mode = 3);
-	if (x >= 0 && x <= INTER_W && y >= (double)INTER_H * (1. / 3.) &&
-									y <= (double)INTER_H * (2. / 3.))
-		return (e->key.mode = 4);
-	if (x >= 0 && x <= INTER_W && y >= (double)INTER_H * (2. / 3.) &&
-									y <= (double)INTER_H * (3. / 3.))
-		return (e->key.mode = 7);
-	return (e->key.mode);
-}
 
 int		ft_get_cmd_interface(int press, int x, int y, t_env *e)
 {

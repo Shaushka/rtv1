@@ -51,10 +51,12 @@ SRC_NAME = main_fork.c								\
 		   ft_keyring_cam_interface_2.c			\
 		   ft_keyring_light_interface.c			\
 		   ft_keyring_object_interface.c		\
+		   ft_keyring_object_interface_2.c		\
 		   ft_keyring_light_interface_cmd.c		\
 		   ft_keyring_utility.c					\
 		   ft_keyring_light_interface_2.c		\
 		   ft_keyring_ui.c						\
+		   ft_keyring_ui_2.c					\
 		   loading_bar.c						\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))

@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 19:18:22 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 21:26:38 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 13:28:02 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,12 +112,12 @@ void	ft_mod_light_inc(t_env *e, int mod)
 	swp->dir.y -= mod == 510 ? 1 : 0;
 	swp->dir.z += mod == 511 ? 1 : 0;
 	swp->dir.z -= mod == 512 ? 1 : 0;
-	swp->color.r += mod == 513  && swp->color.r + 10 <= 255 ? 10 : 0;
-	swp->color.r -= mod == 514  && swp->color.r - 10 >= 000 ? 10 : 0;
-	swp->color.g += mod == 515  && swp->color.g + 10 <= 255 ? 10 : 0;
-	swp->color.g -= mod == 516  && swp->color.g - 10 >= 000 ? 10 : 0;
-	swp->color.b += mod == 517  && swp->color.b + 10 <= 255 ? 10 : 0;
-	swp->color.b -= mod == 518  && swp->color.b - 10 >= 000 ? 10 : 0;
+	swp->color.r += mod == 513 && swp->color.r + 10 <= 255 ? 10 : 0;
+	swp->color.r -= mod == 514 && swp->color.r - 10 >= 000 ? 10 : 0;
+	swp->color.g += mod == 515 && swp->color.g + 10 <= 255 ? 10 : 0;
+	swp->color.g -= mod == 516 && swp->color.g - 10 >= 000 ? 10 : 0;
+	swp->color.b += mod == 517 && swp->color.b + 10 <= 255 ? 10 : 0;
+	swp->color.b -= mod == 518 && swp->color.b - 10 >= 000 ? 10 : 0;
 	swp->intensity += mod == 519 && swp->intensity + 0.1 <= 1 ? 0.1 : 0;
 	swp->intensity -= mod == 520 && swp->intensity - 0.1 >= 0 ? 0.1 : 0;
 }
