@@ -6,7 +6,7 @@
 
 static t_vector		ft_pos_hgv(t_env *e)
 {
-	t_vector pos_hgv;
+	t_vector	pos_hgv;
 
 	pos_hgv = mult_vector(e->cam.dir, DISTVUE);
 	pos_hgv = sub_vector(pos_hgv, mult_vector(e->cam.h, LONGV / 2));
@@ -34,7 +34,7 @@ static t_vector		pixel_y_vector(t_env *e, t_vector v_per_x, int y)
 	return (v);
 }
 
-static void	finish_ray(t_env *e, t_vector v_line_x, int x)
+static void			finish_ray(t_env *e, t_vector v_line_x, int x)
 {
 	int			y;
 	int			addr;
@@ -50,7 +50,8 @@ static void	finish_ray(t_env *e, t_vector v_line_x, int x)
 		y++;
 	}
 }
-void		ft_render(t_env *e)
+
+void				ft_render(t_env *e)
 {
 	t_vector	pos_hgv;
 	t_vector	v_line_x;
@@ -65,7 +66,7 @@ void		ft_render(t_env *e)
 	while (x < SCREEN_W)
 	{
 		v_line_x = pixel_x_vector(e, pos_hgv, x);
-		ft_loading_bar(x , &e_load);
+		ft_loading_bar(x, &e_load);
 		finish_ray(e, v_line_x, x);
 		x++;
 	}
