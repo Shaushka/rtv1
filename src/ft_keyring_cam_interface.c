@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 16:55:00 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 23:56:48 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 11:02:11 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,12 @@ void	ft_mod_cam_inc(t_env *e, int mod)
 	e->key.cam_inc.pos.y += mod == 604 ? -1 : 0;
 	e->key.cam_inc.pos.z += mod == 605 ? 1 : 0;
 	e->key.cam_inc.pos.z += mod == 606 ? -1 : 0;
-	e->key.cam_inc.dir.x += mod == 607 ? 1 : 0;
-	e->key.cam_inc.dir.x += mod == 608 ? -1 : 0;
-	e->key.cam_inc.dir.y += mod == 609 ? 1 : 0;
-	e->key.cam_inc.dir.y += mod == 610 ? -1 : 0;
-	e->key.cam_inc.dir.z += mod == 611 ? 1 : 0;
-	e->key.cam_inc.dir.z += mod == 612 ? -1 : 0;
+	e->key.cam_inc.dir.x += mod == 607 ? 0.1 : 0;
+	e->key.cam_inc.dir.x += mod == 608 ? -0.1 : 0;
+	e->key.cam_inc.dir.y += mod == 609 ? 0.1 : 0;
+	e->key.cam_inc.dir.y += mod == 610 ? -0.1 : 0;
+	e->key.cam_inc.dir.z += mod == 611 ? 0.1 : 0;
+	e->key.cam_inc.dir.z += mod == 612 ? -0.1 : 0;
 }
 
 void	spawn_cam_pos_controls(t_color c, t_vector v, t_env *e)
