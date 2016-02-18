@@ -7,7 +7,7 @@ CC = gcc
 CFLAGS += -Wall -Werror -Wextra -g
 
 SRC_PATH = ./src/
-SRC_NAME = main_fork.c								\
+SRC_NAME = main_fork.c							\
 		   graphics_tools.c						\
 		   initialization.c						\
 		   exit_and_quit.c						\
@@ -16,9 +16,10 @@ SRC_NAME = main_fork.c								\
 		   sphere.c								\
 		   light.c								\
 		   light_ambiant.c						\
-		   light_reflection.c					\
 		   light_specular.c						\
 		   light_diffuse.c						\
+		   light_reflection.c					\
+		   refraction.c							\
 		   vector.c								\
 		   vector2.c							\
 		   color.c								\

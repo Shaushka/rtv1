@@ -16,6 +16,7 @@ t_object		set_cylinder(t_vector pos, t_vector dir, float radius, float h)
 	cylinder.shine = 0;
 	cylinder.reflect = 0;
 	cylinder.checkered = 0;
+	cylinder.refraction = 0;
 	return (cylinder);
 }
 
@@ -27,7 +28,7 @@ static float	m_calculus(t_vector cam, t_object cylinder, t_vector ray)
 		+ dotpro_vector(sub_vector(cam, cylinder.pos), cylinder.dir);
 	if (cylinder.height > 0)
 	{
-		if (m < 0 || m > (cylinder.height))
+		if (m < (-cylinder.height / 2) || m > (cylinder.height / 2))
 			return (0);
 	}
 	return (m);

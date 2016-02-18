@@ -13,6 +13,7 @@ t_object		set_cone(t_vector pos, t_vector dir, float radius, float height)
 	cone.shine = 0;
 	cone.reflect = 0;
 	cone.checkered = 0;
+	cone.refraction = 0;
 	return (cone);
 }
 

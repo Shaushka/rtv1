@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/18 11:22:47 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/18 16:38:35 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <stdlib.h>
 
 #define BLUR 5
+
+int			g_depth = 0;
 
 int			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 {
@@ -56,6 +58,13 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 	float		spec;
 
 	item.color = item.checkered ? checkered_floor(inter) : item.color;
+	if (item.reflect > 0)
+		{
+			tmp_color = reflection(item, inter, e);
+			item.color = mult_color(add_color(item.color, tmp_color), 0.5);
+		}
+	if (item.refraction > 0)
+		item.color = add_color(item.color, refraction(item, inter, e));
 	item.color = mult_color(item.color, e->ambiant);
 	while (lights && !(coef = 0))
 	{
@@ -67,13 +76,9 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 			tmp_color = mult_color(lights->color, (coef + spec));
 			item.color = add_color(item.color, tmp_color);
 		}
-		if (item.reflect > 0)
-		{
-			tmp_color = reflection(item, inter, e);
-			item.color = mult_color(add_color(item.color, tmp_color), 0.5);
-		}
-		lights = lights->next;
+			lights = lights->next;
 	}
+
 	return (check_color(item.color));
 }
 
