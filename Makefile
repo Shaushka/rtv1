@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/17 23:00:24 by mgras            ###   ########.fr        #
+#    Updated: 2016/02/18 11:33:28 by mguillon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -20,7 +20,7 @@ CC = gcc
 CFLAGS += -Wall -Werror -Wextra -g
 
 SRC_PATH = ./src/
-SRC_NAME = main.c								\
+SRC_NAME = main_fork.c								\
 		   graphics_tools.c						\
 		   initialization.c						\
 		   exit_and_quit.c						\

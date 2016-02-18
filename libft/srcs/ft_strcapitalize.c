@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/29 20:12:50 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/29 20:22:01 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/18 11:01:23 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strcapitalize(char *str)
 {
 	int i;
 
-	i= 0;
+	i = 0;
 	if (str)
 	{
 		while (str[i] != '\0')
@@ -28,5 +28,5 @@ char	*ft_strcapitalize(char *str)
 			i++;
 		}
 	}
-		return (str);
+	return (str);
 }

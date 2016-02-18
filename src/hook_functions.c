@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/18 10:57:59 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 11:31:56 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		expose_hook(t_env *e)
 int		key_press_hook(int keycode, t_env *e)
 {
 	if (keycode == KEY_ESC)
-		exit(0);
+		ft_wait_exit(0);
 	if (keycode == KEY_COMMAND && e->key.mode != 2)
 	{
 		hide_interface_image(e);
