@@ -4,7 +4,7 @@
 /*
 ** plus la specular est grande moins la tache est grande
 */
-#define SPECULAR 64
+#define SPECULAR 20
 
 float	specular_light(t_light light, t_object item, t_vector inter, t_env *e)
 {

@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/18 14:37:48 by mgrimald         ###   ########.fr       */
+/*   Updated: 2016/02/18 22:32:11 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			init_obj(t_object *node)
 	node->next = NULL;
 	node->pos = set_vector(node->pos, 0, 0, 0);
 	node->normal = set_vector(node->normal, 0, 0, 0);
-//	node->color = 0;
+	//node->color = 0;
 	node->radius = 0;
 	node->height = 0;
 	//remplir les infos de depart

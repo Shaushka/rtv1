@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/18 16:24:02 by mgrimald         ###   ########.fr       */
+/*   Updated: 2016/02/18 22:36:19 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,8 @@ static void	start(int argc, char **argv)
 		create_scene(&e);
 	else
 	{
-		set_list_obj(&e);
+			get_scene(&e, argv[1]);
+			//set_list_obj(&e);
 	}
 	init_lights(&e);
 	if (argc > 1)

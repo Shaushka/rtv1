@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/18 19:09:29 by gkervran         ###   ########.fr       */
+/*   Updated: 2016/02/18 22:42:27 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,17 @@ int				main(int argc, char **argv)
 	t_env	e;
 
 	init_scene(&e);
-	if (ft_strequ(argv[1], "interactive"))
-		create_scene(&e);
-	else
-	{
-		set_list_obj(&e);
-	}
 	init_lights(&e);
 	argv = (char **)argv;
 //	if (argc != 1)
 //		ft_exit("usage: ./rtv1", 1);
 	if (argc == 2)
-		get_scene(&e, argv[1]);
+	{
+		if (ft_strequ(argv[1], "interactive"))
+			create_scene(&e);	
+		else
+			get_scene(&e, argv[1]);
+	}
 	init_and_draw(&e, argv[0]);
 	return (0);
 }
