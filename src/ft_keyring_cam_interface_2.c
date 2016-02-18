@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:04:09 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 17:06:25 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 10:11:23 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	spawn_cam_menu(t_env *e)
 
 	spawn_cam_pos_controls(c, v, e);
 	spawn_cam_dir_controls(c, v, e);
+	ft_print_pending_campos_modif(e);
+	ft_print_pending_camdir_modif(e);
 	e->key.mode = 6;
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 							e->key.interface.img.img_ptr, 0, 0);
+	ft_print_cam_ui(e);
 }
 
 char	*ft_print_pending_campos_modif2(t_env *e)

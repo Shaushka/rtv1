@@ -6,10 +6,10 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/18 00:00:21 by mgras            ###   ########.fr       */
-/*   Updated: 2016/02/17 23:42:37 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/18 10:19:55 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 
 #ifndef RTV1_H
@@ -515,5 +515,6 @@ void				ft_mod_obj_inc(t_env *e, int mod);
 void				ft_print_obj_ui(t_env *e);
 void				ft_print_light_ui(t_env *e);
 void				ft_print_cam_ui(t_env *e);
+void				ft_print_mm_ui(t_env *e);
 
 #endif

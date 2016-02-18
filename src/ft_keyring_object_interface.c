@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 21:58:32 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 22:34:33 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 10:27:45 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,34 +43,34 @@ void	spawn_obj_menu(t_env *e)
 	t_vector	v;
 
 	spawn_obj_pos_controls(c, v, e);
-	e->key.mode = 8;
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 							e->key.interface.img.img_ptr, 0, 0);
+	ft_print_obj_ui(e);
 }
 
 void	spawn_obj_pos_controls(t_color c, t_vector v, t_env *e)
 {
-	set_color_from_rgb(&c, 255, 100, 100);
+	set_color_from_rgb(&c, 200, 200, 200);
 	ft_print_square(c,
 		set_vector(v, 0. , 0., 0.),
 		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (1. / 2.), 0), e);//cam pos x +
-	set_color_from_rgb(&c, 255, 20, 20);
+	set_color_from_rgb(&c, 100, 100, 100);
 	ft_print_square(c,
 		set_vector(v, 0, (double)INTER_H * (1. / 2.), 0),
 		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (2. / 2.), 0), e);//cam pos x -
-	set_color_from_rgb(&c, 100, 155, 100);
+	set_color_from_rgb(&c, 200, 200, 200);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (1. / 3.), 0., 0.),
 		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 2.), 0), e);//cam pos y +
-	set_color_from_rgb(&c, 20, 200, 20);
+	set_color_from_rgb(&c, 100, 100, 100);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (1. / 3.), (double)INTER_H * (1. / 2.), 0.),
 		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (2. / 2.), 0), e);//cam pos y -
-	set_color_from_rgb(&c, 100, 100, 200);
+	set_color_from_rgb(&c, 200, 200, 200);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (2. / 3.), 0., 0.),
 		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (1. / 2.), 0), e);//cam pos z +
-	set_color_from_rgb(&c, 10, 10, 100);
+	set_color_from_rgb(&c, 100, 100, 100);
 	ft_print_square(c,
 		set_vector(v, INTER_W * (2. / 3.), (double)INTER_H * (1. / 2.), 0.),
 		set_vector(v, INTER_W * (3. / 3.), (double)INTER_H * (2. / 2.), 0), e);//cam pos z -
