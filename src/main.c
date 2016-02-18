@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/17 13:53:09 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/18 19:09:29 by gkervran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ void			get_scene(t_env *e, char *file)
 	}
 	parse->obj->next = NULL;
 	open_file(file, parse, e);
+	e->scene->l_obj = parse->obj;
+	e->scene->light = parse->light;
 }
 
 int				main(int argc, char **argv)

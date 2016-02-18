@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:25:28 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 16:15:28 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/18 19:55:42 by gkervran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,6 +245,9 @@ void				color_choice(t_color *color);
 t_object			*create_object(t_env *e);
 t_light				*create_light(t_env *e);
 
+t_object			*create_object_p();
+t_light				*create_light_p();
+
 /*
 **	infos_shapes.c
 */
@@ -409,6 +412,11 @@ t_color				check_color(t_color color);
 void				open_file(char *file, t_parse *parse, t_env *e);
 float				ft_atof(char *number);
 void				assign_color(t_color *color, char *str);
+void				assign_color_p(t_object **obj, char *str);
+void				assign_lightcolor_p(t_light **obj, char *str);
+void				assign_pos_p(t_object **obj, char *str);
+void				assign_dir_p(t_object **obj, char *str);
+void				assign_normal_p(t_object **obj, char *str);
 void				assign_normal(t_object *node, char *str);
 void				assign_pos(t_object *node, char *str);
 void				assign_pos_light(t_light *node, char *str, int n);

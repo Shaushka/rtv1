@@ -10,15 +10,15 @@ char			*cut_pos(char *str, int i)
 	int			k;
 
 	k = i;
-	printf("CP :	je rentre dans cut_pos\n");
-	printf("CP :	str : \"%s\", i = %d\n", str, i);
+//	printf("CP :	je rentre dans cut_pos\n");
+//	printf("CP :	str : \"%s\", i = %d\n", str, i);
 	j = 0;
 	while (str[i] != '/' && str[i] != '\0' && str[i] != '\n')
 	{
 		i++;
 		j++;
 	}
-	printf("CP :	je vais malloc %d + 1\n", j);
+//	printf("CP :	je vais malloc %d + 1\n", j);
 	tmp = malloc(sizeof(char) * (j + 1));
 	i = k;
 	while (str[i] != '/' && str[i] != '\0' && str[i] != '\n')
@@ -47,7 +47,7 @@ int				check_values(char *str, int min, int max)
 
 	i = 0;
 	clean = cleanit(str);
-	printf("i : %d clean[i] : %c\n", i, clean[i]);
+//	printf("i : %d clean[i] : %c\n", i, clean[i]);
 	x = ft_atoi(cut_pos(clean, i));
 	if (x < min || x > max)
 		return (0);
@@ -55,11 +55,11 @@ int				check_values(char *str, int min, int max)
 		i++;
 	i++;
 	
-	printf("i : %d clean[i] : %c\n", i, clean[i]);
+//	printf("i : %d clean[i] : %c\n", i, clean[i]);
 	x = ft_atoi(cut_pos(clean, i));
 	if (x < min || x > max)
 		return (0);
-	printf("i : %d clean[i] : %c\n", i, clean[i]);
+//	printf("i : %d clean[i] : %c\n", i, clean[i]);
 	while (ft_isdigit(clean[i]))
 		i++;
 	i++;
@@ -83,31 +83,6 @@ void			assign_pos(t_object *node, char *str)
 		i++;
 	i++;
 	node->pos.z = ft_atoi(cut_pos(str, i));
-}
-
-void			assign_pos_light(t_light *node, char *str, int n)
-{
-	int			i;
-
-	i = 0;
-	if (n == 0)
-		node->pos.x = ft_atoi(cut_pos(str, i));
-	else
-		node->dir.x = ft_atoi(cut_pos(str, i));
-	while (ft_isdigit(str[i]))
-		i++;
-	i++;
-	if (n == 0)
-		node->pos.y = ft_atoi(cut_pos(str, i));
-	else
-		node->dir.y = ft_atoi(cut_pos(str, i));
-	while (ft_isdigit(str[i]))
-		i++;
-	i++;
-	if (n == 0)
-		node->pos.z = ft_atoi(cut_pos(str, i));
-	else
-		node->dir.z = ft_atoi(cut_pos(str, i));
 }
 
 void			position(t_object *node)
