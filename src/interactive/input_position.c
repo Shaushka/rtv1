@@ -85,6 +85,31 @@ void			assign_pos(t_object *node, char *str)
 	node->pos.z = ft_atoi(cut_pos(str, i));
 }
 
+void			assign_pos_light(t_light *node, char *str, int n)
+{
+	int			i;
+
+	i = 0;
+	if (n == 0)
+		node->pos.x = ft_atoi(cut_pos(str, i));
+	else
+		node->dir.x = ft_atoi(cut_pos(str, i));
+	while (ft_isdigit(str[i]))
+		i++;
+	i++;
+	if (n == 0)
+		node->pos.y = ft_atoi(cut_pos(str, i));
+	else
+		node->dir.y = ft_atoi(cut_pos(str, i));
+	while (ft_isdigit(str[i]))
+		i++;
+	i++;
+	if (n == 0)
+		node->pos.z = ft_atoi(cut_pos(str, i));
+	else
+		node->dir.z = ft_atoi(cut_pos(str, i));
+}
+
 void			position(t_object *node)
 {
 	char		*tmp;

@@ -31,6 +31,30 @@ void	set_object_param(char *value, char *data, t_object *obj)
 		assign_color(&obj->color, data);
 	else if (ft_strcmp(value, "shine") == 0)
 		obj->shine = ft_atof(data);
+	else
+		ft_putendl_fd("ERROR PARSING DATA", 2);
+//	else if (ft_strcmp(value, "dir") == 0)
+//		obj->dir = assign_pos(obj, data);
+}
+
+void	set_light_type(char *name, t_light *obj)
+{
+	if (ft_strcmp(name, "normal") == 0)
+		obj->type = NORMAL;
+}
+
+void	set_light_param(char *value, char *data, t_light *obj)
+{
+	if (ft_strcmp(value, "pos") == 0)
+		assign_pos_light(obj, data, 0);
+	else if (ft_strcmp(value, "color") == 0)
+		assign_color(&obj->color, data);
+	else if (ft_strcmp(value, "dir") == 0)
+		assign_pos_light(obj, data, 1);
+	else if (ft_strcmp(value, "intensity") == 0)
+		obj->intensity = ft_atof(data);
+	else
+		ft_putendl_fd("ERROR PARSING DATA", 2);
 //	else if (ft_strcmp(value, "dir") == 0)
 //		obj->dir = assign_pos(obj, data);
 }

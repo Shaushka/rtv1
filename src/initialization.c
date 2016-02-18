@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/17 22:59:30 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 14:37:48 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,22 @@ void			init_obj(t_object *node)
 {
 	node->next = NULL;
 	node->pos = set_vector(node->pos, 0, 0, 0);
-	node->normal = set_vector(node->pos, 0, 0, 0);
+	node->normal = set_vector(node->normal, 0, 0, 0);
+//	node->color = 0;
 	node->radius = 0;
 	node->height = 0;
+	//remplir les infos de depart
+}
+
+void			init_light(t_light *node)
+{
+	node->type = NORMAL;
+	node->pos = set_vector(node->pos, 0, 0, 0);
+	node->dir = set_vector(node->dir, 0, 0, 0);
+//	node->color = 0;
+	node->intensity = 0;
+	node->next = NULL;
+	//ajouter les infos de depart
 }
 
 void			init_scene(t_env *e)

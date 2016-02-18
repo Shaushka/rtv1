@@ -62,6 +62,13 @@ typedef	enum {
 	NORMAL
 }	t_lighttype;
 
+typedef	enum {
+	NONE,
+	OBJECT,
+	LIGHT,
+	TEXTURE
+}	t_fam;
+
 typedef	struct		s_object
 {
 	void			*next;
@@ -79,7 +86,7 @@ typedef	struct		s_object
 
 typedef struct		s_light
 {
-	t_lighttype			type;
+	t_lighttype		type;
 	t_vector		pos;
 	t_vector		dir;
 	t_color			color;
@@ -143,6 +150,7 @@ typedef struct		s_env
 
 typedef struct		s_node
 {
+	t_fam			family;
 	char			*value;
 	char			*type;
 	struct s_node	*next;
@@ -153,6 +161,7 @@ typedef struct		s_parse
 	char			*name;
 	t_node			*nodes;
 	t_object		*obj;
+	t_light			*light;
 }					t_parse;
 
 /*
@@ -229,7 +238,9 @@ void				color_choice(t_color *color);
 /*
 **	create_object.c
 */
+
 t_object			*create_object(t_env *e);
+t_light				*create_light(t_env *e);
 
 /*
 **	infos_shapes.c
@@ -390,9 +401,9 @@ t_color				check_color(t_color color);
 void				open_file(char *file, t_parse *parse, t_env *e);
 float				ft_atof(char *number);
 void				assign_color(t_color *color, char *str);
-t_object			*create_object();
 void				assign_normal(t_object *node, char *str);
 void				assign_pos(t_object *node, char *str);
+void				assign_pos_light(t_light *node, char *str, int n);
 int					check_values(char *str, int min, int max);
 char				*cut_pos(char *str, int i);
 void				separators(char *str);
@@ -402,11 +413,14 @@ int					correct_input(char *str);
 int					is_vector(char *str);
 int					is_slashes_and_digits(char *str);
 void				init_obj(t_object *node);
+void				init_light(t_light *node);
 t_vector			set_vector(t_vector v, float x, float y, float z);
 void				print_nodes(t_node *nodes);
 void				print_result(t_parse *parse);
 char				*recup_name(t_node *node, char *get, char c);
 int					get_size(char *get, int i, char c);
+void				set_light_type(char *name, t_light *obj);
+void				set_light_param(char *value, char *data, t_light *obj);
 void				set_object_type(char *name, t_object *obj);
 void				set_object_param(char *value, char *data, t_object *obj);
 void				error_in_parse(char *str);
