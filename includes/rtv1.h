@@ -1,17 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   rtv1.h                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/18 11:34:23 by mguillon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-
-
 #ifndef RTV1_H
 # define RTV1_H
 
@@ -174,10 +160,14 @@ void				new_img_in_old_env(t_env *e, t_env *old);
 void				set_list_obj(t_env *e);
 
 /*
-**	ray_tracing.c
+**	render.c
+*/
+void				ft_render(t_env *e);
+
+/*
+**	intersection.c
 */
 float				intersection(t_object *tmp, t_vector ray, t_vector pos);
-void				ft_render(t_env *e);
 
 /*
 **	hook_functions.c
