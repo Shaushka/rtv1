@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:25:28 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 14:41:05 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 16:15:28 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@
 # define MAX_VISION(h)		(3570 + sqrt((h)))
 # define PI					3.14159265
 # define RATIO				(PI / 180)
-
 # define BUF_SIZE 10
+#define MAX_DEPTH 3
 
 # define XPM_DEFAULT		"texture/default_texture.xpm"
+
+extern int		g_depth;
 
 typedef	struct		s_vector
 {
@@ -82,6 +84,7 @@ typedef	struct		s_object
 	float			shine;//brillance
 	float			reflect;//reflexion
 	float			checkered;//dallage_carreaux
+	float			refraction;
 }					t_object;
 
 typedef struct		s_light
@@ -349,9 +352,14 @@ float				specular_light(t_light l, t_object o, t_vector inter,
 									t_env *e);
 
 /*
-**	reflection_light.c
+**	reflection.c
 */
 t_color				reflection(t_object item, t_vector inter, t_env *e);
+
+/*
+**	refraction.c
+*/
+t_color				refraction(t_object item, t_vector inter, t_env *e);
 
 /*
 **	ray_tracing.c

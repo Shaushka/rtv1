@@ -1,8 +1,5 @@
 
 #include "rtv1.h"
-#define MAX_DEPTH 3
-
-static int		g_depth = 0;
 
 t_vector	ray_reflect(t_vector normal, t_vector inter)
 {
@@ -16,9 +13,10 @@ t_vector	ray_reflect(t_vector normal, t_vector inter)
 t_color		reflection(t_object item, t_vector inter, t_env *e)
 {
 	t_vector				reflect;
+	t_vector				tmp;
 	t_color					c_tmp;
 	t_color					color;
-	t_vector				tmp;
+
 
 	color = (t_color){0, 0, 0};
 	c_tmp = (t_color){0, 0, 0};
