@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/18 16:46:33 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/18 16:59:50 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static t_object	*set_list_obj_planes_part2(void)
 	*floor = set_plane((t_vector){0, 0, -5}, (t_vector){ 0, 0, 5});
 	*backg_w = set_plane((t_vector){30, 0, 0}, (t_vector){ -1, 0, 0});
 	floor->color = (t_color){255, 10, 10};
-	backg_w->color = (t_color){125, 125, 125};
+	backg_w->color = (t_color){0, 0, 0};
 	backg_w->shine = 0.3;
 	backg_w->reflect = 1;
 	floor->next = backg_w;

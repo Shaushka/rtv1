@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:25:28 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 19:55:42 by gkervran         ###   ########.fr       */
+/*   Updated: 2016/02/18 20:13:04 by gkervran         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define PI					3.14159265
 # define RATIO				(PI / 180)
 # define BUF_SIZE 10
-#define MAX_DEPTH 3
+#define MAX_DEPTH 5
 
 # define XPM_DEFAULT		"texture/default_texture.xpm"
 
