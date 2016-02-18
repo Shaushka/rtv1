@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 18:27:46 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 23:55:11 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 10:11:30 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,15 @@ void	spawn_light_menu(t_env *e)
 	t_color		c;
 	t_vector	v;
 
+	ft_print_pending_lightpos_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightdir_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightcol_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_pending_lightint_modif(ft_get_light_at_nb(
+									e->key.selected_light, e->lights), e);
+	ft_print_selected_light(e);
 	spawn_light_pos_controls(c, v, e);
 	spawn_light_dir_controls(c, v, e);
 	spawn_light_col_controls(c, v, e);
@@ -27,6 +36,7 @@ void	spawn_light_menu(t_env *e)
 	e->key.mode = 5;
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 							e->key.interface.img.img_ptr, 0, 0);
+	ft_print_light_ui(e);
 }
 
 void	spawn_light_pos_controls(t_color c, t_vector v, t_env *e)

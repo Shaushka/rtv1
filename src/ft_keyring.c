@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 23:38:38 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 10:52:48 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,13 +111,13 @@ void	ft_print_pending_light(t_env *e, int mod)
 void	ft_print_pending_obj(t_env *e, int mod)
 {
 	ft_mod_obj_inc(e, mod);
+	e->key.mode = 8;
 	hide_interface_image(e);
 	spawn_obj_menu(e);
 	ft_print_pending_objpos_modif(ft_get_obj_at_nb(e->key.selected_obj,
 									e->scene->l_obj), e);
 	ft_print_selected_obj(e);
 	ft_print_obj_ui(e);
-	e->key.mode = 8;
 }
 
 int		ft_exec_cmd(int mod, t_env *e)

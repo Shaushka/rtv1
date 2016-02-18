@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 17:04:09 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 17:06:25 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 11:05:51 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,12 @@ void	spawn_cam_menu(t_env *e)
 
 	spawn_cam_pos_controls(c, v, e);
 	spawn_cam_dir_controls(c, v, e);
+	ft_print_pending_campos_modif(e);
+	ft_print_pending_camdir_modif(e);
 	e->key.mode = 6;
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 							e->key.interface.img.img_ptr, 0, 0);
+	ft_print_cam_ui(e);
 }
 
 char	*ft_print_pending_campos_modif2(t_env *e)
@@ -82,12 +85,12 @@ char	*ft_print_pending_camdir_modif2(t_env *e)
 	char	*tmp;
 	char	*swp;
 
-	tmp = ft_strdup("Camera Direction pending Modifications : x += ");
-	swp = ft_itoa(e->key.cam_inc.dir.x);
+	tmp = ft_strdup("Camera Direction pending Modifications : 0.1 * x += ");
+	swp = ft_itoa(e->key.cam_inc.dir.x * 10);
 	cam = ft_strjoin(tmp, swp);
 	ft_strdel(&tmp);
 	ft_strdel(&swp);
-	tmp = ft_strdup(" y += ");
+	tmp = ft_strdup(" 0.1 * y += ");
 	swp = ft_strdup(cam);
 	ft_strdel(&cam);
 	cam = ft_strjoin(swp, tmp);
@@ -95,7 +98,7 @@ char	*ft_print_pending_camdir_modif2(t_env *e)
 	ft_strdel(&swp);
 	swp = ft_strdup(cam);
 	ft_strdel(&cam);
-	tmp = ft_itoa(e->key.cam_inc.dir.y);
+	tmp = ft_itoa(e->key.cam_inc.dir.y * 10);
 	cam = ft_strjoin(swp, tmp);
 	ft_strdel(&tmp);
 	ft_strdel(&swp);
@@ -109,7 +112,7 @@ void	ft_print_pending_camdir_modif(t_env *e)
 	char	*swp;
 
 	cam = ft_print_pending_camdir_modif2(e);
-	tmp = ft_strdup(" z += ");
+	tmp = ft_strdup(" 0.1 * z += ");
 	swp = ft_strdup(cam);
 	ft_strdel(&cam);
 	cam = ft_strjoin(swp, tmp);
@@ -117,7 +120,7 @@ void	ft_print_pending_camdir_modif(t_env *e)
 	ft_strdel(&swp);
 	swp = ft_strdup(cam);
 	ft_strdel(&cam);
-	tmp = ft_itoa(e->key.cam_inc.dir.z);
+	tmp = ft_itoa(e->key.cam_inc.dir.z * 10);
 	cam = ft_strjoin(swp, tmp);
 	ft_strdel(&tmp);
 	ft_strdel(&swp);

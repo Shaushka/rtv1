@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 22:53:42 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/17 23:51:54 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 10:26:03 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,4 +180,20 @@ void	ft_print_cam_ui(t_env *e)
 	y = INTER_H * (5. / 16.);
 	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "z-");
 	ft_print_cam_ui_2(e);
+}
+
+void	ft_print_mm_ui(t_env *e)
+{
+	int		x;
+	int		y;
+
+	x = INTER_W * (9. / 20.);
+	y = INTER_H * (1. / 12.);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "C");
+	x = INTER_W * (9. / 20.);
+	y = INTER_H * (5. / 12.);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "L");
+	x = INTER_W * (9. / 20.);
+	y = INTER_H * (9. / 12.);
+	mlx_string_put(e->mlx_init.mlx, e->mlx_init.win, x, y, 0x0, "O");
 }
