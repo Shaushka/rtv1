@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 21:58:32 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 10:27:45 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 10:57:38 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,15 @@ void	spawn_obj_menu(t_env *e)
 	t_color		c;
 	t_vector	v;
 
+	hide_interface_image(e);
 	spawn_obj_pos_controls(c, v, e);
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 							e->key.interface.img.img_ptr, 0, 0);
 	ft_print_obj_ui(e);
+	ft_print_selected_obj(e);
+	ft_print_pending_objpos_modif(ft_get_obj_at_nb(e->key.selected_obj,
+									e->scene->l_obj), e);
+	e->key.mode = 8;
 }
 
 void	spawn_obj_pos_controls(t_color c, t_vector v, t_env *e)
