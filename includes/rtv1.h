@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:25:28 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 14:28:20 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 14:41:05 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 
 # define BUF_SIZE 10
 
-# define XPM_DEFAULT		"texture/default"
+# define XPM_DEFAULT		"texture/default_texture.xpm"
 
 typedef	struct		s_vector
 {
