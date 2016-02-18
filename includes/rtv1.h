@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 17:59:10 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/18 00:00:21 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/18 11:05:12 by chuang           ###   ########.fr       */
 /*   Updated: 2016/02/17 23:42:37 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -174,10 +174,14 @@ void				new_img_in_old_env(t_env *e, t_env *old);
 void				set_list_obj(t_env *e);
 
 /*
-**	ray_tracing.c
+**	render.c
+*/
+void				ft_render(t_env *e);
+
+/*
+**	intersection.c
 */
 float				intersection(t_object *tmp, t_vector ray, t_vector pos);
-void				ft_render(t_env *e);
 
 /*
 **	hook_functions.c

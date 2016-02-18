@@ -6,7 +6,7 @@
 #    By: mgras <mgras@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/05/14 20:31:10 by agadiffe          #+#    #+#              #
-#    Updated: 2016/02/17 23:00:24 by mgras            ###   ########.fr        #
+#    Updated: 2016/02/18 11:05:27 by chuang           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 # **************************************************************************** #
@@ -40,6 +40,8 @@ SRC_NAME = main.c								\
 		   cone.c								\
 		   premade_objects.c					\
 		   texture.c							\
+		   intersection.c						\
+		   render.c								\
 		   interactive/add_shape.c 				\
 		   interactive/assign_color.c			\
 		   interactive/create_scene.c			\

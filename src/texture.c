@@ -6,7 +6,7 @@
 /*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:39:23 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 14:19:48 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/18 10:56:38 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 #define TILE_LEN 0.5
 
-int		check_odd (float pos)
+static int		check_odd(float pos)
 {
-	int mpx;
-	mpx = (int)(fabs((pos + 0.0001) / (float)TILE_LEN)) % 2;
-	return(pos > 0.f) ? (mpx + 1) % 2 : mpx;
+	int x;
+
+	x = (int)(fabs((pos + 0.0001) / (float)TILE_LEN)) % 2;
+	return (pos > 0.f ? (x + 1) % 2 : x);
 }
 
 t_color			checkered_floor(t_vector coord)
@@ -32,11 +33,9 @@ t_color			checkered_floor(t_vector coord)
 
 	color1 = (t_color){12, 232, 219};
 	color2 = (t_color){12, 128, 232};
-	mpx = 	
-	mpy = (int)(fabs((coord.y + 0.0001) / (float)TILE_LEN)) % 2;
-	mpy = (coord.y > 0.f) ? (mpy + 1) % 2 : mpy;
-	mpz = (int)(fabs((coord.z + 0.0001) / (float)TILE_LEN)) % 2;
-	mpz = (coord.z > 0.f) ? (mpz + 1) % 2 : mpz;
+	mpx = check_odd(coord.x);
+	mpy = check_odd(coord.y);
+	mpz = check_odd(coord.z);
 	if (mpy > 0)
 	{
 		if (((mpx == 0 && mpz == 0) || (mpx != 0 && mpz != 0)))
