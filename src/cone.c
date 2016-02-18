@@ -1,7 +1,7 @@
 
 #include "rtv1.h"
 
-t_objecti		set_cone(t_vector pos, t_vector dir, float radius, float height)
+t_object		set_cone(t_vector pos, t_vector dir, float radius, float height)
 {
 	t_object	cone;
 
