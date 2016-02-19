@@ -6,12 +6,17 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/18 22:42:27 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/19 10:35:02 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "rtv1.h"
+
+void			ft_wait_exit(int n)
+{
+	exit(n);
+}
 
 static void		read_scene(int fd, t_parse *parse, t_env *e)
 {
@@ -86,10 +91,12 @@ int				main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (ft_strequ(argv[1], "interactive"))
-			create_scene(&e);	
+			create_scene(&e);
 		else
 			get_scene(&e, argv[1]);
 	}
+	else
+		set_list_obj(&e);
 	init_and_draw(&e, argv[0]);
 	return (0);
 }

@@ -18,6 +18,7 @@ void			assign_pos_light(t_light *node, char *str, int n)
 		node->pos.y = ft_atoi(&str[i + 1]);
 	else
 		node->dir.y = ft_atoi(&str[i + 1]);
+	i++;
 	while (str[i] != '/')
 		i++;
 	if (n == 0)

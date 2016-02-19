@@ -140,7 +140,7 @@ void	get_instr(char *get, t_parse *parse, t_env *e)
 	tmp = parse->nodes;
 	tab = ft_strsplit(get, '<');
 	k = 0;
-	while (tab[k])
+	while (tab[k] && (k < 1 || tab[k - 1]) && ((k < 2) || tab[k - 2]))
 	{
 		k = set_node(&parse->nodes, k, tab);
 	}
