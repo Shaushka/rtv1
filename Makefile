@@ -4,7 +4,7 @@
 NAME = rtv1
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra -O3
+CFLAGS += -Wall -Werror -Wextra -g
 
 SRC_PATH = ./src/
 SRC_NAME = main_fork.c									\
@@ -39,7 +39,6 @@ SRC_NAME = main_fork.c									\
 		   interactive/input_vectors_clean.c			\
 		   interactive/input_position.c					\
 		   interactive/input_verification.c				\
-		   atof.c										\
 		   debug.c										\
 		   parser.c										\
 		   setter.c										\

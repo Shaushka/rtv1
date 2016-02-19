@@ -6,7 +6,7 @@
 #    By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/13 16:16:56 by mguillon          #+#    #+#              #
-#    Updated: 2016/01/29 20:21:15 by mguillon         ###   ########.fr        #
+#    Updated: 2016/02/19 18:39:24 by mguillon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CFLAGS += -Wall -Wextra -Werror
 
 SRC_PATH = ./srcs/
 SRC_NAME =	ft_atoi.c \
+			atof.c \
 			ft_bzero.c \
 			ft_isalnum.c \
 			ft_isalpha.c \

@@ -56,15 +56,9 @@ void	ft_free_obj_lst(t_object *start)
 	}
 }
 
-void	ft_free_light_lst(t_light *start)
+void	ft_free_parse(t_parse *del)
 {
-	t_light	*swp;
-
-	while (start)
-	{
-		swp = start->next;
-		free(start);
-		start = NULL;
-		start = swp;
-	}
+	if (del->name)
+		ft_strdel(&(del->name));
+	free(del);
 }

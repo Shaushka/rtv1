@@ -20,9 +20,9 @@ void	print_color(t_color col, char *pre)
 
 void	print_result(t_parse *parse)
 {
-	int	i;
-	t_object *obj;
-	t_light *light;
+	int			i;
+	t_object	*obj;
+	t_light		*light;
 
 	obj = parse->obj;
 	i = 0;
