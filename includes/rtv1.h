@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:25:28 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/19 11:43:40 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/19 14:30:13 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -575,5 +575,15 @@ void				ft_wait_exit(int n);
 */
 t_img				ft_get_texture(char *xpm_file_name, int xpm_w, int xpm_h,
 									t_env *e);
+
+/*
+**	ft_free_utility.c
+*/
+char				**ft_free_char_tab(char **del);
+int					**ft_free_int_tab(int **del, int len);
+void				ft_free_obj_lst(t_object *start);
+void				ft_free_light_lst(t_light *start);
+void				ft_free_node_lst(t_node *start);
+void				ft_free_parse(t_parse *del);
 
 #endif

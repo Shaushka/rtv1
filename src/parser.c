@@ -38,35 +38,32 @@ static int	get_the_mark(char *str)
 static int	set_node(t_node **nodes, int pos, char **tab)
 {
 	t_node			*new_node;
+	char			*swp;
 	int				t;
 	static t_fam	n = NONE;
 
-	if (check_shit(tab[pos]) == 1 ||
-			ft_strncmp(ft_strtrim(tab[pos]), "objet>", 6) == 0)
+	swp = ft_strtrim(tab[pos]);
+	if (check_shit(tab[pos]) == 1 || ft_strncmp(swp, "objet>", 6) == 0)
 	{
 		n = OBJECT;
 		return (pos + 1);
 	}
-	if (check_shit(tab[pos]) == 1 ||
-			ft_strncmp(ft_strtrim(tab[pos]), "light>", 6) == 0)
+	ft_strdel(&swp);
+	swp = ft_strtrim(tab[pos]);
+	if (check_shit(tab[pos]) == 1 || ft_strncmp(swp, "light>", 6) == 0)
 	{
 		n = LIGHT;
 		return (pos + 1);
 	}
+	ft_strdel(&swp);
 	if ((new_node = (t_node *)malloc(sizeof(t_node))) == NULL)
 		error_in_parse("Error: malloc new t_node");
 	else
 	{
-		//ft_putstr("total -> ");
-		//ft_putendl(tab[pos]);
 		t = get_the_mark(tab[pos]);
 		new_node->family = n;
 		new_node->type = ft_strsub(tab[pos], 0, t);
-		//ft_putstr("dans type -> ");
-		//ft_putendl(new_node->type);
 		new_node->value = ft_strsub(tab[pos], t + 1, ft_strlen(tab[pos]));
-		//ft_putstr("dans value -> ");
-		//ft_putendl(new_node->value);
 		new_node->next = NULL;
 		(*nodes)->next = new_node;
 		(*nodes) = (*nodes)->next;
@@ -135,6 +132,7 @@ void	get_instr(char *get, t_parse *parse, t_env *e)
 	char	**tab;
 	int		k;
 
+	tab = NULL;
 	if ((parse->nodes = (t_node *)malloc(sizeof(t_node))) == NULL)
 		error_in_parse("Error: malloc t_node");
 	tmp = parse->nodes;
@@ -145,11 +143,14 @@ void	get_instr(char *get, t_parse *parse, t_env *e)
 		k = set_node(&parse->nodes, k, tab);
 	}
 	if (tab && *tab)
+	{
 		recup_nodes(tmp, parse, e);
+		tab = tab ? ft_free_char_tab(tab) : tab;
+	}
 	else
 	{
+		tab = tab ? ft_free_char_tab(tab) : tab;
 		ft_putendl_fd("ERROR file parsing", 2);
 		ft_wait_exit(1);
 	}
-
 }
