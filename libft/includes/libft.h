@@ -6,7 +6,7 @@
 /*   By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/03 15:15:54 by mguillon          #+#    #+#             */
-/*   Updated: 2016/01/29 20:20:53 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/19 18:43:08 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_list
 	struct s_list	*next;
 }				t_list;
 int				ft_atoi(const char *str);
+float			ft_atof(char *number);
 void			ft_bzero(void *s, size_t n);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);

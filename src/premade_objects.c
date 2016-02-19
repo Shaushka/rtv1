@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   premade_objects.c                                  :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/01 11:49:19 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/19 12:56:00 by chuang           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/rtv1.h"
 #include <stdlib.h>
 
@@ -23,7 +11,6 @@ static t_object	*set_list_obj_other(void)
 	cylind = malloc(sizeof(t_object));
 	cone = malloc(sizeof(t_object));
 	*sphere = set_sphere((t_vector){4, 3, 0}, 0.5);
-
 	*cylind = set_cylinder((t_vector){10, -2, 0}, (t_vector){1, 1, 1}, 0.2, -1);
 	*cone = set_cone((t_vector){10, 0, 0}, (t_vector){0, 0, -1}, 0.2, -4);
 	sphere->color = (t_color){0, 0, 0};

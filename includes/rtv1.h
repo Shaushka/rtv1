@@ -565,12 +565,16 @@ t_img				ft_get_texture(char *xpm_file_name, int xpm_w, int xpm_h,
 									t_env *e);
 
 /*
-**	ft_free_utility.c
+**	ft_free_utility_2.c
 */
 char				**ft_free_char_tab(char **del);
 int					**ft_free_int_tab(int **del, int len);
 void				ft_free_obj_lst(t_object *start);
 void				ft_free_light_lst(t_light *start);
+
+/*
+**	ft_free_utility.c
+*/
 void				ft_free_node_lst(t_node *start);
 void				ft_free_parse(t_parse *del);
 void				ft_free_one_node(t_node *one_del);

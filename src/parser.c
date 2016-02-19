@@ -1,13 +1,13 @@
 #include "rtv1.h"
 
-static int	check_shit(char *str)
+static int			check_shit(char *str)
 {
-	int		i;
-	int		test;
+	int				i;
+	int				test;
 
 	i = 0;
 	test = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '/')
 			test = 1;
@@ -21,12 +21,12 @@ static int	check_shit(char *str)
 		return (0);
 }
 
-static int	get_the_mark(char *str)
+static int			get_the_mark(char *str)
 {
-	int		i;
+	int				i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
 		if (str[i] == '>')
 			return (i);
@@ -35,7 +35,7 @@ static int	get_the_mark(char *str)
 	return (i);
 }
 
-static int	set_node(t_node **nodes, int pos, char **tab)
+static int			set_node(t_node **nodes, int pos, char **tab)
 {
 	t_node			*new_node;
 	char			*swp;
@@ -71,7 +71,7 @@ static int	set_node(t_node **nodes, int pos, char **tab)
 	return (pos + 2);
 }
 
-static void	recup_nodes(t_node *nodes, t_parse *parse, t_env *e)
+static void			recup_nodes(t_node *nodes, t_parse *parse, t_env *e)
 {
 	t_object	*tmp_object;
 	t_light		*tmp_light;
@@ -126,7 +126,7 @@ static void	recup_nodes(t_node *nodes, t_parse *parse, t_env *e)
 	}
 }
 
-void	get_instr(char *get, t_parse *parse, t_env *e)
+void				get_instr(char *get, t_parse *parse, t_env *e)
 {
 	t_node	*tmp;
 	char	**tab;

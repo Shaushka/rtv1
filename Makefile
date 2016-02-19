@@ -39,7 +39,6 @@ SRC_NAME = main_fork.c									\
 		   interactive/input_vectors_clean.c			\
 		   interactive/input_position.c					\
 		   interactive/input_verification.c				\
-		   atof.c										\
 		   debug.c										\
 		   parser.c										\
 		   setter.c										\
@@ -63,6 +62,7 @@ SRC_NAME = main_fork.c									\
 		   options_parser.c								\
 		   assign_pos_light.c							\
 		   ft_free_utility.c							\
+		   ft_free_utility_2.c							
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 
