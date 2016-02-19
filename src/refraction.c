@@ -1,49 +1,100 @@
 
 #include "rtv1.h"
 /*
-** REFRACTION = outside coeficient for refract mean outside resistance to light
-*/
+ ** REFRACTION = outside coeficient for refract mean outside resistance to light
+ */
 #define REFRACTION 1
 
-float		ft_cost(float n, float cosi)
-{
-		return (1.0f - n * n * (1.0f - cosi * cosi));
 
+float		ft_cost(float eta, float cosi)
+{
+	return (1.0f - eta * eta * (1.0f - cosi * cosi));
 }
+/*
+t_color		refraction(t_object item, t_vector inter, t_env *e)
+   {
+   t_vector	normal;
+   t_vector	tmp;
+   t_vector	refray;
+   t_color		color;
+   float		eta;
+   float		cosi;
+   float		cost;
+   float			inside;
+
+   color = (t_color){0, 0, 0};
+   if (g_depth < MAX_DEPTH)
+   {
+   eta = item.refraction;
+   normal = calc_normal(e->cam.pos, item, inter);
+   inside = dotpro_vector(unit_vector(inter), normal);
+
+			printf("%f\n", inside);
+   if (inside > 0)
+   {
+   printf("noob\n");
+   normal = mult_vector(normal, -1);
+//			eta = item.type == PLANE ? REFRACTION : REFRACTION / item.refraction;
+eta = REFRACTION / item.refraction;
+}
+cosi = -dotpro_vector(normal, unit_vector(inter));
+if ((cost = ft_cost(eta, cosi)) > 0.0f)
+{
+g_depth++;
+//			refray = mult_vector(unit_vector(inter), eta);
+//			refray = add_vector(refray, mult_vector(normal, (eta * cosi - sqrtf(cost))));
+refray = add_vector(mult_vector(unit_vector(inter), eta), mult_vector(normal, (eta * cosi - sqrtf(cost))));
+refray = unit_vector(refray);
+
+			//printf("%f, %f, %f\n", refray.x, refray.y, refray.z);
+tmp = e->cam.pos;
+e->cam.pos = add_vector(add_vector(inter, e->cam.pos), mult_vector(refray, 1e-4));
+color = add_color(check_collision(e, unit_vector(refray), e->cam.pos), color);
+e->cam.pos = tmp;
+g_depth--;
+}
+}
+return (color);
+}*/
 
 t_color		refraction(t_object item, t_vector inter, t_env *e)
 {
-	t_vector	normal;
-	t_vector	tmp;
-	t_vector	test;
-	t_color		color;
-	float		coef;
-	float		cosi;
-	float		cost;
+	t_vector		refray;
+	t_vector		pos;
+	t_vector		norm;
+	t_vector		tmp;
+	t_color			color;
+	float			inside;
+	float			k;
+	float			eta;
+	float			cosi;
 
+
+	color = (t_color){0,0,0};
 	if (g_depth < MAX_DEPTH)
 	{
-		coef = REFRACTION / item.refraction;
-		inter = mult_vector(inter, -1);
-		normal = calc_normal(e->cam.pos, item, inter);
-
-			printf("%f, %f, %f --- %f, %f, %f\n",inter.x, inter.y, inter.z,  normal.x, normal.y, normal.z);
-		if (dotpro_vector(inter, normal) > 0)
+		norm = calc_normal(e->cam.pos, item, inter);
+		inside = dotpro_vector(unit_vector(inter), norm);
+		eta = item.refraction;
+//			printf("%f\n", inside);
+		if (inside > 0.0f)
 		{
-			normal = mult_vector(normal, -1);
-
-		//	coef = item.type != PLANE ? coef : item.refraction;
+			printf("je suis dedans\n");
+			eta = 1 / item.refraction;
+			norm = mult_vector(norm, -1);
 		}
-			cosi = -dotpro_vector(normal, unit_vector(inter));
-		if ((cost = ft_cost(coef, cosi)) > 0.0f)
+		cosi = -dotpro_vector(norm, unit_vector(inter));
+	 if((k = 1.0f - eta * eta * (1.0f - cosi * cosi)) > 0)
 		{
 			g_depth++;
-			test = mult_vector(unit_vector(inter), coef);
-			test = add_vector(test, mult_vector(normal, coef * cosi - sqrt(cost)));
-			color = (t_color){0, 0, 0};
+			refray = add_vector(mult_vector(unit_vector(inter), eta), mult_vector(norm, (eta * cosi - sqrtf(k))));
+			refray = unit_vector(refray);
+			if (dotpro_vector(inter, (t_vector){1,0,0}) > 0)
+				printf("%f, %f, %f\n", refray.x, refray.y, refray.z);
 			tmp = e->cam.pos;
-			e->cam.pos = add_vector(inter, tmp);
-			color = add_color(check_collision(e, unit_vector(test), e->cam.pos), color);
+			pos = add_vector(add_vector(inter, e->cam.pos),mult_vector(refray, item.radius));
+			e->cam.pos = pos;
+			color = add_color(check_collision(e, refray, e->cam.pos), color);
 			e->cam.pos = tmp;
 			g_depth--;
 		}
