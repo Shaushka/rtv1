@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/19 17:01:43 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 17:13:20 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		key_press_hook(int keycode, t_env *e)
 	else if (keycode == KEY_ENTER && e->key.mode == 5)
 		ft_keyring_lightmod_apply(e);
 	else if (keycode == KEY_ENTER && e->key.mode == 8)
-			ft_keyring_objmod_apply(e);
+		ft_keyring_objmod_apply(e);
 	else if (keycode == KEY_TAB && e->key.mode == 5)
 	{
 		ft_get_next_light(e);

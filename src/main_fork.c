@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 18:09:36 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/19 18:59:26 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ void			get_scene(t_env *e, char *file)
 	ft_free_parse(parse);
 	e->scene->l_obj = parse->obj;
 	e->scene->light = parse->light;
+	e->lights = parse->light;
 }
 /*
 void        start(int argc, const char **argv)

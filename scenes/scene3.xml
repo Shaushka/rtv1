@@ -1,4 +1,4 @@
-<objet>
+		<objet>
 	<type>plane</type>
 	<color>76/30/0/</color>
 	<pos>0/0/-5/</pos>
@@ -25,11 +25,20 @@
 <objet>
 	<type>cylindre</type>
 	<radius>1.12</radius>
-	<dir>0/1.5/0/</dir>
+	<dir>1/0/0/</dir>
 	<color>5/25/55/</color>
 	<pos>10/1/2/</pos>
 	<shine>0</shine>
 	<height>-1</height>
+</objet>
+<objet>
+	<type>cone</type>
+	<radius>1.12</radius>
+	<dir>1/0/0/</dir>
+	<color>255/255/255/</color>
+	<pos>10/0/2/</pos>
+	<shine>0</shine>
+	<height>1</height>
 </objet>
 <light>
 	<lighttype>normal</type>
