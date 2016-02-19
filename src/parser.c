@@ -144,5 +144,12 @@ void	get_instr(char *get, t_parse *parse, t_env *e)
 	{
 		k = set_node(&parse->nodes, k, tab);
 	}
-	recup_nodes(tmp, parse, e);
+	if (tab && *tab)
+		recup_nodes(tmp, parse, e);
+	else
+	{
+		ft_putendl_fd("ERROR file parsing", 2);
+		ft_wait_exit(1);
+	}
+
 }
