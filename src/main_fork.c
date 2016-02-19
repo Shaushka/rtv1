@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 20:10:16 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/19 21:46:31 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,28 +86,7 @@ void			get_scene(t_env *e, char *file)
 	e->scene->light = parse->light;
 	e->lights = parse->light;
 }
-/*
-void			start(int argc, const char **argv)
-{
-	t_env    *e;
-	int        x;
-	int        y;
 
-	e = (t_env*)ft_strnew(sizeof(t_env));
-	if (e == NULL)
-	{
-		ft_putendl_fd("Malloc error", 2);
-		ft_wait_exit(-1);
-	}
-	if (initialise_stuct(e, argc, argv) == NULL)
-		ft_wait_exit(-1);
-	x = e->v_map.win_x;
-	y = e->v_map.win_y;
-	if ((e->win = mlx_new_window(e->mlx, x, y, "RTv1")) == NULL)
-		ft_wait_exit(-1);
-	ft_restart(e);
-}
-*/
 static void		sign_hand(int signnum)
 {
 	(void)signnum;
@@ -136,17 +115,17 @@ static void		gestion_multi(int argc, char **argv)
 {
 	pid_t		pid;
 
-	signal(SIGCHLD, sign_hand);//est appele quand le child die
+	signal(SIGCHLD, sign_hand);
 	pid = 1;
 	if (argc > 2 && (pid = fork()) < 0)
 		exit(0);
 	if (pid == 0)
-	{//le fils part en recursive
+	{
 		gestion_multi(argc - 1, argv);
 		ft_wait_exit(0);
 	}
 	else
-	{//le pere va direct s'occuper de son argc
+	{
 		start(argc, argv);
 		ft_wait_exit(0);
 	}
@@ -154,12 +133,11 @@ static void		gestion_multi(int argc, char **argv)
 
 int				main(int argc, char **argv)
 {
-	if (argc < 2)//error
-		//ft_putendl_fd("Map error : I need a map", 2);
+	if (argc < 2)
 		start(argc, argv);
-	else if (argc == 2)//pas besoin de fork
+	else if (argc == 2)
 		start(argc, argv);
-	else//go for the fork
+	else
 		gestion_multi(argc, argv);
 	return (0);
 }

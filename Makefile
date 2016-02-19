@@ -4,7 +4,7 @@
 NAME = rtv1
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra -g
+CFLAGS += -Wall -Werror -Wextra -g -O3
 
 SRC_PATH = ./src/
 SRC_NAME = main_fork.c									\
@@ -14,6 +14,7 @@ SRC_NAME = main_fork.c									\
 		   hook_functions.c								\
 		   ray_tracing.c								\
 		   sphere.c										\
+		   debug.c										\
 		   light.c										\
 		   light_ambiant.c								\
 		   light_specular.c								\

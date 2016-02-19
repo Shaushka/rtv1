@@ -35,7 +35,7 @@ float			inter_sphere(t_vector cam_pos, t_vector ray, t_object obj)
 	c = (-b - sqrt(det)) / (2 * a);
 	if ((c <= 0.f && t > 0.f) || t < c)
 		return (t);
-	if( (t <= 0.f && c > 0.f) || c < t)
+	if ((t <= 0.f && c > 0.f) || c < t)
 		return (c);
 	return (t);
 }

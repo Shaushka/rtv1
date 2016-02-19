@@ -329,6 +329,8 @@ t_vector			calc_normal(t_vector pos, t_object obj, t_vector inter);
 t_color				ft_light (t_light *ls, t_object o, t_vector inter,
 								t_env *e);
 void				init_lights(t_env *e);
+t_color				shall_i_refract(t_object item, t_vector inter, t_env *e);
+t_color				shall_i_reflect(t_object item, t_vector inter, t_env *e);
 
 /*
 **	light_diffuse.c

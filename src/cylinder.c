@@ -54,8 +54,8 @@ float			inter_cylinder(t_vector pos, t_vector ray, t_object cylinder)
 	det = b * b - 4 * a * c;
 	if (det < 0.0f)
 		return (0);
-		c = ((-b - sqrt(det)) / (2 * a));
-		det = ((-b + sqrt(det)) / (2 * a));
+	c = ((-b - sqrt(det)) / (2 * a));
+	det = ((-b + sqrt(det)) / (2 * a));
 	if (det < 0 || c < det)
 		det = c;
 	if (m_calculus(pos, cylinder, mult_vector(ray, det)))
