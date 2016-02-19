@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 16:43:48 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 18:09:36 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ static void	start(int argc, char **argv)
 	t_env	e;
 
 	init_scene(&e);
-	init_lights(&e);
+//	init_lights(&e);
 	if (argc > 1)
 		get_scene(&e, argv[argc - 1]);
 	init_and_draw(&e, argv[0]);
