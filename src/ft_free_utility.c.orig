@@ -7,6 +7,7 @@
 **	Could be so wrong btw so watch out
 */
 
+<<<<<<< HEAD
 char	**ft_free_char_tab(char **del)
 {
 	int		ss;
@@ -50,12 +51,36 @@ void	ft_free_obj_lst(t_object *start)
 	while (start)
 	{
 		swp = start->next;
+=======
+void	ft_free_one_node(t_node *one_del)
+{
+	if (one_del->value)
+		ft_strdel(&(one_del->value));
+	if (one_del->type)
+		ft_strdel(&(one_del->type));
+	free(one_del);
+}
+
+void	ft_free_node_lst(t_node *start)
+{
+	t_node	*swp;
+
+	swp = start;
+	while (start)
+	{
+		swp = start->next;
+		if (start->value)
+			ft_strdel(&(start->value));
+		if (start->type)
+			ft_strdel(&(start->type));
+>>>>>>> 79e8c2091748a1b2f68f5b9abe5c6ae69010c4be
 		free(start);
 		start = NULL;
 		start = swp;
 	}
 }
 
+<<<<<<< HEAD
 void	ft_free_light_lst(t_light *start)
 {
 	t_light	*swp;
@@ -67,4 +92,11 @@ void	ft_free_light_lst(t_light *start)
 		start = NULL;
 		start = swp;
 	}
+=======
+void	ft_free_parse(t_parse *del)
+{
+	if (del->name)
+		ft_strdel(&(del->name));
+	free(del);
+>>>>>>> 79e8c2091748a1b2f68f5b9abe5c6ae69010c4be
 }

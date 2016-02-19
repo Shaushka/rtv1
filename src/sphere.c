@@ -37,6 +37,7 @@ float			inter_sphere(t_vector cam_pos, t_vector ray, t_object obj)
 		return (t);
 	if( (t <= 0.f && c > 0.f) || c < t)
 		return (c);
+	return (t);
 }
 
 t_vector		normal_sphere(t_vector cam, t_object obj, t_vector ray)
