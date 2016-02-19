@@ -25,7 +25,7 @@
 <objet>
 	<type>cylindre</type>
 	<radius>1.12</radius>
-	<dir>1/0/0/</dir>
+	<dir>1/10/0/</dir>
 	<color>5/25/55/</color>
 	<pos>10/1/2/</pos>
 	<shine>0</shine>

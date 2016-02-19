@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 17:36:45 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/18 11:31:36 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/19 16:00:57 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ void			quit_and_free(t_env *e)
 	mlx_destroy_image(e->key.interface.mlx, e->key.interface.img.img_ptr);
 	mlx_destroy_image(e->mlx_init.mlx, e->mlx_init.img.img_ptr);
 	mlx_destroy_window(e->mlx_init.mlx, e->mlx_init.win);
+	ft_free_obj_lst(e->scene->l_obj);
+	ft_free_light_lst(e->scene->light);
 	ft_wait_exit(0);
 }

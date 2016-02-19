@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:25:28 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/19 14:30:13 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 16:52:28 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define MAX_VISION(h)		(3570 + sqrt((h)))
 # define PI					3.14159265
 # define RATIO				(PI / 180)
-# define BUF_SIZE 10
-#define MAX_DEPTH 5
+# define BUF_SIZE			10
+#define MAX_DEPTH			5
 
 # define XPM_DEFAULT		"texture/default_texture.xpm"
 
@@ -73,7 +73,7 @@ typedef	enum {
 
 typedef	struct		s_object
 {
-	void			*next;
+	struct s_object	*next;
 	t_type			type;
 	t_color			color;
 	t_vector		pos;
@@ -585,5 +585,6 @@ void				ft_free_obj_lst(t_object *start);
 void				ft_free_light_lst(t_light *start);
 void				ft_free_node_lst(t_node *start);
 void				ft_free_parse(t_parse *del);
+void				ft_free_one_node(t_node *one_del);
 
 #endif
