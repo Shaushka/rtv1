@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 09:49:22 by mgrimald         ###   ########.fr       */
+/*   Updated: 2016/02/19 16:43:48 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ static void		read_scene(int fd, t_parse *parse, t_env *e)
 {
 	int		ret;
 	char	*line;
+	char	*swp;
 	char	*get;
 
 	get = ft_strdup("");
@@ -26,12 +27,16 @@ static void		read_scene(int fd, t_parse *parse, t_env *e)
 	while ((ret = read(fd, line, BUF_SIZE)) > 0)
 	{
 		line[ret] = 0;
-		get = ft_strjoin(get, line);
+		swp = get ? ft_strjoin(get, line) : ft_strdup(line);
+		ft_strdel(&get);
+		get = ft_strdup(swp);
+		ft_strdel(&swp);
 		ft_strclr(line);
 	}
-	free(line);
+	ft_strdel(&line);
 	line = NULL;
 	get_instr(get, parse, e);
+	ft_strdel(&get);
 }
 
 void			open_file(char *file, t_parse *parse, t_env *e)
@@ -76,6 +81,7 @@ void			get_scene(t_env *e, char *file)
 	parse->obj->next = NULL;
 	parse->light->next = NULL;
 	open_file(file, parse, e);
+	ft_free_parse(parse);
 	e->scene->l_obj = parse->obj;
 	e->scene->light = parse->light;
 }
@@ -118,13 +124,6 @@ static void	start(int argc, char **argv)
 	t_env	e;
 
 	init_scene(&e);
-	if (argc > 1 && ft_strequ(argv[argc - 1], "interactive"))
-		create_scene(&e);
-	else
-	{
-			get_scene(&e, argv[1]);
-			//set_list_obj(&e);
-	}
 	init_lights(&e);
 	if (argc > 1)
 		get_scene(&e, argv[argc - 1]);
