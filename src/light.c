@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/18 16:59:05 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/19 12:54:58 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 	if (item.reflect > 0)
 		{
 			tmp_color = reflection(item, inter, e);
-			item.color = mult_color(add_color(item.color, tmp_color), 0.5);
+			item.color = add_color(item.color, tmp_color);
 		}
 	if (item.refraction > 0)
 		item.color = add_color(item.color, refraction(item, inter, e));
@@ -96,6 +96,6 @@ void		init_lights(t_env *e)
 	e->lights->pos = (t_vector){0, 4, 0};
 	e->lights->dir = (t_vector){0, 1, 0};
 	e->lights->color = (t_color){255, 255, 255};
-	e->lights->intensity = 0.5;
+	e->lights->intensity = 0;
 	e->lights->next = test;
 }
