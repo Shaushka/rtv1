@@ -1,56 +1,49 @@
 <objet>
 	<type>plane</type>
-	<color>76/30/0/</color>
-	<pos>200/100/100/</pos>
-	<radius>1.12</radius>
-	<shine>0.76</shine>
+	<color>50/50/50/</color>
+	<pos>000/000/-010/</pos>
+	<radius>-1.0</radius>
+	<shine>0.2</shine>
+	<normal>0/0/5/</normal>
 </objet>
 <objet>
 	<type>plane</type>
-	<color>191/103/6/</color>
-	<pos>200/100/100/</pos>
-	<radius>1.12</radius>
-	<shine>0.76</shine>
+	<color>50/50/50/</color>
+	<pos>000/000/010/</pos>
+	<radius>-1.0</radius>
+	<shine>0.2</shine>
+	<normal>0/0/5</normal>
 </objet>
 <objet>
-	<type>sphere</type>
-	<color>167/77/0/</color>
-	<pos>200/100/100/</pos>
-	<radius>1.12</radius>
-	<shine>0.76</shine>
+	<type>plane</type>
+	<color>20/20/20/</color>
+	<pos>25/000/000/</pos>
+	<radius>-1.0</radius>
+	<shine>0.2</shine>
+	<normal>-1/0/0</normal>
 </objet>
 <objet>
 	<type>cylindre</type>
 	<radius>1.12</radius>
-	<color>63/25/0/</color>
-	<pos>200/100/100/</pos>
-	<shine>0.76</shine>
+	<dir>0/0/1/</dir>
+	<color>5/25/55/</color>
+	<pos>15/6/0/</pos>
+	<shine>0</shine>
+	<height>-1.</height>
 </objet>
 <objet>
-	<type>cone</type>
+	<type>cylindre</type>
 	<radius>1.12</radius>
-	<color>255/255/255/</color>
-	<pos>200/100/100/</pos>
-	<shine>0.76</shine>
+	<dir>0/0/1/</dir>
+	<color>5/25/55/</color>
+	<pos>15/-6/0/</pos>
+	<shine>0</shine>
+	<height>-1.</height>
 </objet>
 <light>
 	<lighttype>normal</type>
 	<dir>125/25/125/</dir>
 	<color>255/255/255/</color>
-	<pos>200/100/100/</pos>
-	<intensity>0.76</intensity>>
-</light>
-<light>
-	<lighttype>normal</type>
-	<pos>200/200/100/</pos>
-	<dir>5/125/25/</dir>
-	<color>255/255/255/</color>
-	<intensity>0.54</intensity>>
-</light>
-<light>
-	<lighttype>normal</type>
-	<pos>200/100/200/</pos>
-	<dir>125/25/125/</dir>
-	<color>255/255/255/</color>
-	<intensity>0.35</intensity>>
+	<pos>-008/000/000/</pos>
+	<intensity>0.1</intensity>>
 </light>

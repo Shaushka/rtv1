@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 20:22:25 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 12:38:10 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 18:12:18 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	ft_print_pending_lightpos_modif(t_light *l, t_env *e)
 	char	*tmp2;
 	char	*swp;
 
+	if (!l)
+		return ;
 	tmp1 = ft_itoa((int)(l->pos.x));
 	tmp2 = ft_itoa((int)(l->pos.y));
 	li = ft_strjoin("Pending light position status : x = ", tmp1);
@@ -49,6 +51,8 @@ void	ft_print_pending_lightdir_modif(t_light *l, t_env *e)
 	char	*tmp2;
 	char	*swp;
 
+	if (!l)
+		return ;
 	tmp1 = ft_itoa((int)(l->dir.x));
 	tmp2 = ft_itoa((int)(l->dir.y));
 	li = ft_strjoin("Pending light direction status : x = ", tmp1);
@@ -76,6 +80,8 @@ void	ft_print_pending_lightcol_modif(t_light *l, t_env *e)
 	char	*tmp2;
 	char	*swp;
 
+	if (!l)
+		return ;
 	tmp1 = ft_itoa((int)(l->color.r));
 	tmp2 = ft_itoa((int)(l->color.g));
 	li = ft_strjoin("Pending light color status : r = ", tmp1);
@@ -114,6 +120,8 @@ void	ft_print_selected_light(t_env *e)
 	char	*tmp1;
 	char	*li;
 
+	if (!e->scene->light)
+		return ;
 	tmp1 = ft_itoa((int)(e->key.selected_light));
 	li = ft_strjoin("selected_light : ", tmp1);
 	ft_strdel(&tmp1);

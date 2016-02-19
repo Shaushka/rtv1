@@ -1,12 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_fork.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/18 11:39:42 by mguillon         ###   ########.fr       */
+<<<<<<< HEAD
+/*   Updated: 2016/02/19 18:09:36 by mguillon         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/19 18:31:57 by mgras            ###   ########.fr       */
+>>>>>>> 44262590c8500de3f66784470849b2c949119ba5
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +21,7 @@ static void		read_scene(int fd, t_parse *parse, t_env *e)
 {
 	int		ret;
 	char	*line;
+	char	*swp;
 	char	*get;
 
 	get = ft_strdup("");
@@ -26,12 +31,16 @@ static void		read_scene(int fd, t_parse *parse, t_env *e)
 	while ((ret = read(fd, line, BUF_SIZE)) > 0)
 	{
 		line[ret] = 0;
-		get = ft_strjoin(get, line);
+		swp = get ? ft_strjoin(get, line) : ft_strdup(line);
+		ft_strdel(&get);
+		get = ft_strdup(swp);
+		ft_strdel(&swp);
 		ft_strclr(line);
 	}
-	free(line);
+	ft_strdel(&line);
 	line = NULL;
 	get_instr(get, parse, e);
+	ft_strdel(&get);
 }
 
 void			open_file(char *file, t_parse *parse, t_env *e)
@@ -68,8 +77,18 @@ void			get_scene(t_env *e, char *file)
 		perror("Error: malloc t_obj");
 		ft_wait_exit(1);
 	}
+	if ((parse->light = (t_light *)malloc(sizeof(t_light))) == NULL)
+	{
+		perror("Error: malloc t_light");
+		ft_wait_exit(1);
+	}
 	parse->obj->next = NULL;
+	parse->light->next = NULL;
 	open_file(file, parse, e);
+	ft_free_parse(parse);
+	e->scene->l_obj = parse->obj;
+	e->scene->light = parse->light;
+	e->lights = parse->light;
 }
 /*
 void        start(int argc, const char **argv)
@@ -110,13 +129,11 @@ static void	start(int argc, char **argv)
 	t_env	e;
 
 	init_scene(&e);
-	if (argc > 1 && ft_strequ(argv[argc - 1], "interactive"))//peut etre virer le -1
-		create_scene(&e);
-	else
-	{
-		set_list_obj(&e);
-	}
-	init_lights(&e);
+<<<<<<< HEAD
+//	init_lights(&e);
+=======
+	//init_lights(&e);
+>>>>>>> 44262590c8500de3f66784470849b2c949119ba5
 	if (argc > 1)
 		get_scene(&e, argv[argc - 1]);
 	init_and_draw(&e, argv[0]);

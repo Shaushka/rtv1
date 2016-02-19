@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/19 11:43:07 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/19 19:58:07 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ void			init_obj(t_object *node)
 	node->checkered = 0;
 	node->reflect = 0.0;
 	node->refraction = 0.0;
-	//remplir les infos de depart
 }
 
 void			init_light(t_light *node)
@@ -81,7 +80,6 @@ void			init_light(t_light *node)
 	node->color = (t_color){0, 0, 0};
 	node->intensity = 0;
 	node->next = NULL;
-	//ajouter les infos de depart
 }
 
 void			init_scene(t_env *e)

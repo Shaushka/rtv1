@@ -1,4 +1,3 @@
-
 #include "rtv1.h"
 
 t_vector	ray_reflect(t_vector normal, t_vector inter)
@@ -16,7 +15,6 @@ t_color		reflection(t_object item, t_vector inter, t_env *e)
 	t_vector				tmp;
 	t_color					c_tmp;
 	t_color					color;
-
 
 	color = (t_color){0, 0, 0};
 	c_tmp = (t_color){0, 0, 0};

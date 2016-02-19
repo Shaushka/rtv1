@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   sphere.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/12 19:07:52 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 20:25:10 by chuang           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "rtv1.h"
 #include <math.h>
 
@@ -49,7 +37,6 @@ float			inter_sphere(t_vector cam_pos, t_vector ray, t_object obj)
 		return (t);
 	if( (t <= 0.f && c > 0.f) || c < t)
 		return (c);
-	return(0);
 }
 
 t_vector		normal_sphere(t_vector cam, t_object obj, t_vector ray)

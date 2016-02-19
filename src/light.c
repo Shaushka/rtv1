@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 12:54:58 by chuang           ###   ########.fr       */
+/*   Updated: 2016/02/19 19:56:13 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 
 	item.color = item.checkered ? checkered_floor(inter) : item.color;
 	if (item.reflect > 0)
-		{
-			tmp_color = reflection(item, inter, e);
-			item.color = add_color(item.color, tmp_color);
-		}
+	{
+		tmp_color = reflection(item, inter, e);
+		item.color = add_color(item.color, tmp_color);
+	}
 	if (item.refraction > 0)
 		item.color = add_color(item.color, refraction(item, inter, e));
 	item.color = mult_color(item.color, e->ambiant);
@@ -76,7 +76,7 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 			tmp_color = mult_color(lights->color, (coef + spec));
 			item.color = add_color(item.color, tmp_color);
 		}
-			lights = lights->next;
+		lights = lights->next;
 	}
 
 	return (check_color(item.color));

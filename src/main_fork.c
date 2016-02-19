@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 16:43:48 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 20:10:16 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,10 @@ void			get_scene(t_env *e, char *file)
 	ft_free_parse(parse);
 	e->scene->l_obj = parse->obj;
 	e->scene->light = parse->light;
+	e->lights = parse->light;
 }
 /*
-void        start(int argc, const char **argv)
+void			start(int argc, const char **argv)
 {
 	t_env    *e;
 	int        x;
@@ -107,33 +108,33 @@ void        start(int argc, const char **argv)
 	ft_restart(e);
 }
 */
-static void	sign_hand(int signnum)
+static void		sign_hand(int signnum)
 {
 	(void)signnum;
 	wait4(0, 0, WNOHANG, 0);
 }
 
-void    ft_wait_exit(int n)
+void			ft_wait_exit(int n)
 {
 	wait(NULL);
 	exit(n);
 }
 
-static void	start(int argc, char **argv)
+static void		start(int argc, char **argv)
 {
 	t_env	e;
 
 	init_scene(&e);
-	init_lights(&e);
+//	init_lights(&e);
 	if (argc > 1)
 		get_scene(&e, argv[argc - 1]);
 	init_and_draw(&e, argv[0]);
 	ft_wait_exit(0);
 }
 
-static void	gestion_multi(int argc, char **argv)
+static void		gestion_multi(int argc, char **argv)
 {
-	pid_t        pid;
+	pid_t		pid;
 
 	signal(SIGCHLD, sign_hand);//est appele quand le child die
 	pid = 1;
@@ -151,7 +152,7 @@ static void	gestion_multi(int argc, char **argv)
 	}
 }
 
-int            main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	if (argc < 2)//error
 		//ft_putendl_fd("Map error : I need a map", 2);
