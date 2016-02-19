@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/17 19:18:22 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/19 12:43:37 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 18:23:45 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ int		ft_get_lm_cmd_interface_2(int x, int y, t_env *e)
 
 int		ft_get_lm_cmd_interface(int x, int y, t_env *e)
 {
+	if (!e->scene->light)
+		return (5);
 	if (x >= 0 && x <= INTER_W * (1. / 3.) &&
 		y >= 0 && y <= (double)INTER_H * (1. / 7.))
 		return (e->key.mode = 500 + 01);
@@ -98,7 +100,9 @@ void	ft_mod_light_inc(t_env *e, int mod)
 {
 	t_light		*swp;
 
-	swp = ft_get_light_at_nb(e->key.selected_light, e->lights);
+	swp = ft_get_light_at_nb(e->key.selected_light, e->scene->light);
+	if (!swp)
+		return ;
 	swp->pos.x += mod == 501 ? 1 : 0;
 	swp->pos.x -= mod == 502 ? 1 : 0;
 	swp->pos.y += mod == 503 ? 1 : 0;

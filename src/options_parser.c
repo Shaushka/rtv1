@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assign_color.c                                     :+:      :+:    :+:   */
+/*   options_parser.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:26:41 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/19 11:39:27 by mgrimald         ###   ########.fr       */
+/*   Updated: 2016/02/19 17:37:43 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		assign_normal_p(t_object **obj, char *str)
 	while (str[i] != '/')
 		i++;
 	(*obj)->normal.z = ft_atoi(&str[i + 1]);
+	(*obj)->normal = unit_vector((*obj)->normal);
 }
 
 void		assign_dir_p(t_object **obj, char *str)
@@ -47,6 +48,7 @@ void		assign_dir_p(t_object **obj, char *str)
 	while (str[i] != '/')
 		i++;
 	(*obj)->dir.z = ft_atoi(&str[i + 1]);
+	(*obj)->dir = unit_vector((*obj)->dir);
 }
 
 void		assign_pos_p(t_object **obj, char *str)

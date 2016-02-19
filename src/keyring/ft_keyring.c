@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 16:55:14 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/19 12:42:04 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 18:16:50 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ int		ft_exec_cmd(int mod, t_env *e)
 {
 	if (mod == 3)
 		spawn_cam_menu(e);
-	if (e->key.mode == 4)
+	if (e->key.mode == 4 && e->scene->light)
 		spawn_light_menu(e);
-	if (e->key.mode == 7)
+	if (e->key.mode == 7 && e->scene->l_obj)
 		spawn_obj_menu(e);
 	if (mod > 600 && mod <= 612)
 	{
@@ -128,9 +128,9 @@ int		ft_exec_cmd(int mod, t_env *e)
 		ft_print_pending_camdir_modif(e);
 		ft_print_cam_ui(e);
 	}
-	if (mod > 500 && mod <= 520)
+	if (mod > 500 && mod <= 520 && e->scene->light)
 		ft_print_pending_light(e, mod);
-	if (mod > 800 && mod <= 806)
+	if (mod > 800 && mod <= 806 && e->scene->l_obj)
 		ft_print_pending_obj(e, mod);
 	return (0);
 }
