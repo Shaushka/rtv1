@@ -3,47 +3,95 @@
 	<color>50/50/50/</color>
 	<pos>000/000/-010/</pos>
 	<radius>-1.0</radius>
-	<shine>0.2</shine>
+	<shine>2</shine>
 	<normal>0/0/5/</normal>
+	<reflect>1<reflect>
 </objet>
 <objet>
 	<type>plane</type>
 	<color>50/50/50/</color>
 	<pos>000/000/010/</pos>
 	<radius>-1.0</radius>
-	<shine>0.2</shine>
+	<shine>1</shine>
 	<normal>0/0/5</normal>
+	<reflect>1<reflect>
 </objet>
 <objet>
 	<type>plane</type>
-	<color>20/20/20/</color>
-	<pos>25/000/000/</pos>
+	<color>50/50/50/</color>
+	<pos>30/000/000/</pos>
 	<radius>-1.0</radius>
-	<shine>0.2</shine>
+	<shine>1</shine>
 	<normal>-1/0/0</normal>
+	<reflect>1<reflect>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>-30/000/000/</pos>
+	<radius>-1.0</radius>
+	<shine>1</shine>
+	<normal>-1/0/0</normal>
+	<reflect>1<reflect>
 </objet>
 <objet>
 	<type>cylindre</type>
-	<radius>1.12</radius>
+	<radius>1</radius>
 	<dir>0/0/1/</dir>
 	<color>5/25/55/</color>
-	<pos>15/6/0/</pos>
-	<shine>0</shine>
+	<pos>25/3/-500/</pos>
+	<shine>1</shine>
 	<height>-1.</height>
 </objet>
 <objet>
 	<type>cylindre</type>
-	<radius>1.12</radius>
+	<radius>1</radius>
 	<dir>0/0/1/</dir>
 	<color>5/25/55/</color>
-	<pos>15/-6/0/</pos>
-	<shine>0</shine>
+	<pos>25/-9/-500/</pos>
+	<shine>1</shine>
+	<height>-1.</height>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<radius>1</radius>
+	<dir>0/0/1/</dir>
+	<color>5/25/55/</color>
+	<pos>5/3/-500/</pos>
+	<shine>1</shine>
+	<height>-1.</height>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<radius>1</radius>
+	<dir>0/0/1/</dir>
+	<color>5/25/55/</color>
+	<pos>5/-9/-500/</pos>
+	<shine>1</shine>
+	<height>-1.</height>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<radius>1</radius>
+	<dir>0/0/1/</dir>
+	<color>10/25/55/</color>
+	<pos>15/3/-500/</pos>
+	<shine>1</shine>
+	<height>-1.</height>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<radius>1</radius>
+	<dir>0/0/1/</dir>
+	<color>10/25/55/</color>
+	<pos>15/-9/-500/</pos>
+	<shine>1</shine>
 	<height>-1.</height>
 </objet>
 <light>
 	<lighttype>normal</type>
 	<dir>125/25/125/</dir>
 	<color>255/255/255/</color>
-	<pos>-008/000/000/</pos>
-	<intensity>0.1</intensity>>
+	<pos>2/3/00/</pos>
+	<intensity>0.4</intensity>>
 </light>

@@ -4,7 +4,7 @@
 NAME = rtv1
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra -g
+CFLAGS += -Wall -Werror -Wextra -O3
 
 SRC_PATH = ./src/
 SRC_NAME = main_fork.c									\
@@ -63,6 +63,7 @@ SRC_NAME = main_fork.c									\
 		   options_parser.c								\
 		   assign_pos_light.c							\
 		   ft_free_utility.c							\
+		   ft_free_utility_2.c							\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

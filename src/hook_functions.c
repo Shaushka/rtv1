@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/19 17:13:20 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 19:58:54 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,9 @@ int		expose_hook(t_env *e)
 	return (0);
 }
 
-int		key_press_hook(int keycode, t_env *e)
+int		key_press_hook_2(int keycode, t_env *e)
 {
-	if (keycode == KEY_ESC)
-		ft_wait_exit(0);
-	if (keycode == KEY_COMMAND && e->key.mode != 2)
-	{
-		hide_interface_image(e);
-		spaw_main_menu(e);
-	}
-	else if (keycode == KEY_COMMAND && e->key.mode == 2)
-		hide_interface_image(e);
-	else if (keycode == KEY_ENTER && e->key.mode == 6)
+	if (keycode == KEY_ENTER && e->key.mode == 6)
 		ft_keyring_cammod_apply(e);
 	else if (keycode == KEY_ENTER && e->key.mode == 5)
 		ft_keyring_lightmod_apply(e);
@@ -53,7 +44,22 @@ int		key_press_hook(int keycode, t_env *e)
 		ft_keyring_cammod_reset_pos(e, 0);
 		ft_keyring_cammod_reset_dir(e, 1);
 	}
-	else if (keycode == KEY_Z)
+	return (0);
+}
+
+int		key_press_hook(int keycode, t_env *e)
+{
+	if (keycode == KEY_ESC)
+		ft_wait_exit(0);
+	if (keycode == KEY_COMMAND && e->key.mode != 2)
+	{
+		hide_interface_image(e);
+		spaw_main_menu(e);
+	}
+	else if (keycode == KEY_COMMAND && e->key.mode == 2)
+		hide_interface_image(e);
+	key_press_hook_2(keycode, e);
+	if (keycode == KEY_Z)
 	{
 		e->ambiant += 0.1;
 		ft_render(e);
@@ -66,17 +72,6 @@ int		key_press_hook(int keycode, t_env *e)
 		ft_render(e);
 		mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 				e->mlx_init.img.img_ptr, 0, 0);
-	}
-	else if (keycode == KEY_M)
-	{
-		t_object *swp = e->scene->l_obj;
-#include <stdio.h>
-		while (swp)
-		{
-			printf("color : r = %d g = %d b = %d\npos : px%f py%f pz%f\n", swp->color.r, swp->color.g, swp->color.b, swp->pos.x, swp->pos.y, swp->pos.z);
-			printf("rad = %f\nheight = %f\nshine %f\nreflect %f\n\n", swp->radius, swp->height, swp->shine, swp->reflect);
-			swp = swp->next;
-		}
 	}
 	return (0);
 }

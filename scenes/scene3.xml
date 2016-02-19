@@ -40,6 +40,14 @@
 	<shine>0</shine>
 	<height>1</height>
 </objet>
+<objet>
+	<type>cone</type>
+	<color>191/103/6/</color>
+	<pos>10/2/1/</pos>
+	<radius>1.12</radius>
+	<shine>0.76</shine>
+	<checkered>1</checkered>
+</objet>
 <light>
 	<lighttype>normal</type>
 	<pos>1/2/0/</pos>
