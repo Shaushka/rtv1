@@ -11,7 +11,7 @@ float		ft_cost(float eta, float cosi)
 	return (1.0f - eta * eta * (1.0f - cosi * cosi));
 }
 /*
-t_color		refraction(t_object item, t_vector inter, t_env *e)
+   t_color		refraction(t_object item, t_vector inter, t_env *e)
    {
    t_vector	normal;
    t_vector	tmp;
@@ -29,7 +29,7 @@ t_color		refraction(t_object item, t_vector inter, t_env *e)
    normal = calc_normal(e->cam.pos, item, inter);
    inside = dotpro_vector(unit_vector(inter), normal);
 
-			printf("%f\n", inside);
+   printf("%f\n", inside);
    if (inside > 0)
    {
    printf("noob\n");
@@ -46,7 +46,7 @@ g_depth++;
 refray = add_vector(mult_vector(unit_vector(inter), eta), mult_vector(normal, (eta * cosi - sqrtf(cost))));
 refray = unit_vector(refray);
 
-			//printf("%f, %f, %f\n", refray.x, refray.y, refray.z);
+//printf("%f, %f, %f\n", refray.x, refray.y, refray.z);
 tmp = e->cam.pos;
 e->cam.pos = add_vector(add_vector(inter, e->cam.pos), mult_vector(refray, 1e-4));
 color = add_color(check_collision(e, unit_vector(refray), e->cam.pos), color);
@@ -75,12 +75,14 @@ t_color		refraction(t_object item, t_vector inter, t_env *e)
 	{
 		norm = calc_normal(e->cam.pos, item, inter);
 		inside = dotpro_vector(unit_vector(inter), norm);
-		eta = inside ? REFRACTION / item.refraction : item.refraction / REFRACTION;
+		eta = inside ? item.refraction / REFRACTION : REFRACTION / item.refraction ;
 		if (inside > 0.0f)
-
+		{
+			printf ("inside\n");
 			norm = mult_vector(norm, -1);
-		cosi = -dotpro_vector(norm, unit_vector(inter));
-	 if ((k = 1.0f - eta * eta * (1.0f - cosi * cosi)) > 0)
+		}
+		cosi = -dotpro_vector(norm, inter);
+		(k = 1.0f - eta * eta * (1.0f - cosi * cosi));
 		{
 			g_depth++;
 			refray = add_vector(mult_vector(unit_vector(inter), eta), mult_vector(norm, (eta * cosi - sqrtf(k))));

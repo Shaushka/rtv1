@@ -25,7 +25,7 @@ t_color		reflection(t_object item, t_vector inter, t_env *e)
 	{
 		g_depth++;
 		tmp = e->cam.pos;
-		e->cam.pos = add_vector(inter, tmp);
+		e->cam.pos = add_vector( mult_vector(inter, 1 - 1e-4), tmp);
 		c_tmp = check_collision(e, unit_vector(reflect), e->cam.pos);
 		item.reflect = item.reflect > 1 ? 1 : item.reflect;
 		color = add_color(mult_color(c_tmp, item.reflect), color);
