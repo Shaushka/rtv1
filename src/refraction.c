@@ -3,7 +3,7 @@
 /*
  ** REFRACTION = outside coeficient for refract mean outside resistance to light
  */
-#define REFRACTION 1
+#define REFRACTION 1.0f
 
 
 float		ft_cost(float eta, float cosi)
@@ -75,24 +75,18 @@ t_color		refraction(t_object item, t_vector inter, t_env *e)
 	{
 		norm = calc_normal(e->cam.pos, item, inter);
 		inside = dotpro_vector(unit_vector(inter), norm);
-		eta = item.refraction;
-//			printf("%f\n", inside);
+		eta = inside ? REFRACTION / item.refraction : item.refraction / REFRACTION;
 		if (inside > 0.0f)
-		{
-			printf("je suis dedans\n");
-			eta = 1 / item.refraction;
+
 			norm = mult_vector(norm, -1);
-		}
 		cosi = -dotpro_vector(norm, unit_vector(inter));
-	 if((k = 1.0f - eta * eta * (1.0f - cosi * cosi)) > 0)
+	 if ((k = 1.0f - eta * eta * (1.0f - cosi * cosi)) > 0)
 		{
 			g_depth++;
 			refray = add_vector(mult_vector(unit_vector(inter), eta), mult_vector(norm, (eta * cosi - sqrtf(k))));
 			refray = unit_vector(refray);
-			if (dotpro_vector(inter, (t_vector){1,0,0}) > 0)
-				printf("%f, %f, %f\n", refray.x, refray.y, refray.z);
 			tmp = e->cam.pos;
-			pos = add_vector(add_vector(inter, e->cam.pos),mult_vector(refray, item.radius));
+			pos = add_vector(add_vector(inter, e->cam.pos), mult_vector(refray, 1e-4));
 			e->cam.pos = pos;
 			color = add_color(check_collision(e, refray, e->cam.pos), color);
 			e->cam.pos = tmp;
