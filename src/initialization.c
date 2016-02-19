@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/19 19:58:07 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/19 22:08:19 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void			init_and_draw(t_env *e, char *av)
 	init_keyring(e);
 	e->cam.pos = (t_vector){0., 0., 0.};
 	e->cam.dir = unit_vector((t_vector){1., 0., 0.});
-	e->ambiant = 0.4;
+	e->ambiant = e->lights ? e->lights->ambiant : AMBIANT;
 	ft_render(e);
 	mlx_expose_hook(e->mlx_init.win, &expose_hook, e);
 	mlx_hook(e->mlx_init.win, BUTTONRELEASE, BUTTONRELEASEMASK, &ft_click, e);
@@ -79,6 +79,7 @@ void			init_light(t_light *node)
 	node->dir = set_vector(node->dir, 0, 0, 0);
 	node->color = (t_color){0, 0, 0};
 	node->intensity = 0;
+	node->ambiant = AMBIANT;
 	node->next = NULL;
 }
 

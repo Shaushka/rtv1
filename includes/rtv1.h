@@ -82,6 +82,7 @@ typedef struct		s_light
 	t_vector		dir;
 	t_color			color;
 	float			intensity;
+	float			ambiant;
 	struct s_light	*next;
 }					t_light;
 

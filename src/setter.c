@@ -54,6 +54,8 @@ void	set_light_param(char *value, char *data, t_light *obj)
 		assign_pos_light(obj, data, 1);
 	else if (ft_strcmp(value, "intensity") == 0)
 		obj->intensity = ft_atof(data);
+	else if (ft_strcmp(value, "ambiant") == 0)
+		obj->ambiant = ft_atof(data);
 	else
 		ft_putendl_fd("ERROR PARSING DATA", 2);
 }

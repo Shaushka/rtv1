@@ -1,57 +1,67 @@
-		<objet>
+<objet>
 	<type>plane</type>
-	<color>76/30/0/</color>
-	<pos>0/0/-5/</pos>
+	<color>50/50/50/</color>
+	<pos>000/000/-010/</pos>
+	<radius>-1.0</radius>
+	<shine>2</shine>
 	<normal>0/0/5/</normal>
-	<radius>1.12</radius>
 </objet>
 <objet>
 	<type>plane</type>
-	<color>191/103/6/</color>
-	<pos>20/0/0/</pos>
-	<normal>-1/0/0/</normal>
-	<radius>1.12</radius>
-	<texture>checkered</texture>
-
+	<color>50/50/50/</color>
+	<pos>000/000/010/</pos>
+	<radius>-1.0</radius>
+	<shine>1</shine>
+	<normal>0/0/5</normal>
 </objet>
 <objet>
-	<type>sphere</type>
-	<color>191/103/6/</color>
-	<pos>10/2/1/</pos>
-	<radius>1.12</radius>
-	<shine>0.76</shine>
-	<checkered>1</checkered>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>30/000/000/</pos>
+	<radius>-1.0</radius>
+	<shine>1</shine>
+	<normal>-1/0/0</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>-30/000/000/</pos>
+	<radius>-1.0</radius>
+	<shine>1</shine>
+	<normal>-1/0/0</normal>
 </objet>
 <objet>
 	<type>cylindre</type>
-	<radius>1.12</radius>
-	<dir>1/0/0/</dir>
+	<radius>0.2</radius>
+	<dir>1/1/10</dir>
 	<color>5/25/55/</color>
 	<pos>10/1/2/</pos>
 	<shine>0</shine>
 	<height>-1</height>
 </objet>
 <objet>
-	<type>cone</type>
-	<radius>1.12</radius>
-	<dir>1/0/0/</dir>
-	<color>255/255/255/</color>
-	<pos>10/0/2/</pos>
+	<type>cylindre</type>
+	<radius>0.2</radius>
+	<dir>2/5/10</dir>
+	<color>105/25/55/</color>
+	<pos>13/1/2/</pos>
 	<shine>0</shine>
-	<height>1</height>
+	<height>-1</height>
 </objet>
 <objet>
-	<type>cone</type>
-	<color>191/103/6/</color>
-	<pos>10/2/1/</pos>
-	<radius>1.12</radius>
-	<shine>0.76</shine>
-	<checkered>1</checkered>
+	<type>cylindre</type>
+	<radius>0.5</radius>
+	<dir>2/10/10</dir>
+	<color>55/25/55/</color>
+	<pos>8/1/2/</pos>
+	<shine>0</shine>
+	<height>-1</height>
 </objet>
 <light>
 	<lighttype>normal</type>
-	<pos>1/2/0/</pos>
+	<pos>2/1/0/</pos>
 	<dir>125/25/125/</dir>
-	<color>255/255/255/</color>
-	<intensity>0.35</intensity>
+	<color>115/75/25/</color>
+	<intensity>1</intensity>
+	<ambiant>0</ambiant>
 </light>
