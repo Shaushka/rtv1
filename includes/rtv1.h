@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:25:28 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/18 20:13:04 by gkervran         ###   ########.fr       */
+/*   Updated: 2016/02/19 11:43:40 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,11 @@ typedef	struct		s_object
 	t_vector		pos;
 	t_vector		dir;//cylinder cone
 	t_vector		normal;//plan
+	int				checkered;//dallage_carreaux
 	float			radius;//sphere cone cylindre
 	float			height;//cone cylindre
 	float			shine;//brillance
 	float			reflect;//reflexion
-	float			checkered;//dallage_carreaux
 	float			refraction;
 }					t_object;
 

@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 17:00:11 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/19 10:12:07 by mgrimald         ###   ########.fr       */
+/*   Updated: 2016/02/19 11:43:07 by chuang           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void			init_obj(t_object *node)
 	node->dir = set_vector(node->dir, 0, 0, 0);
 	node->radius = 0;
 	node->height = 0;
-	node->shine = 0;
-	node->checkered = 0.0;
-	node->reflect = 0;
+	node->shine = 0.0;
+	node->checkered = 0;
+	node->reflect = 0.0;
 	node->refraction = 0.0;
 	//remplir les infos de depart
 }
