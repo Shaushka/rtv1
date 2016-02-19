@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_object.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:15:16 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/18 19:21:30 by gkervran         ###   ########.fr       */
+/*   Updated: 2016/02/19 11:58:52 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_light		*create_light_p(void)
 	t_light		*a;
 
 	a = (t_light*)malloc(sizeof(t_light));
-//	init_obj(a);
+	init_light(a);
 	if (a)
 		return (a);
 	else
@@ -67,7 +67,7 @@ t_light		*create_light(t_env *e)
 	t_light		*b;
 
 	a = (t_light*)malloc(sizeof(t_light));
-//	init_obj(a);
+	init_light(a);
 	if (e->scene->light == NULL)
 	{
 		e->scene->l_obj = a;
