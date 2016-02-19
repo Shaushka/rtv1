@@ -33,11 +33,10 @@ float			inter_sphere(t_vector cam_pos, t_vector ray, t_object obj)
 		return (0);
 	t = (-b + sqrt(det)) / (2 * a);
 	c = (-b - sqrt(det)) / (2 * a);
-	if (t < c || (t > 0.f && c < 0.f))
+	if ((c <= 0.f && t > 0.f) || t < c)
 		return (t);
-	if (c > t || (c > 0.f && t < 0.f))
+	if( (t <= 0.f && c > 0.f) || c < t)
 		return (c);
-	return (t);
 }
 
 t_vector		normal_sphere(t_vector cam, t_object obj, t_vector ray)

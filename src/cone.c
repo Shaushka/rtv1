@@ -47,14 +47,12 @@ float			inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
 				* dotpro_vector(tmp, cone.dir)));
 	c = dotpro_vector(tmp, tmp) - ((1 + cone.radius * cone.radius)
 			* dotpro_vector(tmp, cone.dir)
-					* dotpro_vector(tmp, cone.dir));
+			* dotpro_vector(tmp, cone.dir));
 	det = b * b - 4 * a * c;
 	if (det < 0.0f)
 		return (0);
-	else if (((-b + sqrt(det)) / (2 * a)) < ((-b - sqrt(det)) / (2 * a)))
-		det = ((-b + sqrt(det)) / (2 * a));
-	else
-		det = ((-b - sqrt(det)) / (2 * a));
+	c = ((-b + sqrt(det)) / (2 * a));
+	det = ((-b - sqrt(det)) / (2 * a));
 	if (m_calculus(cam_pos, cone, mult_vector(ray, det)))
 		return (det);
 	return (0);

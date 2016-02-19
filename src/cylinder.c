@@ -28,7 +28,7 @@ static float	m_calculus(t_vector cam, t_object cylinder, t_vector ray)
 		+ dotpro_vector(sub_vector(cam, cylinder.pos), cylinder.dir);
 	if (cylinder.height > 0)
 	{
-		if (m < (-cylinder.height / 2) || m > (cylinder.height / 2))
+		if (m < 0 || m > (cylinder.height))
 			return (0);
 	}
 	return (m);
@@ -54,10 +54,10 @@ float			inter_cylinder(t_vector pos, t_vector ray, t_object cylinder)
 	det = b * b - 4 * a * c;
 	if (det < 0.0f)
 		return (0);
-	if (((-b + sqrt(det)) / (2 * a)) < ((-b - sqrt(det)) / (2 * a)))
+		c = ((-b - sqrt(det)) / (2 * a));
 		det = ((-b + sqrt(det)) / (2 * a));
-	else
-		det = ((-b - sqrt(det)) / (2 * a));
+	if (det < 0 || c < det)
+		det = c;
 	if (m_calculus(pos, cylinder, mult_vector(ray, det)))
 		return (det);
 	return (0);
@@ -69,7 +69,6 @@ t_vector		normal_cylinder(t_vector cam, t_object cylinder, t_vector ray)
 	t_vector	tmp;
 
 	m = m_calculus(cam, cylinder, ray);
-	tmp = set_vector(tmp, 0, 0, 0);
 	tmp = add_vector(sub_vector(cam, cylinder.pos), ray);
 	return (unit_vector(sub_vector(tmp, mult_vector(cylinder.dir, m))));
 }
