@@ -6,7 +6,7 @@
 /*   By: chuang <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 10:35:02 by mgrimald         ###   ########.fr       */
+/*   Updated: 2016/02/19 18:04:36 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int				main(int argc, char **argv)
 	t_env	e;
 
 	init_scene(&e);
-	init_lights(&e);
+	//init_lights(&e);
 	argv = (char **)argv;
 //	if (argc != 1)
 //		ft_exit("usage: ./rtv1", 1);
