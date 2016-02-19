@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 17:35:19 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 19:56:13 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/19 23:19:21 by mguillon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,27 @@ t_vector	calc_normal(t_vector pos, t_object item, t_vector inter_ray)
 		return (normal_cylinder(pos, item, inter_ray));
 }
 
+t_color		shall_i_reflect(t_object item, t_vector inter, t_env *e)
+{
+	t_color	tmp_color;
+
+	if (item.reflect > 0)
+	{
+		tmp_color = reflection(item, inter, e);
+		return(add_color(item.color, tmp_color));
+	}
+	else
+		return (item.color);
+}
+
+t_color		shall_i_refract(t_object item, t_vector inter, t_env *e)
+{
+	if (item.refraction > 0)
+		return(add_color(item.color, refraction(item, inter, e)));
+	else
+		return (item.color);
+}
+
 t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 {
 	t_color		tmp_color;
@@ -58,13 +79,8 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 	float		spec;
 
 	item.color = item.checkered ? checkered_floor(inter) : item.color;
-	if (item.reflect > 0)
-	{
-		tmp_color = reflection(item, inter, e);
-		item.color = add_color(item.color, tmp_color);
-	}
-	if (item.refraction > 0)
-		item.color = add_color(item.color, refraction(item, inter, e));
+	item.color = shall_i_reflect(item, inter, e);
+	item.color = shall_i_refract(item, inter, e);
 	item.color = mult_color(item.color, e->ambiant);
 	while (lights && !(coef = 0))
 	{
@@ -78,7 +94,6 @@ t_color		ft_light(t_light *lights, t_object item, t_vector inter, t_env *e)
 		}
 		lights = lights->next;
 	}
-
 	return (check_color(item.color));
 }
 

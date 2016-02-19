@@ -39,7 +39,6 @@ SRC_NAME = main_fork.c									\
 		   interactive/input_vectors_clean.c			\
 		   interactive/input_position.c					\
 		   interactive/input_verification.c				\
-		   debug.c										\
 		   parser.c										\
 		   setter.c										\
 		   keyring/ft_keyring_shapes.c					\
