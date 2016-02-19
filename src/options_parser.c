@@ -6,7 +6,7 @@
 /*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:26:41 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/19 11:24:23 by mgrimald         ###   ########.fr       */
+/*   Updated: 2016/02/19 11:39:27 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ void		assign_lightcolor_p(t_light **obj, char *str)
 	(*obj)->color.r = ft_atoi(str);
 	while (str[i] != '/')
 		i++;
-	i++;
 	(*obj)->color.g = ft_atoi(&str[i + 1]);
+	i++;
 	while (str[i] != '/')
 		i++;
 	(*obj)->color.b = ft_atoi(&str[i + 1]);
