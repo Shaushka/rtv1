@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 18:26:58 by chuang            #+#    #+#             */
-/*   Updated: 2016/02/19 14:25:08 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 16:43:48 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void		read_scene(int fd, t_parse *parse, t_env *e)
 	ft_strdel(&line);
 	line = NULL;
 	get_instr(get, parse, e);
+	ft_strdel(&get);
 }
 
 void			open_file(char *file, t_parse *parse, t_env *e)
@@ -123,13 +124,6 @@ static void	start(int argc, char **argv)
 	t_env	e;
 
 	init_scene(&e);
-	if (argc > 1 && ft_strequ(argv[argc - 1], "interactive"))
-		create_scene(&e);
-	else
-	{
-			get_scene(&e, argv[1]);
-			//set_list_obj(&e);
-	}
 	init_lights(&e);
 	if (argc > 1)
 		get_scene(&e, argv[argc - 1]);

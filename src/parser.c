@@ -108,18 +108,18 @@ static void	recup_nodes(t_node *nodes, t_parse *parse, t_env *e)
 				{
 					if (!tmp_light)
 					{
-						tmp_light = create_light_p();//
+						tmp_light = create_light_p();
 						parse->light = tmp_light;
 					}
 					else
 					{
-						tmp_light->next = create_light_p();//
+						tmp_light->next = create_light_p();
 						tmp_light = tmp_light->next;
 					}
-					set_light_type(nodes->value, tmp_light);//
+					set_light_type(nodes->value, tmp_light);
 				}
 				else
-					set_light_param(nodes->type, nodes->value, tmp_light);//
+					set_light_param(nodes->type, nodes->value, tmp_light);
 			}
 			nodes = nodes->next;
 		}
@@ -135,16 +135,19 @@ void	get_instr(char *get, t_parse *parse, t_env *e)
 	tab = NULL;
 	if ((parse->nodes = (t_node *)malloc(sizeof(t_node))) == NULL)
 		error_in_parse("Error: malloc t_node");
+	parse->nodes->type = NULL;
+	parse->nodes->value = NULL;
 	tmp = parse->nodes;
 	tab = ft_strsplit(get, '<');
 	k = 0;
 	while (tab[k] && (k < 1 || tab[k - 1]) && ((k < 2) || tab[k - 2]))
 	{
-		k = set_node(&parse->nodes, k, tab);
+		k = set_node(&(parse->nodes), k, tab);
 	}
 	if (tab && *tab)
 	{
 		recup_nodes(tmp, parse, e);
+		ft_free_node_lst(tmp);
 		tab = tab ? ft_free_char_tab(tab) : tab;
 	}
 	else

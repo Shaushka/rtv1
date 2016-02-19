@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/13 16:59:19 by agadiffe          #+#    #+#             */
-/*   Updated: 2016/02/18 14:42:39 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/19 17:01:43 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,17 @@ int		key_press_hook(int keycode, t_env *e)
 		ft_render(e);
 		mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 				e->mlx_init.img.img_ptr, 0, 0);
+	}
+	else if (keycode == KEY_M)
+	{
+		t_object *swp = e->scene->l_obj;
+#include <stdio.h>
+		while (swp)
+		{
+			printf("color : r = %d g = %d b = %d\npos : px%f py%f pz%f\n", swp->color.r, swp->color.g, swp->color.b, swp->pos.x, swp->pos.y, swp->pos.z);
+			printf("rad = %f\nheight = %f\nshine %f\nreflect %f\n\n", swp->radius, swp->height, swp->shine, swp->reflect);
+			swp = swp->next;
+		}
 	}
 	return (0);
 }

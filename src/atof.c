@@ -13,22 +13,42 @@ float	power(float value, int times)
 	return(new_val);
 }
 
+int		ft_atof_p1(char *number, int p_pos)
+{
+	char	*tmp;
+	int		ret;
+
+	tmp = ft_strsub(number, 0, p_pos);
+	ret = ft_atoi(tmp);
+	ft_strdel(&tmp);
+	return (ret);
+}
+
+int		ft_atof_p2(char *number, int p_pos, int u_len)
+{
+	char	*tmp;
+	int		ret;
+
+	tmp = ft_strsub(number, p_pos + 1, u_len);
+	ret = ft_atoi(tmp);
+	ft_strdel(&tmp);
+	return (ret);
+}
 
 float	ft_atof(char *number)
 {
-	float f;
-
-	int 	i;
-	int	u_len;
-	int	p_pos;
+	float	f;
+	int		i;
+	int		u_len;
+	int		p_pos;
 
 	i = 0;
 	while (number[i] && number[i] != '.')
 		i++;
 	u_len = ft_strlen(number) - i;
 	p_pos = i;
-	int part1 = ft_atoi(ft_strsub(number, 0, p_pos));
-	int part2 = ft_atoi(ft_strsub(number, p_pos + 1, u_len));
-	f = (float)part1 + (float)part2 / (power(10, u_len - 2));
+	f = (float)ft_atof_p1(number, p_pos) +
+		(float)ft_atof_p2(number, p_pos, u_len) /
+		(power(10, u_len - 2));
 	return(f);
 }

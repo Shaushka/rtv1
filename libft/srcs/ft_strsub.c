@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <mguillon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 15:30:36 by mguillon          #+#    #+#             */
-/*   Updated: 2014/11/13 15:30:57 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/19 16:30:56 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 
 	i = start;
 	j = 0;
+	dst = NULL;
 	dst = ft_strnew(len);
 	if (dst && s)
 	{

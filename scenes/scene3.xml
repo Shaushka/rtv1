@@ -24,16 +24,17 @@
 </objet>
 <objet>
 	<type>cylindre</type>
+	<height>-1.</height>
 	<radius>1.12</radius>
-	<color>5/25/55/</color>
-	<pos>15/1/2/</pos>
+	<color>5/225/55/</color>
+	<pos>10/0/0/</pos>
 	<shine>0</shine>
 </objet>
 <objet>
 	<type>cone</type>
 	<radius>1.12</radius>
 	<color>255/255/255/</color>
-	<pos>200/100/100/</pos>
+	<pos>2/1/1/</pos>
 	<shine>0.76</shine>
 </objet>
 <light>
