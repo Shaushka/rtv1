@@ -17,16 +17,14 @@ t_object	set_plane(t_vector pos, t_vector normal)
 	return (plane);
 }
 
-
 int			defined_plane(t_vector cam_pos, t_vector ray, t_object obj)
 {
 	t_vector	dist;
 
 	dist = add_vector(cam_pos, ray);
-	printf("%f %f %f\n", fabsf(dist.x - obj.pos.x), dist.x, obj.pos.x);
 	if ((fabsf(dist.x - obj.pos.x)) < obj.height)
 		if (fabsf(dist.y - obj.pos.y) < obj.height)
-			if(fabsf(dist.z - obj.pos.z) < obj.height)
+			if (fabsf(dist.z - obj.pos.z) < obj.height)
 				return (1);
 	return (0);
 }
