@@ -67,7 +67,8 @@ SRC_NAME = main_fork.c									\
 		   file_and_scene.c								\
 		   get_instructions.c							\
 		   recup_nodes.c								\
-		   shall_i_reflect_and_refract.c
+		   shall_i_reflect_and_refract.c				\
+		   bmp_export/ft_bmp_export_launch.c			\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

@@ -21,9 +21,10 @@
 # define PI					3.14159265
 # define RATIO				(PI / 180)
 # define BUF_SIZE			10
-#define MAX_DEPTH			5
+# define MAX_DEPTH			5
 
 # define XPM_DEFAULT		"texture/default_texture.xpm"
+# define D_XP_PATH			"./../"
 
 extern int		g_depth;
 
@@ -593,5 +594,14 @@ void				ft_free_light_lst(t_light *start);
 void				ft_free_node_lst(t_node *start);
 void				ft_free_parse(t_parse *del);
 void				ft_free_one_node(t_node *one_del);
+
+/*
+**	ft_bmp_export_launch.c
+*/
+char				*ft_get_legal_name(void);
+char				*ft_make_bmp(t_env *e);
+void				export_screen_to_bmp(t_env *e);
+void				ft_export_bmp(char *file_name, char *bmp);
+void				ft_mkfile(char *filename);
 
 #endif
