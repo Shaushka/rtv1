@@ -1,5 +1,13 @@
 #include "rtv1.h"
 
+int		light_dir(t_light light, t_vector light_ray)
+{
+	if(norm_vector(light.dir) > 0.001)
+		if (dotpro_vector(unit_vector(light_ray), unit_vector(light.dir)) < 0)
+			return (0);
+	return(1);
+}
+
 float	diffuse_light(t_light light, t_object item, t_vector inter, t_env *e)
 {
 	float		coef;
@@ -8,6 +16,8 @@ float	diffuse_light(t_light light, t_object item, t_vector inter, t_env *e)
 	t_vector	normal;
 
 	light_ray = sub_vector(light.pos, add_vector(inter, e->cam.pos));
+	if (!light_dir(light, light_ray))
+		return (0);
 	normal = calc_normal(e->cam.pos, item, inter);
 	coef = dotpro_vector(unit_vector((light_ray)), unit_vector(normal));
 	attenuation = ((100.f - norm_vector(light_ray)) / 100.f);

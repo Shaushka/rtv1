@@ -46,9 +46,23 @@ float		inter_plane(t_vector cam_pos, t_vector ray, t_object obj)
 		return (0);
 }
 
+static t_vector	pert_wave(t_vector normal, t_vector ray)
+{
+	t_vector	wave;
+
+	wave.x = normal.x + cos(ray.x);
+	wave.y = normal.y + cos(ray.y);
+	wave.z = normal.z + sin(ray.z);
+	return (wave);
+}
+
 t_vector	normal_plane(t_object obj, t_vector ray)
 {
 	if (dotpro_vector(obj.normal, unit_vector(ray)) > 0)
 		obj.normal = mult_vector(obj.normal, -1);
+	if (0)
+	{
+		obj.normal = pert_wave(obj.normal, ray);
+	}
 	return (obj.normal);
 }
