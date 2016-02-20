@@ -16,7 +16,7 @@ void	ft_new_obj_hook(int keycode, t_env *e)
 
 	swp = e->scene->l_obj;
 	n = NULL;
-	if (keycode >= KEY_1 && keycode <= KEY_4)
+	if (keycode >= KEY_1 && keycode <= KEY_4 && swp)
 	{
 		n = create_object_p();
 		while (swp && swp->next)
@@ -47,7 +47,7 @@ void	ft_generatore(int x, int y, int z, t_env *e)
 	swp = e->scene->l_obj;
 	teta = 0.;
 	link_nb = ft_get_new_bundle_nb(e);
-	while (teta < 2 * PI)
+	while (teta < 2 * PI && swp)
 	{
 		x = x + 0;
 		ft_new_obj_hook(KEY_1, e);
@@ -116,7 +116,5 @@ int		key_press_hook(int keycode, t_env *e)
 		mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 				e->mlx_init.img.img_ptr, 0, 0);
 	}
-	if (keycode == KEY_M)
-		export_screen_to_bmp(e);
 	return (0);
 }
