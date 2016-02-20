@@ -56,6 +56,24 @@ void		assign_pos_p(t_object **obj, char *str)
 	(*obj)->pos.z = ft_atoi(&str[i + 1]);
 }
 
+void		assign_cut_p(t_object **obj, char *str)
+{
+	int			i;
+
+	i = 0;
+	while (str[i] != '/')
+		i++;
+	(*obj)->cut.x = ft_atoi(str);
+	while (str[i] != '/')
+		i++;
+	(*obj)->cut.y = ft_atoi(&str[i + 1]);
+	i++;
+	while (str[i] != '/')
+		i++;
+	(*obj)->cut.z = ft_atoi(&str[i + 1]);
+}
+
+
 void		assign_color_p(t_object **obj, char *str)
 {
 	int			i;

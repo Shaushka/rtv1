@@ -50,6 +50,7 @@ void			init_obj(t_object *node)
 {
 	node->next = NULL;
 	node->pos = set_vector(node->pos, 0, 0, 0);
+	node->cut = set_vector(node->cut, 0, 0, 0);
 	node->normal = set_vector(node->normal, 0, 0, 0);
 	node->dir = set_vector(node->dir, 0, 0, 0);
 	node->radius = 0;

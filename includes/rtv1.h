@@ -65,6 +65,7 @@ typedef	struct		s_object
 	t_type			type;
 	t_color			color;
 	t_vector		pos;
+	t_vector		cut;
 	t_vector		dir;//cylinder cone
 	t_vector		normal;//plan
 	int				checkered;//dallage_carreaux

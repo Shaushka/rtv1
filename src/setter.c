@@ -18,6 +18,8 @@ void	set_object_param(char *value, char *data, t_object *obj)
 		obj->radius = ft_atof(data);
 	else if (ft_strcmp(value, "height") == 0)
 		obj->height = ft_atof(data);
+	else if (ft_strcmp(value, "cut") == 0)
+		assign_cut_p(&obj, data);
 	else if (ft_strcmp(value, "pos") == 0)
 		assign_pos_p(&obj, data);
 	else if (ft_strcmp(value, "dir") == 0)
