@@ -65,7 +65,8 @@ SRC_NAME = main_fork.c									\
 		   ft_free_utility_2.c							\
 		   file_and_scene.c								\
 		   get_instructions.c							\
-		   recup_nodes.c
+		   recup_nodes.c								\
+		   shall_i_reflect_and_refract.c
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 
