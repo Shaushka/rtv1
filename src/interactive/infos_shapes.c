@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   infos_shapes.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/12 14:18:25 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/17 16:54:15 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/20 17:34:20 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include "../../includes/rtv1.h"
-#include "../../libft/includes/libft.h"
+#include "rtv1.h"
+#include "libft.h"
 
 void			radius(t_object *node)
 {
 	char		*tmp;
-	char 		*clean;
-//GERER  SI PAS DE PARAM
+	char		*clean;
+
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
 	ft_putstr("Indiquez le rayon : ");

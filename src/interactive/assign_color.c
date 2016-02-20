@@ -1,19 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   assign_color.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kervrangwendoline <kervrangwendoline@student.42.fr>+#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 14:26:41 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/18 20:01:24 by gkervran         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include "../includes/rtv1.h"
-#include "../libft/includes/libft.h"
-#include <unistd.h>
+#include "rtv1.h"
+#include "libft.h"
 
 static void		random_color(t_color *color)
 {
@@ -22,7 +8,7 @@ static void		random_color(t_color *color)
 	color->b = rand() % 255;
 }
 
-void		assign_color(t_color *color, char *str)
+void			assign_color(t_color *color, char *str)
 {
 	int			i;
 
@@ -42,7 +28,6 @@ void			color(t_color *color)
 {
 	char		*tmp;
 
-	printf("Je suis dans color\n");
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
 	ft_putstr("Definition de la couleur :\n");
@@ -83,7 +68,6 @@ void			color_choice(t_color *color)
 	char		*tmp;
 	char		*clean;
 
-	printf("Je suis dans color_choice\n");	
 	tmp = ft_memalloc(sizeof(char) * 200);
 	ft_bzero(tmp, 200);
 	ft_putstr("Voulez-vous choisir la couleur ?\n");

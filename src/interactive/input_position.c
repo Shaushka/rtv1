@@ -10,15 +10,12 @@ char			*cut_pos(char *str, int i)
 	int			k;
 
 	k = i;
-//	printf("CP :	je rentre dans cut_pos\n");
-//	printf("CP :	str : \"%s\", i = %d\n", str, i);
 	j = 0;
 	while (str[i] != '/' && str[i] != '\0' && str[i] != '\n')
 	{
 		i++;
 		j++;
 	}
-//	printf("CP :	je vais malloc %d + 1\n", j);
 	tmp = malloc(sizeof(char) * (j + 1));
 	i = k;
 	while (str[i] != '/' && str[i] != '\0' && str[i] != '\n')
@@ -36,7 +33,7 @@ char			*cleanit(char *str)
 
 	clean = no_more_spaces(str);
 	separators(clean);
-	return(no_more_spaces(clean));
+	return (no_more_spaces(clean));
 }
 
 int				check_values(char *str, int min, int max)
@@ -47,19 +44,15 @@ int				check_values(char *str, int min, int max)
 
 	i = 0;
 	clean = cleanit(str);
-//	printf("i : %d clean[i] : %c\n", i, clean[i]);
 	x = ft_atoi(cut_pos(clean, i));
 	if (x < min || x > max)
 		return (0);
 	while (ft_isdigit(clean[i]))
 		i++;
 	i++;
-	
-//	printf("i : %d clean[i] : %c\n", i, clean[i]);
 	x = ft_atoi(cut_pos(clean, i));
 	if (x < min || x > max)
 		return (0);
-//	printf("i : %d clean[i] : %c\n", i, clean[i]);
 	while (ft_isdigit(clean[i]))
 		i++;
 	i++;
@@ -101,7 +94,7 @@ void			position(t_object *node)
 		read(0, tmp, 200);
 	}
 	ft_putstr(tmp);
-	remove_bn(&tmp);	
+	remove_bn(&tmp);
 	printf("POS :	tmp = \"%s\"\n", tmp);
 	if (check_values(tmp, 0, 100))
 	{

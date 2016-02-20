@@ -1,4 +1,3 @@
-
 #include "rtv1.h"
 
 t_object		set_cone(t_vector pos, t_vector dir, float radius, float height)
@@ -30,7 +29,7 @@ static float	m_calculus(t_vector cam, t_object cone, t_vector ray)
 			return (0);
 	}
 	if (item_cut(cam, ray, cone))
-		return(0);
+		return (0);
 	return (m);
 }
 

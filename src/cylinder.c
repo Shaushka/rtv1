@@ -29,7 +29,7 @@ static float	m_calculus(t_vector cam, t_object cylinder, t_vector ray)
 			return (0);
 	}
 	if (item_cut(cam, ray, cylinder))
-		return(0);
+		return (0);
 	return (m);
 }
 

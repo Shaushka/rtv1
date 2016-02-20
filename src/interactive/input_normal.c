@@ -1,19 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   input_normal.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 14:17:01 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/18 15:09:44 by mgrimald         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <stdlib.h>
-#include <unistd.h>
-#include "../../includes/rtv1.h"
-#include "../../libft/includes/libft.h"
+#include "rtv1.h"
+#include "libft.h"
 
 void		assign_normal(t_object *node, char *str)
 {
