@@ -1,7 +1,5 @@
-#include <stdlib.h>
-#include "../includes/rtv1.h"
-#include "../libft/includes/libft.h"
-#include <unistd.h>
+#include "rtv1.h"
+#include "libft.h"
 
 void		assign_normal_p(t_object **obj, char *str)
 {

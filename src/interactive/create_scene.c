@@ -1,7 +1,5 @@
-#include <unistd.h>
-#include <stdio.h>
-#include "../includes/rtv1.h"
-#include "../libft/includes/libft.h"
+#include "rtv1.h"
+#include "libft.h"
 
 static int		silent_isshape(char *str)
 {
