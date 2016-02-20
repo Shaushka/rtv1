@@ -1,11 +1,27 @@
 <objet>
-	<type>cone</type>
-	<radius>0.3</radius>
-	<dir>0/0/-1</dir>
+	<type>cylindre</type>
+	<radius>0.5</radius>
+	<dir>0/0/1</dir>
 	<color>255/255/255</color>
-	<pos>1/0/0</pos>
+	<pos>4/-1/-1</pos>
 	<shine>1</shine>
-	<height>01</height>
+	<height>02</height>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>155/155/155/</color>
+	<pos>000/8/0</pos>
+	<radius>-1.0</radius>
+	<normal>0/10/0/</normal>
+	<reflect>1</reflect>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>155/155/155/</color>
+	<pos>000/-8/0</pos>
+	<radius>-1.0</radius>
+	<normal>0/10/0/</normal>
+	<reflect>1</reflect>
 </objet>
 <objet>
 	<type>plane</type>
