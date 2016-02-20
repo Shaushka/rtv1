@@ -14,6 +14,7 @@ t_object	set_plane(t_vector pos, t_vector normal)
 	plane.reflect = 0;
 	plane.checkered = 0;
 	plane.refraction = 0;
+	plane.cut = (t_vector){0, 0, 0};
 	return (plane);
 }
 
@@ -22,9 +23,9 @@ int			defined_plane(t_vector cam_pos, t_vector ray, t_object obj)
 	t_vector	dist;
 
 	dist = add_vector(cam_pos, ray);
-	if ((fabsf(dist.x - obj.pos.x)) < obj.height)
-		if (fabsf(dist.y - obj.pos.y) < obj.height)
-			if (fabsf(dist.z - obj.pos.z) < obj.height)
+	if ((fabs(dist.x - obj.pos.x)) < obj.height)
+		if (fabs(dist.y - obj.pos.y) < obj.height)
+			if (fabs(dist.z - obj.pos.z) < obj.height)
 				return (1);
 	return (0);
 }
@@ -37,9 +38,9 @@ float		inter_plane(t_vector cam_pos, t_vector ray, t_object obj)
 	bound = 1;
 	t = -(dotpro_vector(obj.normal, sub_vector(cam_pos, obj.pos))
 			/ (dotpro_vector(obj.normal, ray)));
-	if (t && obj.height)
+	if (t && obj.height > 0)
 		bound = defined_plane(cam_pos, mult_vector(ray, t), obj);
-	if (bound)
+	if (bound && !item_cut(cam_pos, mult_vector(ray, t), obj))
 		return (t);
 	else
 		return (0);
