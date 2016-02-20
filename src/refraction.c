@@ -39,8 +39,7 @@ t_color		refraction(t_object item, t_vector inter, t_env *e)
 			refray = add_vector(mult_vector(unit_vector(inter), eta), mult_vector(norm, (eta * cosi - sqrtf(k))));
 			refray = unit_vector(refray);
 			tmp = e->cam.pos;
-			pos = add_vector(add_vector(inter, e->cam.pos), mult_vector(refray, 1e-4));
-			e->cam.pos = pos;
+			e->cam.pos = add_vector(add_vector(inter, e->cam.pos), mult_vector(refray, 1e-4));
 			color = add_color(check_collision(e, refray, e->cam.pos), color);
 			e->cam.pos = tmp;
 			g_depth--;
