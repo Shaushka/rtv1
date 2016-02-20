@@ -67,6 +67,7 @@ typedef	struct		s_object
 	t_vector		pos;
 	t_vector		dir;//cylinder cone
 	t_vector		normal;//plan
+	t_vector		cut;
 	int				checkered;//dallage_carreaux
 	float			radius;//sphere cone cylindre
 	float			height;//cone cylindre
@@ -317,6 +318,11 @@ t_vector			normal_cylinder(t_vector cam, t_object obj, t_vector ray);
 t_object			set_cone(t_vector pos, t_vector dir, float r, float h);
 float				inter_cone(t_vector cam_pos, t_vector ray, t_object obj);
 t_vector			normal_cone(t_vector cam, t_object obj, t_vector ray);
+
+/*
+**	item_cut.c
+*/
+int					item_cut(t_vector cam, t_vector ray, t_object item);
 
 /*
 **>----------> LIGHTS <-----
