@@ -29,10 +29,26 @@ static float	m_calculus(t_vector cam, t_object cone, t_vector ray)
 	{
 		if (m < (0) || (m > cone.height))
 			return (0);
-		else
-			return (m);
 	}
 	return (m);
+}
+
+float			check_det(float d1, float d2, float m1, float m2)
+{
+
+	if (m1 == 0 && m2 == 0)
+		return (-1);
+	else if (m1 == 0 && m2 != 0 && d2 > 0.0f)
+		return (d2);
+	else if (m1 != 0 && m2 == 0 && d1 > 0.0f)
+		return (d1);
+	if (d2 < 0.0f && d1 >= 0.0f)
+		return (d1);
+	else if (d1 < 0.0f && d2 >= 0.0f)
+		return (d2);
+	else if (d1 < 0.0f && d2 < 0.0f)
+		return (d1);
+	return (d2 < d1 ? d2 : d1);
 }
 
 float			inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
@@ -57,11 +73,9 @@ float			inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
 		return (0);
 	c = ((-b + sqrt(det)) / (2 * a));
 	det = ((-b - sqrt(det)) / (2 * a));
-	if ((det < 0 || c < det) && m_calculus(cam_pos, cone, mult_vector(ray, c)))
-		return (c);
-	if ((c > 0 || det < c) && m_calculus(cam_pos, cone, mult_vector(ray, det)))
-		return (det);
-	return (0);
+	a = m_calculus(cam_pos, cone, mult_vector(ray, c));
+	b = m_calculus(cam_pos, cone, mult_vector(ray, det));
+	return(check_det(det, c, a, b));
 }
 
 t_vector		normal_cone(t_vector cam, t_object cone, t_vector ray)
