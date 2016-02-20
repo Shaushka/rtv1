@@ -408,6 +408,8 @@ t_color				check_color(t_color color);
 /*
 **	parser
 */
+int					check_shit(char *str);
+int					get_the_mark(char *str);
 void				open_file(char *file, t_parse *parse, t_env *e);
 float				ft_atof(char *number);
 void				assign_color(t_color *color, char *str);

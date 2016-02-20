@@ -1,41 +1,6 @@
 #include "rtv1.h"
 
-static int		check_shit(char *str)
-{
-	int				i;
-	int				test;
-
-	i = 0;
-	test = 0;
-	while (str[i])
-	{
-		if (str[i] == '/')
-			test = 1;
-		if (test == 1 && str[i] == '>')
-			test = 2;
-		i++;
-	}
-	if (test == 2)
-		return (1);
-	else
-		return (0);
-}
-
-static int		get_the_mark(char *str)
-{
-	int				i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '>')
-			return (i);
-		i++;
-	}
-	return (i);
-}
-
-static void		newnode(char **tab, int pos, t_node **new_node)
+static void			newnode(char **tab, int pos, t_node **new_node)
 {
 	int				t;
 
@@ -45,29 +10,29 @@ static void		newnode(char **tab, int pos, t_node **new_node)
 	(*new_node)->next = NULL;
 }
 
-char			*ft_del_and_trim(char **swp, char **tab, int pos)
+char				*ft_del_and_trim(char **swp, char **tab, int pos)
 {
 	ft_strdel(swp);
 	return (ft_strtrim(tab[pos]));
 }
 
-static void		ft_nodes(t_node **nodes, t_node **new_node)
+static void			ft_nodes(t_node **nodes, t_node **new_node)
 {
 	(*nodes)->next = *new_node;
 	(*nodes) = (*nodes)->next;
 }
 
-static	int		ft_islight(t_fam *n, int pos)
+static	int			ft_islight(t_fam *n, int pos)
 {
 	*n = LIGHT;
 	return (pos + 1);
 }
 
-int				set_node(t_node **nodes, int pos, char **tab)
+int					set_node(t_node **nodes, int pos, char **tab)
 {
 	t_node			*new_node;
 	char			*swp;
-	static t_fam			n = NONE;
+	static t_fam	n = NONE;
 
 	swp = ft_strtrim(tab[pos]);
 	if (check_shit(tab[pos]) == 1 || ft_strncmp(swp, "objet>", 6) == 0)
