@@ -58,6 +58,7 @@ SRC_NAME = main_fork.c									\
 		   keyring/ft_keyring_light_interface_2.c		\
 		   keyring/ft_keyring_ui.c						\
 		   keyring/ft_keyring_ui_2.c					\
+		   keyring/ft_keyring_nape_generator.c			\
 		   loading_bar.c								\
 		   ft_texture_load.c							\
 		   options_parser.c								\

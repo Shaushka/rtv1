@@ -196,6 +196,7 @@ float				intersection(t_object *tmp, t_vector ray, t_vector pos);
 **	hook_functions.c
 */
 int					expose_hook(t_env *e);
+void				ft_new_obj_hook(int keycode, t_env *e);
 int					key_press_hook(int keycode, t_env *e);
 
 /*
@@ -596,5 +597,12 @@ void				ft_free_light_lst(t_light *start);
 void				ft_free_node_lst(t_node *start);
 void				ft_free_parse(t_parse *del);
 void				ft_free_one_node(t_node *one_del);
+
+/*
+**	ft_keyring_nape_generator.c
+*/
+void				ft_nape_generator_init(t_env *e);
+void				ft_quater_nappe(t_vector t, t_env *e, t_vector s,
+									int link_nb);
 
 #endif
