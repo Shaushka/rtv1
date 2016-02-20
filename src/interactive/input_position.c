@@ -1,7 +1,5 @@
-#include <stdlib.h>
-#include <unistd.h>
-#include "../../includes/rtv1.h"
-#include "../../libft/includes/libft.h"
+#include "rtv1.h"
+#include "libft.h"
 
 char			*cut_pos(char *str, int i)
 {

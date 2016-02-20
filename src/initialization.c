@@ -2,7 +2,6 @@
 #include "libft.h"
 #include "mlx.h"
 #include "key_define.h"
-#include <stdlib.h>
 
 void			new_img_in_old_env(t_env *e, t_env *old)
 {
