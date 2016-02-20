@@ -595,13 +595,4 @@ void				ft_free_node_lst(t_node *start);
 void				ft_free_parse(t_parse *del);
 void				ft_free_one_node(t_node *one_del);
 
-/*
-**	ft_bmp_export_launch.c
-*/
-char				*ft_get_legal_name(void);
-char				*ft_make_bmp(t_env *e);
-void				export_screen_to_bmp(t_env *e);
-void				ft_export_bmp(char *file_name, char *bmp);
-void				ft_mkfile(char *filename);
-
 #endif
