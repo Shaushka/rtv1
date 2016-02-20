@@ -12,6 +12,7 @@ SRC_NAME = main_fork.c									\
 		   initialization.c								\
 		   exit_and_quit.c								\
 		   hook_functions.c								\
+		   hook_functions_2.c								\
 		   ray_tracing.c								\
 		   sphere.c										\
 		   debug.c										\
