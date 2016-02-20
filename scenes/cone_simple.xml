@@ -1,0 +1,48 @@
+<objet>
+	<type>cone</type>
+	<radius>0.3</radius>
+	<dir>0/0/-1</dir>
+	<color>255/255/255</color>
+	<pos>1/0/0</pos>
+	<shine>1</shine>
+	<height>01</height>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>255/255/255/</color>
+	<pos>000/000/-010/</pos>
+	<radius>-1.0</radius>
+	<normal>0/0/5/</normal>
+	<reflect>1</reflect>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>255/255/255/</color>
+	<pos>000/000/010/</pos>
+	<radius>-1.0</radius>
+	<normal>0/0/5</normal>
+	<reflect>1</reflect>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>255/255/255/</color>
+	<pos>10/000/000/</pos>
+	<radius>-1.0</radius>
+	<normal>-1/0/0</normal>
+	<reflect>1</reflect>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>255/255/255/</color>
+	<pos>-30/000/000/</pos>
+	<radius>-1.0</radius>
+	<normal>-1/0/0</normal>
+	<reflect>1</reflect>
+</objet>
+<light>
+	<lighttype>normal</type>
+	<pos>1/-4/0/</pos>
+	<color>255/255/255</color>
+	<intensity>0.6</intensity>
+	<ambiant>0.2</ambiant>
+</light>

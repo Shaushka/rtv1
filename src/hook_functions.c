@@ -57,7 +57,7 @@ void	ft_generatore(int x, int y, int z, t_env *e)
 		swp->pos.x = e->cam.pos.x + 2;
 		swp->pos.z = z + cos(teta) - (cos(teta) / 1.5);
 		swp->pos.y = y + sin(teta) - (sin(teta) / 1.5);
-		teta += 0.09;
+		teta += 0.02;
 	}
 }
 
