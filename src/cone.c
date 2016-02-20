@@ -37,7 +37,7 @@ float			check_det(float d1, float d2, float m1, float m2)
 {
 
 	if (m1 == 0 && m2 == 0)
-		return (-1);
+		return (0);
 	else if (m1 == 0 && m2 != 0 && d2 > 0.0f)
 		return (d2);
 	else if (m1 != 0 && m2 == 0 && d1 > 0.0f)
