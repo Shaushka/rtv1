@@ -17,7 +17,7 @@ void	print_color(t_color col, char *pre)
 	ft_putstr(pre);
 	printf("R = %d, G = %d, B = %d\n", col.r, col.g, col.b);
 }
-
+/*
 void	print_result(t_parse *parse)
 {
 	int			i;
@@ -62,4 +62,4 @@ void	print_result(t_parse *parse)
 	ft_putstr("nombre de light = ");
 	ft_putnbr(i);
 	ft_putchar('\n');
-}
+}*/
