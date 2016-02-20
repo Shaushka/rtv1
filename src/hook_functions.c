@@ -116,5 +116,7 @@ int		key_press_hook(int keycode, t_env *e)
 		mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 				e->mlx_init.img.img_ptr, 0, 0);
 	}
+	if (keycode == KEY_M)
+		export_screen_to_bmp(e);
 	return (0);
 }
