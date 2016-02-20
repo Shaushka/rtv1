@@ -1,6 +1,6 @@
 #include "rtv1.h"
 
-static int			check_shit(char *str)
+static int		check_shit(char *str)
 {
 	int				i;
 	int				test;
@@ -21,7 +21,7 @@ static int			check_shit(char *str)
 		return (0);
 }
 
-static int			get_the_mark(char *str)
+static int		get_the_mark(char *str)
 {
 	int				i;
 
@@ -35,12 +35,39 @@ static int			get_the_mark(char *str)
 	return (i);
 }
 
-int			set_node(t_node **nodes, int pos, char **tab)
+static void		newnode(char **tab, int pos, t_node **new_node)
+{
+	int				t;
+
+	t = get_the_mark(tab[pos]);
+	(*new_node)->type = ft_strsub(tab[pos], 0, t);
+	(*new_node)->value = ft_strsub(tab[pos], t + 1, ft_strlen(tab[pos]));
+	(*new_node)->next = NULL;
+}
+
+char			*ft_del_and_trim(char **swp, char **tab, int pos)
+{
+	ft_strdel(swp);
+	return (ft_strtrim(tab[pos]));
+}
+
+static void		ft_nodes(t_node **nodes, t_node **new_node)
+{
+	(*nodes)->next = *new_node;
+	(*nodes) = (*nodes)->next;
+}
+
+static	int		ft_islight(t_fam *n, int pos)
+{
+	*n = LIGHT;
+	return (pos + 1);
+}
+
+int				set_node(t_node **nodes, int pos, char **tab)
 {
 	t_node			*new_node;
 	char			*swp;
-	int				t;
-	static t_fam	n = NONE;
+	static t_fam			n = NONE;
 
 	swp = ft_strtrim(tab[pos]);
 	if (check_shit(tab[pos]) == 1 || ft_strncmp(swp, "objet>", 6) == 0)
@@ -48,25 +75,17 @@ int			set_node(t_node **nodes, int pos, char **tab)
 		n = OBJECT;
 		return (pos + 1);
 	}
-	ft_strdel(&swp);
-	swp = ft_strtrim(tab[pos]);
+	swp = ft_del_and_trim(&swp, tab, pos);
 	if (check_shit(tab[pos]) == 1 || ft_strncmp(swp, "light>", 6) == 0)
-	{
-		n = LIGHT;
-		return (pos + 1);
-	}
+		return (ft_islight(&n, pos));
 	ft_strdel(&swp);
 	if ((new_node = (t_node *)malloc(sizeof(t_node))) == NULL)
 		error_in_parse("Error: malloc new t_node");
 	else
 	{
-		t = get_the_mark(tab[pos]);
+		newnode(tab, pos, &new_node);
 		new_node->family = n;
-		new_node->type = ft_strsub(tab[pos], 0, t);
-		new_node->value = ft_strsub(tab[pos], t + 1, ft_strlen(tab[pos]));
-		new_node->next = NULL;
-		(*nodes)->next = new_node;
-		(*nodes) = (*nodes)->next;
+		ft_nodes(nodes, &new_node);
 	}
 	return (pos + 2);
 }
