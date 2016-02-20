@@ -31,7 +31,22 @@ t_light		*ft_get_light_at_nb(int nb, t_light *s)
 void		ft_get_next_obj(t_env *e)
 {
 	t_object	*swp;
+	int			bundle;
 
+	swp = ft_get_obj_at_nb(e->key.selected_obj, e->scene->l_obj);
+	bundle = 0;
+	if (swp && swp->bundle != -1)
+	{
+		bundle = swp->bundle;
+		while (swp && swp->bundle == bundle)
+		{
+			swp = swp->next;
+			e->key.selected_obj++;
+		}
+		if (!swp)
+			e->key.selected_obj = 0;
+		return ;
+	}
 	swp = ft_get_obj_at_nb(e->key.selected_obj + 1, e->scene->l_obj);
 	if (swp)
 		e->key.selected_obj++;

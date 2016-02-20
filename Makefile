@@ -4,7 +4,7 @@
 NAME = rtv1
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra -g -O3
+CFLAGS += -Wall -Werror -Wextra -O3
 
 SRC_PATH = ./src/
 SRC_NAME = main_fork.c									\

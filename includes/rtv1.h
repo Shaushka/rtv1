@@ -74,6 +74,7 @@ typedef	struct		s_object
 	float			shine;//brillance
 	float			reflect;//reflexion
 	float			refraction;
+	int				bundle;
 }					t_object;
 
 typedef struct		s_light
@@ -553,6 +554,8 @@ void				spawn_obj_pos_controls(t_color c, t_vector v, t_env *e);
 void				ft_print_pending_objpos_modif(t_object *l, t_env *e);
 void				ft_print_selected_obj(t_env *e);
 void				ft_mod_obj_inc(t_env *e, int mod);
+void				ft_mod_grouped_obj(t_env *e, int mod, int index);
+int					ft_get_new_bundle_nb(t_env *e);
 
 /*
 **	ft_keyring_ui.c
