@@ -23,3 +23,43 @@ int		ft_get_om_cmd_interface(int x, int y, t_env *e)
 		return (e->key.mode = 800 + 6);
 	return (e->key.mode);
 }
+
+void	ft_mod_grouped_obj(t_env *e, int mod, int index)
+{
+	t_object	*swp;
+
+	swp = e->scene->l_obj;
+	while (swp)
+	{
+		if (swp->bundle == index)
+		{
+			swp->pos.x += mod == 801 ? 1 : 0;
+			swp->pos.x -= mod == 802 ? 1 : 0;
+			swp->pos.y += mod == 803 ? 1 : 0;
+			swp->pos.y -= mod == 804 ? 1 : 0;
+			swp->pos.z += mod == 805 ? 1 : 0;
+			swp->pos.z -= mod == 806 ? 1 : 0;
+		}
+		swp = swp->next;
+	}
+}
+
+int		ft_get_new_bundle_nb(t_env *e)
+{
+	t_object	*swp;
+	int			ret;
+
+	swp = e->scene->l_obj;
+	ret = 0;
+	while (swp)
+	{
+		if (ret == swp->bundle)
+		{
+			ret++;
+			swp = e->scene->l_obj;
+		}
+		else
+			swp = swp->next;
+	}
+	return (ret);
+}

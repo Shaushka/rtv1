@@ -91,6 +91,13 @@ void	ft_mod_obj_inc(t_env *e, int mod)
 	t_object	*swp;
 
 	swp = ft_get_obj_at_nb(e->key.selected_obj, e->scene->l_obj);
+	if (!swp)
+		return ;
+	if (swp && swp->bundle != -1)
+	{
+		ft_mod_grouped_obj(e, mod, swp->bundle);
+		return ;
+	}
 	swp->pos.x += mod == 801 ? 1 : 0;
 	swp->pos.x -= mod == 802 ? 1 : 0;
 	swp->pos.y += mod == 803 ? 1 : 0;

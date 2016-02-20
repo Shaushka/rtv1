@@ -42,15 +42,18 @@ void	ft_generatore(int x, int y, int z, t_env *e)
 {
 	t_object	*swp;
 	double		teta;
+	int			link_nb;
 
 	swp = e->scene->l_obj;
 	teta = 0.;
+	link_nb = ft_get_new_bundle_nb(e);
 	while (teta < 2 * PI)
 	{
 		x = x + 0;
 		ft_new_obj_hook(KEY_1, e);
 		while (swp && swp->next)
 			swp = swp->next;
+		swp->bundle = link_nb;
 		swp->pos.x = e->cam.pos.x + 2;
 		swp->pos.z = z + cos(teta) - (cos(teta) / 1.5);
 		swp->pos.y = y + sin(teta) - (sin(teta) / 1.5);

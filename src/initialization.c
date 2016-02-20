@@ -59,6 +59,7 @@ void			init_obj(t_object *node)
 	node->checkered = 0;
 	node->reflect = 0.0;
 	node->refraction = 0.0;
+	node->bundle = -1;
 }
 
 void			init_light(t_light *node)

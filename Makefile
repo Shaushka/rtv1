@@ -4,7 +4,7 @@
 NAME = rtv1
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra -g -O3
+CFLAGS += -Wall -Werror -Wextra -O3
 
 SRC_PATH = ./src/
 SRC_NAME = main_fork.c									\
@@ -30,6 +30,7 @@ SRC_NAME = main_fork.c									\
 		   premade_objects.c							\
 		   texture.c									\
 		   intersection.c								\
+		   item_cut.c									\
 		   render.c										\
 		   interactive/add_shape.c 						\
 		   interactive/assign_color.c					\

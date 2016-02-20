@@ -68,12 +68,14 @@ typedef	struct		s_object
 	t_vector		cut;
 	t_vector		dir;//cylinder cone
 	t_vector		normal;//plan
+	t_vector		cut;
 	int				checkered;//dallage_carreaux
 	float			radius;//sphere cone cylindre
 	float			height;//cone cylindre
 	float			shine;//brillance
 	float			reflect;//reflexion
 	float			refraction;
+	int				bundle;
 }					t_object;
 
 typedef struct		s_light
@@ -320,6 +322,11 @@ float				inter_cone(t_vector cam_pos, t_vector ray, t_object obj);
 t_vector			normal_cone(t_vector cam, t_object obj, t_vector ray);
 
 /*
+**	item_cut.c
+*/
+int					item_cut(t_vector cam, t_vector ray, t_object item);
+
+/*
 **>----------> LIGHTS <-----
 */
 
@@ -548,6 +555,8 @@ void				spawn_obj_pos_controls(t_color c, t_vector v, t_env *e);
 void				ft_print_pending_objpos_modif(t_object *l, t_env *e);
 void				ft_print_selected_obj(t_env *e);
 void				ft_mod_obj_inc(t_env *e, int mod);
+void				ft_mod_grouped_obj(t_env *e, int mod, int index);
+int					ft_get_new_bundle_nb(t_env *e);
 
 /*
 **	ft_keyring_ui.c
