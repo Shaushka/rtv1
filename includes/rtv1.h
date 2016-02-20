@@ -65,7 +65,6 @@ typedef	struct		s_object
 	t_type			type;
 	t_color			color;
 	t_vector		pos;
-	t_vector		cut;
 	t_vector		dir;//cylinder cone
 	t_vector		normal;//plan
 	t_vector		cut;
@@ -414,6 +413,7 @@ void				assign_color(t_color *color, char *str);
 void				assign_color_p(t_object **obj, char *str);
 void				assign_lightcolor_p(t_light **obj, char *str);
 void				assign_pos_p(t_object **obj, char *str);
+void				assign_cut_p(t_object **obj, char *str);
 void				assign_dir_p(t_object **obj, char *str);
 void				assign_normal_p(t_object **obj, char *str);
 void				assign_normal(t_object *node, char *str);
