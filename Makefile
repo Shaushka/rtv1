@@ -30,6 +30,7 @@ SRC_NAME = main_fork.c									\
 		   premade_objects.c							\
 		   texture.c									\
 		   intersection.c								\
+		   item_cut.c									\
 		   render.c										\
 		   interactive/add_shape.c 						\
 		   interactive/assign_color.c					\
