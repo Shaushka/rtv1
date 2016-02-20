@@ -1,16 +1,13 @@
-#include "../../libft/includes/libft.h"
-#include "../../includes/rtv1.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
+#include "rtv1.h"
 
 char		**remove_spaces(char *str, int i, char **clean)
 {
-	int j;
+	int		j;
+	char	*tmp;
 
 	j = 0;
 	i = 0;
-	char *tmp;
-	printf("Je suis dans remove_spaces et tout va bien\n");
 	tmp = *clean;
 	while (str[i] != '\0' && str[i] != '\n')
 	{
@@ -23,7 +20,6 @@ char		**remove_spaces(char *str, int i, char **clean)
 			j++;
 		}
 	}
-	printf("RS : Clean = \"%s\"\n", *clean);
 	return (clean);
 }
 
@@ -49,7 +45,6 @@ char		*no_more_spaces(char *str)
 	}
 	len -= j;
 	clean = malloc(sizeof(char) * (len + 1));
-	printf("NMS : Clean = \"%s\"\n", clean);
 	ft_bzero(clean, len + 1);
 	return (*remove_spaces(str, i, &clean));
 }

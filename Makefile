@@ -61,7 +61,7 @@ SRC_NAME = main_fork.c									\
 		   loading_bar.c								\
 		   ft_texture_load.c							\
 		   options_parser.c								\
-		   options_parser_2.c								\
+		   options_parser_2.c							\
 		   assign_pos_light.c							\
 		   ft_free_utility.c							\
 		   ft_free_utility_2.c							\
@@ -69,7 +69,6 @@ SRC_NAME = main_fork.c									\
 		   get_instructions.c							\
 		   recup_nodes.c								\
 		   shall_i_reflect_and_refract.c				\
-		   bmp_export/ft_bmp_export_launch.c			\
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 

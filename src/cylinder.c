@@ -1,7 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-
 #include "rtv1.h"
 
 t_object		set_cylinder(t_vector pos, t_vector dir, float radius, float h)
@@ -17,6 +13,7 @@ t_object		set_cylinder(t_vector pos, t_vector dir, float radius, float h)
 	cylinder.reflect = 0;
 	cylinder.checkered = 0;
 	cylinder.refraction = 0;
+	cylinder.cut = (t_vector){0, 0, 0};
 	return (cylinder);
 }
 
@@ -31,6 +28,8 @@ static float	m_calculus(t_vector cam, t_object cylinder, t_vector ray)
 		if (m < 0 || m > (cylinder.height))
 			return (0);
 	}
+	if (item_cut(cam, ray, cylinder))
+		return (0);
 	return (m);
 }
 
@@ -56,9 +55,9 @@ float			inter_cylinder(t_vector pos, t_vector ray, t_object cylinder)
 		return (0);
 	c = ((-b - sqrt(det)) / (2 * a));
 	det = ((-b + sqrt(det)) / (2 * a));
-	if (det < 0 || c < det)
-		det = c;
-	if (m_calculus(pos, cylinder, mult_vector(ray, det)))
+	if ((det < 0 || c < det) && m_calculus(pos, cylinder, mult_vector(ray, c)))
+		return (c);
+	if ((c > 0 || det < c) && m_calculus(pos, cylinder, mult_vector(ray, det)))
 		return (det);
 	return (0);
 }
@@ -70,5 +69,8 @@ t_vector		normal_cylinder(t_vector cam, t_object cylinder, t_vector ray)
 
 	m = m_calculus(cam, cylinder, ray);
 	tmp = add_vector(sub_vector(cam, cylinder.pos), ray);
-	return (unit_vector(sub_vector(tmp, mult_vector(cylinder.dir, m))));
+	tmp = unit_vector(sub_vector(tmp, mult_vector(cylinder.dir, m)));
+	if (dotpro_vector(unit_vector(ray), tmp) > 0)
+		return (mult_vector(tmp, -1));
+	return (tmp);
 }
