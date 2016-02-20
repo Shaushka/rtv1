@@ -61,6 +61,7 @@ SRC_NAME = main_fork.c									\
 		   loading_bar.c								\
 		   ft_texture_load.c							\
 		   options_parser.c								\
+		   options_parser_2.c								\
 		   assign_pos_light.c							\
 		   ft_free_utility.c							\
 		   ft_free_utility_2.c							\
