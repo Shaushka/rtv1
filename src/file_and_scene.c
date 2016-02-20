@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "rtv1.h"
 
 static void		read_scene(int fd, t_parse *parse, t_env *e)

@@ -433,6 +433,8 @@ void				set_object_param(char *value, char *data, t_object *obj);
 void				error_in_parse(char *str);
 void				get_instr(char *get, t_parse *parse, t_env *e);
 
+int					set_node(t_node **nodes, int pos, char **tab);
+void				recup_nodes(t_node *nodes, t_parse *parse, t_env *e);
 /*
 **>----------> INTERFACE <----------
 */
