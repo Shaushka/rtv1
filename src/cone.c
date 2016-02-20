@@ -22,15 +22,17 @@ static float	m_calculus(t_vector cam, t_object cone, t_vector ray)
 {
 	float	m;
 
+	if (item_cut(cam, ray, cone))
+		return(0);
 	m = dotpro_vector(unit_vector(ray), cone.dir) * norm_vector(ray)
 		+ dotpro_vector(sub_vector(cam, cone.pos), cone.dir);
 	if (cone.height > 0)
 	{
 		if (m < (0) || (m > cone.height))
 			return (0);
+		else
+			return (m);
 	}
-	if (item_cut(cam, ray, cone))
-		return(0);
 	return (m);
 }
 
