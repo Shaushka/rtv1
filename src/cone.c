@@ -14,6 +14,7 @@ t_object		set_cone(t_vector pos, t_vector dir, float radius, float height)
 	cone.reflect = 0;
 	cone.checkered = 0;
 	cone.refraction = 0;
+	cone.cut = (t_vector){0, 0, 0};
 	return (cone);
 }
 
@@ -28,6 +29,8 @@ static float	m_calculus(t_vector cam, t_object cone, t_vector ray)
 		if (m < (0) || (m > cone.height))
 			return (0);
 	}
+	if (item_cut(cam, ray, cone))
+		return(0);
 	return (m);
 }
 
@@ -53,7 +56,9 @@ float			inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
 		return (0);
 	c = ((-b + sqrt(det)) / (2 * a));
 	det = ((-b - sqrt(det)) / (2 * a));
-	if (m_calculus(cam_pos, cone, mult_vector(ray, det)))
+	if ((det < 0 || c < det) && m_calculus(cam_pos, cone, mult_vector(ray, c)))
+		return (c);
+	if ((c > 0 || det < c) && m_calculus(cam_pos, cone, mult_vector(ray, det)))
 		return (det);
 	return (0);
 }
@@ -69,5 +74,7 @@ t_vector		normal_cone(t_vector cam, t_object cone, t_vector ray)
 	tmp = sub_vector(tmp, mult_vector(cone.dir, m));
 	m *= cone.radius * cone.radius;
 	tmp = unit_vector(sub_vector(tmp, mult_vector(cone.dir, m)));
+	if (dotpro_vector(unit_vector(ray), tmp) > 0)
+		return (mult_vector(tmp, -1));
 	return (tmp);
 }
