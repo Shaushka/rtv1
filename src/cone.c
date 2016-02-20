@@ -1,4 +1,3 @@
-
 #include "rtv1.h"
 
 t_object		set_cone(t_vector pos, t_vector dir, float radius, float height)
@@ -23,7 +22,7 @@ static float	m_calculus(t_vector cam, t_object cone, t_vector ray)
 	float	m;
 
 	if (item_cut(cam, ray, cone))
-		return(0);
+		return (0);
 	m = dotpro_vector(unit_vector(ray), cone.dir) * norm_vector(ray)
 		+ dotpro_vector(sub_vector(cam, cone.pos), cone.dir);
 	if (cone.height > 0)

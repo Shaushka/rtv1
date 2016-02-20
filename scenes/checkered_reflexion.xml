@@ -1,0 +1,76 @@
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>000/000/-010/</pos>
+	<shine>0</shine>
+	<normal>0/0/5/</normal>
+	<checkered>1</checkered>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>000/-20/010/</pos>
+	<dir>0/1/0</dir>
+	<shine>0</shine>
+	<normal>0/0/5/</normal>
+	<checkered>1</checkered>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>000/20/010/</pos>
+	<dir>0/1/0</dir>
+	<shine>0</shine>
+	<normal>0/1/0/</normal>
+	<checkered>1</checkered>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>000/-20/000</pos>
+	<shine>0</shine>
+	<normal>0/1/0</normal>
+	<checkered>1</checkered>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>30/000/000/</pos>
+	<radius>-1.0</radius>
+	<shine>0</shine>
+	<normal>-1/0/0</normal>
+	<checkered>1</checkered>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>-30/000/000/</pos>
+	<radius>-1.0</radius>
+	<shine>0</shine>
+	<normal>-1/0/0</normal>
+	<checkered>1</checkered>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<color>255/255/255</color>
+	<pos>2/2/0/</pos>
+	<dir>0/2/1</dir>
+	<radius>0.1</radius>
+	<shine>5</shine>
+	<height>-1</height>
+</objet>
+<objet>
+	<type>sphere</type>
+	<color>255/255/255</color>
+	<pos>3/-2/0/</pos>
+	<radius>1</radius>
+	<reflect>1<reflect>
+</objet>
+<light>
+	<lighttype>normal</type>
+	<pos>5/-15/000/</pos>
+	<dir>0/0/0</dir>
+	<color>255/255/255/</color>
+	<intensity>0.6</intensity>
+	<ambiant>0.2</ambiant>
+</light>

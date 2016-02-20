@@ -1,7 +1,5 @@
-#include "../libft/includes/libft.h"
-#include "../includes/rtv1.h"
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft.h"
+#include "rtv1.h"
 
 int				is_slashes_and_digits(char *str)
 {
@@ -62,7 +60,7 @@ int				correct_input(char *str)
 {
 	char		*clean;
 	char		*final;
-	
+
 	remove_bn(&str);
 	clean = no_more_spaces(str);
 	if (is_slashes_and_digits(clean))

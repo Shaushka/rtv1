@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   create_object.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 14:15:16 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/19 18:33:11 by mgras            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <unistd.h>
-#include "../includes/rtv1.h"
-#include "../libft/includes/libft.h"
+#include "rtv1.h"
+#include "libft.h"
 
 t_object		*create_object_p(void)
 {
@@ -26,7 +13,7 @@ t_object		*create_object_p(void)
 		return (NULL);
 }
 
-t_light		*create_light_p(void)
+t_light			*create_light_p(void)
 {
 	t_light		*a;
 
@@ -61,7 +48,7 @@ t_object		*create_object(t_env *e)
 	return (a);
 }
 
-t_light		*create_light(t_env *e)
+t_light			*create_light(t_env *e)
 {
 	t_light		*a;
 	t_light		*b;

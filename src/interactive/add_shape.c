@@ -1,18 +1,5 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   add_shape.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/12 14:12:37 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/19 15:00:28 by mguillon         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include <unistd.h>
-#include "../includes/rtv1.h"
-#include "../libft/includes/libft.h"
+#include "rtv1.h"
+#include "libft.h"
 
 void			input_plane(t_env *e)
 {
