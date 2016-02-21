@@ -70,6 +70,7 @@ void			init_light(t_light *node)
 	node->intensity = 0;
 	node->ambiant = AMBIANT;
 	node->next = NULL;
+	node->bundle = -1;
 }
 
 void			init_scene(t_env *e)

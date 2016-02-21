@@ -32,6 +32,8 @@ int		key_press_hook_2(int keycode, t_env *e)
 {
 	key_press_hook_3(keycode, e);
 	ft_new_obj_hook(keycode, e);
+	if (keycode == KEY_J)
+		spawn_soft_light(e);
 	if (keycode == KEY_H)
 		ft_nape_generator_init(e);
 	if (keycode == KEY_G)

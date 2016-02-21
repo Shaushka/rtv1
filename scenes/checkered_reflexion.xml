@@ -71,6 +71,6 @@
 	<pos>5/-15/000/</pos>
 	<dir>0/0/0</dir>
 	<color>255/255/255/</color>
-	<intensity>0.6</intensity>
+	<intensity>0.1</intensity>
 	<ambiant>0.2</ambiant>
 </light>

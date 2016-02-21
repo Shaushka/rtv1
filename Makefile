@@ -4,7 +4,7 @@
 NAME = rtv1
 
 CC = gcc
-CFLAGS += -Wall -Werror -Wextra -O3
+CFLAGS += -Wall -Werror -Wextra -g
 
 SRC_PATH = ./src/
 SRC_NAME = main_fork.c									\
@@ -57,6 +57,7 @@ SRC_NAME = main_fork.c									\
 		   keyring/ft_keyring_light_interface_cmd.c		\
 		   keyring/ft_keyring_utility.c					\
 		   keyring/ft_keyring_light_interface_2.c		\
+		   keyring/ft_keyring_light_interface_3.c		\
 		   keyring/ft_keyring_ui.c						\
 		   keyring/ft_keyring_ui_2.c					\
 		   keyring/ft_keyring_nape_generator.c			\

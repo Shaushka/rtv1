@@ -5,7 +5,22 @@
 void		ft_get_next_light(t_env *e)
 {
 	t_light		*swp;
+	int			bundle;
 
+	swp = ft_get_light_at_nb(e->key.selected_light, e->lights);
+	bundle = 0;
+	if (swp && swp->bundle != -1)
+	{
+		bundle = swp->bundle;
+		while (swp && swp->bundle == bundle)
+		{
+			swp = swp->next;
+			e->key.selected_light++;
+		}
+		if (!swp)
+			e->key.selected_light = 0;
+		return ;
+	}
 	swp = ft_get_light_at_nb(e->key.selected_light + 1, e->lights);
 	if (swp)
 		e->key.selected_light++;

@@ -2,14 +2,58 @@
 #include "mlx.h"
 #include "key_define.h"
 
-int		expose_hook(t_env *e)
+int			spawn_soft_light(t_env *e)
+{
+	t_light		*swp;
+	int			link_nb;
+
+	swp = e->lights;
+	ft_putnbr(1);
+	link_nb = ft_get_new_bundle_nb_l(e);
+	while (swp && swp->next)
+		swp = swp->next;
+	if (!swp)
+		return (0);
+	swp->next = ft_new_light_hook((t_vector){2., 0., 2.}, link_nb);
+	swp = swp->next;
+	swp->next = ft_new_light_hook((t_vector){2., 0.01, 2.}, link_nb);
+	swp = swp->next;
+	swp->next = ft_new_light_hook((t_vector){1., -0.01, 2.}, link_nb);
+	swp = swp->next;
+	swp->next = ft_new_light_hook((t_vector){2.01, 0., 2.}, link_nb);
+	swp = swp->next;
+	swp->next = ft_new_light_hook((t_vector){2., 0., 2.}, link_nb);
+	swp = swp->next;
+	swp->next = ft_new_light_hook((t_vector){1.99, 0., 2.}, link_nb);
+	swp = swp->next;
+	swp->next = ft_new_light_hook((t_vector){1., 0., 2.}, link_nb);
+	swp = swp->next;
+	swp->next = ft_new_light_hook((t_vector){1., 0., 2.01}, link_nb);
+	return (0);
+}
+
+t_light		*ft_new_light_hook(t_vector pos, int link_nb)
+{
+	t_light		*n;
+
+	n = create_light_p();
+	n->pos.x = pos.x;
+	n->pos.y = pos.y;
+	n->pos.z = pos.z;
+	n->color = (t_color){255, 255, 255};
+	n->intensity = 0.1;
+	n->bundle = link_nb;
+	return (n);
+}
+
+int			expose_hook(t_env *e)
 {
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 			e->mlx_init.img.img_ptr, 0, 0);
 	return (0);
 }
 
-void	ft_new_obj_hook(int keycode, t_env *e)
+void		ft_new_obj_hook(int keycode, t_env *e)
 {
 	t_object	*n;
 	t_object	*swp;

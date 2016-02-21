@@ -95,6 +95,7 @@ typedef	struct		s_object
 
 typedef struct		s_light
 {
+	int				bundle;
 	t_lighttype		type;
 	t_vector		pos;
 	t_vector		dir;
@@ -272,6 +273,8 @@ int					key_press_hook(int keycode, t_env *e);
 int					expose_hook(t_env *e);
 void				ft_new_obj_hook(int keycode, t_env *e);
 void				ft_generatore(int x, int y, int z, t_env *e);
+int					spawn_soft_light(t_env *e);
+t_light				*ft_new_light_hook(t_vector pos, int link_nb);
 
 /*
 **	initialization.c
@@ -553,6 +556,13 @@ int					ft_get_cm_cmd_interface(int x, int y, t_env *e);
 void				ft_mod_cam_inc(t_env *e, int mod);
 void				spawn_cam_pos_controls(t_color c, t_vector v, t_env *e);
 void				spawn_cam_dir_controls(t_color c, t_vector v, t_env *e);
+
+/*
+**	keyring/ft_keyring_light_interface_3.c
+*/
+void				ft_mod_grouped_light(t_env *e, int mod, int index);
+int					ft_get_new_bundle_nb_l(t_env *e);
+void				ft_set_one_light(t_light *swp, int mod);
 
 /*
 **	keyring/ft_keyring_light_interface_2.c
