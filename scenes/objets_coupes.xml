@@ -20,6 +20,7 @@
 	<pos>30/000/000/</pos>
 	<radius>-1.0</radius>
 	<shine>1</shine>
+	<dir>0/0/1</dir>
 	<normal>-1/0/0</normal>
 </objet>
 <objet>
