@@ -38,9 +38,9 @@
 <objet>
 	<type>cone</type>
 	<dir>0/0/-1</dir>
-	<height>10</height>
+	<height>8</height>
 	<color>2/2/2</color>
-	<pos>25/5/5/</pos>
+	<pos>25/5/4/</pos>
 	<radius>0.5</radius>
 	<refraction>1</refraction>
 </objet>
