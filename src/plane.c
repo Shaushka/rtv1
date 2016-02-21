@@ -51,7 +51,7 @@ float		inter_plane(t_vector cam_pos, t_vector ray, t_object obj)
 		square = square_plane(cam_pos, mult_vector(ray, t), obj) * round;
 	if (t && obj.radius > 0)
 		round = round_plane(cam_pos, mult_vector(ray, t), obj) * round;
-	if ((round + square > 0) && !item_cut(cam_pos, mult_vector(ray, t), obj))
+	if ((round * square > 0) && !item_cut(cam_pos, mult_vector(ray, t), obj))
 		return (t);
 	else
 		return (0);
