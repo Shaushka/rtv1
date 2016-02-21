@@ -8,7 +8,6 @@ int			spawn_soft_light(t_env *e)
 	int			link_nb;
 
 	swp = e->lights;
-	ft_putnbr(1);
 	link_nb = ft_get_new_bundle_nb_l(e);
 	while (swp && swp->next)
 		swp = swp->next;
@@ -69,8 +68,8 @@ void		ft_new_obj_hook(int keycode, t_env *e)
 		n->type = keycode == KEY_2 ? PLANE : n->type;
 		n->type = keycode == KEY_3 ? CYLINDER : n->type;
 		n->type = keycode == KEY_4 ? CONE : n->type;
-		n->pos.z = keycode == KEY_4 ? -50 : n->pos.z;
 		n->pos = (t_vector){e->cam.pos.x + 2, e->cam.pos.y, e->cam.pos.z};
+		n->pos.z = keycode == KEY_3 ? -500 : n->pos.z;
 		n->dir = unit_vector((t_vector){0, 0, 1});
 		n->normal = (t_vector){1, 0, 0};
 		n->radius = 0.2;

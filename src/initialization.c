@@ -52,6 +52,7 @@ void			init_obj(t_object *node)
 	node->cut = set_vector(node->cut, 0, 0, 0);
 	node->normal = set_vector(node->normal, 0, 0, 0);
 	node->dir = set_vector(node->dir, 0, 0, 0);
+	node->color = (t_color){0, 0, 0};
 	node->radius = 0;
 	node->height = 0;
 	node->shine = 0.0;
