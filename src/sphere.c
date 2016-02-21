@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:17:12 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/21 19:17:27 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/21 20:04:10 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ t_vector		normal_sphere(t_vector cam, t_object obj, t_vector ray)
 	{
 		obj.normal.x = -1;
 		return (mult_vector(tmp, -1));
-
 	}
 	return (tmp);
 }
