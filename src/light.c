@@ -20,7 +20,7 @@ int			check_shadow(t_light light, t_vector inter_ray, t_env *e)
 	{
 		test = 0;
 		test = intersection(tmp, unit_vector(light_ray), inter_pos);
-		test = tmp.refraction > 0 ? 0 : test;
+		test = tmp->refraction > 0 ? 0 : test;
 		tmp = tmp->next;
 		if (test > 0.00001 && test < (float)norm_vector(light_ray))
 			return (1);
