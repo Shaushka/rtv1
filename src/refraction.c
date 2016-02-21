@@ -1,11 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   refraction.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/21 19:16:56 by mgras             #+#    #+#             */
+/*   Updated: 2016/02/21 19:21:57 by mgras            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "rtv1.h"
 
 #define REFRACTION 1.0f
 
 /*
- ** REFRACTION = outside coeficient for refract mean outside resistance to light
- */
+** REFRACTION = outside coeficient for refract mean outside resistance to light
+*/
 
 float		ft_cost(float eta, float cosi)
 {
