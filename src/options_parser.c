@@ -7,7 +7,9 @@ void		assign_cut_p(t_object **obj, char *str)
 
 	if (!*obj)
 		return ;
-	i = 0;
+	i = 0;	
+	if (ft_strchr(str, '/') == NULL)
+		return ;
 	while (str[i] != '/')
 		i++;
 	(*obj)->cut.x = ft_atoi(str);
@@ -27,6 +29,8 @@ void		assign_color_p(t_object **obj, char *str)
 	if (!*obj)
 		return ;
 	i = 0;
+	if (ft_strchr(str, '/') == NULL)
+		return ;
 	while (str[i] != '/')
 		i++;
 	(*obj)->color.r = ft_atoi(str);
@@ -46,6 +50,8 @@ void		assign_lightcolor_p(t_light **obj, char *str)
 	if (!*obj)
 		return ;
 	i = 0;
+	if (ft_strchr(str, '/') == NULL)
+		return ;
 	while (str[i] != '/')
 		i++;
 	(*obj)->color.r = ft_atoi(str);

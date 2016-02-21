@@ -1,0 +1,68 @@
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>000/000/-010/</pos>
+	<radius>-1.0</radius>
+	<shine>2</shine>
+	<normal>0/0/5/</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>17/122/118/</color>
+	<pos>000/000/010/</pos>
+	<radius>-1.0</radius>
+	<shine>1</shine>
+	<normal>0/0/5</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>30/000/000/</pos>
+	<radius>-1.0</radius>
+	<shine>1</shine>
+	<normal>-1/0/0</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>50/50/50/</color>
+	<pos>-30/000/000/</pos>
+	<radius>-1.0</radius>
+	<shine>1</shine>
+	<normal>-1/0/0</normal>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<radius>0.4</radius>
+	<dir>1/1/10</dir>
+	<cut>1/1/10</cut>
+	<color>5/25/55/</color>
+	<pos>9/1/-2/</pos>
+	<shine>0</shine>
+	<height>-1</height>
+</objet>
+<objet>
+	<type>sphere</type>
+	<radius>3</radius>
+	<dir>2/5/10</dir>
+	<color>35/25/55/</color>
+	<pos>13/3/2/</pos>
+	<shine>0</shine>
+	<cut>4/5/30</cut>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<radius>0.5</radius>
+	<dir>2/10/10</dir>
+	<cut>2/10/50</cut>
+	<color>75/25/55/</color>
+	<pos>8/-2/-1/</pos>
+	<shine>0</shine>
+	<height>-1</height>
+</objet>
+<light>
+	<lighttype>normal</lighttype>
+	<pos>2/1/0/</pos>
+	<color>115/75/25/</color>
+	<intensity>1</intensity>
+	<ambiant>1</ambiant>
+</light>

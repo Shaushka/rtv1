@@ -81,7 +81,11 @@ void			ft_new_obj_hook(int keycode, t_env *e)
 	}
 }
 
+<<<<<<< HEAD
+void		ft_generatore(int x, int y, int z, t_env *e)
+=======
 void			ft_generatore(int x, int y, int z, t_env *e)
+>>>>>>> f141b715b1cca615698d16045a04f0be9a06be49
 {
 	t_object	*swp;
 	double		teta;
