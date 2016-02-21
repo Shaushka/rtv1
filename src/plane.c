@@ -18,7 +18,7 @@ t_object	set_plane(t_vector pos, t_vector normal)
 	return (plane);
 }
 
-int			defined_plane(t_vector cam_pos, t_vector ray, t_object obj)
+int			square_plane(t_vector cam_pos, t_vector ray, t_object obj)
 {
 	t_vector	dist;
 
@@ -27,42 +27,45 @@ int			defined_plane(t_vector cam_pos, t_vector ray, t_object obj)
 		if (fabs(dist.y - obj.pos.y) < obj.height)
 			if (fabs(dist.z - obj.pos.z) < obj.height)
 				return (1);
-	return (0);
+	return (-1);
+}
+
+int			round_plane(t_vector pos, t_vector ray, t_object obj)
+{
+	if (norm_vector(sub_vector(add_vector(ray, pos), obj.pos)) < obj.radius)
+		return (1);
+	return (-1);
 }
 
 float		inter_plane(t_vector cam_pos, t_vector ray, t_object obj)
 {
 	float		t;
-	int			bound;
+	int			square;
+	int			round;
 
-	bound = 1;
+	round = obj.dir.x * 4 ? obj.dir.x * 4 : 1;
+	square = obj.dir.y * 4 ?obj.dir.y * 4 : 1;;
 	t = -(dotpro_vector(obj.normal, sub_vector(cam_pos, obj.pos))
 			/ (dotpro_vector(obj.normal, ray)));
 	if (t && obj.height > 0)
-		bound = defined_plane(cam_pos, mult_vector(ray, t), obj);
-	if (bound && !item_cut(cam_pos, mult_vector(ray, t), obj))
+		square = square_plane(cam_pos, mult_vector(ray, t), obj) * round;
+	if (t && obj.radius > 0)
+		round = round_plane(cam_pos, mult_vector(ray, t), obj) * round;
+	if ((round + square > 0) && !item_cut(cam_pos, mult_vector(ray, t), obj))
 		return (t);
 	else
 		return (0);
-}
-
-static t_vector	pert_wave(t_vector normal, t_vector ray)
-{
-	t_vector	wave;
-
-	wave.x = normal.x + cos(ray.x);
-	wave.y = normal.y + cos(ray.y);
-	wave.z = normal.z + sin(ray.z);
-	return (wave);
 }
 
 t_vector	normal_plane(t_object obj, t_vector ray)
 {
 	if (dotpro_vector(obj.normal, unit_vector(ray)) > 0)
 		obj.normal = mult_vector(obj.normal, -1);
-	if (0)
+	if (obj.dir.z * 4 > 0)
 	{
-		obj.normal = pert_wave(obj.normal, ray);
+		obj.normal.x = obj.normal.x + cos(ray.x);
+		obj.normal.y = obj.normal.y + cos(ray.y);
+		obj.normal.z = obj.normal.z + sin(ray.z);
 	}
 	return (obj.normal);
 }
