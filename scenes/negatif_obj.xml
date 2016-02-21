@@ -1,0 +1,81 @@
+<objet>
+	<type>plane</type>
+	<dir>0/0/0</dir>
+	<color>255/255/255</color>
+	<pos>20/0/0/</pos>
+	<shine>1</shine>
+	<reflect>1</reflect>
+	<normal>1/0/0</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>0/255/255</color>
+	<pos>0/-5/0/</pos>
+	<normal>0/1/0</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>0/255/0</color>
+	<pos>0/5/0/</pos>
+	<normal>0/-1/0</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>255/0/0</color>
+	<pos>0/0/-5/</pos>
+	<normal>0/0/1</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>0/0/255</color>
+	<pos>0/0/5/</pos>
+	<normal>0/0/1</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<dir>-1/0/0</dir>
+	<color>120/255/0</color>
+	<pos>15/0/0/</pos>
+	<normal>1/1/0</normal>
+	<height>2</height>
+	<radius>4</radius>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<dir>0/1/1</dir>
+	<color>255/0/0</color>
+	<pos>8/-4/0/</pos>
+	<normal>1/0/0</normal>
+	<radius>0.2</radius>
+</objet>
+<light>
+	<lighttype>normal</lighttype>
+	<pos>1.1/000/000/</pos>
+	<color>255/255/255/</color>
+	<intensity>0.3</intensity>
+	<ambiant>0.2</ambiant>
+</light>
+<light>
+	<lighttype>normal</lighttype>
+	<pos>0/-2/000/</pos>
+	<color>255/255/255/</color>
+	<intensity>0.3</intensity>
+</light>
+<light>
+	<lighttype>normal</lighttype>
+	<pos>0/-1/000/</pos>
+	<color>255/255/255/</color>
+	<intensity>0.3</intensity>
+</light>
+<light>
+	<lighttype>normal</lighttype>
+	<pos>0/000/000/</pos>
+	<color>255/255/255/</color>
+	<intensity>0.3</intensity>
+</light>
+<light>
+	<lighttype>normal</lighttype>
+	<pos>0/-2/000/</pos>
+	<color>255/255/255/</color>
+	<intensity>0.3</intensity>
+</light>
