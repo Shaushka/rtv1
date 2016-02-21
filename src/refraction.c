@@ -12,15 +12,16 @@ float		ft_cost(float eta, float cosi)
 	return (1.0f - eta * eta * (1.0f - cosi * cosi));
 }
 
-float		inside(t_object item, t_vector inter, t_vector *norm)
+float		inside(t_object item, t_vector inter, t_vector *joker )
 {
 	float eta;
 
+	(void)joker;
+	(void)inter;
 	eta = REFRACTION / item.refraction;
-	if (dotpro_vector(unit_vector(inter), *norm) > 0)
+	if (item.type == PLANE || (item.normal.x < 0) > 0)
 	{
 		eta = item.refraction / REFRACTION;
-		*norm = mult_vector(*norm, -1);
 	}
 	return (eta);
 }
@@ -50,14 +51,17 @@ t_color		refraction(t_object item, t_vector inter, t_env *e)
 		joker = calc_normal(e->cam.pos, item, inter);
 		eta = inside(item, inter, &joker);
 		cosi = -dotpro_vector(joker, inter);
-		g_depth++;
-		joker = ft_refray(inter, joker, eta, cosi);
-		tmp = e->cam.pos;
-		e->cam.pos = add_vector(inter, e->cam.pos);
-		e->cam.pos = add_vector(e->cam.pos, mult_vector(joker, 1e-4));
-		color = add_color(check_collision(e, joker, e->cam.pos), color);
-		e->cam.pos = tmp;
-		g_depth--;
+		if (ft_cost(eta, cosi) > 0)
+		{
+			joker = ft_refray(inter, joker, eta, cosi);
+			g_depth++;
+			tmp = e->cam.pos;
+			e->cam.pos = add_vector(inter, e->cam.pos);
+			e->cam.pos = add_vector(e->cam.pos, mult_vector(joker, 1e-4));
+			color = add_color(check_collision(e, joker, e->cam.pos), color);
+			e->cam.pos = tmp;
+			g_depth--;
+		}
 	}
 	return (color);
 }

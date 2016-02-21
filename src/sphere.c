@@ -50,6 +50,10 @@ t_vector		normal_sphere(t_vector cam, t_object obj, t_vector ray)
 	tmp = sub_vector(add_vector(cam, ray), obj.pos);
 	tmp = unit_vector(tmp);
 	if (dotpro_vector(unit_vector(ray), tmp) > 0)
+	{
+		obj.normal.x = -1;
 		return (mult_vector(tmp, -1));
+
+	}
 	return (tmp);
 }
