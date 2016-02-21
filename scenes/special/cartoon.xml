@@ -61,7 +61,6 @@
 <light>
 	<lighttype>normal</type>
 	<pos>000/-020/000/</pos>
-	<dir>125/125/125/</dir>
 	<color>2/155/25/</color>
 	<intensity>0.9</intensity>
 	<ambiant>8</ambiant>
@@ -69,7 +68,6 @@
 <light>
 	<lighttype>normal</type>
 	<pos>000/020/000/</pos>
-	<dir>125/25/125/</dir>
 	<color>155/2/25/</color>
 	<intensity>0.9</intensity>
 </light>
