@@ -2,10 +2,10 @@
 
 int		light_dir(t_light light, t_vector light_ray)
 {
-	if(norm_vector(light.dir) > 0.001)
+	if (norm_vector(light.dir) > 0.001)
 		if (dotpro_vector(unit_vector(light_ray), unit_vector(light.dir)) < 0)
 			return (0);
-	return(1);
+	return (1);
 }
 
 float	diffuse_light(t_light light, t_object item, t_vector inter, t_env *e)

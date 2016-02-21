@@ -44,7 +44,7 @@ float		inter_plane(t_vector cam_pos, t_vector ray, t_object obj)
 	int			round;
 
 	round = obj.dir.x * 4 ? obj.dir.x * 4 : 1;
-	square = obj.dir.y * 4 ?obj.dir.y * 4 : 1;;
+	square = obj.dir.y * 4 ? obj.dir.y * 4 : 1;
 	t = -(dotpro_vector(obj.normal, sub_vector(cam_pos, obj.pos))
 			/ (dotpro_vector(obj.normal, ray)));
 	if (t && obj.height > 0)

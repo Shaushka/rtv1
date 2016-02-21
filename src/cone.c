@@ -35,7 +35,6 @@ static float	m_calculus(t_vector cam, t_object cone, t_vector ray)
 
 float			check_det(float d1, float d2, float m1, float m2)
 {
-
 	if (m1 == 0 && m2 == 0)
 		return (0);
 	else if (m1 == 0 && m2 != 0 && d2 > 0.0f)
@@ -75,7 +74,7 @@ float			inter_cone(t_vector cam_pos, t_vector ray, t_object cone)
 	det = ((-b - sqrt(det)) / (2 * a));
 	a = m_calculus(cam_pos, cone, mult_vector(ray, c));
 	b = m_calculus(cam_pos, cone, mult_vector(ray, det));
-	return(check_det(det, c, a, b));
+	return (check_det(det, c, a, b));
 }
 
 t_vector		normal_cone(t_vector cam, t_object cone, t_vector ray)
