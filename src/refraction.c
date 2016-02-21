@@ -6,7 +6,7 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:16:56 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/21 19:21:57 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/21 20:03:53 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ float		ft_cost(float eta, float cosi)
 	return (1.0f - eta * eta * (1.0f - cosi * cosi));
 }
 
-float		inside(t_object item, t_vector inter, t_vector *joker )
+float		inside(t_object item, t_vector inter, t_vector *joker)
 {
 	float eta;
 
