@@ -9,8 +9,20 @@ void	ft_nape_generator_init(t_env *e)
 	link_nb = ft_get_new_bundle_nb(e);
 	ft_quater_nappe((t_vector){0., (double)(PI / 2), 0}, e,
 								(t_vector){0, 0, 0}, link_nb);
-	ft_quater_nappe((t_vector){(double)(PI / 2), (double)(PI), 0}, e,
-								(t_vector){0, 1, 0}, link_nb);
+	ft_quater_nappe((t_vector){(double)(PI), (double)(1.5 * PI), 0}, e,
+								(t_vector){0, 0.675, 0}, link_nb);
+	ft_quater_nappe((t_vector){0., (double)(PI / 2), 0}, e,
+								(t_vector){0.25, 0, 0}, link_nb);
+	ft_quater_nappe((t_vector){(double)(PI), (double)(1.5 * PI), 0}, e,
+								(t_vector){0.25, 0.675, 0}, link_nb);
+	ft_quater_nappe((t_vector){0., (double)(PI / 2), 0}, e,
+								(t_vector){0.5, 0, 0}, link_nb);
+	ft_quater_nappe((t_vector){(double)(PI), (double)(1.5 * PI), 0}, e,
+								(t_vector){0.5, 0.675, 0}, link_nb);
+	ft_quater_nappe((t_vector){0., (double)(PI / 2), 0}, e,
+								(t_vector){0.75, 0, 0}, link_nb);
+	ft_quater_nappe((t_vector){(double)(PI), (double)(1.5 * PI), 0}, e,
+								(t_vector){0.75, 0.675, 0}, link_nb);
 }
 
 void	ft_quater_nappe(t_vector t, t_env *e, t_vector s, int link_nb)
@@ -24,7 +36,7 @@ void	ft_quater_nappe(t_vector t, t_env *e, t_vector s, int link_nb)
 		while (swp && swp->next)
 			swp = swp->next;
 		swp->bundle = link_nb;
-		swp->pos.x = e->cam.pos.x + 2;
+		swp->pos.x = s.x + e->cam.pos.x + 2;
 		swp->pos.z = s.z + cos(t.x) - (cos(t.x) / 1.5);
 		swp->pos.y = s.y + sin(t.x) - (sin(t.x) / 1.5);
 		swp->color = (t_color){0, 0, 0};
