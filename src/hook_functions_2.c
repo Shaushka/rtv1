@@ -6,39 +6,13 @@
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 19:15:50 by mgras             #+#    #+#             */
-/*   Updated: 2016/02/21 19:17:27 by mgras            ###   ########.fr       */
+/*   Updated: 2016/02/21 19:53:21 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rtv1.h"
 #include "mlx.h"
 #include "key_define.h"
-
-void	ft_spawn_glass(t_env *e)
-{
-	t_object	*swp;
-	int			index;
-
-	index = ft_get_new_bundle_nb(e);
-	swp = e->scene->l_obj;
-	if (!swp)
-		return ;
-	swp->next = create_object_p();
-	swp = swp->next;
-	swp->type = SPHERE;
-	swp->pos = (t_vector){e->cam.pos.x + 0.5, 0, 0.20 - 0.05};
-	swp->bundle = index;
-	swp->radius = 0.1;
-	swp->cut = (t_vector){0, 0, -1};
-	swp->next = create_object_p();
-	swp = swp->next;
-	swp->type = CYLINDER;
-	swp->pos = (t_vector){e->cam.pos.x + 0.5, 0, -0.1 - 0.05};
-	swp->dir = (t_vector){0, 0, 1};
-	swp->bundle = index;
-	swp->radius = 0.03;
-	swp->height = 0.25;
-}
 
 int		key_press_hook_3(int keycode, t_env *e)
 {
@@ -92,7 +66,7 @@ int		key_press_hook_2(int keycode, t_env *e)
 	if (keycode == KEY_H)
 		ft_nape_generator_init(e);
 	if (keycode == KEY_K)
-		ft_spawn_glass(e);
+		save(e);
 	if (keycode == KEY_F)
 		ft_jellybeans_generator(e);
 	if (keycode == KEY_G)

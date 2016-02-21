@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rtv1.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/21 18:17:28 by mguillon          #+#    #+#             */
-/*   Updated: 2016/02/21 18:17:29 by mguillon         ###   ########.fr       */
+/*   Updated: 2016/02/21 19:48:37 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -681,5 +681,10 @@ void				ft_print_pending_light(t_env *e, int mod);
 void				ft_print_pending_obj(t_env *e, int mod);
 int					ft_exec_cmd(int mod, t_env *e);
 int					ft_click(int press, int x, int y, t_env *e);
+
+/*
+**	save.c
+*/
+int					save(t_env *e);
 
 #endif
