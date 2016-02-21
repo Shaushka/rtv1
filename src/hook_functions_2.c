@@ -2,6 +2,32 @@
 #include "mlx.h"
 #include "key_define.h"
 
+void	ft_spawn_glass(t_env *e)
+{
+	t_object	*swp;
+	int			index;
+
+	index = ft_get_new_bundle_nb(e);
+	swp = e->scene->l_obj;
+	if (!swp)
+		return ;
+	swp->next = create_object_p();
+	swp = swp->next;
+	swp->type = SPHERE;
+	swp->pos = (t_vector){e->cam.pos.x + 0.5, 0, 0.20 - 0.05};
+	swp->bundle = index;
+	swp->radius = 0.1;
+	swp->cut = (t_vector){0, 0, -1};
+	swp->next = create_object_p();
+	swp = swp->next;
+	swp->type = CYLINDER;
+	swp->pos = (t_vector){e->cam.pos.x + 0.5, 0, -0.1 - 0.05};
+	swp->dir = (t_vector){0, 0, 1};
+	swp->bundle = index;
+	swp->radius = 0.03;
+	swp->height = 0.25;
+}
+
 int		key_press_hook_3(int keycode, t_env *e)
 {
 	if (keycode == KEY_ENTER && e->key.mode == 6)
@@ -28,14 +54,35 @@ int		key_press_hook_3(int keycode, t_env *e)
 	return (keycode);
 }
 
+void	ft_set_sepia_filter(t_env *e)
+{
+	t_light	*swp;
+
+	swp = e->lights;
+	if (!swp)
+		return ;
+	while (swp)
+	{
+		swp->color = (t_color){155, 75, 25};
+		swp = swp->next;
+	}
+	e->ambiant = 0.0;
+}
+
 int		key_press_hook_2(int keycode, t_env *e)
 {
 	key_press_hook_3(keycode, e);
 	ft_new_obj_hook(keycode, e);
+	if (keycode == KEY_L)
+		ft_set_sepia_filter(e);
 	if (keycode == KEY_J)
 		spawn_soft_light(e);
 	if (keycode == KEY_H)
 		ft_nape_generator_init(e);
+	if (keycode == KEY_K)
+		ft_spawn_glass(e);
+	if (keycode == KEY_F)
+		ft_jellybeans_generator(e);
 	if (keycode == KEY_G)
 		ft_generatore(0, 0, 0, e);
 	return (0);

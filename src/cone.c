@@ -46,7 +46,7 @@ float			check_det(float d1, float d2, float m1, float m2)
 	else if (d1 < 0.0f && d2 >= 0.0f)
 		return (d2);
 	else if (d1 < 0.0f && d2 < 0.0f)
-		return (d1);
+		return (0);
 	return (d2 < d1 ? d2 : d1);
 }
 
