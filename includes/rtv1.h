@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rtv1.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mguillon <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/21 18:17:28 by mguillon          #+#    #+#             */
+/*   Updated: 2016/02/21 18:17:29 by mguillon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef RTV1_H
 # define RTV1_H
 
@@ -275,6 +287,7 @@ void				ft_new_obj_hook(int keycode, t_env *e);
 void				ft_generatore(int x, int y, int z, t_env *e);
 int					spawn_soft_light(t_env *e);
 t_light				*ft_new_light_hook(t_vector pos, int link_nb);
+void				ft_spawn_christmas(t_env *e);
 
 /*
 **	initialization.c
@@ -601,6 +614,7 @@ void				spaw_main_menu(t_env *e);
 **	kyring/ft_keyring_nape_generator.c
 */
 void				ft_nape_generator_init(t_env *e);
+void				ft_jellybeans_generator(t_env *e);
 void				ft_quater_nappe(t_vector t, t_env *e, t_vector s,
 									int link_nb);
 

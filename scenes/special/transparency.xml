@@ -1,0 +1,58 @@
+<objet>
+	<type>plane</type>
+	<color>5/5/5/</color>
+	<pos>000/000/-010/</pos>
+	<radius>-1.0</radius>
+	<normal>0/0/5/</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>5/5/5</color>
+	<pos>000/000/010/</pos>
+	<radius>-1.0</radius>
+	<normal>0/0/5</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>255/0/0/</color>
+	<pos>50/000/000/</pos>
+	<radius>-1.0</radius>
+	<normal>-1/0/0</normal>
+</objet>
+<objet>
+	<type>plane</type>
+	<color>255/0/235</color>
+	<pos>-30/000/000/</pos>
+	<radius>-1.0</radius>
+	<normal>-1/0/0</normal>
+</objet>
+<objet>
+	<type>sphere</type>
+	<dir>0/0/1</dir>
+	<color>255/0/255</color>
+	<pos>1/0/0/</pos>
+	<radius>2</radius>
+	<reflect>1</reflect>
+</objet>
+<objet>
+	<type>sphere</type>
+	<dir>0/0/1</dir>
+	<color>255/255/0</color>
+	<pos>30/0/0/</pos>
+	<radius>3</radius>
+</objet>
+<objet>
+	<type>cylindre</type>
+	<dir>0/0/1</dir>
+	<color>0/0/0</color>
+	<pos>20/0/-50/</pos>
+	<radius>1</radius>
+	<refraction>1</refraction>
+</objet>
+<light>
+	<lighttype>normal</lighttype>
+	<pos>000/020/000/</pos>
+	<color>255/255/255/</color>
+	<intensity>0.9</intensity>
+	<ambiant>0.4</ambiant>
+</light>

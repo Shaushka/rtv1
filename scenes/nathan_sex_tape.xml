@@ -3,7 +3,6 @@
 	<color>50/50/50/</color>
 	<pos>000/000/-010/</pos>
 	<radius>-1.0</radius>
-	<shine>2</shine>
 	<normal>0/0/5/</normal>
 </objet>
 <objet>
@@ -11,7 +10,6 @@
 	<color>50/50/50/</color>
 	<pos>000/000/010/</pos>
 	<radius>-1.0</radius>
-	<shine>1</shine>
 	<normal>0/0/5</normal>
 </objet>
 <objet>
@@ -19,7 +17,6 @@
 	<color>50/50/50/</color>
 	<pos>30/000/000/</pos>
 	<radius>-1.0</radius>
-	<shine>1</shine>
 	<normal>-1/0/0</normal>
 </objet>
 <objet>
@@ -27,12 +24,11 @@
 	<color>50/50/50/</color>
 	<pos>-30/000/000/</pos>
 	<radius>-1.0</radius>
-	<shine>1</shine>
 	<normal>-1/0/0</normal>
 </objet>
 <light>
 	<lighttype>normal</lighttype>
 	<color>205/205/205/</color>
-	<pos>0/-2/7/</pos>
-	<intensity>0.4</intensity>>
+	<pos>0/0/0/</pos>
+	<intensity>0.6</intensity>>
 </light>

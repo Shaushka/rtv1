@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cone.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/02/21 19:15:24 by mgras             #+#    #+#             */
+/*   Updated: 2016/02/21 19:17:27 by mgras            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "rtv1.h"
 
 t_object		set_cone(t_vector pos, t_vector dir, float radius, float height)
@@ -46,7 +58,7 @@ float			check_det(float d1, float d2, float m1, float m2)
 	else if (d1 < 0.0f && d2 >= 0.0f)
 		return (d2);
 	else if (d1 < 0.0f && d2 < 0.0f)
-		return (d1);
+		return (0);
 	return (d2 < d1 ? d2 : d1);
 }
 

@@ -5,7 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgras <mgras@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/06 17:01:28 by chuang            #+#    #+#             */
+/*   Created: 2016/02/21 19:20:27 by mgras             #+#    #+#             */
+/*   Updated: 2016/02/21 19:20:28 by mgras            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +23,7 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 
 	tmp = e->scene->l_obj;
 	inter = 150.f;
+	item = NULL;
 	while (tmp)
 	{
 		test = intersection(tmp, ray, pos);
@@ -32,7 +34,7 @@ t_color		check_collision(t_env *e, t_vector ray, t_vector pos)
 		}
 		tmp = tmp->next;
 	}
-	if (inter > 0.0001f && inter < 150.f)
+	if (item)
 	{
 		return (ft_light(&(*e->lights), *item, mult_vector(ray, inter), e));
 	}
