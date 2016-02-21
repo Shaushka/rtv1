@@ -38,6 +38,7 @@ void	set_object_param(char *value, char *data, t_object *obj)
 		obj->checkered = ft_atof(data);
 	else
 		ft_putendl_fd("ERROR PARSING DATA", 2);
+	exit ();
 }
 
 void	set_light_type(char *name, t_light *obj)
@@ -48,6 +49,8 @@ void	set_light_type(char *name, t_light *obj)
 
 void	set_light_param(char *value, char *data, t_light *obj)
 {
+	if (!obj)
+		return ;
 	if (ft_strcmp(value, "pos") == 0)
 		assign_pos_light(obj, data, 0);
 	else if (ft_strcmp(value, "color") == 0)

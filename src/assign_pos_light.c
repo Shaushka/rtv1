@@ -8,6 +8,8 @@ void			assign_pos_light(t_light *node, char *str, int n)
 	int			i;
 
 	i = 0;
+	if (!node)
+		return ;
 	if (n == 0)
 		node->pos.x = ft_atoi(str);
 	else

@@ -5,6 +5,8 @@ void		assign_cut_p(t_object **obj, char *str)
 {
 	int			i;
 
+	if (!*obj)
+		return ;
 	i = 0;
 	while (str[i] != '/')
 		i++;
@@ -22,6 +24,8 @@ void		assign_color_p(t_object **obj, char *str)
 {
 	int			i;
 
+	if (!*obj)
+		return ;
 	i = 0;
 	while (str[i] != '/')
 		i++;
@@ -39,6 +43,8 @@ void		assign_lightcolor_p(t_light **obj, char *str)
 {
 	int			i;
 
+	if (!*obj)
+		return ;
 	i = 0;
 	while (str[i] != '/')
 		i++;
