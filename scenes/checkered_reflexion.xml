@@ -72,5 +72,5 @@
 	<dir>0/0/0</dir>
 	<color>255/255/255/</color>
 	<intensity>0.1</intensity>
-	<ambiant>0.2</ambiant>
+	<ambiant>0.4</ambiant>
 </light>
