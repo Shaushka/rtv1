@@ -67,7 +67,7 @@
 	<reflect>1<reflect>
 </objet>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>5/-15/000/</pos>
 	<dir>0/0/0</dir>
 	<color>255/255/255/</color>

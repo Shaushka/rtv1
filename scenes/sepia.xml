@@ -58,9 +58,8 @@
 	<height>-1</height>
 </objet>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>2/1/0/</pos>
-	<dir>125/25/125/</dir>
 	<color>115/75/25/</color>
 	<intensity>1</intensity>
 	<ambiant>0</ambiant>

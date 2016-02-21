@@ -89,7 +89,7 @@
 	<height>-1.</height>
 </objet>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<dir>125/25/125/</dir>
 	<color>255/255/255/</color>
 	<pos>2/3/00/</pos>
