@@ -49,32 +49,32 @@
 	<radius>0.2</radius>
 </objet>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>1.1/000/000/</pos>
 	<color>255/255/255/</color>
 	<intensity>0.3</intensity>
 	<ambiant>0.2</ambiant>
 </light>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>0/-2/000/</pos>
 	<color>255/255/255/</color>
 	<intensity>0.3</intensity>
 </light>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>0/-1/000/</pos>
 	<color>255/255/255/</color>
 	<intensity>0.3</intensity>
 </light>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>0/000/000/</pos>
 	<color>255/255/255/</color>
 	<intensity>0.3</intensity>
 </light>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>0/-2/000/</pos>
 	<color>255/255/255/</color>
 	<intensity>0.3</intensity>

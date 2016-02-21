@@ -31,7 +31,7 @@
 	<normal>-1/0/0</normal>
 </objet>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<color>205/205/205/</color>
 	<pos>0/-2/7/</pos>
 	<intensity>0.4</intensity>>

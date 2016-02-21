@@ -38,9 +38,9 @@
 <objet>
 	<type>cone</type>
 	<dir>0/0/-1</dir>
-	<height>10</height>
+	<height>8</height>
 	<color>2/2/2</color>
-	<pos>25/5/5/</pos>
+	<pos>25/5/4/</pos>
 	<radius>0.5</radius>
 	<refraction>1</refraction>
 </objet>
@@ -59,14 +59,14 @@
 	<radius>1</radius>
 </objet>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>000/-020/000/</pos>
 	<color>2/155/25/</color>
 	<intensity>0.9</intensity>
 	<ambiant>8</ambiant>
 </light>
 <light>
-	<lighttype>normal</type>
+	<lighttype>normal</lighttype>
 	<pos>000/020/000/</pos>
 	<color>155/2/25/</color>
 	<intensity>0.9</intensity>
