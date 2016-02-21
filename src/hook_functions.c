@@ -2,7 +2,7 @@
 #include "mlx.h"
 #include "key_define.h"
 
-int			spawn_soft_light(t_env *e)
+int				spawn_soft_light(t_env *e)
 {
 	t_light		*swp;
 	int			link_nb;
@@ -31,7 +31,7 @@ int			spawn_soft_light(t_env *e)
 	return (0);
 }
 
-t_light		*ft_new_light_hook(t_vector pos, int link_nb)
+t_light			*ft_new_light_hook(t_vector pos, int link_nb)
 {
 	t_light		*n;
 
@@ -45,14 +45,14 @@ t_light		*ft_new_light_hook(t_vector pos, int link_nb)
 	return (n);
 }
 
-int			expose_hook(t_env *e)
+int				expose_hook(t_env *e)
 {
 	mlx_put_image_to_window(e->mlx_init.mlx, e->mlx_init.win,
 			e->mlx_init.img.img_ptr, 0, 0);
 	return (0);
 }
 
-void		ft_new_obj_hook(int keycode, t_env *e)
+void			ft_new_obj_hook(int keycode, t_env *e)
 {
 	t_object	*n;
 	t_object	*swp;
@@ -81,7 +81,7 @@ void		ft_new_obj_hook(int keycode, t_env *e)
 	}
 }
 
-void	ft_generatore(int x, int y, int z, t_env *e)
+void			ft_generatore(int x, int y, int z, t_env *e)
 {
 	t_object	*swp;
 	double		teta;
